@@ -9,7 +9,20 @@ public class App{
         boolean puerta=false;
 
         do{
-
+            Person p=new Person(null, null, 0);
+            
+            System.out.println("=".repeat(35));
+            System.out.println("UNA MUESTRA:");
+            System.out.println("=".repeat(35));
+            System.out.println("MENÚ");
+            System.out.println(">>>> 1. Registrarse.");
+            if(scanner.hasNextInt()){
+                int opcion=scanner.nextInt();
+            }else{
+                System.out.println("=".repeat(140));
+                System.out.println("\n|POR FAVOR INGRESE UN NÚMERO...");
+                System.out.println("_".repeat(140));
+            }
         } while(!puerta);
     }
 }

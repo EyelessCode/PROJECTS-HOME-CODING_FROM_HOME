@@ -37,15 +37,4 @@ public class Person {
     public String toString() {
         return "Person [nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + "]";
     }
-
-
-
-
-
-
-
-
-
-
-    
 }

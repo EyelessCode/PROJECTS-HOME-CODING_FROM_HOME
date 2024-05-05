@@ -33,5 +33,8 @@ public class Person {
         this.edad = edad;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Person [nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + "]";
+    }
 }

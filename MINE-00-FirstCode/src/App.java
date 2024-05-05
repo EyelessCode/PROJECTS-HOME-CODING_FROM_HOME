@@ -12,11 +12,12 @@ public class App{
             Person p=new Person(null, null, 0);
             
             System.out.println("=".repeat(35));
-            System.out.println("UNA MUESTRA:");
+            System.out.println("BIENVENIDO");
             System.out.println("=".repeat(35));
             System.out.println("MENÚ");
             System.out.println(">>>> 1. Registrarse.");
             System.out.println(">>>> 2. Salir");
+            System.out.print("Selecciona: ");
             if(scanner.hasNextInt()){
                 int opcion=scanner.nextInt();
                 if(opcion>=1&&opcion<=2){
@@ -31,16 +32,23 @@ public class App{
                             System.out.print("Edad: ");
                             p.setEdad(scanner.nextInt());
                             break;
+                        case 2:
+                            System.out.println("SALIENDO DEL SISTEMA...");
+                            System.exit(0);
+                        break;
                         default:
-                            System.out.println("HAS MARCADO UNA OPCIÓN INVÁLIDA...");
+                            System.out.println("HAS MARCADO UNA OPCIÓN INVÁLIDA. SELECCIONE ACORDE LAS OPCIONES...");
                             break;
                     }
                 }
             }else{
-                System.out.println("=".repeat(140));
-                System.out.println("\n|POR FAVOR INGRESE UN NÚMERO...");
-                System.out.println("_".repeat(140));
+                System.out.println("=".repeat(100));
+                System.out.print("\n|POR FAVOR INGRESE UN NÚMERO...");
+                System.out.print("|");
+                System.out.println("_".repeat(100));
+                break;
             }
         } while(!puerta);
+        scanner.close();
     }
 }

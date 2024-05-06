@@ -7,7 +7,7 @@ public class Main {
     public static List<Person> l=new ArrayList<Person>();
 
     public static void main(String[] args) throws Exception {
-        boolean puerta=false;
+        boolean puerta=true;
 
         while (puerta) {
             menuDeBienvenida();
@@ -24,7 +24,9 @@ public class Main {
                     System.exit(0);
                     break;
                 default:
+                    System.out.println("!".repeat(30));
                     System.out.println("DÍGITE ENTRE LAS OPCIONES QUE HAY...");
+                    System.out.println("!".repeat(30));
             }
         }
         scanner.close();
@@ -59,19 +61,19 @@ public class Main {
         System.out.print("Nombre: ");
         p.setNombre(scanner.next());
         System.out.print("Edad: ");
-        if(scanner.hasNextInt()){
-            p.setEdad(scanner.nextInt());
-        }else{
-            System.out.println("!".repeat(30));
-            System.out.println("INGRESE UN DÍGITO. NO UNA LETRA");
-            System.out.println("!".repeat(30));
-        }
-        // while (!scanner.hasNextInt()) {
+        // if(scanner.hasNextInt()){
+        //     p.setEdad(scanner.nextInt());
+        // }else{
         //     System.out.println("!".repeat(30));
         //     System.out.println("INGRESE UN DÍGITO. NO UNA LETRA");
-        //     System.out.println("!".repeat(30));            
+        //     System.out.println("!".repeat(30));
         // }
-        // p.setEdad(scanner.nextInt());
+        while (!scanner.hasNextInt()) {
+            System.out.println("!".repeat(30));
+            System.out.println("INGRESE UN DÍGITO. NO UNA LETRA");
+            System.out.println("!".repeat(30));            
+        }
+        p.setEdad(scanner.nextInt());
         System.out.println("PERSONA REGISTRADA");
         l.add(p);
     }
@@ -81,7 +83,7 @@ public class Main {
         System.out.println("1er paso.- Al momento de empezar tiene que digitar una de las opciones a la que quiera acceder. No puede digitar un número fuera de las opciones, mucho menos ingresar una letra.");
         System.out.println("2do paso.- Luego de digitar e ingresar a una opción...");
         System.out.println("...");
-        // scanner.next();
+        scanner.next();
         menuDeBienvenida();
     }
 }

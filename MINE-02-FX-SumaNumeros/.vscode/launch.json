@@ -8,8 +8,15 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "vista.Main",
+            "vmArgs": "--module-path c:\\javafx-sdk-22\\lib javafx.controls,javafx.fxml",
+            "projectName": "MINE-02-FX-SumaNumeros_9aa3861c"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "controlador.Main",
-            "vmArgs": "--module-path c:\\javafx-sdk-22\\lib --add-modules javafx.controls,javafx.fxml",
             "projectName": "MINE-02-FX-SumaNumeros_9aa3861c"
         },
         {

@@ -9,10 +9,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button defaultButton="true" layoutX="272.0" layoutY="200.0" mnemonicParsing="false" text="SUMAR" />
-      <TextField layoutX="226.0" layoutY="139.0" promptText="Escribe un dígito..." />
-      <TextField layoutX="226.0" layoutY="90.0" promptText="Escribe un dígito..." />
-      <TextField layoutX="226.0" layoutY="263.0" promptText="Realice un resultado..." />
+      <Button fx:id="btnSumar" defaultButton="true" layoutX="272.0" layoutY="200.0" mnemonicParsing="false" text="SUMAR" />
+      <TextField fx:id="txtOp2" layoutX="226.0" layoutY="139.0" promptText="Escribe un dígito..." />
+      <TextField fx:id="txtOp1" layoutX="226.0" layoutY="90.0" promptText="Escribe un dígito..." />
+      <TextField fx:id="txtResultado" layoutX="226.0" layoutY="263.0" promptText="Realice un resultado..." />
       <Label layoutX="127.0" layoutY="94.0" text="Operando 1:" textFill="WHITE" />
       <Label layoutX="127.0" layoutY="143.0" text="Operando 2:" textFill="WHITE" />
       <Label layoutX="137.0" layoutY="267.0" text="Resultado:" textFill="WHITE" />

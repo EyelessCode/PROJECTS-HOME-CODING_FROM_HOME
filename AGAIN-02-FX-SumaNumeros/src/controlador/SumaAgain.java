@@ -1,4 +1,4 @@
-package vista;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,23 +1,23 @@
 package vista;
 
-import com.gluonhq.charm.glisten.control.Avatar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class SumaAgain {
-
-    @FXML
-    private Avatar avaFoto;
 
     @FXML
     private Button btnFoto;
 
     @FXML
     private Button btnResultado;
+
+    @FXML
+    private ImageView ivFoto;
 
     @FXML
     private TextArea txtConsejo;
@@ -43,11 +43,6 @@ public class SumaAgain {
 
     @FXML
     void accionConsejo3(MouseEvent event) {
-
-    }
-
-    @FXML
-    void accionConsejo4(MouseEvent event) {
 
     }
 

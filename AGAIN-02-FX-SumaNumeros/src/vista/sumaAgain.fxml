@@ -28,7 +28,7 @@
             <Pane layoutX="365.0" prefHeight="104.0" prefWidth="183.0" style="-fx-background-color: gray;">
                <children>
                   <Button fx:id="btnFoto" layoutY="30.0" mnemonicParsing="false" text="Cambiar perfil" />
-                  <ImageView fx:id="ivFoto" fitHeight="55.0" fitWidth="59.0" layoutX="110.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ivFoto" fitHeight="55.0" fitWidth="59.0" layoutX="110.0" layoutY="18.0" onMouseClicked="#accionConsejo4" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>

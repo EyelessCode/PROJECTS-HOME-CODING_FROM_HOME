@@ -47,6 +47,11 @@ public class SumaAgain {
     }
 
     @FXML
+    void accionConsejo4(MouseEvent event) {
+
+    }
+
+    @FXML
     void proceso(ActionEvent event) {
 
     }

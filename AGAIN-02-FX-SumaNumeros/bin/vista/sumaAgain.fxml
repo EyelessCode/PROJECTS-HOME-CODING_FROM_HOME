@@ -18,12 +18,15 @@
       </Label>
       <Pane layoutX="26.0" layoutY="69.0" prefHeight="307.0" prefWidth="548.0" style="-fx-background-color: YELLOW;">
          <children>
-            <Button fx:id="btnResultado" defaultButton="true" layoutX="248.0" layoutY="118.0" mnemonicParsing="false" onAction="#proceso" text="Button" />
-            <TextField fx:id="txtNum1" layoutX="199.0" layoutY="25.0" />
-            <TextField fx:id="txtNum2" layoutX="200.0" layoutY="67.0" />
-            <TextField fx:id="txtresultado" editable="false" layoutX="199.0" layoutY="169.0" />
-            <TextArea fx:id="txtConsejo" editable="false" layoutX="146.0" layoutY="205.0" prefHeight="88.0" prefWidth="254.0" style="-fx-background-color: pink;" />
-            <Avatar fx:id="avaFoto" layoutX="128.0" layoutY="115.0" style="-fx-background-color: red;" />
+            <Button fx:id="btnResultado" defaultButton="true" layoutX="244.0" layoutY="118.0" mnemonicParsing="false" onAction="#proceso" text="SUMAR" />
+            <TextField fx:id="txtNum1" layoutX="199.0" layoutY="25.0" onMouseClicked="#accionConsejo1" promptText="Ingrese un número..." />
+            <TextField fx:id="txtNum2" layoutX="200.0" layoutY="67.0" onMouseClicked="#accionConsejo2" promptText="Ingrese un número..." />
+            <TextField fx:id="txtresultado" editable="false" layoutX="199.0" layoutY="169.0" onMouseClicked="#accionConsejo3" promptText="Genere un resultado..." />
+            <TextArea fx:id="txtConsejo" editable="false" layoutX="146.0" layoutY="205.0" prefHeight="88.0" prefWidth="254.0" promptText="Esperando acción..." style="-fx-background-color: pink;" />
+            <Avatar fx:id="avaFoto" layoutX="488.0" layoutY="20.0" onMouseClicked="#accionConsejo4" style="-fx-background-color: red;" />
+            <Label layoutX="115.0" layoutY="29.0" text="Número 1:" />
+            <Label layoutX="115.0" layoutY="71.0" text="Número 2:" />
+            <Button fx:id="btnFoto" layoutX="380.0" layoutY="23.0" mnemonicParsing="false" text="Cambiar perfil" />
          </children>
       </Pane>
    </children>

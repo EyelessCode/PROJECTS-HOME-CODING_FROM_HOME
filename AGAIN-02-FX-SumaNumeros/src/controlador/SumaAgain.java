@@ -38,7 +38,7 @@ public class SumaAgain implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Image ivImage=new Image("null");
+        Image ivImage=new Image("C:\\Users\\Cristhian Guedes\\Documents\\Program_codes_Projects\\VSCode_Projects\\Java_Projects\\Home_Codes\\AGAIN-02-FX-SumaNumeros\\src\\imagenes\\unknown_man.jpg");
     }
 
     @FXML

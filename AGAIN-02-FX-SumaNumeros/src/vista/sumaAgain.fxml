@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -27,8 +28,12 @@
             <Label layoutX="115.0" layoutY="71.0" text="Número 2:" />
             <Pane layoutX="365.0" prefHeight="104.0" prefWidth="183.0" style="-fx-background-color: gray;">
                <children>
-                  <Button fx:id="btnFoto" layoutY="30.0" mnemonicParsing="false" text="Cambiar perfil" />
-                  <ImageView fx:id="ivFoto" fitHeight="55.0" fitWidth="59.0" layoutX="110.0" layoutY="18.0" onMouseClicked="#accionConsejo4" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="btnFoto" layoutY="30.0" mnemonicParsing="false" onAction="#cambioFoto" text="Cambiar perfil" />
+                  <ImageView fx:id="ivFoto" fitHeight="55.0" fitWidth="59.0" layoutX="110.0" layoutY="18.0" onMouseClicked="#accionConsejo4" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/unknown_man.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>

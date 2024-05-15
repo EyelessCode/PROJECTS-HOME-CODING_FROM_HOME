@@ -49,48 +49,44 @@ public class SumaAgain implements Initializable{
         // if(this.txtConsejo.isPickOnBounds()){
         //     this.txtConsejo.setText("AAAA");
         // }if(this.txtConsejo.)
-        // if(this.txtConsejo.getCursor() != null){
-        //     this.txtConsejo.setText("AAAA");
-        // }else{
+        if(this.txtConsejo.getCursor() != null){
+            this.txtConsejo.setText("Aquí debes de ingresar el primer número que vas a calcular");
+        }
+        // else{
         //     this.txtConsejo.setText("XD");
         // }
         
-        while(!this.txtConsejo.isPickOnBounds()){
-            this.txtConsejo.setText(null);
-        }
+        // while(!this.txtConsejo.isPickOnBounds()){
+        //     this.txtConsejo.setText(null);
+        // }
 
-        this.txtConsejo.setText("Aquí debes de ingresar el primer número que vas a calcular");
+        // this.txtConsejo.setText("Aquí debes de ingresar el primer número que vas a calcular");
     }
 
     @FXML
     void accionConsejo2(MouseEvent event) {
-        while(!this.txtConsejo.isPickOnBounds()){
-            this.txtConsejo.setText(null);
+        if(this.txtConsejo.getCursor() != null){
+            this.txtConsejo.setText("Aquí debes de ingresar el segundo número que vas a calcular");
         }
-
-        this.txtConsejo.setText("Aquí debes de ingresar el segundo número que vas a calcular");
     }
 
     @FXML
     void accionConsejo3(MouseEvent event) {
-        while(!this.txtConsejo.isPickOnBounds()){
-            this.txtConsejo.setText(null);
+        if(this.txtConsejo.getCursor() != null){
+            this.txtConsejo.setText("Tienes que generar una respuesta para que la respuesta sea visualizada por acá.");
         }
-
-        this.txtConsejo.setText("???");
     }
 
     @FXML
     void accionConsejo4(MouseEvent event) {
-        while(!this.txtConsejo.isPickOnBounds()){
-            this.txtConsejo.setText(null);
+        if(this.txtConsejo.getCursor() != null){
+            this.txtConsejo.setText("Esta es tu foto de perfil, puedes cambiarla cuando gustes dándole el botón de 'Cambiar perfil'");
         }
-
-        this.txtConsejo.setText("Foto?");
     }
 
     @FXML
     void cambioFoto(ActionEvent event) {
+        //! IMPORTANTE SABER
         FileChooser cambioFoto=new FileChooser();
         cambioFoto.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Imágenes","*.png","*.jpg","*.jpeg"));
 

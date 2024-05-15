@@ -41,7 +41,7 @@ public class SumaAgain implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
+
     }
 
     @FXML
@@ -51,6 +51,10 @@ public class SumaAgain implements Initializable{
         // }if(this.txtConsejo.)
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Aquí debes de ingresar el primer número que vas a calcular");
+
+            System.out.println("=".repeat(45));
+            System.out.println("CONSOLA\nAquí debes de ingresar el primer número que vas a calcular");
+            System.out.println("=".repeat(45));
         }
         // else{
         //     this.txtConsejo.setText("XD");
@@ -67,6 +71,10 @@ public class SumaAgain implements Initializable{
     void accionConsejo2(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Aquí debes de ingresar el segundo número que vas a calcular");
+
+            System.out.println("=".repeat(45));
+            System.out.println("CONSOLA\nAquí debes de ingresar el segundo número que vas a calcular");
+            System.out.println("=".repeat(45));
         }
     }
 
@@ -74,6 +82,10 @@ public class SumaAgain implements Initializable{
     void accionConsejo3(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Tienes que generar una respuesta para que la respuesta sea visualizada por acá.");
+            
+            System.out.println("=".repeat(100));
+            System.out.println("CONSOLA\nTienes que generar una respuesta para que la respuesta sea visualizada por acá.");
+            System.out.println("=".repeat(100));
         }
     }
 
@@ -81,6 +93,10 @@ public class SumaAgain implements Initializable{
     void accionConsejo4(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Esta es tu foto de perfil, puedes cambiarla cuando gustes dándole el botón de 'Cambiar perfil'");
+        
+            System.out.println("=".repeat(100));
+            System.out.println("CONSOLA\nEsta es tu foto de perfil, puedes cambiarla cuando gustes dándole el botón de 'Cambiar perfil'");
+            System.out.println("=".repeat(100));
         }
     }
 
@@ -96,6 +112,10 @@ public class SumaAgain implements Initializable{
         if(seleccion!=null){
             Image select=new Image(seleccion.toURI().toString());
             ivFoto.setImage(select);
+
+            System.out.println("=".repeat(100));
+            System.out.println("Seleccionando imagen...");
+            System.out.println("=".repeat(100));
         }
     }
 

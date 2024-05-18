@@ -46,10 +46,10 @@ public class SumaAgain{
         // }if(this.txtConsejo.)
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Aquí debes de ingresar el primer número que vas a calcular");
-
-            System.out.println("=".repeat(45));
+            // Consola
+            System.out.println("=".repeat(100));
             System.out.println("CONSOLA\nAquí debes de ingresar el primer número que vas a calcular");
-            System.out.println("=".repeat(45));
+            System.out.println("=".repeat(100));
         }
         // else{
         //     this.txtConsejo.setText("XD");
@@ -66,10 +66,10 @@ public class SumaAgain{
     void accionConsejo2(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Aquí debes de ingresar el segundo número que vas a calcular");
-
-            System.out.println("=".repeat(45));
+            // Consola
+            System.out.println("=".repeat(100));
             System.out.println("CONSOLA\nAquí debes de ingresar el segundo número que vas a calcular");
-            System.out.println("=".repeat(45));
+            System.out.println("=".repeat(100));
         }
     }
 
@@ -77,7 +77,7 @@ public class SumaAgain{
     void accionConsejo3(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Tienes que generar una respuesta para que la respuesta sea visualizada por acá.");
-            
+            // Consola
             System.out.println("=".repeat(100));
             System.out.println("CONSOLA\nTienes que generar una respuesta para que la respuesta sea visualizada por acá.");
             System.out.println("=".repeat(100));
@@ -88,7 +88,7 @@ public class SumaAgain{
     void accionConsejo4(MouseEvent event) {
         if(this.txtConsejo.getCursor() != null){
             this.txtConsejo.setText("Esta es tu foto de perfil, puedes cambiarla cuando gustes dándole el botón de 'Cambiar perfil'");
-        
+            // Consola
             System.out.println("=".repeat(100));
             System.out.println("CONSOLA\nEsta es tu foto de perfil, puedes cambiarla cuando gustes dándole el botón de 'Cambiar perfil'");
             System.out.println("=".repeat(100));
@@ -107,7 +107,7 @@ public class SumaAgain{
         if(seleccion!=null){
             Image select=new Image(seleccion.toURI().toString());
             ivFoto.setImage(select);
-
+            //Consola
             System.out.println("=".repeat(100));
             System.out.println("Seleccionando imagen...");
             System.out.println("=".repeat(100));
@@ -125,19 +125,21 @@ public class SumaAgain{
             long resultado=n.suma();
 
             this.txtresultado.setText(resultado+"");
-            //
+            // Consola
             System.out.println("=".repeat(100));
             System.out.println("CONSOLA:\nEl resultado es: "+resultado);
+            System.out.println("=".repeat(100));
 
-        }catch (NumberFormatException e){
+        }catch (NumberFormatException nfe){
             Alert alerta=new Alert(AlertType.ERROR);
             alerta.setTitle("ERROR GENERADO");
             alerta.setHeaderText("FORMATO INCORRECTO");
             alerta.setContentText("NECESITA INGRESAR UN FORMATO NÚMERO TIPO 'ENTERO', LOS DEMÁS NO SON VÁLIDOS");
-
+            // Consola
             System.out.println("=".repeat(100));
             System.out.println("CONSOLA:\nERROR GENERADO\nFORMATO INCORRECTO\nNECESITA INGRESAR UN FORMATO NÚMERO TIPO 'ENTERO', LOS DEMÁS NO SON VÁLIDOS"
             +"\nESPERANDO CONFIRMACIÓN...");
+            System.out.println("=".repeat(100));
             alerta.showAndWait();
         }
     }

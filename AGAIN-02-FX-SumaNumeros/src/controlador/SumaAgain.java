@@ -4,9 +4,11 @@ import java.io.File;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -123,9 +125,20 @@ public class SumaAgain{
             long resultado=n.suma();
 
             this.txtresultado.setText(resultado+"");
+            //
+            System.out.println("=".repeat(100));
+            System.out.println("CONSOLA:\nEl resultado es: "+resultado);
 
         }catch (NumberFormatException e){
+            Alert alerta=new Alert(AlertType.ERROR);
+            alerta.setTitle("ERROR GENERADO");
+            alerta.setHeaderText("FORMATO INCORRECTO");
+            alerta.setContentText("NECESITA INGRESAR UN FORMATO NÚMERO TIPO 'ENTERO', LOS DEMÁS NO SON VÁLIDOS");
 
+            System.out.println("=".repeat(100));
+            System.out.println("CONSOLA:\nERROR GENERADO\nFORMATO INCORRECTO\nNECESITA INGRESAR UN FORMATO NÚMERO TIPO 'ENTERO', LOS DEMÁS NO SON VÁLIDOS"
+            +"\nESPERANDO CONFIRMACIÓN...");
+            alerta.showAndWait();
         }
     }
 

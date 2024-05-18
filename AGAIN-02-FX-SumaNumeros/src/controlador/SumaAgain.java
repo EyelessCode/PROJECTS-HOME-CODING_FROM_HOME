@@ -41,7 +41,7 @@ public class SumaAgain implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
+        this.txtNum1.setText("");
     }
 
     @FXML

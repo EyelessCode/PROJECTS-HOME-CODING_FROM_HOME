@@ -36,7 +36,7 @@ public class SumaController {
 
             // Consola
             System.out.println("=".repeat(100));
-            System.out.println("Consola:"+"\nResultado: "+resultado);
+            System.out.println("Consola:"+"\n>>> Resultado: "+resultado);
             System.out.println("=".repeat(100));
 
         }catch (NumberFormatException nfe){
@@ -47,7 +47,7 @@ public class SumaController {
 
             // Consola
             System.out.println("=".repeat(100));
-            System.out.println("Consola:\n>>> ERROR GENERADO\n>>> FORMATO INCORRECTO\nEL FORMATO QUE ESTÁ APLICANDO ES INVÁLIDO. INTÉNTELO DE NUEVO.");
+            System.out.println("Consola:\n>>> ERROR GENERADO\n>>> FORMATO INCORRECTO\n>>> EL FORMATO QUE ESTÁ APLICANDO ES INVÁLIDO. INTÉNTELO DE NUEVO.");
             System.out.println("=".repeat(100));
 
             alerta.showAndWait();

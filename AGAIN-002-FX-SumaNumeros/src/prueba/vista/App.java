@@ -13,7 +13,7 @@ public class App extends Application{
 
     @Override
     public void start(Stage arg0) throws Exception {
-        Parent root=FXMLLoader.load(getClass().getResource("sumaFXML.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("suma.fxml"));
         Scene ventana=new Scene(root);
 
         arg0.setTitle("SUMA #3");

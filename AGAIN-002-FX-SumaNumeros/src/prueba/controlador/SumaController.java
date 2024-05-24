@@ -1,4 +1,4 @@
-package prueba.vista;
+package prueba.controlador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

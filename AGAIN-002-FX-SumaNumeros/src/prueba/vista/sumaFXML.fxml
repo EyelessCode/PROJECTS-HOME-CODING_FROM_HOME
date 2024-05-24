@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="369.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prueba.vista.SumaController">
    <children>
       <Button fx:id="btnSumar" layoutX="156.0" layoutY="181.0" mnemonicParsing="false" onAction="#realizacionSuma" text="SUMAR" />
-      <Label layoutX="135.0" layoutY="14.0" text="SUMA" textFill="RED">
+      <Label layoutX="6.0" layoutY="20.0" text="CALCULADORA DE SUMA SIMPLE" textFill="RED">
          <font>
-            <Font size="36.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <TextField fx:id="txtNum1" layoutX="111.0" layoutY="82.0" promptText="Ingresar número..." />

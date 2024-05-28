@@ -32,10 +32,12 @@ public class SumaFinalController {
     @FXML
     void calculo(ActionEvent event) {
         try{
+            boolean puerta=true;
+
             long num1=Integer.parseInt(this.txtNum1.getText());
             long num2=Integer.parseInt(this.txtNum1.getText());
 
-            Numero n=new Numero(num1, num2);
+            Numero n=new Numero(num1, num2, num1, num2);
 
             long resultado=n.sumacion();
 

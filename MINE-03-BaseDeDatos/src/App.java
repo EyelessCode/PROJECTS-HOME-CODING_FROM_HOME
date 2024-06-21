@@ -8,10 +8,6 @@ public class App extends Application{
 
     @Override
     public void start(Stage arg0) throws Exception {
-
-    }
-
-    public void start(Stage arg1) throws Exception{
         
     }
 }

@@ -1,13 +1,6 @@
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class App extends Application{
+public class App{
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
-    }
-
-    @Override
-    public void start(Stage arg0) throws Exception {
-        
     }
 }

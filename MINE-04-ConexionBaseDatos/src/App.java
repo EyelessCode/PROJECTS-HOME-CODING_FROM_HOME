@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -23,7 +24,14 @@ public class App {
             ResultSet rs=stm.executeQuery(sql);
 
             while (rs.next()) {//! EL '.next' LO QUE HACE ES RECORRER REGISTRO A REGISTRO
-                
+                int id=rs.getInt("id");
+                String titulo=rs.getString("titulo");
+                String isbn=rs.getString("isbn");
+                int numPaginas=rs.getInt("numPaginas");
+                Date fechaPublicacion=rs.getDate("fechaPublicacion");
+                int idAutor=rs.getInt("idAutor");
+                int idCategoria=rs.getInt("idCategoria");
+                int idEditorial=rs.getInt("idEditorial");
             }
 
             // MENSAJES EN CONSOLA

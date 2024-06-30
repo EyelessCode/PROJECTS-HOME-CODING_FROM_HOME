@@ -8,7 +8,11 @@ public class App {
         String password="cris03022";
 
         try{
+            //! AQUÍ ESTABLECES LA CONEXIÓN
             Connection conn=DriverManager.getConnection(url, user, password);
+            System.out.println("=".repeat(40));
+            System.out.println("CONECTANDO...\nCONEXIÓN TERMINADA\n¡'BIBLIOTECA' CONECTADA!");
+            System.out.println("=".repeat(40));
         }catch(Exception e){
             e.printStackTrace();
         }

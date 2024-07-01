@@ -3,12 +3,20 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import repositorio.Libro;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        //! URL Y DATOS DE USUARIO DE LA BASE DE DATOS DE USUARIO
         String url="jdbc:mysql://127.0.0.1:3306/biblioteca";
         String user="cristhian";
         String password="cris03022";
+
+        //! CREACIÓN DE LA LISTA
+        List<Libro> listaLibro=new ArrayList<Libro>();
 
         try{
             //! AQUÍ ESTABLECES LA CONEXIÓN
@@ -40,10 +48,17 @@ public class App {
                 int idCategoria=rs.getInt("idCategoria");
                 int idEditorial=rs.getInt("idEditorial");
 
-                // PRESENTACIÓN EN CONSOLA
-                System.out.println("ID: "+id+"\t\tTítulo: "+titulo+"\t\tISBN: "+isbn+"\tN° Páginas: "+numPaginas+
-                "\t\tFecha de la publicación: "+fechaPublicacion+"\tID del autor: "+idAutor+
-                "\t\tID de la categoría: "+idCategoria+"\t\tID del editorial: "+idEditorial);
+                //! CREACIÓN A OBJETO
+                Libro libro=new Libro(id, titulo, isbn, numPaginas, fechaPublicacion, idAutor,
+                idCategoria, idEditorial);
+
+                //! SE AGREGAN LOS DATOS A LA LISTA
+                listaLibro.add(libro);
+
+                // // PRESENTACIÓN EN CONSOLA
+                // System.out.println("ID: "+id+"\t\tTítulo: "+titulo+"\t\tISBN: "+isbn+"\tN° Páginas: "+numPaginas+
+                // "\t\tFecha de la publicación: "+fechaPublicacion+"\tID del autor: "+idAutor+
+                // "\t\tID de la categoría: "+idCategoria+"\t\tID del editorial: "+idEditorial);
 
                 // // PRESENTACIÓN EN CONSOLA
                 // System.out.println(id+"\t"+titulo+"\t\t"+isbn+"\t\t"+numPaginas+"\t"+fechaPublicacion+
@@ -53,5 +68,7 @@ public class App {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        System.out.println("NÚMERO DE FILAS: "+listaLibro.size());
     }
 }

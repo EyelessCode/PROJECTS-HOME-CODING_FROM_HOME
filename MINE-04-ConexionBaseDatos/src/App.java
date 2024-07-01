@@ -13,6 +13,11 @@ public class App {
         try{
             //! AQUÍ ESTABLECES LA CONEXIÓN
             Connection conn=DriverManager.getConnection(url, user, password);
+
+            // MENSAJES EN CONSOLA
+            System.out.println("=".repeat(40));
+            System.out.println("CONECTANDO...\nCONEXIÓN TERMINADA\n¡'BIBLIOTECA' CONECTADA!");
+            System.out.println("=".repeat(40));
             
             //! CREAS LA FRASE PARA LA CONSULTA
             String sql="SELECT * FROM libro";
@@ -24,6 +29,8 @@ public class App {
             ResultSet rs=stm.executeQuery(sql);
 
             while (rs.next()) {//! EL '.next' LO QUE HACE ES RECORRER REGISTRO A REGISTRO
+
+                //! CAMPOS DE LA TABLA
                 int id=rs.getInt("id");
                 String titulo=rs.getString("titulo");
                 String isbn=rs.getString("isbn");
@@ -32,12 +39,17 @@ public class App {
                 int idAutor=rs.getInt("idAutor");
                 int idCategoria=rs.getInt("idCategoria");
                 int idEditorial=rs.getInt("idEditorial");
+
+                // PRESENTACIÓN EN CONSOLA
+                System.out.println("ID: "+id+"\t\tTítulo: "+titulo+"\t\tISBN: "+isbn+"\tN° Páginas: "+numPaginas+
+                "\t\tFecha de la publicación: "+fechaPublicacion+"\tID del autor: "+idAutor+
+                "\t\tID de la categoría: "+idCategoria+"\t\tID del editorial: "+idEditorial);
+
+                // // PRESENTACIÓN EN CONSOLA
+                // System.out.println(id+"\t"+titulo+"\t\t"+isbn+"\t\t"+numPaginas+"\t"+fechaPublicacion+
+                // "\t\t"+idAutor+"\t"+idCategoria+"\t"+idEditorial);
             }
 
-            // MENSAJES EN CONSOLA
-            System.out.println("=".repeat(40));
-            System.out.println("CONECTANDO...\nCONEXIÓN TERMINADA\n¡'BIBLIOTECA' CONECTADA!");
-            System.out.println("=".repeat(40));
         }catch(Exception e){
             e.printStackTrace();
         }

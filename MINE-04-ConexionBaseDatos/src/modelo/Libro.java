@@ -1,4 +1,4 @@
-package repositorio;
+package modelo;
 
 import java.sql.Date;
 

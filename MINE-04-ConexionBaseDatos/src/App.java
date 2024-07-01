@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import repositorio.Libro;
+import modelo.Libro;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -69,6 +69,7 @@ public class App {
             e.printStackTrace();
         }
 
+        // PRESENTACIÓN EN CONSOLA SOBRE LA CANTIDAD DE DATOS EN FILA
         System.out.println("NÚMERO DE FILAS: "+listaLibro.size());
     }
 }

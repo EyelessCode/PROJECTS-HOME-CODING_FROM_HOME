@@ -3,10 +3,11 @@
 // import java.sql.DriverManager;
 // import java.sql.ResultSet;
 // import java.sql.Statement;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Libro;
+import repositorio.LibroRepositorio;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -68,12 +69,24 @@ public class App {
         //     e.printStackTrace();
         // }
 
-        //! CREACIÓN DE LA LISTA
-        List<Libro> listaLibro=new ArrayList<Libro>();
+        //! CREACIÓN DEL OBJETO
+        LibroRepositorio libroRepositorio=new LibroRepositorio();
 
-
+        //! SE LLAMA A LA LISTA
+        List<Libro> listaLibro=libroRepositorio.obtenerLibro();
 
         // PRESENTACIÓN EN CONSOLA SOBRE LA CANTIDAD DE DATOS EN FILA
         System.out.println("NÚMERO DE FILAS: "+listaLibro.size());
+
+        // String isbn="ISBN";
+
+        //! SE LLAMA A LA LISTA
+        List<Libro> listaLibroPorIsbn=libroRepositorio.libroPorIsbn("EL ISBN ES: ");
+
+        // System.out.println("ISBN POR LIBRO: "+isbn);
+
+        for (Libro libro : listaLibroPorIsbn) {
+            System.out.println(libro.getIsbn()+libro.getTitulo()+libro.getId());
+        }
     }
 }

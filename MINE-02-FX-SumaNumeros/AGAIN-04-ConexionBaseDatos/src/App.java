@@ -9,7 +9,13 @@ public class App {
 
         List<Libros> metodoLibros=librosRepositorio.libroGeneral();
         System.out.println("=".repeat(35)+"\nHAY UN TOTAL DE: "+metodoLibros.size()+" DE FILAS.\n"+"=".repeat(35));
-        // System.out.println("HAY UN TOTAL DE: "+metodoLibros.size()+" DE FILAS."); 
-        // System.out.println("=".repeat(35));
+
+        // String sql="titulo";
+        List<Libros> metodoTitulo=librosRepositorio.libroTitulo(null);
+        // System.out.println("=".repeat(35)+"\n"+metodoLibros+"\n"+"=".repeat(35));
+
+        for (Libros libros : metodoTitulo) {
+            System.out.println("=".repeat(35)+"\n"+libros.getTitulo()+"\n"+"=".repeat(35));
+        }
     }
 }

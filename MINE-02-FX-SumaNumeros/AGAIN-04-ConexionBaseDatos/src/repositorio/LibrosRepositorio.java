@@ -12,41 +12,40 @@ import modelo.Libros;
 
 public class LibrosRepositorio {
     String url="jdbc:mysql://127.0.0.1:3306/biblioteca";
-    String usuario="cristhian";
-    String contrasenia="cris03022";
+    String user="cristhian";
+    String password="cris03022";
 
-    public List<Libros> llamadaLibro(){
-        List<Libros> listaLibros=new ArrayList<Libros>();
+    public List<Libros> libroGeneral(){
+        List<Libros> libroList=new ArrayList<Libros>();
+
         try{
-            Connection conn=DriverManager.getConnection(url, url, contrasenia);
+            Connection cnt=DriverManager.getConnection(url, user, password);
+            System.out.println("=".repeat(35));
+            System.out.println("¡BASE DE DATOS CONECTADA!");
+            System.out.println("=".repeat(35));
 
-            System.out.println("CONECTADO...\n");
-
-            String sql="SELECT * FROM Libro";
-
-            Statement st=conn.createStatement();
-
-            ResultSet rs=st.executeQuery(sql);
+            String sql="SELECT * FROM libro";
+            Statement sta=cnt.createStatement();
+            ResultSet rs=sta.executeQuery(sql);
 
             while (rs.next()) {
-                int id=rs.getInt("id");
-                String titulo=rs.getString("titulo");
-                String isbn=rs.getString("isbn");
-                int numPaginas=rs.getInt("numPaginas");
-                Date fechaPublicacion=rs.getDate("fechaPublicacion");
-                int idAutor=rs.getInt("idAutor");
-                int idCategoria=rs.getInt("idCategoria");
-                int idEditorial=rs.getInt("idEditorial");
+            int id=rs.getInt("id");
+            String titulo=rs.getString("titulo");
+            String isbn=rs.getString("isbn");
+            int numPaginas=rs.getInt("numPaginas");
+            Date fechaPublicacion=rs.getDate("fechaPublicacion");
+            int idAutor=rs.getInt("idAutor");
+            int idCategoria=rs.getInt("idCategoria");
+            int idEditorial=rs.getInt("idEditorial");
 
-                Libros l=new Libros(id, titulo, isbn, numPaginas, fechaPublicacion, idAutor, idCategoria, idEditorial);
+            Libros l=new Libros(id, titulo, isbn, numPaginas, fechaPublicacion, idAutor, idCategoria, idEditorial);
 
-                listaLibros.add(l);
-                System.out.println(listaLibros);
+            libroList.add(l);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
-
-        return listaLibros;
+        return libroList;
+        
     }
 }

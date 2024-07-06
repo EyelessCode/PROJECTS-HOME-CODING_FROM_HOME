@@ -52,8 +52,4 @@ public class Circuits {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    
-    
-
 }

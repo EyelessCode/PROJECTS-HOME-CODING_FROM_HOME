@@ -1,5 +1,5 @@
 const email="cristhianjosue03@outlook.es";
-email="cristhianguedes@outlook.es"; //No funcionará, ya que está ya definido.
+// email="cristhianguedes@outlook.es"; //No funcionará, ya que está ya definido.
 
 if (true) {
     var nombre="HOLA MUNDO";

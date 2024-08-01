@@ -36,4 +36,3 @@ console.log(edad>18&&DNI==true);
 
 console.log("LÓGICA 'or'");
 console.log(edad>=18||DNI==false);
-

@@ -11,10 +11,10 @@ public class Person {
     private String email;
     private String password;
     private String role;
-    private String idc;
+    private String ic;
     
     // public Person(int id, String name, String lastName, char genre, int age, String address, String phone, String email,
-    //         String password, String role, String idc) {
+    //         String password, String role, String ic) {
     //     this.name = name;
     //     this.lastName = lastName;
     //     this.genre = Character.toUpperCase(genre);
@@ -24,10 +24,10 @@ public class Person {
     //     this.email = email;
     //     this.password = password;
     //     this.role = role;
-    //     this.idc = idc;
+    //     this.ic = ic;
     // }
     public Person(String name, String lastName, char genre, int age, String address, String phone, String email,
-            String password, String role, String idc) {
+            String password, String role, String ic) {
         this.name = name;
         this.lastName = lastName;
         this.genre = Character.toUpperCase(genre);
@@ -37,7 +37,7 @@ public class Person {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.idc = idc;
+        this.ic = ic;
     }
 
     // public int getId() {
@@ -120,25 +120,25 @@ public class Person {
         this.role = role;
     }
 
-    public String getIdc() {
-        return idc;
+    public String getIc() {
+        return ic;
     }
 
-    public void setIdc(String idc) {
-        this.idc = idc;
+    public void setIc(String ic) {
+        this.ic = ic;
     }
 
     // @Override
     // public String toString() {
     //     return "Person [id=" + id + ", name=" + name + ", lastName=" + lastName + ", genre=" + genre + ", age=" + age
     //             + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password
-    //             + ", role=" + role + ", idc=" + idc + "]";
+    //             + ", role=" + role + ", ic=" + ic + "]";
     // }
     @Override
     public String toString() {
         return "Person [name=" + name + ", lastName=" + lastName + ", genre=" + genre + ", age=" + age
                 + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password
-                + ", role=" + role + ", idc=" + idc + "]";
+                + ", role=" + role + ", ic=" + ic + "]";
     }
 
 }

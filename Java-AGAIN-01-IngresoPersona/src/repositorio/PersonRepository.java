@@ -26,8 +26,8 @@ public class PersonRepository {
         p.setName(scanner.next().toUpperCase());
         System.out.print("Enter Lastname: ");
         p.setLastName(scanner.next().toUpperCase());
-        System.out.print("Enter IDC: ");
-        p.setIdc(scanner.next());
+        System.out.print("Enter IC: ");
+        p.setIc(scanner.next());
         System.out.print("Enter Genre: ");
         p.setGenre(scanner.next().toUpperCase().charAt(0));
         System.out.print("Enter Age: ");

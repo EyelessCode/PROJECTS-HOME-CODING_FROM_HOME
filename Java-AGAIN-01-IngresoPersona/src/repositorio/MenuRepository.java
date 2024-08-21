@@ -24,12 +24,42 @@ public class MenuRepository {
 
     public void miniMenuOutput() {
         System.out.println("=".repeat(25) + "MINI-MENU OF OUTPUT" + "=".repeat(25));
-        System.out.println("1. VIEW LIST");
-        System.out.println("2. VIEW NAMES");
-        System.out.println("3. VIEW IC");
-        System.out.println("4. VIEW EMAILS");
+        System.out.println("1. VIEW PERSON LIST");
+        System.out.println("2. VIEW ONLY NAMES");
+        System.out.println("3. VIEW ONLY IC");
+        System.out.println("4. VIEW ONLY EMAILS");
         System.out.println("5. GO BACK");
         System.out.println("=".repeat(50));
-
+    }
+    
+    public int optionMainMenu(){
+        System.out.print("ENTER A OPTION: ");
+        int option=scanner.nextInt();
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35));
+            System.out.println("ERROR..."+"\nTRY AGAIN...");
+            System.out.println("=".repeat(35));
+        }
+        return option;
+    }
+    public int optionInputMenu(){
+        System.out.print("ENTER A OPTION: ");
+        int option=scanner.nextInt();
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35));
+            System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
+            System.out.println("=".repeat(35));
+        }
+        return option;
+    }
+    public int optionOutputMenu(){
+        System.out.print("ENTER A OPTION: ");
+        int option=scanner.nextInt();
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35));
+            System.out.println("ERROR..."+"\nTRY AGAIN...");
+            System.out.println("=".repeat(35));
+        }
+        return option;
     }
 }

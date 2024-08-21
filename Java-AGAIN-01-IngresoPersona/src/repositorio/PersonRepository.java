@@ -9,7 +9,7 @@ import entidades.Person;
 public class PersonRepository {
     private List<Person>listPerson=new ArrayList<Person>();
     private Scanner scanner=new Scanner(System.in);
-    private MenuRepository mr;
+    // private MenuRepository mr;
     
     public void addPerson(Person p){
         System.out.println("=".repeat(35)+"\nADDING A PERSON...\n"+"=".repeat(35));
@@ -31,7 +31,11 @@ public class PersonRepository {
         System.out.print("Enter Genre: ");
         p.setGenre(scanner.next().toUpperCase().charAt(0));
         System.out.print("Enter Age: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35)+"\nERROR OF FONT..."+"\nPUT A NUMBER NOT A LETTER...\n"+"=".repeat(35));
+        }
         p.setAge(scanner.nextInt());
+
         System.out.print("Enter Addres: ");
         p.setAddress(scanner.nextLine());
         System.out.print("Enter Email: ");

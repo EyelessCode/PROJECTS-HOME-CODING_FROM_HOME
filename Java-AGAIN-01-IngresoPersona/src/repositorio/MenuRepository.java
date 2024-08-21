@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MenuRepository {
     private Scanner scanner = new Scanner(System.in);
+    private PersonRepository pr;
     private boolean door=true;
 
     public void menu() {
@@ -63,12 +64,21 @@ public class MenuRepository {
     //     return scanner.nextInt();
     // }
 
-    public void switches(){
+    public void switchesMain(){
         while (door) {
+            menu();
             int option=optionMainMenu();
             switch (option) {
                 case 1:
+                    miniMenuInput();
+                    switch (option) {
+                        case 1:
+                            pr.inputPerson();
+                            break;
                     
+                        default:
+                            break;
+                    }
                     break;
             
                 default:

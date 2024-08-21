@@ -7,6 +7,7 @@ import java.util.Scanner;
 import entidades.Person;
 
 public class PersonRepository {
+    private Person p;
     private List<Person>listPerson=new ArrayList<Person>();
     private Scanner scanner=new Scanner(System.in);
     // private MenuRepository mr;
@@ -16,8 +17,7 @@ public class PersonRepository {
         listPerson.add(p);
     }
 
-    public void inputPerson(Person p){
-
+    public void inputPerson(){
         System.out.println("=".repeat(75));
         System.out.println("|\t".repeat(2)+"¡READ THIS WITH CAREFUL!\nYOU CAN ONLY PUT A SENTENCE,"
         +"IF YOU TRY TO PUT A SPACE THE CONSOLE WILL FALL AND WILL APPEAR A ERROR.\n");
@@ -50,12 +50,12 @@ public class PersonRepository {
         addPerson(p);
     }
 
-    public void removePerson(Person p){
+    public void removePerson(){
         System.out.println("=".repeat(35)+"\nREMOVING A PERSON...\n"+"=".repeat(35));
         listPerson.remove(p);
     }
 
-    public void allEditPerson(Person p){
-        inputPerson(p);
+    public void allEditPerson(){
+        inputPerson();
     }
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MenuRepository {
     private Scanner scanner = new Scanner(System.in);
+    private boolean door=true;
 
     public void menu() {
         System.out.println("=".repeat(35) + "MAIN MENU" + "=".repeat(35));
@@ -33,33 +34,46 @@ public class MenuRepository {
     }
     
     public int optionMainMenu(){
-        System.out.print("ENTER A OPTION: ");
-        int option=scanner.nextInt();
-        while (!scanner.hasNextInt()) {
-            System.out.println("=".repeat(35));
-            System.out.println("ERROR..."+"\nTRY AGAIN...");
-            System.out.println("=".repeat(35));
-        }
-        return option;
-    }
-    public int optionInputMenu(){
-        System.out.print("ENTER A OPTION: ");
-        int option=scanner.nextInt();
+        System.out.print("|"+"-".repeat(4)+" >: ");
         while (!scanner.hasNextInt()) {
             System.out.println("=".repeat(35));
             System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
             System.out.println("=".repeat(35));
         }
-        return option;
+        return scanner.nextInt();
     }
-    public int optionOutputMenu(){
-        System.out.print("ENTER A OPTION: ");
-        int option=scanner.nextInt();
-        while (!scanner.hasNextInt()) {
-            System.out.println("=".repeat(35));
-            System.out.println("ERROR..."+"\nTRY AGAIN...");
-            System.out.println("=".repeat(35));
+    
+    // public int optionInputMenu(){
+    //     System.out.print("|"+"-".repeat(4)+" >: ");
+    //     while (!scanner.hasNextInt()) {
+    //         System.out.println("=".repeat(35));
+    //         System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
+    //         System.out.println("=".repeat(35));
+    //     }
+    //     return scanner.nextInt();
+    // }
+
+    // public int optionOutputMenu(){
+    //     System.out.print("|"+"-".repeat(4)+" >: ");
+    //     while (!scanner.hasNextInt()) {
+    //         System.out.println("=".repeat(35));
+    //         System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
+    //         System.out.println("=".repeat(35));
+    //     }
+    //     return scanner.nextInt();
+    // }
+
+    public void switches(){
+        while (door) {
+            int option=optionMainMenu();
+            switch (option) {
+                case 1:
+                    
+                    break;
+            
+                default:
+                    break;
+            }
         }
-        return option;
     }
 }

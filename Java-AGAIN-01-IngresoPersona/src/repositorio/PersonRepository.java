@@ -20,7 +20,7 @@ public class PersonRepository {
     public void inputPerson(){
         System.out.println("=".repeat(75));
         System.out.println("|\t".repeat(2)+"¡READ THIS WITH CAREFUL!\nYOU CAN ONLY PUT A SENTENCE,"
-        +"IF YOU TRY TO PUT A SPACE THE CONSOLE WILL FALL AND WILL APPEAR A ERROR.\n");
+        +"IF YOU TRY TO PUT A SPACE THE CONSOLE WILL FALL AND WILL APPEAR AN ERROR.\n");
         System.out.println("=".repeat(75));
         System.out.print("Enter name:" );
         p.setName(scanner.next().toUpperCase());

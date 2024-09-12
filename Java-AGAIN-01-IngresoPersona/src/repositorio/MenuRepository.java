@@ -44,25 +44,25 @@ public class MenuRepository {
         return scanner.nextInt();
     }
     
-    // public int optionInputMenu(){
-    //     System.out.print("|"+"-".repeat(4)+" >: ");
-    //     while (!scanner.hasNextInt()) {
-    //         System.out.println("=".repeat(35));
-    //         System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
-    //         System.out.println("=".repeat(35));
-    //     }
-    //     return scanner.nextInt();
-    // }
+    public int optionInputMenu(){
+        System.out.print("|"+"-".repeat(4)+" >: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35));
+            System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
+            System.out.println("=".repeat(35));
+        }
+        return scanner.nextInt();
+    }
 
-    // public int optionOutputMenu(){
-    //     System.out.print("|"+"-".repeat(4)+" >: ");
-    //     while (!scanner.hasNextInt()) {
-    //         System.out.println("=".repeat(35));
-    //         System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
-    //         System.out.println("=".repeat(35));
-    //     }
-    //     return scanner.nextInt();
-    // }
+    public int optionOutputMenu(){
+        System.out.print("|"+"-".repeat(4)+" >: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("=".repeat(35));
+            System.out.println("ERROR OF FONT..."+"\nTRY AGAIN TO PUT A NUMBER NOT A LETTER...");
+            System.out.println("=".repeat(35));
+        }
+        return scanner.nextInt();
+    }
 
     public void switchesMain(){
         while (door) {
@@ -71,19 +71,70 @@ public class MenuRepository {
             switch (option) {
                 case 1:
                     miniMenuInput();
-                    switch (option) {
-                        case 1:
-                            pr.inputPerson();
-                            break;
-                    
-                        default:
-                            break;
-                    }
+                    switchInput();
                     break;
-            
+                case 2:
+                    miniMenuOutput();
+                    break;
                 default:
                     break;
-            }
+                }
         }
+    }
+
+    //! INTENTO DE HACER UN SWITCH INDIRECTO
+    public void switchInput(){
+        while (door) {
+            int option=optionInputMenu();
+            switch (option) {
+                case 1:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    break;
+                case 2:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    
+                    break;
+                case 3:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    
+                    break;
+                case 4:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    break;
+                case 5:
+                    switchesMain();
+                    break;
+                default:
+                    System.out.println("=\n".repeat(20)+"INPUT INVALIDED"+"\n=\n".repeat(20)+"TRY TO PUT A NUMBER"+"\n=".repeat(20));
+                    break;
+            }
+
+        } 
+    }
+
+    public void switchOutput(){
+        while (door) {
+            int option=optionOutputMenu();
+            switch (option) {
+                case 1:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    break;
+                case 2:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    
+                    break;
+                case 3:
+                    System.out.println("=\n".repeat(15)+"WORKING YET..."+"\n=".repeat(15));
+                    
+                    break;
+                case 4:
+                    switchesMain();
+                    break;
+                default:
+                    System.out.println("=\n".repeat(20)+"INPUT INVALIDED"+"\n=\n".repeat(20)+"TRY TO PUT A NUMBER"+"\n=".repeat(20));
+                    break;
+            }
+
+        } 
     }
 }

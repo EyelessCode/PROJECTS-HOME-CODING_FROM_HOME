@@ -12,19 +12,20 @@ public class Person {
     private String password;
     private String role;
     private String ic;
-    
-    // public Person(int id, String name, String lastName, char genre, int age, String address, String phone, String email,
-    //         String password, String role, String ic) {
-    //     this.name = name;
-    //     this.lastName = lastName;
-    //     this.genre = Character.toUpperCase(genre);
-    //     this.age = age;
-    //     this.address = address;
-    //     this.phone = phone;
-    //     this.email = email;
-    //     this.password = password;
-    //     this.role = role;
-    //     this.ic = ic;
+
+    // public Person(int id, String name, String lastName, char genre, int age,
+    // String address, String phone, String email,
+    // String password, String role, String ic) {
+    // this.name = name;
+    // this.lastName = lastName;
+    // this.genre = Character.toUpperCase(genre);
+    // this.age = age;
+    // this.address = address;
+    // this.phone = phone;
+    // this.email = email;
+    // this.password = password;
+    // this.role = role;
+    // this.ic = ic;
     // }
     public Person(String name, String lastName, char genre, int age, String address, String phone, String email,
             String password, String role, String ic) {
@@ -41,11 +42,11 @@ public class Person {
     }
 
     // public int getId() {
-    //     return id;
+    // return id;
     // }
 
     // public void setId(int id) {
-    //     this.id = id;
+    // this.id = id;
     // }
 
     public String getName() {
@@ -130,9 +131,11 @@ public class Person {
 
     // @Override
     // public String toString() {
-    //     return "Person [id=" + id + ", name=" + name + ", lastName=" + lastName + ", genre=" + genre + ", age=" + age
-    //             + ", address=" + address + ", phone=" + phone + ", email=" + email + ", password=" + password
-    //             + ", role=" + role + ", ic=" + ic + "]";
+    // return "Person [id=" + id + ", name=" + name + ", lastName=" + lastName + ",
+    // genre=" + genre + ", age=" + age
+    // + ", address=" + address + ", phone=" + phone + ", email=" + email + ",
+    // password=" + password
+    // + ", role=" + role + ", ic=" + ic + "]";
     // }
     @Override
     public String toString() {

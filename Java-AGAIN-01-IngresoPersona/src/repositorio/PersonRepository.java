@@ -34,15 +34,16 @@ public class PersonRepository {
         System.out.print("Enter Genre: ");
         p.setGenre(scanner.next().toUpperCase().charAt(0));
         scanner.nextLine();
-        System.out.print("Enter Age: ");
-        while (!scanner.hasNextInt()) {
-            System.out.println(
-                    "=".repeat(35) + "\nERROR OF FONT..." + "\nPUT A NUMBER NOT A LETTER...\n" + "=".repeat(35));
-            System.out.print("Enter Age: ");
-            scanner.nextLine();
-        }
-        p.setAge(scanner.nextInt());
-        scanner.nextLine();
+        // System.out.print("Enter Age: ");
+        // while (!scanner.hasNextInt()) {
+        //     System.out.println(
+        //             "=".repeat(35) + "\nERROR OF FONT..." + "\nPUT A NUMBER NOT A LETTER...\n" + "=".repeat(35));
+        //     System.out.print("Enter Age: ");
+        //     scanner.nextLine();
+        // }
+        // p.setAge(scanner.nextInt());
+        getValidateAge(); //? AGE ZONE
+
 
         System.out.print("Enter Addres: ");
         p.setAddress(scanner.nextLine());
@@ -61,6 +62,41 @@ public class PersonRepository {
         // scanner.next();
 
         addPerson(p);
+    }
+
+    public int getValidateAge(){
+        int age=-1;
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("Enter Age: ");
+            String convertion=scanner.nextLine();
+
+            try {
+                age=Integer.parseInt(convertion);
+
+                if (age<=0) {
+                    System.out.println(
+                        "\n"+"=".repeat(20)+"\nAge cannot be negative."
+                        +" Please enter a valid number...\n");
+                    // scanner.next();
+                } else if(age>120){
+                    System.out.println(
+                        "\n"+"=".repeat(20)+"\nThat's an unlikely age."
+                    +" Please enter a realistic age...");
+                    // scanner.next();
+                }else {
+                    door=true;
+                    // scanner.next();
+                }
+            } catch (NumberFormatException nfe) {
+                System.out.println(
+                    "\n"+"=".repeat(20)+"\nPLEASE ENTER A VALID NUMBER."
+                +" LETTERS OR SYMBOLS ARE NOT ALLOWED...");
+                // scanner.next();
+            }
+        }
+        return age;
     }
 
     public void removeAllPerson(Person p) {

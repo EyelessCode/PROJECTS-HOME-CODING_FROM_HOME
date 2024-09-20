@@ -9,6 +9,7 @@ public class OptionRepository {
 
     Scanner scanner=new Scanner(System.in);
 
+    //? OPTIONS ---------------------------------------
     public int mainMenuOption(){ //! MAIN MENU OPTION
         int option=-1;
 
@@ -81,7 +82,8 @@ public class OptionRepository {
         return option;
     }
 
-    //? ADMIN
+    //? OPTIONS INSIDE ON IT ------------------------------
+    // ADMIN
     public int adminChangeMenuOption(){ //! ADMIN CHANGE MENU OPTION
         int option=-1;
 
@@ -106,7 +108,7 @@ public class OptionRepository {
         return option;
     }
 
-    //? ADMIN
+    // ADMIN
     public int adminDeleteMenuOption(){ //! ADMIN DELETE MENU OPTION
         int option=-1;
 
@@ -131,7 +133,7 @@ public class OptionRepository {
         return option;
     }
 
-    //? ADMIN
+    // ADMIN
     public int adminVisualizationMenuOption(){ //! ADMIN VISUALIZATION MENU OPTION
         int option=-1;
 
@@ -156,7 +158,7 @@ public class OptionRepository {
         return option;
     }
 
-    //? INPUT
+    // INPUT
     public int inputSignInMenuOption(){ //! INPUT SIGN IN MENU OPTION
         int option=-1;
 
@@ -179,5 +181,55 @@ public class OptionRepository {
 
         }
         return option;
+    }
+
+    //? SWITCHES -----------------------------------------
+    public void switchesMainMenu(){ //! SWITCHES MAIN MENU
+        boolean door=true;
+        while (door) {
+            mi.mainMenu();
+            int option=mainMenuOption();
+            switch (option) {
+                case 1: // INPUT OPTIONS...
+                    System.out.println("ENTERING TO THE INPUT OPTION...");
+                    mi.signInMenu();
+                    break;
+                case 2: // ADMIN OPTIONS...
+                    System.out.println("ENTERING TO THE ADMIN OPTION...");
+                    mi.adminMenu();
+                    break;
+                case 3: // EXIT OPTION...
+                    System.out.println("LEAVING...");
+                    door=false;
+                    break;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+        }
+    }
+
+    public void switchesInputMenu(){ //! SWITCHES INPUT MENU
+        mi.mainMenu();
+        int option=mainMenuOption();
+        switch (option) {
+            case 1: // SIGN IN OPTION...
+                System.out.println("ENTERING TO THE SIGN IN OPTION...");
+                mi.signInMenu();
+                break;
+            case 2: // SIGN UP OPTION...
+                System.out.println("ENTERING TO THE SIGN UP OPTION...");
+                mi.adminMenu();
+                break;
+            case 3: // DELETE THE REGISTRATION OPTION...
+                System.out.println("ENTERING TO THE SIGN UP OPTION...");
+                mi.adminMenu();
+                break;
+            case 4: // GO BACK OPTION...
+                return;
+            default: // I DON'T KNOW WHAT IS THIS...
+                System.out.println("\n¿LETTER OR NUMBER?\n");
+                break;
+        }
     }
 }

@@ -34,6 +34,12 @@ public class MenuInterface {
         System.out.println("4. VIEW PERSON'S IC.");
         System.out.println("5. GO BACK.");
         System.out.println("\n"+"=".repeat(50)+"\n");
-
+        
+    }
+    
+    public void endput(){ //! ENDPUT
+        System.out.println("\n"+"=".repeat(10)+" THANK YOU FOR COMING TO US "+"=".repeat(10));
+        System.out.println("¡¡¡ WE'RE WAITING FOR YOU THE NEXT TIME, SEE'YA !!!");
+        System.out.println("\n"+"=".repeat(50)+"\n");
     }
 }

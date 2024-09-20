@@ -1,6 +1,6 @@
-package repository;
+package interfaces;
 
-public class MenuRepository {
+public class MenuInterface {
     public void introduction(){ //! INTRODUCTION
         System.out.println("\n"+"=".repeat(40)+"\n");
         System.out.println("¡¡¡ WELCOME TO PERSON ENTRY !!!");

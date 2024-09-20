@@ -72,5 +72,13 @@ public class MenuInterface {
         System.out.println("4. VIEW PERSON'S IC.");
         System.out.println("5. GO BACK.");
         System.out.println("\n"+"=".repeat(50)+"\n");
-    } 
+    }
+    
+    // INPUT
+    public void signInMenu(){ //! SIGN IN MENU
+        System.out.println("\n"+"=".repeat(20)+" SIGN IN SECTION "+"=".repeat(20));
+        System.out.println("THERE'S NOTHING HERE JAJAJA, SORRY...");
+        System.out.println("1. GO BACK.");
+        System.out.println("\n"+"=".repeat(50)+"\n");
+    }
 }

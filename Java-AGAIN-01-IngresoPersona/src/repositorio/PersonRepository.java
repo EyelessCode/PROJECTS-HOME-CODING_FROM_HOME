@@ -31,9 +31,10 @@ public class PersonRepository {
         System.out.print("Enter IC: ");
         p.setIc(scanner.next());
         scanner.nextLine();
-        System.out.print("Enter Genre: ");
-        p.setGenre(scanner.next().toUpperCase().charAt(0));
-        scanner.nextLine();
+        // System.out.print("Enter Genre: ");
+        // p.setGenre(scanner.next().toUpperCase().charAt(0));
+        getValidateGenre(p); //? GENRE ZONE
+        // scanner.nextLine();
         // System.out.print("Enter Age: ");
         // while (!scanner.hasNextInt()) {
         //     System.out.println(
@@ -42,7 +43,7 @@ public class PersonRepository {
         //     scanner.nextLine();
         // }
         // p.setAge(scanner.nextInt());
-        getValidateAge(); //? AGE ZONE
+        getValidateAge(p); //? AGE ZONE
 
 
         System.out.print("Enter Addres: ");
@@ -64,8 +65,8 @@ public class PersonRepository {
         addPerson(p);
     }
 
-    public int getValidateAge(){
-        int age=-1;
+    public int getValidateAge(Person p){
+        p.setAge(-1);
         boolean door=false;
 
         while (!door) {
@@ -73,14 +74,14 @@ public class PersonRepository {
             String convertion=scanner.nextLine();
 
             try {
-                age=Integer.parseInt(convertion);
+                p.setAge(Integer.parseInt(convertion));
 
-                if (age<=0) {
+                if (p.getAge()<=0) {
                     System.out.println(
                         "\n"+"=".repeat(20)+"\nAge cannot be negative."
                         +" Please enter a valid number...\n");
                     // scanner.next();
-                } else if(age>120){
+                } else if(p.getAge()>120){
                     System.out.println(
                         "\n"+"=".repeat(20)+"\nThat's an unlikely age."
                     +" Please enter a realistic age...");
@@ -96,7 +97,26 @@ public class PersonRepository {
                 // scanner.next();
             }
         }
-        return age;
+        
+        return p.getAge();
+    }
+
+    public char getValidateGenre(Person p){
+        p.setGenre('\0');
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("Enter Genre (F/M): ");
+            String input=scanner.nextLine().toUpperCase();
+
+            if (input.length()==1&&(input.charAt(0)=='M'||input.charAt(0)=='F')) {
+                p.setGenre(input.charAt(0));
+                door=true;
+            } else {
+                System.out.println("INVALID INPUT. PLEASE ENTER 'M' FOR MALE OR 'F' FOR FEMALE...");
+            }
+        }
+        return p.getGenre();
     }
 
     public void removeAllPerson(Person p) {
@@ -139,12 +159,111 @@ public class PersonRepository {
     // }
     // }
 
+    public void EditPerson(String ic){
+        Person edit=null;
+        
+        for (Person p : listPerson) {
+            if (p.getIc().equals(ic)) {
+                edit=p;
+                break;
+            }
+        }
+
+        if (edit!=null) {
+            System.out.println("PERSON FOUND WITH IC: "+ic+"\n");
+            System.out.println("=".repeat(30)+"\nEDITING PERSON...\n"+"=".repeat(30)+"\n");
+        
+            //? NAME
+            System.out.print("ENTER A NEW NAME (OR PRESS ENTER TO KEEP CURRENT: "+edit.getName()+"): ");
+            String name=scanner.nextLine().toUpperCase();
+            // scanner.next();
+            if (!name.isEmpty()) {
+                edit.setName(name);
+            }
+            
+            //? LASTNAME
+            System.out.print("ENTER A NEW LASTNAME (OR PRESS ENTER TO KEEP CURRENT: "+edit.getLastName()+"): ");
+            String lastName=scanner.nextLine();
+            // scanner.nextLine();
+            if (!lastName.isEmpty()) {
+                edit.setLastName(lastName);
+            }
+
+            // //? GENRE
+            // System.out.print("ENTER A NEW GENRE (F/M) (OR PRESS ENTER TO KEEP CURRENT: "+edit.getGenre()+")");
+            // String genre=scanner.nextLine();
+            // if(!genre.isEmpty()&&(genre.charAt(0)=='M'||genre.charAt(0)=='F')){
+            //     edit.setGenre(genre.charAt(0));
+            // }
+            
+            //? AGE
+            System.out.print("ENTER A NEW AGE (OR PRESS ENTER TO KEEP CURRENT: '"+edit.getAge()+"'): ");
+            String age=scanner.nextLine();
+            // scanner.nextLine(); //! NEXT TO THIS SCANNER THERE'S A SCANNER.NEXTLINE()
+                                    //! FOR THAT THIS SCANNER WE DON'T NEED IT
+            if (!age.isEmpty()) {
+                try{
+                    int ageConvertion=Integer.parseInt(age);
+                    edit.setAge(ageConvertion);
+                    if (ageConvertion>0&&ageConvertion<=120) {
+                        edit.setAge(ageConvertion);
+                    } else {
+                        System.out.println("INVALID AGE, KEEPING CURENT VALUE...");
+                    }
+                }catch(NumberFormatException nfe){
+                    System.out.println("INVALID AGE, KEEPING CURRENT: "+edit.getAge());
+                }
+            }
+            //? GENRE
+            System.out.print("ENTER A NEW GENRE (F/M) (OR PRESS ENTER TO KEEP CURRENT: '"+edit.getGenre()+"'): ");
+            String genre=scanner.nextLine();
+            // scanner.nextLine();
+            if(!genre.isEmpty()&&(genre.charAt(0)=='M'||genre.charAt(0)=='F')){
+                edit.setGenre(genre.charAt(0));
+            }
+
+            //? ADDRESS
+            System.out.print("ENTER A NEW ADDRESS (OR PRESS ENTER TO KEEP CURRENT: "+edit.getAddress()+"): ");
+            String address=scanner.nextLine(); //! SCANNER.NEXTLINE()
+            if (!address.isEmpty()) {
+                edit.setAddress(address);
+            }
+
+            //? PHONE
+            System.out.print("ENTER A NEW PHONE (OR PRESS ENTER TO KEEP CURRENT: "+edit.getPhone()+"): ");
+            String phone=scanner.nextLine();
+            if (!phone.isEmpty()) {
+                edit.setPhone(phone);
+            }
+
+            //? EMAIL
+            System.out.print("ENTER A NEW EMAIL (OR PRESS ENTER TO KEEP CURRENT: "+edit.getEmail()+"): ");
+            String email=scanner.nextLine();
+            if (!email.isEmpty()) {
+                edit.setEmail(email);
+            }
+
+            //? ROL
+            System.out.print("ENTER A NEW ROL (OR PRESS ENTER TO KEEP CURRENT: "+edit.getRole()+"): ");
+            String rol=scanner.nextLine();
+            // scanner.nextLine();
+            if (!rol.isEmpty()) {
+                edit.setRole(rol);
+            }
+            
+            System.out.println("PERSON UPDATED SUCCESSFULLY!");
+
+        }else{
+            System.out.println("PERSON WITH IC: "+ic+" NOT FOUND...");
+        }
+    }
+
     public void showPerson() {
         if (listPerson.isEmpty()) {
             System.out.println("THERE ARE NO PERSONS HERE...");
         } else {
             for (Person p : listPerson) {
-                System.out.printf("=".repeat(50) + "\nNAME: %s \tLAST NAME: %s \tGENRE: %s"
+                System.out.printf("=".repeat(50) + "\nNAME: %s \tLASTNAME: %s \tGENRE: %s"
                         + "\tAGE: %d \tADDRESS: %s \nPHONE: %s \tEMAIL: %s"
                         + "\tPASSWORD: %s \tROLE: %s \tIC: %s \n" + "=".repeat(50),
                         p.getName(), p.getLastName(), p.getGenre(), p.getAge(), p.getAddress(),

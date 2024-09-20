@@ -135,7 +135,10 @@ public class MenuRepository {
                 // switchInput();
                 break;
             case 2:
-                System.out.println("=".repeat(15) + "\nWORKING YET...\n" + "=".repeat(15));
+                System.out.print("ENTER THE IC OF THE PERSON TO EDIT: ");
+                String ic=scanner.next();
+                pr.EditPerson(ic);
+                // System.out.println("=".repeat(15) + "\nWORKING YET...\n" + "=".repeat(15));
                 // switchInput();
                 break;
             case 3:
@@ -145,7 +148,7 @@ public class MenuRepository {
                 break;
             case 4:
                 System.out.print("ENTER THE IC OF THE PERSON: ");
-                String ic = scanner.next();
+                ic = scanner.next();
                 pr.removePersonByIc(ic);
                 break;
             case 5:

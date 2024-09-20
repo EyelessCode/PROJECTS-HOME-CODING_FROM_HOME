@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import interfaces.MenuInterface;
 
-public class MenuRepository {
+public class OptionRepository {
     private MenuInterface mi=new MenuInterface();
 
     Scanner scanner=new Scanner(System.in);

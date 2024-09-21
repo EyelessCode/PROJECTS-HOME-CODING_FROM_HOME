@@ -199,7 +199,7 @@ public class OptionRepository {
             }
             
             option=scanner.nextInt();
-            if (option==1) {
+            if (option!=1) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT THE NUMBER 1...\n"
                 +"=".repeat(50)+"\n");
@@ -215,19 +215,21 @@ public class OptionRepository {
     public void switchesMainMenu(){ //! SWITCHES MAIN MENU
         boolean door=true;
         while (door) {
+            mi.introduction();
             mi.mainMenu();
             int option=mainMenuOption();
             switch (option) {
-                case 1: // INPUT OPTIONS...
-                    System.out.println("ENTERING TO THE INPUT OPTION...");
-                    mi.signInMenu();
+                case 1: // OPTIONS INPUT...
+                    System.out.println("GETTING TO THE INPUT OPTION...");
+                    switchesInputMenu();
                     break;
-                case 2: // ADMIN OPTIONS...
-                    System.out.println("ENTERING TO THE ADMIN OPTION...");
-                    mi.adminMenu();
+                case 2: // OPTIONS ADMIN...
+                    System.out.println("GETTING TO THE ADMIN OPTION...");
+                    switchesAdminMenu();
                     break;
-                case 3: // EXIT OPTION...
+                case 3: // OPTION EXIT...
                     System.out.println("LEAVING...");
+                    mi.endput();
                     door=false;
                     break;
                 default: // I DON'T KNOW WHAT IS THIS...
@@ -238,24 +240,169 @@ public class OptionRepository {
     }
 
     public void switchesInputMenu(){ //! SWITCHES INPUT MENU
-        mi.inputMenu();
-        int option=inputMenuOption();
-        switch (option) {
-            case 1: // SIGN IN OPTION...
-                System.out.println("ENTERING TO THE SIGN IN OPTION...");
-                mi.signInMenu();
-                break;
-            case 2: // SIGN UP OPTION...
-                System.out.println("ENTERING TO THE SIGN UP OPTION...");
-                break;
-            case 3: // DELETE THE REGISTRATION OPTION...
-                System.out.println("ENTERING TO THE DELETING THE REGISTRATION OPTION...");
-                break;
-            case 4: // GO BACK OPTION...
-                return;
-            default: // I DON'T KNOW WHAT IS THIS...
-                System.out.println("\n¿LETTER OR NUMBER?\n");
-                break;
+        boolean door=true;
+        while (door) {
+            mi.inputMenu();
+            int option=inputMenuOption();
+            switch (option) {
+                case 1: // OPTION SIGN IN...
+                    System.out.println("GETTING TO THE SIGN IN OPTION...");
+                    switchesInputSignInMenu();
+                    break;
+                case 2: // OPTION SIGN UP...
+                    System.out.println("GETTING TO THE SIGN UP OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 3: // OPTION DELETE THE REGISTRATION...
+                    System.out.println("GETTING TO THE DELETING THE REGISTRATION OPTION...");
+                    System.out.println("WOKRING YET...");
+                    break;
+                case 4: // OPTION GO BACK...
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
+        }
+    }
+
+    public void switchesAdminMenu(){ //! SWITCHES ADMIN MENU
+        boolean door=true;
+        while (door) {
+            mi.adminMenu();
+            int option=adminMenuOption();
+            switch (option) {
+                case 1: // OPTION CHANGE SECTION...
+                    System.out.println("GETTING TO THE CHANGE SECTION...");
+                    System.out.println("WORKING YET...");
+                    switchesAdminChangeMenu();
+                    break;
+                case 2: // OPTION DELETE SECTION...
+                    System.out.println("GETTING TO THE DELETE SECTION OPTION...");
+                    switchesAdminDeleteMenu();
+                    break;
+                case 3: // OPTION VISUALIZATION SECTION...
+                    System.out.println("GETTING TO THE VISUALIZATION SECTION OPTION...");
+                    switchesAdmindVisualizationMenu();
+                    break;
+                case 4: // OPTION GO BACK...
+                    door=false;
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
+        }
+    }
+
+    // ADMIN
+    public void switchesAdminChangeMenu(){ //! SWITCHES ADMIN CHANGE MENU
+        boolean door=true;
+        while (door) {
+            mi.changeMenu();
+            int option=adminChangeMenuOption();
+            switch (option) {
+                case 1: // OPTION ADD A PERSON...
+                    System.out.println("GETTING TO THE ADDING A PERSON...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 2: // OPTION ADD AN ADMIN...
+                    System.out.println("GETTING TO THE DELETE SECTION OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 3: // OPTION EDIT A PERSON BY SEARCH...
+                    System.out.println("GETTING TO THE VISUALIZATION SECTION OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 4: // OPTION GO BACK...
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
+        }
+    }
+    
+    // ADMIN
+    public void switchesAdminDeleteMenu(){ //! SWITCHES ADMIN DELETE MENU
+        boolean door=true;
+        while (door) {
+            mi.deleteMenu();
+            int option=adminDeleteMenuOption();
+            switch (option) {
+                case 1: // OPTION DELETE A PERSON BY SEARCH...
+                    System.out.println("GETTING TO THE DELETE A PERSON BY SEARCH OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 2: // OPTION DELETE YOUR ADMIN REGISTRATION...
+                    System.out.println("GETTING TO THE DELETE YOUR ADMIN REGISTRATION OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 3: // OPTION CLEAN LIST...
+                    System.out.println("GETTING TO THE CLEAN LIST OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 4: // OPTION GO BACK...
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
+        }
+    }
+
+    // ADMIN
+    public void switchesAdmindVisualizationMenu(){ //! SWITCHES ADMIN VISUALIZATION MENU
+        boolean door=true;
+        while (door) {
+            mi.visualizationMenu();
+            int option=adminVisualizationMenuOption();
+            switch (option) {
+                case 1: // OPTION VIEW LIST OPTION...
+                    System.out.println("GETTING TO VIEW LIST OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 2: // OPTION VIEW PERSON'S NAMES OPTION...
+                    System.out.println("GETTING TO THE VIEW PERSON'S NAMES OPTION...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 3: // OPTION VIEW PERSON'S EMAILS...
+                    System.out.println("GETTING TO THE VIEW PERSON'S EMAILS...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 4: // OPTION VIEW PERSON'S IC...
+                    System.out.println("GETTING TO THE VIEW PERSON'S IC...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 5: // OPTION GO BACK...
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
+        }
+    }
+
+    // INPUT
+    public void switchesInputSignInMenu(){ //! SWITCHES ADMIN VISUALIZATION MENU
+        boolean door=true;
+        while (door) {
+            mi.signInMenu();
+            int option=inputSignInMenuOption();
+            switch (option) {
+                case 1: // OPTION GO BACK...
+                    door=false;
+                    return;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
+            }
+            
         }
     }
 }

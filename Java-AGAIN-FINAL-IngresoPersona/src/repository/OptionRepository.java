@@ -15,12 +15,14 @@ public class OptionRepository {
 
         while (option<1||option>3) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
-
+            
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.mainMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -47,6 +49,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.inputMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -73,6 +77,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.adminMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -101,6 +107,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.changeMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -128,6 +136,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.deleteMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -155,6 +165,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.visualizationMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -182,6 +194,8 @@ public class OptionRepository {
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
                 mi.signInMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
             }
             
             option=scanner.nextInt();
@@ -216,9 +230,9 @@ public class OptionRepository {
                     System.out.println("LEAVING...");
                     door=false;
                     break;
-                // default: // I DON'T KNOW WHAT IS THIS...
-                //     System.out.println("\n¿LETTER OR NUMBER?\n");
-                //     break;
+                default: // I DON'T KNOW WHAT IS THIS...
+                    System.out.println("\n¿LETTER OR NUMBER?\n");
+                    break;
             }
         }
     }

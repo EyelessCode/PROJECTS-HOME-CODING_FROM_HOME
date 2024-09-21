@@ -13,14 +13,14 @@ public class OptionRepository {
     public int mainMenuOption(){ //! MAIN MENU OPTION
         int option=-1;
 
-        while (option<1&&option>3) {
+        while (option<1||option>3) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.mainMenu();
             }
             
             option=scanner.nextInt();
@@ -28,6 +28,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 3...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.mainMenu();
             }
 
         }
@@ -37,14 +39,14 @@ public class OptionRepository {
     public int inputMenuOption(){ //!INPUT MENU OPTION
         int option=-1;
 
-        while (option<1&&option>4) {
+        while (option<1||option>4) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.inputMenu();
             }
             
             option=scanner.nextInt();
@@ -52,6 +54,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 4...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.inputMenu();
             }
 
         }
@@ -61,14 +65,14 @@ public class OptionRepository {
     public int adminMenuOption(){ //! ADMIN MENU OPTION
         int option=-1;
 
-        while (option<1&&option>4) {
+        while (option<1||option>4) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.adminMenu();
             }
             
             option=scanner.nextInt();
@@ -76,6 +80,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 4...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.adminMenu();
             }
 
         }
@@ -87,14 +93,14 @@ public class OptionRepository {
     public int adminChangeMenuOption(){ //! ADMIN CHANGE MENU OPTION
         int option=-1;
 
-        while (option<1&&option>4) {
+        while (option<1||option>4) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.changeMenu();
             }
             
             option=scanner.nextInt();
@@ -102,6 +108,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 4...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.changeMenu();
             }
 
         }
@@ -112,14 +120,14 @@ public class OptionRepository {
     public int adminDeleteMenuOption(){ //! ADMIN DELETE MENU OPTION
         int option=-1;
 
-        while (option<1&&option>4) {
+        while (option<1||option>4) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.deleteMenu();
             }
             
             option=scanner.nextInt();
@@ -127,6 +135,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 4...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.deleteMenu();
             }
 
         }
@@ -137,14 +147,14 @@ public class OptionRepository {
     public int adminVisualizationMenuOption(){ //! ADMIN VISUALIZATION MENU OPTION
         int option=-1;
 
-        while (option<1&&option>5) {
+        while (option<1||option>5) {
             System.out.print("\n"+"|"+"-".repeat(5)+">: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.visualizationMenu();
             }
             
             option=scanner.nextInt();
@@ -152,6 +162,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT A NUMBER BETWEEN 1 AND 5...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.visualizationMenu();
             }
 
         }
@@ -169,7 +181,7 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
                 +"=".repeat(50)+"\n");
-                scanner.nextLine();
+                mi.signInMenu();
             }
             
             option=scanner.nextInt();
@@ -177,6 +189,8 @@ public class OptionRepository {
                 System.out.println("\n"+"=".repeat(50)
                 +"\nINVALIDED NUMBER. TRY TO PUT THE NUMBER 1...\n"
                 +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.signInMenu();
             }
 
         }
@@ -202,16 +216,16 @@ public class OptionRepository {
                     System.out.println("LEAVING...");
                     door=false;
                     break;
-                default: // I DON'T KNOW WHAT IS THIS...
-                    System.out.println("\n¿LETTER OR NUMBER?\n");
-                    break;
+                // default: // I DON'T KNOW WHAT IS THIS...
+                //     System.out.println("\n¿LETTER OR NUMBER?\n");
+                //     break;
             }
         }
     }
 
     public void switchesInputMenu(){ //! SWITCHES INPUT MENU
-        mi.mainMenu();
-        int option=mainMenuOption();
+        mi.inputMenu();
+        int option=inputMenuOption();
         switch (option) {
             case 1: // SIGN IN OPTION...
                 System.out.println("ENTERING TO THE SIGN IN OPTION...");
@@ -219,11 +233,9 @@ public class OptionRepository {
                 break;
             case 2: // SIGN UP OPTION...
                 System.out.println("ENTERING TO THE SIGN UP OPTION...");
-                mi.adminMenu();
                 break;
             case 3: // DELETE THE REGISTRATION OPTION...
-                System.out.println("ENTERING TO THE SIGN UP OPTION...");
-                mi.adminMenu();
+                System.out.println("ENTERING TO THE DELETING THE REGISTRATION OPTION...");
                 break;
             case 4: // GO BACK OPTION...
                 return;

@@ -106,10 +106,28 @@ public class PersonRepository {
                 p.setRol(input.toUpperCase());
                 door=true;
             }else{
-                System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROL. TRY IT AGAIN...");
+                System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
             }
         }
         scanner.nextLine();
         return p.getRol();
+    }
+
+    public String icInput(Person p){
+        p.setIc(null);
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("\nENTER AN IC: ");
+            int input=scanner.nextInt();
+
+            if (p.getIc().startsWith("0")&&(p.getIc().length()==10)) {
+                p.setIc(String.valueOf(input));
+                door=true;
+            }else{
+                System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
+            }
+        }
+        return p.getIc();
     }
 }

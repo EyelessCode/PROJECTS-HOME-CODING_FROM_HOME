@@ -119,10 +119,13 @@ public class PersonRepository {
 
         while (!door) {
             System.out.print("\nENTER AN IC: ");
-            int input=scanner.nextInt();
+            String input=scanner.nextLine();
 
-            if (p.getIc().startsWith("0")&&(p.getIc().length()==10)) {
-                p.setIc(String.valueOf(input));
+            if (input.length()==10){
+                p.setIc(input);
+                if (input.startsWith("09")) {
+                    p.setIc(input);
+                }
                 door=true;
             }else{
                 System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");

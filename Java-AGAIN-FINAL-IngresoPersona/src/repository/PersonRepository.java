@@ -25,6 +25,8 @@ public class PersonRepository {
                     System.out.println("PLEASE YOUR AGE CANNOT BE '0' OR A NEGATIVE NUMBER. PUT YOUR REAL AGE...");
                 }else if (p.getAge()>120) {
                     System.out.println("PLEASE THAT'S AN IMPOSSIBLE AGE, PUT A REAL AGE...");
+                }else {
+                    door=true;
                 }
             } catch (NumberFormatException nfe) {
                 System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
@@ -41,11 +43,11 @@ public class PersonRepository {
 
         while (!door) {
             System.out.print("\nENTER YOUR SEX(F/M): ");
-            String input=scanner.nextLine();
+            String input=scanner.nextLine().toUpperCase();
 
             // todo: IT WORKS AS A CHARACTER LIMITER, YOU CAN ONLY PUT IN THE INPUT 'ONE CHARACTER' LIKE 'CHAR' VAR.
             if (input.length()==1&&(input.charAt(0)=='F'||input.charAt(0)=='M')) {
-                p.setSex(input.toUpperCase().charAt(0));
+                p.setSex(input.charAt(0));
                 door=true;
             }else{
                 System.out.println("PLEASE, YOU CAN ONLY PUT 'F' (FEMALE) OR 'M' (MALE), TRY IT AGAIN...");
@@ -100,16 +102,16 @@ public class PersonRepository {
             System.out.print(
                 "\n"+"=".repeat(15)+"\nROLS:\tNOOB\tBEGINNER\tBORN\n"+"=".repeat(15)+"\n");
             System.out.print("\nENTER A ROL: ");
-            String input=scanner.next();
+            String input=scanner.next().toUpperCase();
 
-            if (input=="NOOB"||input=="BEGINNER"||input=="BORN") {
-                p.setRol(input.toUpperCase());
+            if (input.contains("BORN")||input.contains("NOOB")||input.contains("BEGINNER")) {
+                p.setRol(input);
                 door=true;
             }else{
                 System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
             }
         }
-        scanner.nextLine();
+        // scanner.nextLine();
         return p.getRol();
     }
 
@@ -123,12 +125,13 @@ public class PersonRepository {
 
             if (input.length()==10){
                 p.setIc(input);
+
                 if (input.startsWith("09")) {
                     p.setIc(input);
                 }
                 door=true;
             }else{
-                System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
+                System.out.println("PLEASE TRY TO PUT YOUR IC, TRY IT AGAIN...");
             }
         }
         return p.getIc();

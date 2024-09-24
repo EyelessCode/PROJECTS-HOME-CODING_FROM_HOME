@@ -8,8 +8,8 @@ public class PersonRepository {
     // private Person pe=new Person();
     private Scanner scanner=new Scanner(System.in);
 
-    //? AGE METHOD
-    // INPUT A PERSON
+    //? INT METHODS
+    // GET PERSON'S AGE
     public int ageInput(Person p){
         p.setAge(-1); // CENTINEL
         boolean door=false; // todo: THE DOOR WILL ALLOW THE CONDITIONS WORK
@@ -33,12 +33,14 @@ public class PersonRepository {
         return p.getAge();
     }
 
+    //? STRING/CHAR METHODS
+    // GET PERSON'S GENRE
     public char sexInput(Person p){
         p.setSex('\0');
         boolean door=false;
 
         while (!door) {
-            System.out.print("ENTER YOUR SEX(F/M): ");
+            System.out.print("\nENTER YOUR SEX(F/M): ");
             String input=scanner.nextLine();
 
             // todo: IT WORKS AS A CHARACTER LIMITER, YOU CAN ONLY PUT IN THE INPUT 'ONE CHARACTER' LIKE 'CHAR' VAR.
@@ -50,5 +52,64 @@ public class PersonRepository {
             }
         }
         return p.getSex();
+    }
+
+    public String nameInput(Person p){
+        p.setName(null);
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("\nENTER A NAME: ");
+            String input=scanner.next();
+
+            if (input.length()<=15) {
+                p.setName(input.toUpperCase());
+                door=true;
+            }else{
+                System.out.println("PLEASE, WE CAN ONLY GET 15 CHARACTERS. TRY IT AGAIN...");
+            }
+        }
+        scanner.nextLine();
+        return p.getName();
+    }
+
+    public String lastnameInput(Person p){
+        p.setLastname(null);
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("\nENTER A LASTNAME: ");
+            String input=scanner.next();
+
+            if (input.length()<=15) {
+                p.setLastname(input.toUpperCase());
+                door=true;
+            }else{
+                System.out.println("PLEASE, WE CAN ONLY GET 15 CHARACTERS. TRY IT AGAIN...");
+            }
+        }
+        scanner.nextLine();
+        return p.getLastname();
+    }
+
+    public String rolInput(Person p){
+        p.setRol(null);
+        boolean door=false;
+
+        while (!door) {
+            System.out.print(
+                "\n"+"=".repeat(15)+"\nROLS:\tNOOB\tBEGINNER\tBORN\n"+"=".repeat(15)+"\n");
+            System.out.print("\nENTER A ROL: ");
+            String input=scanner.next();
+
+            if (input=="NOOB"&&input=="BEGINNER"&&input=="BORN") {
+                p.setRol(input.toUpperCase());
+                door=true;
+            }else{
+                System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROL. TRY IT AGAIN...");
+            }
+        }
+        scanner.nextLine();
+        return p.getRol();
     }
 }

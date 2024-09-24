@@ -15,7 +15,7 @@ public class PersonRepository {
         boolean door=false; // todo: THE DOOR WILL ALLOW THE CONDITIONS WORK
 
         while (!door) {
-            System.out.print("\nENTER A AGE: ");
+            System.out.print("\nENTER AN AGE: ");
             String input=scanner.nextLine(); // IT WILL WORKS FOR THE CONVERTION
 
             try {
@@ -31,5 +31,24 @@ public class PersonRepository {
             }
         }
         return p.getAge();
+    }
+
+    public char sexInput(Person p){
+        p.setSex('\0');
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("ENTER YOUR SEX(F/M): ");
+            String input=scanner.nextLine();
+
+            // todo: IT WORKS AS A CHARACTER LIMITER, YOU CAN ONLY PUT IN THE INPUT 'ONE CHARACTER' LIKE 'CHAR' VAR.
+            if (input.length()==1&&(input.charAt(0)=='F'||input.charAt(0)=='M')) {
+                p.setSex(input.toUpperCase().charAt(0));
+                door=true;
+            }else{
+                System.out.println("PLEASE, YOU CAN ONLY PUT 'F' (FEMALE) OR 'M' (MALE), TRY IT AGAIN...");
+            }
+        }
+        return p.getSex();
     }
 }

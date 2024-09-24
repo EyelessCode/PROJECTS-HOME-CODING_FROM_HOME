@@ -2,10 +2,12 @@ package repository;
 
 import java.util.Scanner;
 
+import entities.Person;
 import interfaces.MenuInterface;
 
 public class OptionRepository {
     private MenuInterface mi=new MenuInterface();
+    private PersonRepository pr=new PersonRepository();
 
     Scanner scanner=new Scanner(System.in);
 
@@ -212,7 +214,8 @@ public class OptionRepository {
     }
 
     //? SWITCHES -----------------------------------------
-    public void switchesMainMenu(){ //! SWITCHES MAIN MENU
+    public void switchesMainMenu(Person p){ //! SWITCHES MAIN MENU
+        
         boolean door=true;
         while (door) {
             mi.introduction();
@@ -221,7 +224,7 @@ public class OptionRepository {
             switch (option) {
                 case 1: // OPTIONS INPUT...
                     System.out.println("GETTING TO THE INPUT OPTION...");
-                    switchesInputMenu();
+                    switchesInputMenu(p);
                     break;
                 case 2: // OPTIONS ADMIN...
                     System.out.println("GETTING TO THE ADMIN OPTION...");
@@ -239,7 +242,7 @@ public class OptionRepository {
         }
     }
 
-    public void switchesInputMenu(){ //! SWITCHES INPUT MENU
+    public void switchesInputMenu(Person p){ //! SWITCHES INPUT MENU
         boolean door=true;
         while (door) {
             mi.inputMenu();
@@ -252,6 +255,11 @@ public class OptionRepository {
                 case 2: // OPTION SIGN UP...
                     System.out.println("GETTING TO THE SIGN UP OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.nameInput(p);
+                    pr.lastnameInput(p);
+                    pr.icInput(p);
+                    pr.ageInput(p);
+                    pr.rolInput(p);
                     break;
                 case 3: // OPTION DELETE THE REGISTRATION...
                     System.out.println("GETTING TO THE DELETING THE REGISTRATION OPTION...");

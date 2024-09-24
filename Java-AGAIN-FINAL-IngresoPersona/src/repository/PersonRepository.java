@@ -102,7 +102,7 @@ public class PersonRepository {
             System.out.print("\nENTER A ROL: ");
             String input=scanner.next();
 
-            if (input=="NOOB"&&input=="BEGINNER"&&input=="BORN") {
+            if (input=="NOOB"||input=="BEGINNER"||input=="BORN") {
                 p.setRol(input.toUpperCase());
                 door=true;
             }else{

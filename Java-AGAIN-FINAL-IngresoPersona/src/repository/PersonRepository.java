@@ -163,4 +163,18 @@ public class PersonRepository {
         }
         return p.getIc();
     }
+
+    //? ---------------------------------------------------
+    public void addPerson(Person p){
+        System.out.println("GETTING A NEW PERSON...");
+        lastnameInput(p);
+    }
+
+    public void listCompletely(){
+        for (Person p : lp) {
+            System.out.printf("\nNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
+            +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
+        }
+    }
+
 }

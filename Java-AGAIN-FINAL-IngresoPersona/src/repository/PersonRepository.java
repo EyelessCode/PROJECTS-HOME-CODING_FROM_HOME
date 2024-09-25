@@ -10,7 +10,7 @@ public class PersonRepository {
     private List<Person>lp=new ArrayList<Person>();
     private Scanner scanner=new Scanner(System.in);
 
-    //? INT METHODS
+    //? INT METHODS ----------------------------------------------
     // GET PERSON'S AGE
     public int ageInput(Person p){
         p.setAge(-1); // SENTINEL
@@ -38,6 +38,7 @@ public class PersonRepository {
         return p.getAge();
     }
     
+    // GET PERSON'S PASSWORD
     public int passwordInput(Person p){
         p.setPassword(-1); // SENTINEL
         boolean door=false;
@@ -62,7 +63,7 @@ public class PersonRepository {
         return p.getPassword();
     }
 
-    //? STRING/CHAR METHODS
+    //? STRING/CHAR METHODS -------------------------------------------
     // GET PERSON'S GENRE
     public char sexInput(Person p){
         p.setSex('\0');
@@ -83,6 +84,7 @@ public class PersonRepository {
         return p.getSex();
     }
 
+    // GET PERSON'S NAME
     public String nameInput(Person p){
         p.setName(null);
         boolean door=false;
@@ -102,6 +104,7 @@ public class PersonRepository {
         return p.getName();
     }
 
+    // GET PERSON'S LASTNAME
     public String lastnameInput(Person p){
         p.setLastname(null);
         boolean door=false;
@@ -121,6 +124,7 @@ public class PersonRepository {
         return p.getLastname();
     }
 
+    // GET PERSON'S ROLE
     public String rolInput(Person p){
         p.setRol(null);
         boolean door=false;
@@ -138,10 +142,11 @@ public class PersonRepository {
                 System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
             }
         }
-        // scanner.nextLine();
+        //// scanner.nextLine();
         return p.getRol();
     }
 
+    // GET PERSON'S IC
     public String icInput(Person p){
         p.setIc(null);
         boolean door=false;
@@ -164,7 +169,7 @@ public class PersonRepository {
         return p.getIc();
     }
 
-    //? ---------------------------------------------------
+    //? CONSOLE PRINT ---------------------------------------------------
     public void addPerson(Person p){
         System.out.println("GETTING A NEW PERSON...");
         lastnameInput(p);

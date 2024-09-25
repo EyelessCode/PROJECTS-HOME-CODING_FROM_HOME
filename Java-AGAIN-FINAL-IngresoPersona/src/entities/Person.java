@@ -7,12 +7,12 @@ public class Person {
     private char sex;
     private int age;
     private String rol;
-    private String password;
+    private int password;
     
     public Person() {
     }
 
-    public Person(String name, String lastname, String ic, char sex, int age, String rol, String password) {
+    public Person(String name, String lastname, String ic, char sex, int age, String rol, int password) {
         this.name = name;
         this.lastname = lastname;
         this.ic = ic;
@@ -70,11 +70,11 @@ public class Person {
         this.rol = rol;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 

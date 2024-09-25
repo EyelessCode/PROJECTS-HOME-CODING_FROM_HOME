@@ -255,11 +255,6 @@ public class OptionRepository {
                 case 2: // OPTION SIGN UP...
                     System.out.println("GETTING TO THE SIGN UP OPTION...");
                     System.out.println("WORKING YET...");
-                    pr.nameInput(p);
-                    pr.lastnameInput(p);
-                    pr.icInput(p);
-                    pr.ageInput(p);
-                    pr.rolInput(p);
                     break;
                 case 3: // OPTION DELETE THE REGISTRATION...
                     System.out.println("GETTING TO THE DELETING THE REGISTRATION OPTION...");

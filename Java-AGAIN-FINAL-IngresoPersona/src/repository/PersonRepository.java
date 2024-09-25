@@ -11,7 +11,7 @@ public class PersonRepository {
     //? INT METHODS
     // GET PERSON'S AGE
     public int ageInput(Person p){
-        p.setAge(-1); // CENTINEL
+        p.setAge(-1); // SENTINEL
         boolean door=false; // todo: THE DOOR WILL ALLOW THE CONDITIONS WORK
 
         while (!door) {
@@ -35,6 +35,29 @@ public class PersonRepository {
         return p.getAge();
     }
 
+    public int passwordInput(Person p){
+        p.setPassword(-1); // SENTINEL
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("\nENTER A PASSWORD: ");
+            String input=scanner.nextLine(); // IT WILL WORKS FOR THE CONVERTION
+
+            try {
+                if (input.length()==5) {
+                    p.setPassword(Integer.parseInt(input));
+                    door=true;
+                }else{
+                    System.out.println("INPUT ERROR. PLEASE INPUT ONLY 5 DIGITS...");
+                }
+
+            } catch (NumberFormatException nfe) {
+                System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
+            }
+        }
+        return p.getPassword();
+    }
+
     //? STRING/CHAR METHODS
     // GET PERSON'S GENRE
     public char sexInput(Person p){
@@ -42,8 +65,8 @@ public class PersonRepository {
         boolean door=false;
 
         while (!door) {
-            System.out.print("\nENTER YOUR SEX(F/M): ");
-            String input=scanner.nextLine().toUpperCase();
+            System.out.print("\nENTER YOUR SEX (F/M): ");
+            String input=scanner.nextLine();
 
             // todo: IT WORKS AS A CHARACTER LIMITER, YOU CAN ONLY PUT IN THE INPUT 'ONE CHARACTER' LIKE 'CHAR' VAR.
             if (input.length()==1&&(input.charAt(0)=='F'||input.charAt(0)=='M')) {

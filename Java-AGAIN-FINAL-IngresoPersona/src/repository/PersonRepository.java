@@ -1,11 +1,13 @@
 package repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import entities.Person;
 
 public class PersonRepository {
-    // private Person pe=new Person();
+    private List<Person>lp=new ArrayList<Person>();
     private Scanner scanner=new Scanner(System.in);
 
     //? INT METHODS
@@ -32,17 +34,18 @@ public class PersonRepository {
                 System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
             }
         }
+        lp.add(p);
         return p.getAge();
     }
-
+    
     public int passwordInput(Person p){
         p.setPassword(-1); // SENTINEL
         boolean door=false;
-
+        
         while (!door) {
             System.out.print("\nENTER A PASSWORD: ");
             String input=scanner.nextLine(); // IT WILL WORKS FOR THE CONVERTION
-
+            
             try {
                 if (input.length()==5) {
                     p.setPassword(Integer.parseInt(input));
@@ -50,11 +53,12 @@ public class PersonRepository {
                 }else{
                     System.out.println("INPUT ERROR. PLEASE INPUT ONLY 5 DIGITS...");
                 }
-
+                
             } catch (NumberFormatException nfe) {
                 System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
             }
         }
+        lp.add(p);
         return p.getPassword();
     }
 

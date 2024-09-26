@@ -9,8 +9,12 @@ import entities.Person;
 public class PersonRepository {
     private List<Person>lp=new ArrayList<Person>();
     private Scanner scanner=new Scanner(System.in);
+    private Person p=new Person();
+
+    //? INPUT METHODS ---------------------------------------------------
 
     //? INT METHODS ----------------------------------------------
+
     // GET PERSON'S AGE
     public int ageInput(Person p){
         p.setAge(-1); // SENTINEL
@@ -34,7 +38,7 @@ public class PersonRepository {
                 System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
             }
         }
-        lp.add(p);
+
         return p.getAge();
     }
     
@@ -59,11 +63,12 @@ public class PersonRepository {
                 System.out.println("THAT'S NOT A NUMBER, PLEASE PUT A RIGHT INPUT...");
             }
         }
-        lp.add(p);
+
         return p.getPassword();
     }
 
     //? STRING/CHAR METHODS -------------------------------------------
+
     // GET PERSON'S GENRE
     public char sexInput(Person p){
         p.setSex('\0');
@@ -71,7 +76,7 @@ public class PersonRepository {
 
         while (!door) {
             System.out.print("\nENTER YOUR SEX (F/M): ");
-            String input=scanner.nextLine();
+            String input=scanner.nextLine().toUpperCase();
 
             // todo: IT WORKS AS A CHARACTER LIMITER, YOU CAN ONLY PUT IN THE INPUT 'ONE CHARACTER' LIKE 'CHAR' VAR.
             if (input.length()==1&&(input.charAt(0)=='F'||input.charAt(0)=='M')) {
@@ -81,6 +86,7 @@ public class PersonRepository {
                 System.out.println("PLEASE, YOU CAN ONLY PUT 'F' (FEMALE) OR 'M' (MALE), TRY IT AGAIN...");
             }
         }
+
         return p.getSex();
     }
 
@@ -100,6 +106,7 @@ public class PersonRepository {
                 System.out.println("PLEASE, WE CAN ONLY GET 15 CHARACTERS. TRY IT AGAIN...");
             }
         }
+
         scanner.nextLine();
         return p.getName();
     }
@@ -120,6 +127,7 @@ public class PersonRepository {
                 System.out.println("PLEASE, WE CAN ONLY GET 15 CHARACTERS. TRY IT AGAIN...");
             }
         }
+
         scanner.nextLine();
         return p.getLastname();
     }
@@ -142,7 +150,8 @@ public class PersonRepository {
                 System.out.println("PLEASE, INPUT ANY ROLE. YOU CANNOT CONTINUE WITHOUT A ROLE. TRY IT AGAIN...");
             }
         }
-        //// scanner.nextLine();
+
+        scanner.nextLine();
         return p.getRol();
     }
 
@@ -155,31 +164,173 @@ public class PersonRepository {
             System.out.print("\nENTER AN IC: ");
             String input=scanner.nextLine();
 
-            if (input.length()==10){
+            if (input.startsWith("09")) {
                 p.setIc(input);
 
-                if (input.startsWith("09")) {
+                if (input.length()==10){
                     p.setIc(input);
+    
+                    door=true;
+                }else{
+                    System.out.println("PLEASE TRY TO PUT YOUR IC, TRY IT AGAIN...");
+
                 }
-                door=true;
             }else{
-                System.out.println("PLEASE TRY TO PUT YOUR IC, TRY IT AGAIN...");
+                System.out.println("IC STARTS WITH '09'. TRY IT AGAIN...");
             }
         }
+
         return p.getIc();
     }
 
     //? CONSOLE PRINT ---------------------------------------------------
+
+    //! NO ADMIN
+    // ADD A PERSON
     public void addPerson(Person p){
         System.out.println("GETTING A NEW PERSON...");
-        lastnameInput(p);
+        lp.add(p);
     }
 
+    //! ADMIN
+    // SHOW ENTIRE LIST
     public void listCompletely(){
+        // todo: I HAVE BEEN TESTING SOMETHING, FOR NOW THESE WILL BE COMMENTED
         for (Person p : lp) {
-            System.out.printf("\nNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
-            +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
+            System.out.printf("\n"+"=".repeat(70)+"\nNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
+            +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n"+"=".repeat(70)+"\n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
+        }
+
+        // for (int i = 0; i < lp.size(); i++) {
+        //     for (Person p : lp) {
+        //         System.out.printf("\n"+"=".repeat(70)+"\n-> "+i+"\tNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
+        //         +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n"+"=".repeat(70)+"\n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
+                
+        //     }
+        // }
+    }
+
+    //! ADMIN
+    // SHOW ONLY NAMES
+    public void showNamesAndLastnames(){
+        for (Person p : lp) {
+            for (int i = 0; i < lp.size(); i++) {
+                System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tNAME: %s \t\tLASTNAME: %s \n"+"=".repeat(50)+"\n",p.getName(),p.getLastname());
+                
+            }
+                
+        }
+    }
+    
+    //! ADMIN
+    // SHOW ONLY IC
+    public void showIc(){
+        for (Person p : lp) {
+            for (int i = 0; i < lp.size(); i++) {
+                System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tIC: %s \n"+"=".repeat(50)+"\n",p.getIc());
+                
+            }
         }
     }
 
+    //! ADMIN
+    // DELETE ENTIRE LIST
+    public void deleteList(){
+        System.out.println("DELETING PERSONS LIST...");
+        lp.removeAll(lp);
+    }
+
+    // DELETE THE FIRST REGISTRATION
+    public void deleteFirst(){
+        System.out.println("DELETING THE LAST REGISTRATION...");
+        lp.removeFirst();
+    }
+
+    //! ADMIN
+    // DELETE A PERSON BY SEARCHING
+    public void deleteBySearch(String ic){
+        System.out.println("=".repeat(15)+"INPUT PERSON'S IC YOU WANT TO DELETE."+"=".repeat(15));
+        Person removePerson=null;
+        int passwordInput=-1; // SENTINEL
+        boolean door=false;
+
+        for (Person p : lp) {
+            if (p.getIc().equals(ic)) {
+                removePerson=p;
+                break;
+            }
+        }
+        
+        scanner.nextLine();
+        while (!door) {
+            System.out.print("\nBEFORE TO DELETE SOMEONE, WE NEED HIS/HER PASSWORD. PLEASE ENTER PASSWORD: ");
+            passwordInput=scanner.nextInt();
+            
+            // PASSWORD
+            for (Person p : lp) {
+                if (passwordInput==p.getPassword()) {
+                    break;
+                }else{
+                    System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
+                    break;
+                }
+
+                // while (passwordInput!=p.getPassword()) {
+                //     System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
+                // }
+            }
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("PLEASE INPUT NUMBERS NOT A LETTERS. TRY IT AGAIN...");
+                scanner.nextLine();
+            }
+
+            // IC
+            if (removePerson!=null) {
+                lp.remove(removePerson);
+                door=true;
+                System.out.println("THE PERSON WITH "+ic+" HAS BEEN DELETED.");
+            }else{
+                System.out.println("THERE'S NO PERSON WITH "+ic+" YET. TRY IT AGAIN...");
+            }
+
+        }
+    }
+
+    //! DELETE BY SEARCH    -   IT'S A COMPLEMENT TO GET PERSON'S IC TO REMOVE
+    public String getIcRemove(){
+        String icRemove=null;
+        boolean door=true;
+        
+        while (door) {
+            System.out.print("ENTER PERSON'S IC TO DELETE: ");
+            icRemove=scanner.nextLine();
+
+            if (icRemove.length()==10) {
+                door=false;
+            }else{
+                System.out.println("IC DOESN'T EXIST. EACH PERSON'S IC HAS 10 DIGITS. TRY IT AGAIN...");
+            }
+
+        }
+        
+        
+        //// scanner.nextLine();
+        return icRemove;
+    }
+
+    //! ---------------------------------------------------------------
+
+    //? MOST METHODS
+    public void personData(Person p){
+        nameInput(p); // NAME
+        lastnameInput(p); // LASTNAME
+        icInput(p); // IC
+        sexInput(p); // SEX
+        ageInput(p); // AGE
+        rolInput(p); // ROLE
+        passwordInput(p); // PASSWORD
+
+        addPerson(p); // ADD A PERSON
+    }
 }

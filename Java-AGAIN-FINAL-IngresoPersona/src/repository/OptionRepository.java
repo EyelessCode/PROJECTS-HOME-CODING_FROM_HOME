@@ -235,9 +235,6 @@ public class OptionRepository {
                     mi.endput();
                     door=false;
                     break;
-                default: // I DON'T KNOW WHAT IS THIS...
-                    System.out.println("\n¿LETTER OR NUMBER?\n");
-                    break;
             }
         }
     }
@@ -255,10 +252,12 @@ public class OptionRepository {
                 case 2: // OPTION SIGN UP...
                     System.out.println("GETTING TO THE SIGN UP OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.personData(p);
                     break;
                 case 3: // OPTION DELETE THE REGISTRATION...
                     System.out.println("GETTING TO THE DELETING THE REGISTRATION OPTION...");
                     System.out.println("WOKRING YET...");
+                    pr.deleteFirst();
                     break;
                 case 4: // OPTION GO BACK...
                     return;
@@ -339,6 +338,7 @@ public class OptionRepository {
                 case 1: // OPTION DELETE A PERSON BY SEARCH...
                     System.out.println("GETTING TO THE DELETE A PERSON BY SEARCH OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.deleteBySearch(pr.getIcRemove());
                     break;
                 case 2: // OPTION DELETE YOUR ADMIN REGISTRATION...
                     System.out.println("GETTING TO THE DELETE YOUR ADMIN REGISTRATION OPTION...");
@@ -347,6 +347,7 @@ public class OptionRepository {
                 case 3: // OPTION CLEAN LIST...
                     System.out.println("GETTING TO THE CLEAN LIST OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.deleteList();
                     break;
                 case 4: // OPTION GO BACK...
                     return;
@@ -368,10 +369,12 @@ public class OptionRepository {
                 case 1: // OPTION VIEW LIST OPTION...
                     System.out.println("GETTING TO VIEW LIST OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.listCompletely();
                     break;
                 case 2: // OPTION VIEW PERSON'S NAMES OPTION...
                     System.out.println("GETTING TO THE VIEW PERSON'S NAMES OPTION...");
                     System.out.println("WORKING YET...");
+                    pr.showNamesAndLastnames();
                     break;
                 case 3: // OPTION VIEW PERSON'S EMAILS...
                     System.out.println("GETTING TO THE VIEW PERSON'S EMAILS...");
@@ -380,6 +383,7 @@ public class OptionRepository {
                 case 4: // OPTION VIEW PERSON'S IC...
                     System.out.println("GETTING TO THE VIEW PERSON'S IC...");
                     System.out.println("WORKING YET...");
+                    pr.showIc();
                     break;
                 case 5: // OPTION GO BACK...
                     return;

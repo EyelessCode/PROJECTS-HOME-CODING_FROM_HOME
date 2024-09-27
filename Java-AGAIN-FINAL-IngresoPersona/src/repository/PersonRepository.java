@@ -189,7 +189,7 @@ public class PersonRepository {
     // ADD A PERSON
     public void addPerson(Person p){
         System.out.println("GETTING A NEW PERSON...");
-        lp.add(p);
+        lp.add(new Person(p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol(),p.getPassword()));
     }
 
     //! ADMIN

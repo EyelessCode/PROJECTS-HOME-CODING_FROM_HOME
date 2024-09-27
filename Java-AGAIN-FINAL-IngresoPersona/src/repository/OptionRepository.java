@@ -215,10 +215,10 @@ public class OptionRepository {
 
     //? SWITCHES -----------------------------------------
     public void switchesMainMenu(Person p){ //! SWITCHES MAIN MENU
+        mi.introduction();
         
         boolean door=true;
         while (door) {
-            mi.introduction();
             mi.mainMenu();
             int option=mainMenuOption();
             switch (option) {

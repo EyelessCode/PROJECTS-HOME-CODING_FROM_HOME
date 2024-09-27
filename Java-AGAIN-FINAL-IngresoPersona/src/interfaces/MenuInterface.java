@@ -67,7 +67,7 @@ public class MenuInterface {
     public void visualizationMenu(){ //! VISUALIZATION MENU
         System.out.println("\n"+"=".repeat(20)+" VISUALIZATION SECTION "+"=".repeat(20));
         System.out.println("1. VIEW LIST.");
-        System.out.println("2. VIEW PERSON'S NAMES.");
+        System.out.println("2. VIEW PERSON'S NAMES AND LASTNAMES.");
         System.out.println("3. VIEW PERSON'S EMAILS.");
         System.out.println("4. VIEW PERSON'S IC.");
         System.out.println("5. GO BACK.");

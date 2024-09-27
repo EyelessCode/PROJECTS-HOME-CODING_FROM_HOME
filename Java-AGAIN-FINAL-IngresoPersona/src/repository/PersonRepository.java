@@ -213,12 +213,9 @@ public class PersonRepository {
     //! ADMIN
     // SHOW ONLY NAMES
     public void showNamesAndLastnames(){
-        for (Person p : lp) {
-            for (int i = 0; i < lp.size(); i++) {
-                System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tNAME: %s \t\tLASTNAME: %s \n"+"=".repeat(50)+"\n",p.getName(),p.getLastname());
-                
-            }
-                
+        for (int i = 0; i < lp.size(); i++) {
+            Person p=lp.get(i);
+            System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tNAME: %s \t\tLASTNAME: %s \n"+"=".repeat(50)+"\n", p.getName(), p.getLastname());
         }
     }
     
@@ -242,8 +239,11 @@ public class PersonRepository {
 
     // DELETE THE FIRST REGISTRATION
     public void deleteFirst(){
-        System.out.println("DELETING THE LAST REGISTRATION...");
-        lp.removeFirst();
+        if (!lp.isEmpty()) {
+            lp.remove(0);
+        }else {
+            System.out.println("DELETING THE LAST REGISTRATION...");
+        }
     }
 
     //! ADMIN
@@ -251,25 +251,16 @@ public class PersonRepository {
     public void deleteBySearch(String ic){
         System.out.println("=".repeat(15)+"INPUT PERSON'S IC YOU WANT TO DELETE"+"=".repeat(15));
         Person removePerson=null;
-        int passwordInput=-1; // SENTINEL
-        boolean door=false;
 
         for (Person person : lp) {
             if (person.getIc().equals(ic)) {
-                removePerson=p;
+                removePerson=person;
                 break;
             }
         }
-
-        //! TEST
-        for (Person person : lp) {
-            if (getPasswordDelete()==person.getPassword()) {
-                System.out.println("RIGHT PASSWORD. PLEASE WAIT...");
-                break;
-            }
-        }        
+     
         //// scanner.nextLine();
-        //! ORIGINAL
+        /*
         // while (!door) {
         //     System.out.print("\nBEFORE TO DELETE SOMEONE, WE NEED HIS/HER PASSWORD. PLEASE ENTER PASSWORD: ");
         //     passwordInput=scanner.nextInt();
@@ -285,55 +276,61 @@ public class PersonRepository {
         //             }
     
         //         }
-        //     }
+        //     } 
+         */
             
-            // PASSWORD
-
-            //! ORIGINAL
+            /*
             // while (!scanner.hasNextInt()) {
             //     System.out.println("PLEASE INPUT NUMBERS NOT A LETTERS. TRY IT AGAIN...");
             //     scanner.nextLine();
             // }
+             */
 
             // IC
-            if (removePerson!=null) {
+        if (removePerson!=null) {
+            if (getPasswordDelete()==removePerson.getPassword()) {
                 lp.remove(removePerson);
-                // door=true;
                 System.out.println("THE PERSON WITH "+ic+" HAS BEEN DELETED.");
             }else{
-                System.out.println("THERE'S NO PERSON WITH "+ic+" YET. TRY IT AGAIN...");
+                System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
             }
-
-        // }
-    }
-
-    //! TEST FOR GET PASSWORD TO DELETE SOMEONE
-    public int getPasswordDelete(){
-        scanner.nextLine();
-        Person passwordPerson=null;
-        int passwordRemove=-1;
-        boolean door=false;
-
-        try {
-            while (!door) {
-                System.out.print("\nBEFORE TO DELETE SOMEONE, WE NEED HIS/HER PASSWORD. PLEASE ENTER PASSWORD: ");
-                passwordRemove=scanner.nextInt();
-    
-                for (Person person : lp) {
-                    if (passwordRemove==person.getPassword()) {
-                        passwordPerson=p;
-                        door=true;
-                        break;
-                    }else{
-                        System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
-                    }
-                }
-            }
-            
-        } catch (NumberFormatException nfe) {
-            System.out.println("PLEASE INPUT NUMBERS NOT A LETTERS. TRY IT AGAIN...");
+        }else{
+            System.out.println("THERE'S NO PERSON WITH "+ic+" YET. TRY IT AGAIN...");
         }
 
+        //// }
+    }
+    //! ADMIN
+    // COMPLEMENT AT PASSWORD DELETE BY DELETED A PERSON BY SEARCHING
+    //? ↑↑↑↑
+    public int getPasswordDelete(){
+        //// scanner.nextLine();
+        Person passwordPerson = null;
+        int passwordRemove = -1;
+        boolean door = false;
+        
+        while (!door) {
+            System.out.print("\nBEFORE TO DELETE SOMEONE, WE NEED HIS/HER PASSWORD. PLEASE ENTER PASSWORD: ");
+            if (scanner.hasNextInt()) {
+                passwordRemove = scanner.nextInt();
+                scanner.nextLine(); // Limpia el buffer
+    
+                for (Person person : lp) {
+                    if (passwordRemove == person.getPassword()) {
+                        passwordPerson = person;
+                        door = true;
+                        break;
+                    }
+                }
+    
+                if (!door) {
+                    System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
+                }
+            } else {
+                System.out.println("PLEASE INPUT NUMBERS NOT LETTERS. TRY IT AGAIN...");
+                scanner.nextLine(); // Limpia el buffer incorrecto
+            }
+        }
         return passwordRemove;
     }
 

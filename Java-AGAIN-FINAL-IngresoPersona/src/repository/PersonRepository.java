@@ -169,7 +169,6 @@ public class PersonRepository {
 
                 if (input.length()==10){
                     p.setIc(input);
-    
                     door=true;
                 }else{
                     System.out.println("PLEASE TRY TO PUT YOUR IC, TRY IT AGAIN...");

@@ -200,14 +200,6 @@ public class PersonRepository {
             System.out.printf("\n"+"=".repeat(70)+"\nNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
             +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n"+"=".repeat(70)+"\n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
         }
-
-        // for (int i = 0; i < lp.size(); i++) {
-        //     for (Person p : lp) {
-        //         System.out.printf("\n"+"=".repeat(70)+"\n-> "+i+"\tNAME: %s \t\tLASTNAME: %s\t\tIC: %s"
-        //         +"\nSEX: %s \t\tAGE: %d \t\tROL: %s \n"+"=".repeat(70)+"\n", p.getName(),p.getLastname(),p.getIc(),p.getSex(),p.getAge(),p.getRol());
-                
-        //     }
-        // }
     }
 
     //! ADMIN
@@ -222,11 +214,9 @@ public class PersonRepository {
     //! ADMIN
     // SHOW ONLY IC
     public void showIc(){
-        for (Person p : lp) {
-            for (int i = 0; i < lp.size(); i++) {
-                System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tIC: %s \n"+"=".repeat(50)+"\n",p.getIc());
-                
-            }
+        for (int i = 0; i < lp.size(); i++) {
+            Person p=lp.get(i);
+            System.out.printf("\n"+"=".repeat(50)+"\n-> "+i+"\tNAME: %s \n"+"=".repeat(50)+"\n", p.getIc());
         }
     }
 
@@ -234,7 +224,7 @@ public class PersonRepository {
     // DELETE ENTIRE LIST
     public void deleteList(){
         System.out.println("DELETING PERSONS LIST...");
-        lp.removeAll(lp);
+        lp.clear();
     }
 
     // DELETE THE FIRST REGISTRATION
@@ -249,14 +239,29 @@ public class PersonRepository {
     //! ADMIN
     // DELETE A PERSON BY SEARCHING
     public void deleteBySearch(String ic){
-        System.out.println("=".repeat(15)+"INPUT PERSON'S IC YOU WANT TO DELETE"+"=".repeat(15));
-        Person removePerson=null;
-
-        for (Person person : lp) {
-            if (person.getIc().equals(ic)) {
-                removePerson=person;
-                break;
+        boolean door= true;
+        while (door) {
+            System.out.println("=".repeat(15)+"INPUT PERSON'S IC YOU WANT TO DELETE"+"=".repeat(15));
+            Person removePerson=null;
+    
+            for (Person person : lp) {
+                if (person.getIc().equals(ic)) {
+                    removePerson=person;
+                    break;
+                }
             }
+
+            if (removePerson!=null) {
+                if (getPasswordDelete()==removePerson.getPassword()) {
+                    lp.remove(removePerson);
+                    door=false;
+                    System.out.println("THE PERSON WITH "+ic+" HAS BEEN DELETED.");
+                }else{
+                    System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
+                }
+            }else{
+                System.out.println("THERE'S NO PERSON WITH "+ic+" YET. TRY IT AGAIN...");
+            }  
         }
      
         //// scanner.nextLine();
@@ -287,17 +292,6 @@ public class PersonRepository {
              */
 
             // IC
-        if (removePerson!=null) {
-            if (getPasswordDelete()==removePerson.getPassword()) {
-                lp.remove(removePerson);
-                System.out.println("THE PERSON WITH "+ic+" HAS BEEN DELETED.");
-            }else{
-                System.out.println("INCORRECT PASSWORD. INPUT A RIGHT PASSWORD. TRY IT AGAIN...");
-            }
-        }else{
-            System.out.println("THERE'S NO PERSON WITH "+ic+" YET. TRY IT AGAIN...");
-        }
-
         //// }
     }
     //! ADMIN
@@ -306,10 +300,11 @@ public class PersonRepository {
     public int getPasswordDelete(){
         //// scanner.nextLine();
         Person passwordPerson = null;
-        int passwordRemove = -1;
         boolean door = false;
+        int passwordRemove = -1;
         
         while (!door) {
+
             System.out.print("\nBEFORE TO DELETE SOMEONE, WE NEED HIS/HER PASSWORD. PLEASE ENTER PASSWORD: ");
             if (scanner.hasNextInt()) {
                 passwordRemove = scanner.nextInt();

@@ -247,6 +247,7 @@ public class OptionRepository {
             switch (option) {
                 case 1: // OPTION SIGN IN...
                     System.out.println("GETTING TO THE SIGN IN OPTION...");
+                    pr.signInIcConsole();
                     switchesInputSignInMenu();
                     break;
                 case 2: // OPTION SIGN UP...

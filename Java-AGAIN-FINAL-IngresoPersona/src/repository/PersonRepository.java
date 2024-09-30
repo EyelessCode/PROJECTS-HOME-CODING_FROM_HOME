@@ -182,6 +182,67 @@ public class PersonRepository {
         return p.getIc();
     }
 
+    // // SIGN IN TO GO ENTER COMMENTARY SECTION
+    // public String signInIcConsole(){
+    //     p.setIc(null);
+    //     boolean door=false;
+
+    //     while (!door) {
+    //         System.out.println("FIRST OF ALL, YOU NEED TO INPUT NECESSARY REQUIREMENTS...");
+    //         System.out.print("ENTER YOUR EXISTING IC: ");
+    //         String icInput=scanner.nextLine();
+
+    //         for (Person person : lp) {
+    //             if (!person.getIc().isEmpty()) {
+    //                 if (icInput.equals(person.getIc())) {
+    //                     person.setIc(icInput);
+    //                     door=true;
+    //                     break;
+    //                 }
+                    
+    //             }else{
+    //                 System.out.println("THERE'S NO EXIST PERSON WITH "+icInput+". PLEASE TRY IT AGAIN...");
+    //                 break;
+    //             }
+    //         }
+
+    //     }
+    //     return p.getIc();
+    // }
+
+    // SIGN IN TO GO ENTER COMMENTARY SECTION
+    public void signInIcConsole(){
+        String icInput=null;
+        boolean door=false;
+
+        while (!door) {
+            System.out.println("FIRST OF ALL, YOU NEED TO INPUT NECESSARY REQUIREMENTS...");
+            System.out.print("ENTER YOUR EXISTING IC (PRESS '0' IF YOU WANT TO LEAVE): ");
+            icInput=scanner.nextLine();
+
+            if (!icInput.isEmpty()) {
+                for (Person person : lp) {
+                    if (!lp.isEmpty()) {
+                        if (icInput.equals(person.getIc())) {
+                            person.setIc(icInput);
+                            door=true;
+                            break;
+                        } else{
+                            System.out.println("THERE'S NO EXIST PERSON WITH "+icInput+". PLEASE TRY IT AGAIN...");
+                        }
+                    }else{
+                        System.out.println("THERE'S NO PERSON YET. INPUT ONE...");
+                        door=true;
+                        return;
+                    }
+
+
+                }
+            }
+
+        }
+    }
+
     //? CONSOLE PRINT ---------------------------------------------------
 
     //! NO ADMIN

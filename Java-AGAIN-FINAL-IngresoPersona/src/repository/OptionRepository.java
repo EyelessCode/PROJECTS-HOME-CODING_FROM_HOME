@@ -213,6 +213,35 @@ public class OptionRepository {
         return option;
     }
 
+    // INPUT
+    public int inputCommentaryMenuOption(){ //! INPUT SIGN IN MENU OPTION
+        int option=-1;
+
+        while (option!=1) {
+            System.out.print("\n"+"|"+"-".repeat(5)+">: ");
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("\n"+"=".repeat(50)
+                +"\nINPUT ERROR. TRY TO PUT A VALIDED INPUT...\n"
+                +"=".repeat(50)+"\n");
+                mi.signInMenu();
+                scanner.nextLine();
+                System.out.print("\n"+"|"+"-".repeat(5)+">: ");
+            }
+            
+            option=scanner.nextInt();
+            if (option!=1) {
+                System.out.println("\n"+"=".repeat(50)
+                +"\nINVALIDED NUMBER. TRY TO PUT THE NUMBER 1...\n"
+                +"=".repeat(50)+"\n");
+                scanner.nextLine();
+                mi.commentaryMenu();
+            }
+
+        }
+        return option;
+    }
+
     //? SWITCHES -----------------------------------------
     public void switchesMainMenu(Person p){ //! SWITCHES MAIN MENU
         mi.introduction();
@@ -241,14 +270,20 @@ public class OptionRepository {
 
     public void switchesInputMenu(Person p){ //! SWITCHES INPUT MENU
         boolean door=true;
+        // boolean alloww=false;
         while (door) {
             mi.inputMenu();
             int option=inputMenuOption();
             switch (option) {
                 case 1: // OPTION SIGN IN...
                     System.out.println("GETTING TO THE SIGN IN OPTION...");
-                    pr.signInIcConsole();
-                    switchesInputSignInMenu();
+                    if (!pr.signInIcConsole(false)) {
+                        switchesInputSignInMenu();
+                        
+                    }else {
+                        return;
+                    }
+                    // pr.signInIcConsole();
                     break;
                 case 2: // OPTION SIGN UP...
                     System.out.println("GETTING TO THE SIGN UP OPTION...");
@@ -261,6 +296,7 @@ public class OptionRepository {
                     pr.deleteFirst();
                     break;
                 case 4: // OPTION GO BACK...
+                    door=false;
                     return;
                 default: // I DON'T KNOW WHAT IS THIS...
                     System.out.println("\n¿LETTER OR NUMBER?\n");
@@ -320,6 +356,7 @@ public class OptionRepository {
                     System.out.println("WORKING YET...");
                     break;
                 case 4: // OPTION GO BACK...
+                    door=false;
                     return;
                 default: // I DON'T KNOW WHAT IS THIS...
                     System.out.println("\n¿LETTER OR NUMBER?\n");
@@ -351,6 +388,7 @@ public class OptionRepository {
                     pr.deleteList();
                     break;
                 case 4: // OPTION GO BACK...
+                    door=false;
                     return;
                 default: // I DON'T KNOW WHAT IS THIS...
                     System.out.println("\n¿LETTER OR NUMBER?\n");
@@ -387,6 +425,7 @@ public class OptionRepository {
                     pr.showIc();
                     break;
                 case 5: // OPTION GO BACK...
+                    door=false;
                     return;
                 default: // I DON'T KNOW WHAT IS THIS...
                     System.out.println("\n¿LETTER OR NUMBER?\n");
@@ -397,20 +436,54 @@ public class OptionRepository {
     }
 
     // INPUT
-    public void switchesInputSignInMenu(){ //! SWITCHES ADMIN VISUALIZATION MENU
+    public void switchesInputSignInMenu(){ //! SWITCHES INPUT SIGN IN MENU
         boolean door=true;
         while (door) {
             mi.signInMenu();
             int option=inputSignInMenuOption();
             switch (option) {
-                case 1: // OPTION GO BACK...
+                case 1: // ADD A COMMENTARY
+                    System.out.println("GETTING TO COMMENTARY MENU...");
+                    System.out.println("WORKING YET...");
+                    mi.commentaryMenu();
+                    pr.commentString();
+                    break;
+                case 2: // CAR STORE
+                    System.out.println("GETTING TO CAR STORE MENU...");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 3: // BOOK STORE
+                    System.out.println("GETTING TO BOOKSTORE MENU");
+                    System.out.println("WORKING YET...");
+                    break;
+                case 4: // OPTION GO BACK...
                     door=false;
                     return;
-                default: // I DON'T KNOW WHAT IS THIS...
-                    System.out.println("\n¿LETTER OR NUMBER?\n");
-                    break;
+                //// default: // I DON'T KNOW WHAT IS THIS...
+                ////     System.out.println("\n¿LETTER OR NUMBER?\n");
+                ////     break;
             }
             
         }
     }
+
+    /*
+    // public void switchesInputCommentary(){
+    //     boolean door=true;
+
+    //     while (door) {
+    //         mi.commentaryMenu();
+    //         int option=inputCommentaryMenuOption();
+
+    //         switch (key:var) {
+    //             case value:
+                    
+    //                 break;
+            
+    //             default:
+    //                 break;
+    //         }
+    //     }
+    // }
+     */
 }

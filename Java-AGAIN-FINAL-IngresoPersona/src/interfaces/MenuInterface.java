@@ -83,8 +83,21 @@ public class MenuInterface {
     // INPUT
     public void signInMenu(){ //! SIGN IN MENU
         System.out.println("\n"+"=".repeat(20)+" SIGN IN SECTION "+"=".repeat(20));
-        System.out.println("SIGN IN SECTION - COMING SOON...");
-        System.out.println("1. GO BACK.");
+        System.out.println("1. ADD A COMMENTARY.");
+        System.out.println("2. CAR STORE");
+        System.out.println("3. BOOK STORE");
+        System.out.println("4. GO BACK.");
+        printDivider(50);
+    }
+
+    // INPUT
+    public void commentaryMenu(){ //! COMMENTARY BOX
+        System.out.println("\n"+"=".repeat(20)+" COMMENTARY BOX "+"=".repeat(20));
+        System.out.println("→ EDDY MERCURY: THIS IS AN INCREDIBLE COMPANY, I JUST WANT TO BUY ANYTHING! - 18/09/2024 - 17:58");
+        System.out.println("→ MARIA WHITE: MY DREAMS HAVE BEEN COMPLETE, NOW I'M SO HAPPY!!! - 19/09/2024 - 07:22");
+        System.out.println("→ EDUARDO SANTOS: DUDE NOW I HAVE A NEW CAR, I'M SO LUCKY... - 22/09/2024 - 18:00");
+        System.out.println("→ ELVERGAS2009: DO REALLY PEOPLE KNOW THAT THIS BUY SYSTEM IT'S A STEALING? - 28/09/2024 - 11:19");
+        System.out.println("x. GO BACK");
         printDivider(50);
     }
 }

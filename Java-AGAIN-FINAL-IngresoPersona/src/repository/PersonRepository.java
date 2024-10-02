@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import entities.Person;
+import interfaces.MenuInterface;
 
 public class PersonRepository {
     private List<Person>lp=new ArrayList<Person>();
@@ -65,6 +66,43 @@ public class PersonRepository {
         }
 
         return p.getPassword();
+    }
+
+    public int getPasswordToSignIn(){
+        Person passwordPerson=null;
+        int passwordSignIn=-1;
+        boolean door=false;
+
+        while (!door) {
+            System.out.print("WE NEED YOUR PASSWORD: ");
+            // if (scanner.hasNextInt()) {
+            //     passwordSignIn=scanner.nextInt();
+            //     scanner.nextLine();
+
+            //     for (Person person : lp) {
+            //         if (passwordSignIn==person.getPassword()) {
+            //             person=passwordPerson;
+            //         }
+            //     }
+            // }
+            
+            try {
+                passwordSignIn=scanner.nextInt();
+                scanner.nextLine();
+
+                for (Person person : lp) {
+                    if (passwordSignIn==person.getPassword()) {
+                        person=passwordPerson;
+                        door=true;
+                    }
+                }
+
+            } catch (NumberFormatException nfe) {
+                System.out.println("ERROR INPUT. TRY TO INPUT NUMBERS...");
+            }
+        }
+
+        return passwordSignIn;
     }
 
     //? STRING/CHAR METHODS -------------------------------------------
@@ -211,36 +249,42 @@ public class PersonRepository {
     // }
 
     // SIGN IN TO GO ENTER COMMENTARY SECTION
-    public void signInIcConsole(){
+    public boolean signInIcConsole(boolean door){
+        // OptionRepository or=null;
         String icInput=null;
-        boolean door=false;
+        door=false;
+        // allow=false;
 
         while (!door) {
             System.out.println("FIRST OF ALL, YOU NEED TO INPUT NECESSARY REQUIREMENTS...");
-            System.out.print("ENTER YOUR EXISTING IC (PRESS '0' IF YOU WANT TO LEAVE): ");
+            System.out.print("ENTER YOUR EXISTING IC (PRESS 'ENTER' IF YOU WANT TO LEAVE): ");
             icInput=scanner.nextLine();
 
-            if (!icInput.isEmpty()) {
-                for (Person person : lp) {
-                    if (!lp.isEmpty()) {
-                        if (icInput.equals(person.getIc())) {
+            if (!icInput.isBlank()) {
+                if (!lp.isEmpty()) {
+                    for (Person person : lp) {
+                        if (person.getIc().equals(icInput)) {
                             person.setIc(icInput);
                             door=true;
                             break;
-                        } else{
-                            System.out.println("THERE'S NO EXIST PERSON WITH "+icInput+". PLEASE TRY IT AGAIN...");
+                        }else if (!person.getIc().equals(icInput)) {
+                            door=false;
+                            System.out.println("...");
                         }
-                    }else{
-                        System.out.println("THERE'S NO PERSON YET. INPUT ONE...");
-                        door=true;
-                        return;
                     }
-
-
+                }else{
+                    System.out.println("NO PERSON REGISTERED. ADD A NEW PERSON...");
+                    door=false;
                 }
+            }else{
+                door=false;
+                // or=new OptionRepository();
+                System.out.println("INPUT BLANK. GOING BACK...");
+                // or.switchesInputMenu(p);
+                // allow=true;
             }
-
         }
+        return door;
     }
 
     //? CONSOLE PRINT ---------------------------------------------------
@@ -354,6 +398,7 @@ public class PersonRepository {
             // IC
         //// }
     }
+    
     //! ADMIN
     // COMPLEMENT AT PASSWORD DELETE BY DELETED A PERSON BY SEARCHING
     //? ↑↑↑↑
@@ -409,6 +454,20 @@ public class PersonRepository {
         
         //// scanner.nextLine();
         return icRemove;
+    }
+
+    public String commentString(){
+        String comment=null;
+
+        while (true) {
+            System.out.print("INPUT A COMMENTARY (ONLY 100 CHARACTERES): ");
+            comment=scanner.nextLine().toUpperCase();
+
+            if (comment.length()<=100) {
+                // System.out.println(comment);
+                return comment;
+            }
+        }
     }
 
     //! ---------------------------------------------------------------

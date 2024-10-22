@@ -1,0 +1,18 @@
+.banner{
+    width: 1870px;
+    height: 800px;
+}
+
+.marker{
+    font-size: 325%;
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+p{
+    padding-right: 300px;
+}
+
+aside{
+    padding-left: 90%;
+}

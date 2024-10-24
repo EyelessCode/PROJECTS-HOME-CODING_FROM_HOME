@@ -1,18 +1,35 @@
 .banner{
-    width: 1870px;
-    height: 800px;
+    width: 100%;
+    height: 80%;
+    border-radius: 5%;
+    border-style: solid;
+    border-top-color: aqua;
+    border-bottom-color: red;
+    border-right-color: yellow;
+    border-left-color: black;
 }
 
 .marker{
-    font-size: 325%;
+    font-size: 340%;
     text-align: center;
     padding-bottom: 2%;
+    font-family: fantasy;
+}
+
+.markerSimple{
+    font-family: fantasy;
+    font-size: 195%;
 }
 
 p{
-    padding-right: 300px;
+    padding-right: 15%;
+    font-size: 150%;
 }
 
 aside{
-    padding-left: 90%;
+    padding-left: 75%;
+}
+
+li{
+    font-size: 150%;
 }

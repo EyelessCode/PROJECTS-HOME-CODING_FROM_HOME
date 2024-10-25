@@ -9,18 +9,29 @@
     border-left-color: black;
 }
 
-.marker{
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+
+div h4{
+    font-family: sans-serif
+
+}
+
+div h3{
+    font-family: fantasy;
+    font-size: 195%;
+
+}
+
+div h2{
     font-size: 340%;
     text-align: center;
     padding-bottom: 2%;
     font-family: fantasy;
-}
 
-.markerSimple{
-    font-family: fantasy;
-    font-size: 195%;
 }
-
 
 p{
     padding-right: 15%;

@@ -28,7 +28,13 @@ p{
 }
 
 aside{
-    padding-left: 85%;
+    /* padding-left: 85%; */
+    background-color: aquamarine;
+    border-radius: 10%;
+    border-top-color: blue;
+    border-bottom-color: yellow;
+    border-style: solid;
+    
 }
 
 li{

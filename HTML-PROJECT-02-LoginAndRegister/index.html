@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="EyelessCode">
-    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Login | EyelessPage</title>
 </head>
+
 <body>
-    
+    <form action="access.html" method="post">
+        <div class="access">
+            <h1>
+                LOGIN
+            </h1>
+
+            <div class="inputDate">
+                <input type="text" placeholder="Username" id="txtUsername" name="username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="inputDate">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class='bx bx-lock'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label for="">Remember me
+                    <input type="checkbox" name="remember" id="checkRemember">
+                    Do you forgot your <a href="#">password</a>?
+                </label>
+            </div>
+
+            <button class="send" type="submit" name="login">Login</button>
+
+            <div class="register">
+                <p>
+                    Don't have an account? <a href="#">Register!</a>
+                </p>
+            </div>
+
+        </div>
+
+    </form>
 </body>
+
 </html>

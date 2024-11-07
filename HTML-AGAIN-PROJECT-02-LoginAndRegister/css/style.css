@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: darkviolet;
+}
+.wrapper{
+    border: 8px solid brown;
+    display: flexbox;
+    justify-items: center;
+    background-color: lightcoral;
+    border-radius: 18px;
+    margin: 2px 0;
+}
+
+.wrapper .wrapper-header{
+    background-color: beige;
+
+    font-size: 38px;
+}
+
+.wrapper .wrapper-body{
+    padding: 0;
+    margin: 0;
+    background-color: chartreuse;
+
+}
+
+.wrapper-body .body-input{
+    margin: 0;
+    padding: 0;
+    background-color: darkgoldenrod;
+}
+
+.body-input input{
+    margin: 8px;
+    border: 4px solid;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+/* #txtUser{
+    border-radius: 18px;
+    border: 4px solid black;
+    NO SE USA!!!!!
+} */

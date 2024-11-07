@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="EyelessCode">
     <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Login or Register | EyelessCode</title>
 </head>
 <body>
@@ -25,13 +25,11 @@
     
             <div class="wrapper-body">
                 <div class="body-input">
-                    <div class="input-user">
                         <label for="txtUser"><input type="text" id="txtUser" placeholder="Username"></label>
-                    </div>
+                </div>
 
-                    <div class="input-password">
-                        <label for="txtPassword"><input type="text" id="txtPassword" placeholder="Password"></label>
-                    </div>
+                <div class="body-input">
+                    <label for="txtPassword"><input type="text" id="txtPassword" placeholder="Password"></label>
                 </div>
 
                 <div class="body-remember-forget">
@@ -47,6 +45,9 @@
                         Forgot your <a href="#">Password</a>?
                     </p>
                 </div>
+
+                <button id="btnSubmit" name="login" type="submit">Login</button>
+
             </div>
 
             <div class="wrapper-footer">

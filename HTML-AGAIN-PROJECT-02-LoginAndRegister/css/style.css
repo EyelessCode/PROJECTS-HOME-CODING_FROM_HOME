@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body{
     height: 100vh;
 }
 
-h1{
+h1 {
     font-size: 68px;
     font-weight: bolder;
     padding: 0;
@@ -27,11 +27,22 @@ h1{
 
 }
 
-h1:hover{
+h1:hover {
     text-shadow: 0 0 28px white;
+
 }
 
-.wrapper{
+span {
+    transition: color 0.3s ease;
+}
+
+span:hover {
+    color: rgb(90, 12, 12);
+    text-shadow: 0 0 8px rgb(90, 12, 12);
+
+}
+
+.wrapper {
     display: flexbox;
     justify-items: center;
     border-radius: 18px;
@@ -46,7 +57,7 @@ h1:hover{
     transition: box-shadow 0.3s ease;
 }
 
-.wrapper:hover{
+.wrapper:hover {
     box-shadow: 0 0 50px darkcyan;
 }
 
@@ -59,7 +70,7 @@ h1:hover{
     
 } */
 
-.wrapper .wrapper-header{
+.wrapper .wrapper-header {
     color: white;
     font-size: 38px;
     padding: 0 0 28px;
@@ -67,11 +78,11 @@ h1:hover{
     transition: text-shadow 0.3s ease;
 }
 
-.wrapper .wrapper-header:hover{
+.wrapper .wrapper-header:hover {
     text-shadow: 0 0 28px white;
 }
 
-.wrapper .wrapper-body{
+.wrapper .wrapper-body {
     padding: 0;
     margin: 0;
     width: 75%;
@@ -81,7 +92,7 @@ h1:hover{
 
 }
 
-.body-input input{
+.body-input input {
     margin: 10px 0;
     border: 2px solid darkcyan;
     border-radius: 18px;
@@ -93,7 +104,7 @@ h1:hover{
     color: white;
 }
 
-.body-input input::placeholder{
+.body-input input::placeholder {
     color: gainsboro;
     font-weight: bolder;
 }
@@ -115,7 +126,7 @@ input[type="password"]:focus {
 } */
 
 input[type="text"]:hover,
-input[type="password"]:hover{
+input[type="password"]:hover {
     border-color: blueviolet;
     box-shadow: 0 0 50px blueviolet;
     text-shadow: 0 0 2px white;
@@ -123,7 +134,7 @@ input[type="password"]:hover{
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus{
+input[type="password"]:focus {
     border-color: blueviolet;
     outline: none;
     color: darkcyan;
@@ -144,7 +155,7 @@ input[type="password"]:focus{
 
 } */
 
-.wrapper .body-remember-forget{
+.wrapper .body-remember-forget {
     margin: 10px 0;
     justify-content: space-between;
     font-size: 18px;
@@ -152,14 +163,14 @@ input[type="password"]:focus{
     display: flex;
 }
 
-.body-remember-forget a{
+.body-remember-forget a {
     text-decoration: none;
     color: white;
     font-weight: bolder;
     transition: all 0.3s ease;
 }
 
-.body-remember-forget a:hover{
+.body-remember-forget a:hover {
     text-decoration: underline;
     color: darkcyan;
     font-weight: bolder;
@@ -174,7 +185,7 @@ input[type="password"]:focus{
 
 } */
 
-#btnSubmit{
+#btnSubmit {
     padding: 10px 130px;
     border-radius: 28px;
     border: 2px solid;
@@ -187,7 +198,7 @@ input[type="password"]:focus{
     box-shadow: 0 0 18px darkcyan;
 }
 
-#btnSubmit:hover{
+#btnSubmit:hover {
     background-color: rgb(90, 12, 12);
     border-color: darkcyan;
     color: white;
@@ -196,24 +207,24 @@ input[type="password"]:focus{
 
 }
 
-.wrapper .wrapper-footer{
+.wrapper .wrapper-footer {
     text-align: center;
 }
 
-.wrapper-footer .footer-register{
+.wrapper-footer .footer-register {
     display: flex;
     font-size: 18px;
 }
 
-.footer-register a{
+.footer-register a {
     text-decoration: none;
     color: white;
     font-weight: bolder;
     transition: all 0.3s ease;
 
 }
-    
-.footer-register a:hover{
+
+.footer-register a:hover {
     text-decoration: underline;
     color: darkcyan;
     font-weight: bolder;

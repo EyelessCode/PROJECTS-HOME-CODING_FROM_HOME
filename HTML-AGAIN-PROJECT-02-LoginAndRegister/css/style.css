@@ -33,12 +33,12 @@ h1:hover {
 }
 
 span {
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 span:hover {
-    color: rgb(90, 12, 12);
-    text-shadow: 0 0 8px rgb(90, 12, 12);
+    color:  red;
+    text-shadow: 0 0 80px rgb(90, 12, 12);
 
 }
 

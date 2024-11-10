@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="EyelessCode">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src=""></script>
+    <title>Restaurant exercise | EyelessCode</title>
 </head>
 <body>
-    
+    <form action="">
+        <div class="wrapper">
+            <h1>
+                WE WANT TO KNOW YOU
+            </h1>
+
+            <fieldset>
+                <legend>Name Section</legend>
+                
+                <div class="wrapper-name">
+                    <label for="txtName">Name: <input type="text" placeholder="Enter text..." id="txtName" maxlength="25"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Lastname Section</legend>
+
+                <div class="wrapper-lastname">
+                    <label for="txtLastname">Lastname: <input type="text" placeholder="Enter text..." id="txtLastname" maxlength="25"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Your likes</legend>
+
+                <div class="about-like">
+                    <p>
+                        What games do you like?
+                    </p>
+
+                    <label for="cboxHorror">
+                        Horror <input type="checkbox" name="horror" id="cboxHorror">
+                    </label>
+
+                    <label for="cboxShooters">
+                        Shooters <input type="checkbox" name="shooters" id="cboxShooters">
+                    </label>
+
+                    <label for="cboxPsychological">
+                        Psychological <input type="checkbox" name="psychological" id="cboxPsychological">
+                    </label>
+
+                    <p>
+                        Are you attracted to women or men?
+                    </p>
+
+                    <label for="rdioWomen">
+                        Women <input type="radio" name="women" id="rdioWomen">
+                    </label>
+
+                    <br>
+                    <label for="rdioMen">
+                        Men <input type="radio" name="men" id="rdioMen">
+                    </label>
+                </div>
+            </fieldset>
+
+            <button type="submit" id="btnSubmit">Send</button>
+
+            <div class="wrapper-footer">
+                <h6>
+                    All the responsability in EyelessCode
+                    <br>
+                    Copyright 2024-2025
+                    <br>
+                    EyelessCode Inc.
+                </h6>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

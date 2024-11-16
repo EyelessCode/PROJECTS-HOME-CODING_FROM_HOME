@@ -1,8 +1,6 @@
-import {first} from './calc.js';
-
-const txtCode=document.getElementById('txtCode');
-const txtName=document.getElementById('txtName');
-const cmbMonth=document.getElementById('cmbMonth');
+// const txtCode=document.getElementById('txtCode');
+// const txtName=document.getElementById('txtName');
+// const cmbMonth=document.getElementById('cmbMonth');
 const txtSalary=document.getElementById('txtSalary');
 const txtAdditionHour=document.getElementById('txtAdditionHour');
 const txtCostHour=document.getElementById('txtCostHour');
@@ -12,8 +10,8 @@ const txtNetReceive=document.getElementById('txtNetReceive');
 const calculate=document.getElementById('btnCalc');
 
 calculate.addEventListener('click',()=>{
-    let salary=parseFloat(txtSalary.value);
-    let addHour=parseFloat(txtAdditionHour.value);
+    let salary=parseFloat(txtSalary.value)||0;
+    let addHour=parseFloat(txtAdditionHour.value)||0;
     const costHour=parseFloat(txtCostHour.value);
     const percentage=parseFloat(txtContributionPercentage.value);
 

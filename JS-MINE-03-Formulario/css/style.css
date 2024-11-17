@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    display: flexbox;
+    margin: 40px;
+    background-color: aquamarine;
+    width: 50vw;
+}
+
+.wrapperContainer{
+    background-color: antiquewhite;
+}
+
+.containerHeader{
+    background-color: burlywood;
+
+    margin: 20px;
+    padding: 20px;
+}
+
+.containerHeader h1{
+    font-size: 4rem;
+    text-align: center;
+}
+
+.containerBody{
+    display: block;
+    font-size: 1.3rem;
+}
+
+.containerEmployee{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.containerEmployee label, .containerEmployee input{
+    margin-left: 12px;
+}
+
+.containerEmployee input{
+    margin-right: 100px;
+}
+
+.containerSalaryMonths{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.containerSalaryMonths label, .containerSalaryMonths input,
+.containerSalaryMonths select{
+    margin-left: 12px;
+}
+
+.containerSalaryMonths select{
+    margin-right: 100px;
+}

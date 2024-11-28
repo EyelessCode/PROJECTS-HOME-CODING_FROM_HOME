@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="TU PUTAMADRE">
+    <script defer type="module" src="js/script.js"></script>
+    <title>Calcular</title>
+</head>
+<body>
+    <header>
+        <h1>
+            CALCULA MIERDA!
+        </h1>
+    </header>
+
+    <main>
+        <section>
+            <fieldset class="container">
+                <legend>
+                    ESTUDIANTES
+                </legend>
+
+                <label for="cmbEstudiante">Nombre: </label>
+                <select name="estudiante" id="cmbEstudiante">
+                    <option value="" selected disabled>-- SELECCIONE UNA OPCIÓN --</option>
+                </select>
+
+                <label for="txtEdad">Edad: </label>
+                <input readonly type="text" name="edad" id="txtEdad" placeholder="Edad...">
+
+                <label for="txtCurso">Curso: </label>
+                <input readonly type="text" name="curso" id="txtCurso" placeholder="Curso...">
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset class="container2">
+                <legend>
+                    Calificaciones
+                </legend>
+
+                <label for="txtMate">Matemáticas: </label>
+                <input readonly type="text" name="matematica" id="txtMate" placeholder="Esperando calificación...">
+                
+                <label for="txtFisica">Física: </label>
+                <input readonly type="text" name="fisica" id="txtFisica" placeholder="Esperando calificación...">
+
+                <label for="txtQuimica">Química: </label>
+                <input readonly type="text" name="quimica" id="txtQuimica" placeholder="Esperando calificación...">
+
+                <label for="txtHistoria">Historia: </label>
+                <input readonly type="text" name="historia" id="txtHistoria" placeholder="Esperando calificación...">
+
+                <label for="txtGeogra">Geografía: </label>
+                <input readonly type="text" name="geografia" id="txtGeogra" placeholder="Esperando calificación...">
+
+                <label for="txtCiencia">Ciencia: </label>
+                <input readonly type="text" name="ciencia" id="txtCiencia" placeholder="Esperando calificación...">
+            </fieldset>
+        </section>
+
+        <section class="container3">
+            <fieldset>
+                <legend>
+                    Promedio
+                </legend>
+
+                <label for="txtPromedio">Promedio: </label>
+                <input readonly type="text" name="promedio" id="txtPromedio" placeholder="Esperando promedio...">
+                
+                <label for="txtSuma"> Suma de Calificaciones: </label>
+                <input readonly type="text" name="sumaCalificaciones" id="txtSuma" placeholder="Esperando suma...">
+            
+                <button type="button" id="btnPromedio">Calcular</button>
+                <button type="reset" id="btnEliminar">Limpiar campos</button>
+            </fieldset>
+        </section>
+    </main>
+</body>
+</html>

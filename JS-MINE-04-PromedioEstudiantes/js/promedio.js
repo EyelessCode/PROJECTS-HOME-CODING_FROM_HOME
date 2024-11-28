@@ -1,4 +1,4 @@
-import { listEstudiantes } from './BD.js';
+// import { listEstudiantes } from './BD.js';
 
 /* export function calculcarCalificaciones() {
     let suma=0;

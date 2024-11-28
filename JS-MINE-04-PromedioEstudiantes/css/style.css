@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+}
+
+main{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.wrapper{
+    margin: 30px;
+
+}
+
+.imageFixed, img{
+    width: 30vw;
+    border-radius: 60px;
+}
+
+img:hover{
+    transform: scale(1.1);
+}
+
+.container{
+    display: flex;
+    flex-flow: column wrap;
+    height: 100%;
+    padding: 10px;
+
+}
+
+.container2{
+    display: flex;
+    flex-flow: column wrap;
+    padding: 10px;
+    height: 100%;
+
+
+}
+
+.container3{
+    display: flex;
+    flex-flow: column wrap;
+    padding: 10px;
+    height: 100%;
+
+}
+
+fieldset{
+    border-radius: 18px;
+    transition: all 0.3s ease;
+}
+
+fieldset:hover{
+    border-color: red;
+    transform: scale(1.1);
+    background-color: crimson;
+    box-shadow: 0 0 18px crimson;
+}
+
+label{
+    display: inline-block;
+    padding: 10px 0 0;
+}
+
+input{
+    border-radius: 18px;
+    font-size: 100%;
+}
+
+legend{
+    font-size: 150%;
+    font-weight: bolder;
+}
+
+button{
+    margin: 10px 0;
+    border-radius: 50px;
+    padding: 5% 0;
+    transition: all 0.3s ease;
+}
+
+#btnPromedio:hover{
+    background-color: darkgoldenrod;
+    border-color: darkgoldenrod;
+}
+
+#btnEliminar:hover{
+    background-color: indigo;
+    border-color: indigo;
+    font-weight: bolder;
+}

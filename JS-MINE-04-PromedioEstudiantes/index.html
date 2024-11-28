@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="TU PUTAMADRE">
+    <link rel="stylesheet" href="css/style.css">
     <script defer type="module" src="js/script.js"></script>
     <title>Calcular</title>
 </head>
@@ -15,10 +16,13 @@
     </header>
 
     <main>
-        <section>
+        <div class="imageFixed">
+            <img id="imgFixed" src="" alt="">
+        </div>
+        <section class="wrapper">
             <fieldset class="container">
                 <legend>
-                    ESTUDIANTES
+                    Estudiantes
                 </legend>
 
                 <label for="cmbEstudiante">Nombre: </label>
@@ -34,7 +38,7 @@
             </fieldset>
         </section>
 
-        <section>
+        <section class="wrapper">
             <fieldset class="container2">
                 <legend>
                     Calificaciones
@@ -60,8 +64,8 @@
             </fieldset>
         </section>
 
-        <section class="container3">
-            <fieldset>
+        <section class="wrapper">
+            <fieldset class="container3">
                 <legend>
                     Promedio
                 </legend>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cristhian Guedes">
+    <title>Calculadora de Préstamos</title>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Préstamos</h1>
+    </header>
+
+    <main>
+        <section>
+            <fieldset>
+                <legend>Datos del Préstamo</legend>
+                <label for="monto">Monto del Préstamo:</label>
+                <input type="number" id="monto" placeholder="Monto en USD">
+
+                <label for="tasaInteres">Tasa de Interés Anual (%):</label>
+                <input type="number" id="tasaInteres" placeholder="Tasa de interés">
+
+                <label for="periodo">Período (en meses):</label>
+                <input type="number" id="periodo" placeholder="Período en meses">
+
+                <button id="calcular">Calcular</button>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <legend>Resultados</legend>
+                <p>Pago Mensual: <span id="pagoMensual"></span></p>
+                <p>Interés Total Pagado: <span id="interesTotal"></span></p>
+            </fieldset>
+        </section>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

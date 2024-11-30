@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="EyelessCode">
+        <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+        <title>Tour EC | EyelessCode</title>
+    </head>
+    <body>
+        <nav>
+            <a href>x</a>
+            <a href>d</a>
+            <a href>f</a>
+            <a href>h</a>
+        </nav>
+        <header>
+            <h1>
+                TOUR IN
+                <span id="SYellow">ECU</span><span id="SBlue">AD</span><span
+                    id="SRed">OR</span>
+                -
+                <span>W</span>E<span>L</span><span>C</span>O<span>M</span>E
+            </h1>
+        </header>
+        <main>
+            <section>
+                <fieldset>
+                    <legend>
+                        Visits
+                    </legend>
+
+                    <label for="txtVisit">User visits: </label>
+                    <input readonly type="text" name="visits" id="txtVisit"
+                        size="5" value="150">
+
+                    <label for="txtVisit">Datetime: </label>
+                    <input readonly type="datetime" name="visits" id="txtVisit"
+                        size="12" value="28/11/2024">
+                </fieldset>
+            </section>
+
+            <section>
+                <fieldset>
+                    <legend>
+                        Customer data
+                    </legend>
+
+                    <label for="txtCode">Code: </label>
+                    <input type="text" name="code" id="txtCode"
+                        placeholder="Input code...">
+
+                    <button type="button" id="btnSearch">
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </button>
+
+                    <label for="txtIc">IC: </label>
+                    <input readonly type="text" name="ic" id="txtIc"
+                        placeholder="Waiting IC...">
+
+                    <label for="txtNames">Names: </label>
+                    <input readonly type="text" name="names" id="txtNames"
+                        placeholder="Waiting names...">
+                </fieldset>
+            </section>
+
+            <section>
+                <fieldset>
+                    <legend>
+                        Tour sities
+                    </legend>
+
+                    <label for="cmbSities">Sities: </label>
+                    <select name="tour" id="cmbSities">
+                        <option value selected disabled>-- PICK AN OPTION
+                            --</option>
+                    </select>
+
+                    <label for="txtKms">Travel in KMs: </label>
+                    <input readonly type="text" name="kms" id="txtKms"
+                        placeholder="Waiting KM...">
+
+                    <label for="txtCost">Cost: </label>
+                    <input readonly type="text" name="cost" id="txtCost"
+                        placeholder="Waiting cost...">
+                </fieldset>
+            </section>
+
+            <section>
+                <fieldset>
+                    <legend>
+                        Payment
+                    </legend>
+
+                    <label for="txtPeople">People: </label>
+                    <input type="text" name="people" id="txtPeople"
+                        placeholder="Input an amount...">
+
+                    <label for="txtSubtotal">Subtotal: </label>
+                    <input readonly type="text" name="subtotal" id="txtSubtotal"
+                        placeholder="Waiting subtotal...">
+
+                    <label for="txtIva">IVA: </label>
+                    <input readonly type="text" name="iva" id="txtIva"
+                        value="0.15">
+
+                    <label for="txtTotal">Total: </label>
+                    <input readonly type="text" name="total" id="txtTotal"
+                        placeholder="Waiting total...">
+
+                    <div class="buttons">
+                        <button type="button"
+                            id="btnCalculate">Calculate</button>
+                        <button type="button" id="btnClear">Clear</button>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                --
+                <span>E</span>y<span>e</span>l<span>e</span>s<span>s</span>C<span>o</span>d<span>e</span>
+                &copy; --
+            </p>
+        </footer>
+    </body>
+</html>

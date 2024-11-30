@@ -27,31 +27,33 @@
             </h1>
         </header>
         <main>
-            <section>
-                <fieldset>
+            <section class="bodyContainer X">
+                <fieldset class="visits">
                     <legend>
                         Visits
                     </legend>
 
-                    <label for="txtVisit">User visits: </label>
-                    <input readonly type="text" name="visits" id="txtVisit"
-                        size="5" value="150">
+                    <label for="txtVisit">User visits: 
+                        <input readonly type="text" name="visits" id="txtVisit" size="5" value="150">
+                    </label>
+                    
 
-                    <label for="txtVisit">Datetime: </label>
-                    <input readonly type="datetime" name="visits" id="txtVisit"
-                        size="12" value="28/11/2024">
+                    <label for="txtVisit">Datetime: 
+                        <input readonly type="datetime" name="visits" id="txtVisit" size="12" value="28/11/2024">
+                    </label>
+                    
                 </fieldset>
             </section>
 
-            <section>
-                <fieldset>
+            <section class="bodyContainer Y">
+                <fieldset class="customer">
                     <legend>
                         Customer data
                     </legend>
 
-                    <label for="txtCode">Code: </label>
-                    <input type="text" name="code" id="txtCode"
-                        placeholder="Input code...">
+                    <label for="txtCode">Code: 
+                        <input type="text" name="code" id="txtCode" placeholder="Input code...">
+                    </label>
 
                     <button type="button" id="btnSearch">
                         <span class="material-symbols-outlined">
@@ -59,18 +61,19 @@
                         </span>
                     </button>
 
-                    <label for="txtIc">IC: </label>
-                    <input readonly type="text" name="ic" id="txtIc"
-                        placeholder="Waiting IC...">
-
-                    <label for="txtNames">Names: </label>
-                    <input readonly type="text" name="names" id="txtNames"
-                        placeholder="Waiting names...">
+                    <label for="txtIc">IC: 
+                        <input readonly type="text" name="ic" id="txtIc" placeholder="Waiting IC...">
+                    </label>
+                    
+                    <label for="txtNames">Names: 
+                        <input readonly type="text" name="names" id="txtNames" placeholder="Waiting names...">
+                    </label>
+                    
                 </fieldset>
             </section>
 
-            <section>
-                <fieldset>
+            <section class="bodyContainer Z">
+                <fieldset class="sities">
                     <legend>
                         Tour sities
                     </legend>
@@ -91,8 +94,8 @@
                 </fieldset>
             </section>
 
-            <section>
-                <fieldset>
+            <section class="bodyContainer C">
+                <fieldset class="payment">
                     <legend>
                         Payment
                     </legend>

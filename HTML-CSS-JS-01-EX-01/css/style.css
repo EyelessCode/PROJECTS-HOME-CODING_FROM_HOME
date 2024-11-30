@@ -1,0 +1,123 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+}
+
+.bodyContainer{
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .X{
+    align-items: center;
+} */
+
+.X>.visits{
+    /* Aquí iba a ponerlo en forma de columna,
+    pero no es aquí sino en payment
+    para el elemento visits */
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.visits>legend~label{
+    padding: 0 15px;
+}
+
+/* .visits>legend{
+    transition: color 0.3s ease;
+}
+
+.visits>legend:hover{
+    color: red;
+} */
+
+.X>fieldset{
+    width: 50%;
+    transition: all 0.3s ease;
+    font-size: 110%;
+}
+
+.X>fieldset:hover{
+    transform: scale(1.1);
+    margin-left: 20px;
+    box-shadow: 0 0 18px blue;
+    background-color: yellow;
+    color: red;
+}
+
+header>h1{
+    transition: color 0.3s ease;
+    color: magenta;
+    text-align: center;
+}
+
+header>h1:hover{
+    color: black;
+}
+
+header>h1>#SYellow{
+    color: rgb(215, 215, 0);
+}
+
+header>h1>#SBlue{
+    color: blue;
+}
+
+header>h1>#SRed{
+    color: red;
+}
+
+header>h1>span{
+    color: aqua;
+}
+
+fieldset>legend{
+    font-size: 200%;
+    text-align: center;
+}
+
+.Y>.customer{
+    display: flex;
+    flex-flow: column wrap;
+
+    width: 25%;
+    transition: all 0.3s ease;
+    font-size: 110%;
+    justify-content: center;
+    padding: 20px;
+}
+
+.customer>label{
+    padding: 15px 0;
+}
+
+.Y>fieldset:hover{
+    transform: scale(1.1);
+    margin-left: 20px;
+    box-shadow: 0 0 18px blue;
+    background-color: yellow;
+    color: red;
+}
+
+footer>p>span{
+    color: blueviolet;
+}
+
+footer>p{
+    transition:  color 0.3s ease;
+    text-align: center;
+    font-size: 150%;
+}
+
+footer>p:hover{
+    color: darkcyan;
+}

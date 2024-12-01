@@ -149,6 +149,8 @@ fieldset>legend{
     color: blue;
     transition: all 0.3s ease;
     text-align: center;
+    cursor: pointer;
+
 }
 
 .customer>label>button:active{
@@ -173,10 +175,12 @@ div>button{
 div>button:hover,label>select:hover{
     background-color: gray;
     color: blue;
+    cursor: pointer;
 }
 
 label>select{
     border-radius: 25px;
+    text-align: center;
 }
 
 div>button:active,label>select:active{
@@ -184,7 +188,8 @@ div>button:active,label>select:active{
     background-color: blue;
 }
 
-#txtIva{
+#txtIva,#txtKms,#txtCost,#txtSubtotal,
+#txtTotal{
     text-align: center;
 }
 

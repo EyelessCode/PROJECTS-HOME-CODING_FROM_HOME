@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     /* background-color: bisque; */
@@ -11,27 +11,27 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-header>h1:hover{
+header>h1:hover {
     color: black;
 }
 
-header>h1>#SYellow{
+header>h1>#SYellow {
     color: rgb(215, 215, 0);
 }
 
-header>h1>#SBlue{
+header>h1>#SBlue {
     color: blue;
 }
 
-header>h1>#SRed{
+header>h1>#SRed {
     color: red;
 }
 
-header>h1>span{
+header>h1>span {
     color: aqua;
 }
 
-.bodyContainer{
+.bodyContainer {
     padding: 10px;
     display: flex;
     flex-flow: column wrap;
@@ -43,7 +43,7 @@ header>h1>span{
     align-items: center;
 } */
 
-.X>.visits{
+.X>.visits {
     /* Aquí iba a ponerlo en forma de columna,
     pero no es aquí sino en payment
     para el elemento visits */
@@ -54,11 +54,11 @@ header>h1>span{
     font-size: 110%;
 }
 
-.visits>legend~label{
+.visits>legend~label {
     padding: 0 15px;
 }
 
-.visits>label>input{
+.visits>label>input {
     text-align: center;
     border-radius: 25px;
     border-color: black;
@@ -77,8 +77,8 @@ header>h1>span{
     color: red;
 } */
 
-.X>fieldset,.Y>fieldset,
-.Z>fieldset, .C>fieldset{
+.X>fieldset, .Y>fieldset,
+.Z>fieldset, .C>fieldset {
     width: 50%;
     transition: all 0.3s ease;
     border-color: yellow;
@@ -86,8 +86,8 @@ header>h1>span{
     border-radius: 25px;
 }
 
-.X>fieldset:hover,.Y>fieldset:hover,
-.Z>fieldset:hover, .C>fieldset:hover{
+.X>fieldset:hover, .Y>fieldset:hover,
+.Z>fieldset:hover, .C>fieldset:hover {
     transform: scale(1.1);
     margin-left: 20px;
     box-shadow: 0 0 18px blue;
@@ -97,20 +97,20 @@ header>h1>span{
     color: red;
 }
 
-header>h1{
+header>h1 {
     transition: color 0.3s ease;
     color: magenta;
     text-align: center;
 }
 
-fieldset>legend{
+fieldset>legend {
     font-size: 200%;
     text-align: center;
     font-weight: bolder;
 }
 
-.Y>.customer,.Z>.sities,
-.C>.payment{
+.Y>.customer, .Z>.sities,
+.C>.payment {
     display: flex;
     flex-flow: column wrap;
 
@@ -119,14 +119,14 @@ fieldset>legend{
     font-size: 110%;
     justify-content: center;
     align-content: center;
-    
+
     padding: 20px;
     margin: 25px;
     text-align: center;
 }
 
-.customer>label,.payment>label,
-.sities>label{
+.customer>label, .payment>label,
+.sities>label {
     display: block;
     padding: 15px;
     align-content: center;
@@ -136,14 +136,14 @@ fieldset>legend{
 
 .customer>label>input,
 .payment>label>input,
-.sities>label>input{
+.sities>label>input {
     border-radius: 25px;
     border-color: black;
     border-style: hidden;
     padding: 10px 25px;
 }
 
-.customer>label>button{
+.customer>label>button {
     border-style: hidden;
     background-color: transparent;
     color: blue;
@@ -153,43 +153,43 @@ fieldset>legend{
 
 }
 
-.customer>label>button:active{
+.customer>label>button:active {
     border-style: solid;
     color: yellow;
     background-color: blue;
 
 }
 
-div{
+div {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
 }
 
-div>button{
+div>button {
     padding: 10px 25px;
     border-radius: 45px;
     transition: all 0.3s ease;
 }
 
-div>button:hover,label>select:hover{
+div>button:hover, label>select:hover {
     background-color: gray;
     color: blue;
     cursor: pointer;
 }
 
-label>select{
+label>select {
     border-radius: 25px;
     text-align: center;
 }
 
-div>button:active,label>select:active{
+div>button:active, label>select:active {
     color: yellow;
     background-color: blue;
 }
 
-#txtIva,#txtKms,#txtCost,#txtSubtotal,
-#txtTotal{
+#txtIva, #txtKms, #txtCost, #txtSubtotal,
+#txtTotal,#txtPeople {
     text-align: center;
 }
 
@@ -229,22 +229,22 @@ div>button:active,label>select:active{
 } */
 
 
-footer>p>span{
+footer>p>span {
     color: blueviolet;
 }
 
-footer>p{
-    transition:  color 0.3s ease;
+footer>p {
+    transition: color 0.3s ease;
     text-align: center;
     font-size: 150%;
     color: white;
 }
 
-footer>p:hover{
+footer>p:hover {
     color: darkcyan;
 }
 
-main~footer{
+main~footer {
     background-color: black;
     border-radius: 50% 50% 0 0;
     padding: 5px;

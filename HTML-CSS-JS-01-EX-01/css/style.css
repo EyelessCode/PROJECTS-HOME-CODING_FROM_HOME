@@ -189,8 +189,12 @@ div>button:active, label>select:active {
 }
 
 #txtIva, #txtKms, #txtCost, #txtSubtotal,
-#txtTotal,#txtPeople {
+#txtTotal,#txtPeople,#txtNames {
     text-align: center;
+}
+
+#txtNames{
+    width: 250px;
 }
 
 /* .sities>label{

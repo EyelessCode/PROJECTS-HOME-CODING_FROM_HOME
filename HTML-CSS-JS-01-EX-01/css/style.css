@@ -1,7 +1,14 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: bisque;
+    /* background-color: bisque; */
+    background-image: url("/images/background.webp");
+    /* background-image: url("/images/background2.webp.webp"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header>h1:hover{
@@ -25,8 +32,6 @@ header>h1>span{
 }
 
 .bodyContainer{
-    width: 100%;
-    margin: 10px;
     padding: 10px;
     display: flex;
     flex-flow: column wrap;
@@ -76,6 +81,9 @@ header>h1>span{
 .Z>fieldset, .C>fieldset{
     width: 50%;
     transition: all 0.3s ease;
+    border-color: yellow;
+    /* backdrop-filter: blur(10px); */
+    border-radius: 25px;
 }
 
 .X>fieldset:hover,.Y>fieldset:hover,
@@ -84,6 +92,8 @@ header>h1>span{
     margin-left: 20px;
     box-shadow: 0 0 18px blue;
     background-color: yellow;
+    border-color: blue;
+
     color: red;
 }
 
@@ -96,6 +106,7 @@ header>h1{
 fieldset>legend{
     font-size: 200%;
     text-align: center;
+    font-weight: bolder;
 }
 
 .Y>.customer,.Z>.sities,
@@ -119,6 +130,8 @@ fieldset>legend{
     display: block;
     padding: 15px;
     align-content: center;
+    font-weight: bolder;
+
 }
 
 .customer>label>input,
@@ -166,7 +179,7 @@ label>select{
     border-radius: 25px;
 }
 
-div>button:active{
+div>button:active,label>select:active{
     color: yellow;
     background-color: blue;
 }
@@ -219,8 +232,15 @@ footer>p{
     transition:  color 0.3s ease;
     text-align: center;
     font-size: 150%;
+    color: white;
 }
 
 footer>p:hover{
     color: darkcyan;
+}
+
+main~footer{
+    background-color: black;
+    border-radius: 50% 50% 0 0;
+    padding: 5px;
 }

@@ -53,13 +53,15 @@
 
                     <label for="txtCode">Code: 
                         <input type="text" name="code" id="txtCode" placeholder="Input code...">
+                    
+                        <button type="button" id="btnSearch">
+                            <span class="material-symbols-outlined">
+                                search
+                            </span>
+                        </button>
                     </label>
 
-                    <button type="button" id="btnSearch">
-                        <span class="material-symbols-outlined">
-                            search
-                        </span>
-                    </button>
+
 
                     <label for="txtIc">IC: 
                         <input readonly type="text" name="ic" id="txtIc" placeholder="Waiting IC...">
@@ -78,19 +80,25 @@
                         Tour sities
                     </legend>
 
-                    <label for="cmbSities">Sities: </label>
-                    <select name="tour" id="cmbSities">
-                        <option value selected disabled>-- PICK AN OPTION
-                            --</option>
-                    </select>
+                    <label for="cmbSities">Sities: 
+                        <select name="tour" id="cmbSities">
+                            <option value selected disabled>-- PICK AN OPTION
+                                --</option>
+                        </select>
+                    </label>
 
-                    <label for="txtKms">Travel in KMs: </label>
-                    <input readonly type="text" name="kms" id="txtKms"
+
+                    <label for="txtKms">Travel in KMs: 
+                        <input readonly type="text" name="kms" id="txtKms"
                         placeholder="Waiting KM...">
+                    </label>
 
-                    <label for="txtCost">Cost: </label>
-                    <input readonly type="text" name="cost" id="txtCost"
+
+                    <label for="txtCost">Cost: 
+                        <input readonly type="text" name="cost" id="txtCost"
                         placeholder="Waiting cost...">
+                    </label>
+
                 </fieldset>
             </section>
 
@@ -100,21 +108,25 @@
                         Payment
                     </legend>
 
-                    <label for="txtPeople">People: </label>
-                    <input type="text" name="people" id="txtPeople"
-                        placeholder="Input an amount...">
+                    <label for="txtPeople">People: 
+                        <input type="text" name="people" id="txtPeople"
+                        placeholder="Amount..." size="9">
+                    </label>
 
-                    <label for="txtSubtotal">Subtotal: </label>
-                    <input readonly type="text" name="subtotal" id="txtSubtotal"
-                        placeholder="Waiting subtotal...">
+                    <label for="txtSubtotal">Subtotal: 
+                        <input readonly type="text" name="subtotal" id="txtSubtotal"
+                        placeholder="Subtotal..." size="10">
+                    </label>
 
-                    <label for="txtIva">IVA: </label>
-                    <input readonly type="text" name="iva" id="txtIva"
-                        value="0.15">
+                    <label for="txtIva">IVA: 
+                        <input readonly type="text" name="iva" id="txtIva"
+                        value="0.15" size="4">
+                    </label>
 
-                    <label for="txtTotal">Total: </label>
-                    <input readonly type="text" name="total" id="txtTotal"
-                        placeholder="Waiting total...">
+                    <label for="txtTotal">Total: 
+                        <input readonly type="text" name="total" id="txtTotal"
+                        placeholder="Total..." size="10">
+                    </label>
 
                     <div class="buttons">
                         <button type="button"

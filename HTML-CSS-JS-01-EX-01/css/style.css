@@ -4,6 +4,26 @@ body{
     background-color: bisque;
 }
 
+header>h1:hover{
+    color: black;
+}
+
+header>h1>#SYellow{
+    color: rgb(215, 215, 0);
+}
+
+header>h1>#SBlue{
+    color: blue;
+}
+
+header>h1>#SRed{
+    color: red;
+}
+
+header>h1>span{
+    color: aqua;
+}
+
 .bodyContainer{
     width: 100%;
     margin: 10px;
@@ -26,27 +46,40 @@ body{
     justify-content: center;
     flex-flow: row wrap;
     justify-content: space-around;
+    font-size: 110%;
 }
 
 .visits>legend~label{
     padding: 0 15px;
 }
 
-/* .visits>legend{
-    transition: color 0.3s ease;
+.visits>label>input{
+    text-align: center;
+    border-radius: 25px;
+    border-color: black;
+    border-style: hidden;
 }
 
-.visits>legend:hover{
+/* .visits>label>input:hover{
+    border-color: red;
+} */
+
+/* .visits>legend{
+    transition: color 0.3s ease;
+} */
+
+/* .visits>legend:hover{
     color: red;
 } */
 
-.X>fieldset{
+.X>fieldset,.Y>fieldset,
+.Z>fieldset, .C>fieldset{
     width: 50%;
     transition: all 0.3s ease;
-    font-size: 110%;
 }
 
-.X>fieldset:hover{
+.X>fieldset:hover,.Y>fieldset:hover,
+.Z>fieldset:hover, .C>fieldset:hover{
     transform: scale(1.1);
     margin-left: 20px;
     box-shadow: 0 0 18px blue;
@@ -60,32 +93,13 @@ header>h1{
     text-align: center;
 }
 
-header>h1:hover{
-    color: black;
-}
-
-header>h1>#SYellow{
-    color: rgb(215, 215, 0);
-}
-
-header>h1>#SBlue{
-    color: blue;
-}
-
-header>h1>#SRed{
-    color: red;
-}
-
-header>h1>span{
-    color: aqua;
-}
-
 fieldset>legend{
     font-size: 200%;
     text-align: center;
 }
 
-.Y>.customer{
+.Y>.customer,.Z>.sities,
+.C>.payment{
     display: flex;
     flex-flow: column wrap;
 
@@ -93,20 +107,109 @@ fieldset>legend{
     transition: all 0.3s ease;
     font-size: 110%;
     justify-content: center;
+    align-content: center;
+    
     padding: 20px;
+    margin: 25px;
+    text-align: center;
 }
 
-.customer>label{
-    padding: 15px 0;
+.customer>label,.payment>label,
+.sities>label{
+    display: block;
+    padding: 15px;
+    align-content: center;
 }
 
-.Y>fieldset:hover{
+.customer>label>input,
+.payment>label>input,
+.sities>label>input{
+    border-radius: 25px;
+    border-color: black;
+    border-style: hidden;
+    padding: 10px 25px;
+}
+
+.customer>label>button{
+    border-style: hidden;
+    background-color: transparent;
+    color: blue;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.customer>label>button:active{
+    border-style: solid;
+    color: yellow;
+    background-color: blue;
+
+}
+
+div{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+div>button{
+    padding: 10px 25px;
+    border-radius: 45px;
+    transition: all 0.3s ease;
+}
+
+div>button:hover,label>select:hover{
+    background-color: gray;
+    color: blue;
+}
+
+label>select{
+    border-radius: 25px;
+}
+
+div>button:active{
+    color: yellow;
+    background-color: blue;
+}
+
+#txtIva{
+    text-align: center;
+}
+
+/* .sities>label{
+    display: block;
+    padding: 15px;
+    align-content: center;
+} */
+
+/* .sities>label>input{
+    border-radius: 25px;
+    border-color: black;
+    border-style: hidden;
+    padding: 10px 25px;
+} */
+
+/* .Y>fieldset:hover{
     transform: scale(1.1);
     margin-left: 20px;
     box-shadow: 0 0 18px blue;
     background-color: yellow;
     color: red;
-}
+} */
+
+/* .Z>.sities{
+    display: flex;
+    flex-flow: column wrap;
+
+    width: 25%;
+    transition: all 0.3s ease;
+    font-size: 110%;
+    justify-content: center;
+    align-content: center;
+    
+    padding: 20px;
+    margin: 25px;
+} */
+
 
 footer>p>span{
     color: blueviolet;

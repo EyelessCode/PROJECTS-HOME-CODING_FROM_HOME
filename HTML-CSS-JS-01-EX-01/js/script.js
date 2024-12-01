@@ -68,6 +68,8 @@ btnSearch.addEventListener('click', () => {
         txtNames.value = select.names;
     } else {
         alert('This customer is not in the list');
+        txtIc.value='';
+        txtNames.value='';
     }
 });
 

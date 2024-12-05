@@ -39,11 +39,13 @@ span:hover {
 }
 
 .wrapper {
-    display: flexbox;
+    display: flex;
+    flex-flow: column wrap;
     justify-items: center;
     border-radius: 18px;
     margin: 200px auto;
     justify-content: center;
+    align-items: center;
     width: 450px;
     padding: 25px 0;
     color: white;
@@ -123,8 +125,8 @@ input[type="password"]:focus {
 
 input[type="text"]:hover,
 input[type="password"]:hover {
-    border-color: blueviolet;
-    box-shadow: 0 0 50px blueviolet;
+    border-color: orange;
+    box-shadow: 0 0 50px orange;
     text-shadow: 0 0 2px white;
 
 }

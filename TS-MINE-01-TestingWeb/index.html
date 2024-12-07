@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="EyelessCode">
+    <link rel="stylesheet" href="css/style.css">
     <title>Selecting | EyelessCode</title>
 </head>
 <body>
@@ -19,32 +21,47 @@
                     MENU
                 </legend>
 
-                <div>
+                <div class="container one">
                     <label for="cmbMeal">Meal: </label>
                     <select name="meal" id="cmbMeal">
                         <option value="" disabled selected>-- SELECT AN OPTION --</option>
                     </select>
+                </div>
 
+                <div class="container one-two">
+                    <label for="cmbAditional">Aditional: </label>
+                    <!-- <input readonly type="text" name="aditional" id="txtAditional" placeholder="..." size="40"> -->
+                    <select name="aditional" id="cmbAditional">
+                        <option value="" disabled selected>-- SELECT AN OPTION --</option>
+                    </select>
+                </div>
+
+                <div class="container two">
                     <label for="txtPrice">Price: $</label>
-                    <input readonly type="text" name="price" id="txtPrice" placeholder="Price..." size="7">
-
-                    <label for="txtAditional">Aditional: </label>
-                    <input readonly type="text" name="aditional" id="txtAditional" placeholder="Aditional...">
+                    <input readonly type="text" name="price" id="txtPrice" placeholder="..." size="7">
+                </div>
                     
+                <div class="container two-three">
                     <label for="txtIva">IVA: $</label>
-                    <input readonly type="text" name="iva" id="txtIva" placeholder="IVA..." size="7">
+                    <input readonly type="text" name="iva" id="txtIva" placeholder="..." size="7">
+                </div>
                     
+                <div class="container three">
                     <label for="txtSubtotal">Subtotal: $</label>
-                    <input readonly type="text" name="subtotal" id="txtSubtotal" placeholder="Subtotal..." size="7">
+                    <input readonly type="text" name="subtotal" id="txtSubtotal" placeholder="..." size="7">
+                </div>
                     
+                <div class="container three-four">
                     <label for="txtTotal">Total: $</label>
-                    <input readonly type="text" name="total" id="txtTotal" placeholder="Total..." size="7">
+                    <input readonly type="text" name="total" id="txtTotal" placeholder="..." size="7">
                 </div>
             </fieldset>
 
             <div>
-                <button type="button">Calculation</button>
-                <button type="reset">Clean</button>
+                <button type="button" id="btnCalc">
+                    <span class="buttonStyle">Calculation</span>
+                </button>
+                <button type="reset" id="btnClean">Clean</button>
             </div>
         </section>
     </main>

@@ -1,0 +1,282 @@
+body {
+    box-sizing: border-box;
+    font-size: 1.2em;
+    background-color: rgba(216, 41, 41, 0.566);
+    margin: 0;
+}
+
+header{
+    background-image: url('/images/banner.webp');
+    background-repeat: no-repeat;
+    padding: 30px;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+header>h1{
+    font-weight: bolder;
+    transition: transform 0.3s,
+    color 0.3s,
+    text-decoration 0.3s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
+    text-align: center;
+}
+
+header>h1:hover{
+    transform: scale(1.6);
+    color: rgb(255, 0, 0);
+    /* text-decoration: underline; */
+}
+
+
+main>section {
+    margin: 20px;
+    padding: 20px;
+
+}
+
+section>fieldset {
+    display: grid;
+    margin: 10px auto 20px;
+    padding: 10px;
+    width: 30%;
+    transition: transform 0.3s,
+        background-color 0.3s ease-in-out;
+    border-color: brown;
+
+}
+
+section>fieldset:hover {
+    transform: scale(1.1);
+    background-color: chocolate;
+}
+
+fieldset>legend {
+    border: 2px solid;
+    border-color: brown;
+    background-color: coral;
+    margin: 0 auto;
+}
+
+input,
+select {
+    text-align: center;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    border-color: brown;
+    font-weight: bolder;
+}
+
+input:hover,
+select:hover {
+    background-color: rgb(242, 140, 140);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.one {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.one-two {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.two {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.two-three {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.three {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.three-four {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+section>div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div>button {
+    margin: 20px;
+}
+
+/* From Uiverse.io by namecho */
+#btnClean,
+#btnClean::after {
+    padding: 16px 20px;
+    font-size: 18px;
+    background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 1;
+    box-shadow: 6px 0px 0px #00e6f6;
+    outline: transparent;
+    position: relative;
+}
+
+#btnClean::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    content: "HOVER ME";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+    text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+    clip-path: var(--slice-0);
+}
+
+#btnClean:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
+
+/* From Uiverse.io by Voxybuns */
+#btnCalc {
+    /* Variables */
+    --button_radius: 0.75em;
+    --button_color: #e8e8e8;
+    --button_outline_color: #000000;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+}
+
+.buttonStyle {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.55em 1.3em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+}
+
+#btnCalc:hover .buttonStyle {
+    /* Pull the button upwards when hovered */
+    transform: translateY(-0.33em);
+}
+
+#btnCalc:active .buttonStyle {
+    /* Push the button downwards when pressed */
+    transform: translateY(0);
+}

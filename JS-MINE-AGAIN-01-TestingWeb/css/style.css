@@ -68,6 +68,10 @@ select {
     font-weight: bolder;
 }
 
+#cmbMeal{
+    width: 30vw;
+}
+
 input:hover,
 select:hover {
     background-color: rgb(242, 140, 140);

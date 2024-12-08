@@ -1,16 +1,16 @@
 export function ivaEnter(price) {
-    // iva=0.15
-    let result=price*0.15
+    let iva=0.15
+    let result=price*iva
     return result;
 }
 
-export function subtotalEnter(price,iva) {
-    let result=price+iva
+export function subtotalEnter(price,ivaEnter) {
+    let result=price+ivaEnter
     return result;
 }
 
-export function totalEnter(subtotalEnter,iva) {
-    let result=subtotalEnter+iva;
+export function totalEnter(subtotalEnter,ivaEnter) {
+    let result=subtotalEnter+ivaEnter;
     return result;
 
 }

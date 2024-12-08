@@ -1,4 +1,4 @@
-import {mealList} from './BD.js';
+import {mealList} from './BD';
 
 const cmbMeal=document.getElementById('cmbMeal') as HTMLSelectElement;
 const cmbAditional=document.getElementById('cmbAditional');

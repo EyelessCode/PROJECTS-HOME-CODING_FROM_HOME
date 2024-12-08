@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.aditionalThreeList = exports.aditionalTwoList = exports.aditionalOneList = exports.mealList = void 0;
-exports.mealList = [
+export const mealList = [
     {
         id: 1,
         name: 'Burger with chicken, meat, egg, tomato and French fries',
@@ -19,7 +16,7 @@ exports.mealList = [
         price: 4.25,
     }
 ];
-exports.aditionalOneList = [
+export const aditionalOneList = [
     {
         id: 1,
         name: 'Giant Coca Cola with refillable cup',
@@ -36,7 +33,7 @@ exports.aditionalOneList = [
         priceAditional: 3.50
     }
 ];
-exports.aditionalTwoList = [
+export const aditionalTwoList = [
     {
         id: 1,
         name: '2 medium fries and a medium drink',
@@ -53,7 +50,7 @@ exports.aditionalTwoList = [
         priceAditional: 4.75
     }
 ];
-exports.aditionalThreeList = [
+export const aditionalThreeList = [
     {
         id: 1,
         name: 'An additional pizza with a medium drink',

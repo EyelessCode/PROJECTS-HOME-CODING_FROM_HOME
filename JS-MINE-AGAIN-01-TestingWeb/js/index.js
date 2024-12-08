@@ -30,12 +30,29 @@ cmbMeal.addEventListener('change',()=>{
     let subtotal=parseFloat(price+iva).toFixed(2);
     let total=parseFloat(subtotal+iva).toFixed(2); */
     let iva=ivaEnter(price);
-    let subtotal=subtotalEnter(price,iva);
-    let total=totalEnter(subtotal,iva);
+    // let subtotal=subtotalEnter(price,iva);
+    // let total=subtotal;
     txtPrice.value=parseFloat(price).toFixed(2);
     txtIva.value=parseFloat(iva).toFixed(2);
-    txtSubtotal.value=parseFloat(subtotal).toFixed(2);
-    txtTotal.value=parseFloat(total).toFixed(2);
+    // txtSubtotal.value=parseFloat(subtotal).toFixed(2);
+    // txtTotal.value=parseFloat(total).toFixed(2);
+});
+
+txtPrice.addEventListener('input',()=>{
+    let i=cmbMeal.selectedIndex
+    let code=cmbMeal.options[i].value
+    let mealSelection=mealList.find((meal)=>meal.id===parseInt(code));
+
+    if (txtPrice.value>1) {
+        btnCalc.disabled=false;
+        alert('hoal')
+        btnCalc.addEventListener('click',()=>{
+            
+        });
+    }else{
+        btnCalc.disabled=true;
+    }
+
 });
 
 btnClean.addEventListener('click',()=>{

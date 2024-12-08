@@ -1,4 +1,5 @@
-import {mealList} from './BD.js';
+import { mealList,aditionalOneLis,aditionalTwoList,aditionalThreeList } from './BD.js';
+import {ivaEnter,subtotalEnter,totalEnter} from './math.js';
 
 const cmbMeal=document.getElementById('cmbMeal');
 const cmbAditional=document.getElementById('cmbAditional');
@@ -12,10 +13,36 @@ const btnClean=document.getElementById('btnClean');
 window.addEventListener('DOMContentLoaded',()=>{
     mealList.forEach((meal)=>{
         let option=document.createElement('option');
-        option.value=String(meal.id);
+        option.value=meal.id;
         option.textContent=meal.name;
 
         cmbMeal.appendChild(option);
     });
 });
 
+cmbMeal.addEventListener('change',()=>{
+    let i=cmbMeal.selectedIndex
+    let code=cmbMeal.options[i].value
+    let mealSelection=mealList.find((meal)=>meal.id===parseInt(code));
+
+    let price=parseFloat(mealSelection.price).toFixed(2);
+/*     let iva=parseFloat(price*0.15).toFixed(2);
+    let subtotal=parseFloat(price+iva).toFixed(2);
+    let total=parseFloat(subtotal+iva).toFixed(2); */
+    let iva=ivaEnter(price);
+    let subtotal=subtotalEnter(price,iva);
+    let total=totalEnter(subtotal,iva);
+    txtPrice.value=parseFloat(price).toFixed(2);
+    txtIva.value=parseFloat(iva).toFixed(2);
+    txtSubtotal.value=parseFloat(subtotal).toFixed(2);
+    txtTotal.value=parseFloat(total).toFixed(2);
+});
+
+btnClean.addEventListener('click',()=>{
+    cmbMeal.value='';
+    cmbAditional.value='';
+    txtPrice.value='';
+    txtIva.value='';
+    txtSubtotal.value='';
+    txtTotal.value='';
+})

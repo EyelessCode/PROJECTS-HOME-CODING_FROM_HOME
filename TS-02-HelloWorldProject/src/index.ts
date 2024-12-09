@@ -151,3 +151,18 @@ for (let entry of tes) {
 }
 // APPLE
 // ORANGE
+// MANGO
+
+/**
+ * ! It didn't keep here but, the 'Array' has methods.
+ * ! These methods are:
+ * ! PUSH(): Set/insert in its storage your value, like setting it in the list but as last.
+ * ! POP(): Remove your last insert. If ypu 'push('BANANA') and you pop(),
+ * !    the element 'BANANA' will remove.
+ * ! SHIFT(): Get the first value in the storage (you can print it) and remove.
+ * ! UNSHIFT(): Is the same with 'push()' but this set/insert in the start and no in the last.
+ * ! INDEXOF(): You can search an element.
+ * ! REVERSED(): Set the list but reversed
+ * ! SORT(): The elements will sort out.
+ * ! JOIN(): This will make a convertion as String if you put a ','.
+ */

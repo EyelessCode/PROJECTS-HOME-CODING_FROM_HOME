@@ -86,3 +86,46 @@ for (let x in list4) {
 for (let y of list4) {
     console.log(y); // “1”, “2”, “3”
 }
+
+let map = new Map([
+    [ 'A', 1 ],
+    [ 'B', 2 ],
+    [ 'C', 3 ]
+]);
+
+map.get('A'); //1
+map.has('A'); //true
+map.delete('A'); //true
+console.log(map.size) //2 
+map.clear();
+console.log(map.size); //0
+
+let pam = new Map([
+    [ 'ES', 1 ],
+    [ 'EN', 2 ],
+    [ 'IT', 3 ]
+]);
+for (let key of pam.keys()) {
+    console.log(key);
+}
+// ES
+// EN 
+// IT
+for (let value of pam.values()) {
+    console.log(value);
+}
+// 1
+// 2
+// 3
+for (let entry of pam.entries()) {
+    console.log(entry[0], entry[1]);
+}
+// “ES” 1
+// “EN” 2
+// “IT” 3
+for (let [key, value] of pam.entries()) {
+    console.log(key, value);
+}
+// “ES” 1
+// “EN” 2
+// “IT” 3

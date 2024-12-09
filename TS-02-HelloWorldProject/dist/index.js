@@ -69,4 +69,32 @@ for (let x in list4) {
 for (let y of list4) {
     console.log(y);
 }
+let map = new Map([
+    ['A', 1],
+    ['B', 2],
+    ['C', 3]
+]);
+map.get('A');
+map.has('A');
+map.delete('A');
+console.log(map.size);
+map.clear();
+console.log(map.size);
+let pam = new Map([
+    ['ES', 1],
+    ['EN', 2],
+    ['IT', 3]
+]);
+for (let key of pam.keys()) {
+    console.log(key);
+}
+for (let value of pam.values()) {
+    console.log(value);
+}
+for (let entry of pam.entries()) {
+    console.log(entry[0], entry[1]);
+}
+for (let [key, value] of pam.entries()) {
+    console.log(key, value);
+}
 //# sourceMappingURL=index.js.map

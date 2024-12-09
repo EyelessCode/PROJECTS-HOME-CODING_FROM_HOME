@@ -129,3 +129,25 @@ for (let [key, value] of pam.entries()) {
 // “ES” 1
 // “EN” 2
 // “IT” 3
+
+let set = new Set(['APPLE', 'ORANGE', 'MANGO']);
+set.has('APPLE') // true
+set.delete('APPLE')
+set.size // 2
+set.add('ORANGE');
+//Orange already exits, so it isn’t added
+//it returns the original Set, so you can check ‘size’
+console.log(set.size) // 2
+set.clear();
+console.log(set.size) // 0
+
+let tes = new Set();
+tes.add('APPLE')
+tes.add('ORANGE')
+tes.add('MANGO');
+//let tes:Set<String> = new Set() would be strongly typed
+for (let entry of tes) {
+    console.log(entry);
+}
+// APPLE
+// ORANGE

@@ -97,4 +97,19 @@ for (let entry of pam.entries()) {
 for (let [key, value] of pam.entries()) {
     console.log(key, value);
 }
+let set = new Set(['APPLE', 'ORANGE', 'MANGO']);
+set.has('APPLE');
+set.delete('APPLE');
+set.size;
+set.add('ORANGE');
+console.log(set.size);
+set.clear();
+console.log(set.size);
+let tes = new Set();
+tes.add('APPLE');
+tes.add('ORANGE');
+tes.add('MANGO');
+for (let entry of tes) {
+    console.log(entry);
+}
 //# sourceMappingURL=index.js.map

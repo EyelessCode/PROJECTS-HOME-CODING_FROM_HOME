@@ -20,25 +20,61 @@ window.addEventListener('DOMContentLoaded',()=>{
     });
 });
 
-cmbMeal.addEventListener('change',()=>{
-    let i=cmbMeal.selectedIndex
-    let code=cmbMeal.options[i].value
+/* cmbMeal.addEventListener('change',()=>{
+    alert(`se está ejecunado...`);
+    let i=cmbMeal.selectedIndex;
+    let code=cmbMeal.options[i].value;
     let mealSelection=mealList.find((meal)=>meal.id===parseInt(code));
 
-    let price=parseFloat(mealSelection.price).toFixed(2);
-/*     let iva=parseFloat(price*0.15).toFixed(2);
-    let subtotal=parseFloat(price+iva).toFixed(2);
-    let total=parseFloat(subtotal+iva).toFixed(2); */
-    let iva=ivaEnter(price);
-    // let subtotal=subtotalEnter(price,iva);
-    // let total=subtotal;
-    txtPrice.value=parseFloat(price).toFixed(2);
+
+    txtPrice.value=parseFloat(mealSelection.price);
+}); */
+
+// const mealCombo=
+cmbMeal.addEventListener('change',()=>{
+    let i=cmbMeal.selectedIndex;
+    let code=cmbMeal.options[i].value;
+    let mealSelection=mealList.find((meal)=>meal.id===parseInt(code));
+    let iva=ivaEnter(mealSelection.price).toFixed(2);
+    
     txtIva.value=parseFloat(iva).toFixed(2);
-    // txtSubtotal.value=parseFloat(subtotal).toFixed(2);
-    // txtTotal.value=parseFloat(total).toFixed(2);
+    txtPrice.value=parseFloat(mealSelection.price).toFixed(2);
+    // alert(`se está ejecunado...`);
 });
 
-txtPrice.addEventListener('input',()=>{
+// const buttonCalc=
+btnCalc.addEventListener('click',()=>{
+    // console.log(`hoal`)
+/*     let i=cmbMeal.selectedIndex;
+    let code=cmbMeal.options[i].value;
+    let mealSelection=mealList.find((meal)=>meal.id===parseInt(code)); */
+    
+    // let price=parseFloat(mealSelection.price).toFixed(2);
+    let price=Number(txtPrice.value);
+    if (price!==0) {
+        let ivaa=Number(txtIva.value);
+        // let iva=ivaEnter(price).toFixed(2);
+        let subtotal=Number(subtotalEnter(price,ivaa));
+        let total=Number(totalEnter(subtotal,ivaa));
+    
+        txtPrice.value=price;
+        txtIva.value=Number(ivaa);
+        txtSubtotal.value=parseFloat(subtotal).toFixed(2);
+        txtTotal.value=parseFloat(total).toFixed(2);
+        // console.log(`El precio: ${price} el iva: ${ivaa} el subtotal: ${subtotal} el total: ${total}`);
+
+        if(subtotal!==0){
+            cmbAditional.addEventListener('change',()=>{
+            })
+        }
+    }else{
+        alert(`Select a meal to calculate the total price`);
+    }
+});
+
+
+
+/* txtPrice.addEventListener('input',()=>{
     let i=cmbMeal.selectedIndex
     let code=cmbMeal.options[i].value
     let mealSelection=mealList.find((meal)=>meal.id===parseInt(code));
@@ -53,7 +89,7 @@ txtPrice.addEventListener('input',()=>{
         btnCalc.disabled=true;
     }
 
-});
+}); */
 
 btnClean.addEventListener('click',()=>{
     cmbMeal.value='';

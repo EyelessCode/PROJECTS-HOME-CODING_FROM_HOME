@@ -68,7 +68,7 @@ select {
     font-weight: bolder;
 }
 
-#cmbMeal{
+#cmbMeal,#cmbAditional{
     width: 30vw;
 }
 
@@ -80,7 +80,7 @@ select:hover {
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
     justify-content: center;
     align-items: center;
     gap: 15px;
@@ -139,6 +139,16 @@ select:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+}
+
+.four{
+    grid-column: 1/22;
+    grid-row: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 20px;
 }
 

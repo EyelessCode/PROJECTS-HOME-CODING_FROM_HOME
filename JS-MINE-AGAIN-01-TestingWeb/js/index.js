@@ -1,6 +1,7 @@
 import { mealList,aditionalOneList,aditionalTwoList,aditionalThreeList } from './BD.js';
 import {aditionalIvaEnter,aditionalMealEnter,aditionalSubtotalEnter,aditionalTotalEnter,ivaEnter,subtotalEnter,totalEnter} from './math.js';
-import {populateAditionalOptions} from '../js/repository/aditionalOptionsRepository.js';
+import {populateAditionalOptions,aditionalEvent} from './repository/aditionalRepository.js';
+// import {populateAditionalOptions} from './repository/';
 
 const cmbMeal=document.getElementById('cmbMeal');
 const cmbAditional=document.getElementById('cmbAditional');
@@ -34,6 +35,8 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 // const mealCombo=
 cmbMeal.addEventListener('change',()=>{
+    txtSubtotal.value='';
+    txtTotal.value='';
     let i=cmbMeal.selectedIndex;
     let code=cmbMeal.options[i].value;
 
@@ -69,47 +72,7 @@ cmbMeal.addEventListener('change',()=>{
     
 });
 
-function aditionalEvent(mealId) {
-    cmbAditional.addEventListener('change',()=>{
-        let i=cmbAditional.selectedIndex;
-        let code=Number(cmbAditional.options[Number(i)].value);
-        let selectAditional;
-        
-        if (Number(code)===0) {
-            let price=Number(txtPrice.value);
-            let iva=ivaEnter(price);
-            txtIva.value=iva.toFixed(2);
-            txtAditional.value=Number(0);
-        }else if(mealId===1) {
-            selectAditional=aditionalOneList.find((AdOne)=>AdOne.id===code);
-        }else if(mealId===2){
-            selectAditional=aditionalTwoList.find((AdTwo)=>AdTwo.id===code);
-        }else if(mealId===3){
-            selectAditional=aditionalThreeList.find((adThree)=>adThree.id===code);
 
-            // txtAditional.value=selectAditional.
-            //! I NEED TO MAKE A SWITCH
-        }
-
-        if (selectAditional) {
-            // let selectAditional=selectAditional.priceAditional;
-
-            let price=Number(txtPrice.value);
-            let aditional=Number(selectAditional.priceAditional);
-
-            txtAditional.value=aditional.toFixed(2);
-
-            let priceAndAditional=aditionalMealEnter(price,aditional);
-            let iva=aditionalIvaEnter(priceAndAditional);
-
-            // alert(`Se supone que se hizo el calculo: ${iva}`)
-            txtIva.value=Number(iva).toFixed(2);
-            txtTotal.value='';
-            txtSubtotal.value='';
-        }
-    });
-    
-}
 
 /* function insideOfAditionalEvent(list) {
     let selection=list.find((listNumber)=>listNumber.)

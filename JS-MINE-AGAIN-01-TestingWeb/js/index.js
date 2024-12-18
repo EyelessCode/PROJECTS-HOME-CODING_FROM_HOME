@@ -1,5 +1,5 @@
 import { mealList,aditionalOneList,aditionalTwoList,aditionalThreeList } from './BD.js';
-import {ivaEnter,subtotalEnter,totalEnter,aditionalIvaEnter,aditionalMealEnter,aditionalSubtotalEnter,aditionalTotalEnter} from './math.js';
+import {aditionalIvaEnter,aditionalMealEnter,aditionalSubtotalEnter,aditionalTotalEnter,ivaEnter,subtotalEnter,totalEnter} from './math.js';
 import {populateAditionalOptions} from '../js/repository/aditionalOptionsRepository.js';
 
 const cmbMeal=document.getElementById('cmbMeal');
@@ -76,27 +76,47 @@ function aditionalEvent(mealId) {
         let selectAditional;
     
         if (mealId===1) {
-            selectAditional=aditionalOneList.find((AdOne)=>AdOne===code);
+            selectAditional=aditionalOneList.find((AdOne)=>AdOne.id===code);
         }else if(mealId===2){
-            selectAditional=aditionalTwoList.find((AdTwo)=>AdTwo===code);
+            selectAditional=aditionalTwoList.find((AdTwo)=>AdTwo.id===code);
         }else if(mealId===3){
-            selectAditional=aditionalThreeList.find((adThree)=>adThree===code);
+            selectAditional=aditionalThreeList.find((adThree)=>adThree.id===code);
+
+            // txtAditional.value=selectAditional.
+            //! I NEED TO MAKE A SWITCH
         }
 
         if (selectAditional) {
+            // let selectAditional=selectAditional.priceAditional;
+
             let price=Number(txtPrice.value);
-            let aditional=Number(txtAditional.value);
+            let aditional=Number(selectAditional.priceAditional);
 
             txtAditional.value=aditional.toFixed(2);
 
             let priceAndAditional=aditionalMealEnter(price,aditional);
-            let iva=ivaEnter(priceAndAditional);
+            let iva=aditionalIvaEnter(priceAndAditional);
 
-            txtIva.value=iva.toFixed(2);
+            alert(`Se supone que se hizo el calculo: ${iva}`)
+            txtIva.value=Number(iva).toFixed(2);
         }
     });
     
 }
+
+/* function insideOfAditionalEvent(list) {
+    let selection=list.find((listNumber)=>listNumber.)
+    let price=Number(txtPrice.value);
+    let aditional=Number(selectAditional.priceAditional);
+
+    txtAditional.value=aditional.toFixed(2);
+
+    let priceAndAditional=aditionalMealEnter(price,aditional);
+    let iva=aditionalIvaEnter(priceAndAditional);
+
+    alert(`Se supone que se hizo el calculo: ${iva}`)
+    txtIva.value=Number(iva).toFixed(2);
+} */
 
 
 

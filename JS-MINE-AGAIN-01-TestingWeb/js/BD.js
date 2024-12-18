@@ -32,7 +32,7 @@ export const mealList=[
  */    }
 ]
 
-export const aditionalOneLis=[
+export const aditionalOneList=[
     {
         id:1,
         name:'Giant Coca Cola with refillable cup',

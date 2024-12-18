@@ -10,8 +10,8 @@ export function subtotalEnter(price,ivaEnter) {
 }
 
 export function totalEnter(subtotalEnter,ivaEnter) {
-    let result=subtotalEnter+ivaEnter;
-    return Number(result).toFixed(2);
+    // let result=subtotalEnter+ivaEnter;
+    return (Number(subtotalEnter)+Number(ivaEnter)).toFixed(2);
 
 }
 

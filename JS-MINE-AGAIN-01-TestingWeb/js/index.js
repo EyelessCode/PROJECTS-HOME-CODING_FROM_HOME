@@ -74,8 +74,13 @@ function aditionalEvent(mealId) {
         let i=cmbAditional.selectedIndex;
         let code=Number(cmbAditional.options[Number(i)].value);
         let selectAditional;
-    
-        if (mealId===1) {
+        
+        if (Number(code)===0) {
+            let price=Number(txtPrice.value);
+            let iva=ivaEnter(price);
+            txtIva.value=iva.toFixed(2);
+            txtAditional.value=Number(0);
+        }else if(mealId===1) {
             selectAditional=aditionalOneList.find((AdOne)=>AdOne.id===code);
         }else if(mealId===2){
             selectAditional=aditionalTwoList.find((AdTwo)=>AdTwo.id===code);
@@ -97,8 +102,10 @@ function aditionalEvent(mealId) {
             let priceAndAditional=aditionalMealEnter(price,aditional);
             let iva=aditionalIvaEnter(priceAndAditional);
 
-            alert(`Se supone que se hizo el calculo: ${iva}`)
+            // alert(`Se supone que se hizo el calculo: ${iva}`)
             txtIva.value=Number(iva).toFixed(2);
+            txtTotal.value='';
+            txtSubtotal.value='';
         }
     });
     
@@ -145,9 +152,10 @@ btnCalc.addEventListener('click',()=>{
         txtSubtotal.value=Number(subtotalAditional).toFixed(2);
         txtTotal.value=Number(totalAditional).toFixed(2);
         }else{
+            txtAditional.value=Number(0.00).toFixed(2);
             // txtIva.value=Number(ivaAditional);
-            txtSubtotal.value=subtotal.toFixed(2);
-            txtTotal.value=total.toFixed(2);
+            txtSubtotal.value=Number(subtotal).toFixed(2);
+            txtTotal.value=Number(total).toFixed(2);
         }
     }else{
         alert(`Select a meal to calculate the total price`);

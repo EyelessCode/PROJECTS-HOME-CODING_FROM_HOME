@@ -1,0 +1,56 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+
+}
+
+header{
+    text-align: center;
+    font-size: 350%;
+}
+
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.r11{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.r11 img{
+    width: 50%;
+    height: 50%;
+    background-size: cover;
+
+}
+
+.r21{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.r31{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.r12{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.r22{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.r32{
+    grid-column: 3;
+    grid-row: 2;
+}

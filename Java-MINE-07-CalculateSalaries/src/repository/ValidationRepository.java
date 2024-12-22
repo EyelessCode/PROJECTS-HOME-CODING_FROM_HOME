@@ -33,22 +33,22 @@ public class ValidationRepository {
     }
 
     public void validationPick(){
-        boolean door=true;
+        // boolean door=true;
         int input = validationInput();
 
         // while (door) {
             switch (input) {
                 case 1:
-                    System.out.println(calculateSalaryRepository.repositoryWorker());
-                    door=false;
+                    System.out.printf("Salary + %10 bonus: %.2f",calculateSalaryRepository.repositoryWorker());
+                    // door=false;
                     break;
                 case 2:
-                    System.out.println(calculateSalaryRepository.atmWorker());
-                    door=false;
+                    System.out.printf("Salary fixed: %.2f",calculateSalaryRepository.atmWorker());
+                    // door=false;
                     break;
                 case 3:
-                    System.out.println(calculateSalaryRepository.supervisorWorker());
-                    door=false;
+                    System.out.printf("Salary - %11 discount: %.2f",calculateSalaryRepository.supervisorWorker());
+                    // door=false;
                     break;
             }
             

@@ -9,5 +9,6 @@ public class ChangeValue {
         x=z;
         z=temp;
         System.out.println("Values After the change: "+x+" and "+temp);
+        // That wasn't hard
     }
 }

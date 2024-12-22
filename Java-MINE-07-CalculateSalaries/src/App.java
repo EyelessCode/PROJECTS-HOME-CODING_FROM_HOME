@@ -1,5 +1,4 @@
 import controller.SalaryController;
-import repository.CalculateSalaryRepository;
 
 public class App {
     public static void main(String[] args) throws Exception {

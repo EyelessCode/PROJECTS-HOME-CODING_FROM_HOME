@@ -2,9 +2,9 @@ package model;
 
 public class Employee {
     private String work;
-    private int salary;
+    private double salary;
     
-    public Employee(String work, int salary) {
+    public Employee(String work, double salary) {
         this.work = work;
         this.salary = salary;
     }
@@ -17,18 +17,20 @@ public class Employee {
         this.work = work;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
     @Override
     public String toString() {
-        return "employee [work=" + work + ", salary=" + salary + "]";
+        return "Employee [work=" + work + ", salary=" + salary + "]";
     }
+
+    
 
     
 }

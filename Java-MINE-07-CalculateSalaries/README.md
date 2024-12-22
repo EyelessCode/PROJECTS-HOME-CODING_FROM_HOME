@@ -8,4 +8,5 @@ The project about you pick a salary worker and will calculate print it in the co
 If you pick one:
 
 ![image](https://github.com/user-attachments/assets/dfe3f1ba-be37-4060-844a-71bd14c8c88a)
+
 It will print it and finish console.

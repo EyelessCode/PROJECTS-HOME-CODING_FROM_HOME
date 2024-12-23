@@ -12,7 +12,8 @@ public class ValidationRepository {
         int input = -1;
         
         while (!scanner.hasNextInt()) {
-            System.out.print("Enter number: ");
+            System.out.println("Input a number not a word");
+            System.out.print("→: ");
             vectorView.draw();
             scanner.next();
         }

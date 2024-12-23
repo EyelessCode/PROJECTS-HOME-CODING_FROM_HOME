@@ -1,18 +1,11 @@
-## Getting Started
+## Project finish!
+- Make a vector that it can charge the number you input it, then how how many time the number 3 repeat.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+The view:
+![image](https://github.com/user-attachments/assets/5c6c38cf-e226-4185-9e30-51ba99009d36)
 
-## Folder Structure
+When you're entereting numbers it show you what turn you're:
+![image](https://github.com/user-attachments/assets/e17effa1-0d19-4042-90d9-0c6577105408)
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+The last thing, in the console show it to you if each number is odd or even and how how many time the number 3 repeat:
+![image](https://github.com/user-attachments/assets/fa06ee57-ccb3-43ec-be76-7d814628a084)

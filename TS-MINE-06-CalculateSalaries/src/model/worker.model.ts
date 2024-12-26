@@ -8,3 +8,8 @@ export class WorkerModel {
         return `Employee: ${this.work}, Salary: ${this.salary}`;
     }
 }
+
+/*     export interface WorkerModel{
+        work: string;
+        salary: number;
+    } */

@@ -1,4 +1,4 @@
-import { IWorkerViewEvent } from '../interface/IWorkerEvent.interface';
+import { IWorkerViewEvent } from '../interface/iworkerEvent.interface';
 export class WorkerConsoleView implements IWorkerViewEvent{
     workerView(): void {
         // throw new Error('Method not implemented.');

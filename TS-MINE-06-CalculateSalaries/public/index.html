@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="EyelessCode">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="stylesheet" href="">
+    <script type="module" src=""></script>
+    <title>Calculate Salary | EyelessCode</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Hello World!
+        </h1>
+    </header>
+
+    <main>
+        <form id="salaryForm">
+            <div>
+                <label for="cmbWorker">Select Your Work: </label>
+                <select name="worker" id="cmbWorker">
+                    <option value="" disabled selected>-- SELECT YOUR WORK --</option>
+                </select>
+
+                <div>
+                    <label for="txtSalary">Salary: </label>
+                    <input type="text" name="salary" id="txtSalary" readonly value=0.00>
+
+                </div>
+
+                <div>
+                    <label for="txtBonusOrDiscount" id="labelBonusOrDiscount"></label>
+                    <input type="text" name="bonusOrDiscount" id="txtSalary" readonly value=0.00>
+
+                </div>
+
+                <div>
+                    <label for="txtTotal">Total: </label>
+                    <input type="text" name="total" id="txtTotal" readonly value=0.00>
+
+                </div>
+
+                <button type="button" id="btncalculate">Calculate</button>
+                <button type="reset" id="btnDelete">Delete</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

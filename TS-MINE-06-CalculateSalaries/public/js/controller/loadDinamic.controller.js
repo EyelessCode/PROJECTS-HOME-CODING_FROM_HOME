@@ -1,12 +1,13 @@
 import {workerList} from '../data/typeWorker.data.js';
-import {getChangeList} from '../repository/getWorker.repository.js'
+import {getChangeList,atmWork,repositoryWork,supervisorWork} from '../repository/getWorker.repository.js'
+// import {} from '../'
 
 const cmbWorker=document.getElementById('cmbWorker');
 const txtSalary=document.getElementById('txtSalary');
 const labelBonusOrDiscount=document.getElementById('labelBonusOrDiscount');
 const txtBonusOrDiscount=document.getElementById('txtBonusOrDiscount');
 const txtTotal=document.getElementById('txtTotal');
-const btncalculate=document.getElementById('btncalculate');
+const btnCalculate=document.getElementById('btnCalculate');
 const btnDelete=document.getElementById('btnDelete');
 
 window.addEventListener('DOMContentLoaded',()=>{
@@ -26,15 +27,22 @@ cmbWorker.addEventListener('change',()=>{
         // console.log(`si vale`); 
         switch (selected.id) {
             case 1:
+                
                 getChangeList();
+                btnCalculate.addEventListener('click',()=>repositoryWork());
+                
     
                 break;
             case 2:
                 getChangeList();
+                btnCalculate.addEventListener('click',()=>atmWork());
+
                 
                 break;
             case 3:
                 getChangeList();
+                btnCalculate.addEventListener('click',()=>supervisorWork());
+
                 
                 break;
         }
@@ -42,3 +50,11 @@ cmbWorker.addEventListener('change',()=>{
 
 });
 
+btnDelete.addEventListener('click',()=>{
+    cmbWorker.value='';
+    cmbWorker.selectedIndex=0;
+    txtTotal.value=Number(0.00).toFixed(2)
+    txtSalary.value=Number(0.00).toFixed(2)
+    txtBonusOrDiscount.value=Number(0.00).toFixed(2)
+    labelBonusOrDiscount.textContent=String('')
+})

@@ -3,6 +3,7 @@ import {getChangeList} from '../repository/getWorker.repository.js'
 
 const cmbWorker=document.getElementById('cmbWorker');
 const txtSalary=document.getElementById('txtSalary');
+const labelBonusOrDiscount=document.getElementById('labelBonusOrDiscount');
 const txtBonusOrDiscount=document.getElementById('txtBonusOrDiscount');
 const txtTotal=document.getElementById('txtTotal');
 const btncalculate=document.getElementById('btncalculate');
@@ -18,16 +19,13 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 
 cmbWorker.addEventListener('change',()=>{
-    let code=Number(cmbWorker.options[Number(cmbWorker.selectedIndex)].values);
+    let code=Number(cmbWorker.options[Number(cmbWorker.selectedIndex)].value);
     let selected=workerList.find((worker)=>worker.id===code);
     
     if (selected) {
-        console.log(`si vale`);
+        // console.log(`si vale`); 
         switch (selected.id) {
             case 1:
-    /*             let code=Number(cmbWorker.options[Number(cmbWorker.selectedIndex)].values);
-                let selected=workerList.find((worker)=>worker.id===code);
-                txtSalary */
                 getChangeList();
     
                 break;

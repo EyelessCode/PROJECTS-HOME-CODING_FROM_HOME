@@ -3,5 +3,5 @@ export interface IClienteObject{
     name:string,
     lastname:string,
     age:number,
-    email:string
+    ic:string
 }

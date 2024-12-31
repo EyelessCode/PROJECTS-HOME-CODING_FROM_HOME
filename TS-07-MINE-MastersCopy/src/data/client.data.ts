@@ -1,6 +1,6 @@
-import { IClienteObject } from "../interface/iClient.interface";
+import { IClientObject } from "../interface/iClient.interface";
 
-export const OBJECT_CLIENT:IClienteObject[]=[
+export const OBJECT_CLIENT:IClientObject[]=[
         {
             age:23,
             ic:'0985745612',

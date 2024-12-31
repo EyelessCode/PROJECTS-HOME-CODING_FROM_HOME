@@ -1,28 +1,28 @@
 import { OBJECT_CLIENT } from '../data/client.data';
-import { IClienteObject } from '../interface/iClient.interface';
+import { IClientObject } from '../interface/iClient.interface';
 import { IEndpointsInterface } from "../interface/iEndpoints.interface";
 
-export class ClienteRepository implements IEndpointsInterface{
+export class ClientRepository implements IEndpointsInterface{
 
-    private clientes:IClienteObject[]=OBJECT_CLIENT
+    private clientes:IClientObject[]=OBJECT_CLIENT
     
-    getAll(): IClienteObject[] {
+    getAll(): IClientObject[] {
         // throw new Error("Method not implemented.");
         return this.clientes
     }
 
-    getById(code: number): IClienteObject | undefined {
+    getById(code: number): IClientObject | undefined {
         // throw new Error("Method not implemented.");
         return this.clientes.find((clientFind)=>clientFind.id===code)
     }
 
-    create(client: IClienteObject): IClienteObject {
+    create(client: IClientObject): IClientObject {
         // throw new Error("Method not implemented.");
         this.clientes.push(client)
         return client
     }
 
-    update(code: number, client: IClienteObject): IClienteObject | undefined {
+    update(code: number, client: IClientObject): IClientObject | undefined {
         // throw new Error("Method not implemented.");
         let index=this.clientes.findIndex((indexClient)=>indexClient.id===code)
         if (index!==1) {

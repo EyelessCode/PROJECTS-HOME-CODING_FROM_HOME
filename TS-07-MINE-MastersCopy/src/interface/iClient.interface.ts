@@ -1,4 +1,4 @@
-export interface IClienteObject{
+export interface IClientObject{
     id:number,
     name:string,
     lastname:string,

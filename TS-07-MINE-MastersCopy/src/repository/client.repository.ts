@@ -1,5 +1,5 @@
-import { OBJECT_CLIENT } from "../data/cliente.data";
-import { IClienteObject } from '../interface/iCliente.interface';
+import { OBJECT_CLIENT } from "../data/client.data";
+import { IClienteObject } from '../interface/iClient.interface';
 import { IEndpointsInterface } from "../interface/iEndpoints.interface";
 
 export class ClienteRepository implements IEndpointsInterface{

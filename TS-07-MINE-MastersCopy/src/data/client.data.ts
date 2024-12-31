@@ -1,4 +1,4 @@
-import { IClienteObject } from "../interface/iCliente.interface";
+import { IClienteObject } from "../interface/iClient.interface";
 
 export const OBJECT_CLIENT:IClienteObject[]=[
         {

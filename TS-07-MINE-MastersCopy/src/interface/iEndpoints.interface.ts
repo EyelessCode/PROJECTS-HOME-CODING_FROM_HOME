@@ -1,4 +1,4 @@
-import { IClienteObject } from "./iCliente.interface";
+import { IClienteObject } from "./iClient.interface";
 
 export interface IEndpointsInterface {
     getAll():IClienteObject[]

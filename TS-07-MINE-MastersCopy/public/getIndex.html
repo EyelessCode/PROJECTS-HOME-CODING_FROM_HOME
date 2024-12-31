@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="EyelessCode">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Client list | EYELESSCODE</title>
+<!--     <script>
+        // Llamar al backend para obtener la lista de clientes
+        fetch('/api/clientes')
+            .then(response => response.json())
+            .then(data => {
+                const listContainer = document.getElementById('clientList');
+                data.forEach(cliente => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${cliente.name} ${cliente.lastname} - ${cliente.ic} (${cliente.age} años)`;
+                    listContainer.appendChild(listItem);
+                });
+            });
+    </script> -->
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <ul id="clientList"></ul>
+</body>
+</html>

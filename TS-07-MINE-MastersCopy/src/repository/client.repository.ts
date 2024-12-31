@@ -1,4 +1,4 @@
-import { OBJECT_CLIENT } from "../data/client.data";
+import { OBJECT_CLIENT } from '../data/client.data';
 import { IClienteObject } from '../interface/iClient.interface';
 import { IEndpointsInterface } from "../interface/iEndpoints.interface";
 
@@ -13,7 +13,7 @@ export class ClienteRepository implements IEndpointsInterface{
 
     getById(code: number): IClienteObject | undefined {
         // throw new Error("Method not implemented.");
-        return this.clientes.find((clienteFind)=>clienteFind.id===code)
+        return this.clientes.find((clientFind)=>clientFind.id===code)
     }
 
     create(client: IClienteObject): IClienteObject {
@@ -25,15 +25,21 @@ export class ClienteRepository implements IEndpointsInterface{
     update(code: number, client: IClienteObject): IClienteObject | undefined {
         // throw new Error("Method not implemented.");
         let index=this.clientes.findIndex((indexClient)=>indexClient.id===code)
-        if (index!=1) {
-            this.clientes[index]={...client,id}
+        if (index!==1) {
+            this.clientes[index]={...client,id:code}
             return this.clientes[index]
         }
         return undefined
     }
 
     delete(code: number): boolean {
-        throw new Error("Method not implemented.");
+        // throw new Error("Method not implemented.");
+        let index=this.clientes.findIndex((indexClient)=>indexClient.id===code)
+        if (index!==-1) {
+            this.clientes.splice(index,1)
+            return true;
+        }
+        return false
     }
 
 }

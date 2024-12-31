@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>POST - CREATE | EYELESSCODE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="EyelessCode">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <script defer type="module" src=""></script>
+    </head>
+    <body>
+        <form action="/api/client" method="POST">
+            <label for="txtName">Nombre:</label>
+            <input type="text" id="txtName" name="name" required>
+    
+            <label for="txtLastname">Apellido:</label>
+            <input type="text" id="txtLastname" name="lastname" required>
+    
+            <label for="txtAge">Edad:</label>
+            <input type="number" id="txtAge" name="age" required>
+    
+            <label for="txtIc">Cédula:</label>
+            <input type="text" id="txtIc" name="ic" required>
+    
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>

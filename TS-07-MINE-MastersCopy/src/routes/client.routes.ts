@@ -5,9 +5,9 @@ const router=Router()
 const controller=new ClientController()
 
 router.get('/client',controller.getAllController)
-router.get('/client:id',controller.getByIdController)
+router.get('/client/:id',controller.getByIdController)
 router.post('/client/',controller.createController)
-router.put('/client:id',controller.updateController)
+router.put('/client/:id',controller.updateController)
 router.delete('/client/:id',controller.deleteController)
 
 export default router;

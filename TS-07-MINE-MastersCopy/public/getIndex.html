@@ -7,6 +7,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Client list | EYELESSCODE</title>
+    <!-- <script type="module" src="js/script.js"></script> -->
 <!--     <script>
         // Llamar al backend para obtener la lista de clientes
         fetch('/api/clientes')
@@ -22,7 +23,15 @@
     </script> -->
 </head>
 <body>
-    <h1>Lista de Clientes</h1>
-    <ul id="clientList"></ul>
+    <h1>Clientes</h1>
+    <form action="/api/client" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" required>
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>

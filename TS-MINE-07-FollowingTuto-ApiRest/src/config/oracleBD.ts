@@ -1,35 +1,52 @@
 import "dotenv/config"
-import { connect } from "http2"
 import { Pool } from "pg"
-// import {Pool} from 'pg'
 
-/* const pool=new Pool({
-    user:process.env.DB_USER,
-    host:process.env.DB_HOST,
-    database:process.env.DB_NAME,
-    password:process.env.DB_PASSWORD,
-    port:Number(process.env.DB_PORT)
-})
+async function dbConnect(): Promise<void> {
+    const pool = new Pool({
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        database: process.env.DB_NAME,
+        password: process.env.DB_PASSWORD,
+        port: Number(process.env.DB_PORT),
+    });
 
-const testConnection=async()=>{
     try {
-        const client=await pool.connect()
-        console.log(`BD CONNECTED!`);
-        client.release()
+        const client = await pool.connect();
+        console.log("BD CONNECTED!");
+        client.release();
     } catch (error) {
-        console.error(`Error connecting to the database: ${error}`);
-        throw error
+        console.error(`Error connecting to the database:`);
+        throw error;
     }
 }
 
-testConnection() */
+export default dbConnect;
 
-async function dbConnect():Promise<void> {
+
+
+/* async function dbConnect():Promise<void> {
     // const DB_HOST=<string>process.env.DB_HOST4
     const pool=new Pool({
-        host:process.env.DB_HOST
+        connectionString:process.env.DB_HOST
     })
     await pool.connect()
 }
 
-export default dbConnect
+export default dbConnect */
+
+/* async function dbConnect(): Promise<void> {
+    const pool = new Pool({
+        connectionString: process.env.DB_URI, // Usa la cadena de conexión completa
+    });
+
+    try {
+        const client = await pool.connect();
+        console.log("BD CONNECTED!");
+        client.release();
+    } catch (error) {
+        console.error(`Error connecting to the database: ${error}`);
+        throw error;
+    }
+}
+
+export default dbConnect; */

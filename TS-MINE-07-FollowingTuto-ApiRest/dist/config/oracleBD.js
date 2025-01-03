@@ -14,9 +14,21 @@ const pg_1 = require("pg");
 function dbConnect() {
     return __awaiter(this, void 0, void 0, function* () {
         const pool = new pg_1.Pool({
-            host: process.env.DB_HOST
+            user: process.env.DB_USER,
+            host: process.env.DB_HOST,
+            database: process.env.DB_NAME,
+            password: process.env.DB_PASSWORD,
+            port: Number(process.env.DB_PORT),
         });
-        yield pool.connect();
+        try {
+            const client = yield pool.connect();
+            console.log("BD CONNECTED!");
+            client.release();
+        }
+        catch (error) {
+            console.error(`Error connecting to the database:`);
+            throw error;
+        }
     });
 }
 exports.default = dbConnect;

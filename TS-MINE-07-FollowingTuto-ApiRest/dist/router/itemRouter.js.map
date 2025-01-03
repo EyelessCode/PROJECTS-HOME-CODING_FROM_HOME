@@ -1,0 +1,1 @@
+{"version":3,"file":"itemRouter.js","sourceRoot":"","sources":["../../src/router/itemRouter.ts"],"names":[],"mappings":";;;AAAA,qCAAoD;AAEpD,MAAM,MAAM,GAAC,IAAA,gBAAM,GAAE,CAAA;AAQb,wBAAM;AANd,MAAM,CAAC,GAAG,CAAC,GAAG,EAAC,CAAC,GAAW,EAAC,GAAY,EAAC,EAAE;IACvC,GAAG,CAAC,IAAI,CAAC;QACL,IAAI,EAAC,aAAa;KACrB,CAAC,CAAA;AACN,CAAC,CAAC,CAAA"}

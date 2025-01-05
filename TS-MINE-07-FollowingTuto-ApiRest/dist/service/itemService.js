@@ -14,7 +14,7 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const insertItem = (carDAta) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const responseInsert = yield prisma.Car.create({
+        const responseInsert = yield prisma.car.create({
             data: carDAta
         });
         return responseInsert;

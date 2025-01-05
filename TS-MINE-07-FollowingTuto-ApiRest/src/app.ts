@@ -2,7 +2,7 @@ import "dotenv/config"
 import express from 'express'
 import cors from 'cors'
 import { router } from "./router"
-import dbPostgreSql from './config/oracleBD'
+import dbPostgreSql from './config/postgreSql'
 
 const PORT=process.env.PORT||4000
 const app=express()

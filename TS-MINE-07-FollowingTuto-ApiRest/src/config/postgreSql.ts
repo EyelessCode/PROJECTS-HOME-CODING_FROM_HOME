@@ -32,7 +32,7 @@ async function dbConnection():Promise<void>{
 		console.log(`DB CONNECTED`)
 		client.release()
 	}catch(error){
-		console.error(`Error to connect DB!`)
+		console.error(`Error to connect DB!`.toUpperCase())
 		throw error
 	}
 }

@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.postItem = exports.update = exports.getItems = exports.getItem = void 0;
+exports.deleteItem = exports.createItem = exports.update = exports.getItems = exports.getItem = void 0;
+const error_handle_1 = require("../util/error.handle");
 const getItem = (req, res) => {
     try {
     }
     catch (error) {
-        res.status(500);
-        res.send('EROR_GET_ITEM');
+        (0, error_handle_1.handleHttp)(res, 'ERROR_GET_ITEM');
     }
 };
 exports.getItem = getItem;
@@ -14,8 +14,7 @@ const getItems = (req, res) => {
     try {
     }
     catch (error) {
-        res.status(500);
-        res.send('EROR_GET_ITEM');
+        (0, error_handle_1.handleHttp)(res, 'ERROR_GET_ITEMS');
     }
 };
 exports.getItems = getItems;
@@ -23,26 +22,24 @@ const update = (req, res) => {
     try {
     }
     catch (error) {
-        res.status(500);
-        res.send('EROR_GET_ITEM');
+        (0, error_handle_1.handleHttp)(res, 'ERROR_UPDATE_ITEM');
     }
 };
 exports.update = update;
-const postItem = (req, res) => {
+const createItem = ({ body }, res) => {
     try {
+        res.send(body);
     }
     catch (error) {
-        res.status(500);
-        res.send('EROR_GET_ITEM');
+        (0, error_handle_1.handleHttp)(res, 'ERROR_CREATE_ITEM');
     }
 };
-exports.postItem = postItem;
+exports.createItem = createItem;
 const deleteItem = (req, res) => {
     try {
     }
     catch (error) {
-        res.status(500);
-        res.send('EROR_GET_ITEM');
+        (0, error_handle_1.handleHttp)(res, 'ERROR_DELETE_ITEM');
     }
 };
 exports.deleteItem = deleteItem;

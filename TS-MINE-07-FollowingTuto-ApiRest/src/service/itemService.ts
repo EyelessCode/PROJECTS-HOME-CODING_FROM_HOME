@@ -11,7 +11,7 @@ const insertItem=async(carDAta:{
     price:number
 })=>{
     try {
-        const responseInsert=await prisma.Car.create({
+        const responseInsert=await prisma.car.create({
             data:carDAta
         })
 

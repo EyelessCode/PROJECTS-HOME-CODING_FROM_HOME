@@ -1,7 +1,7 @@
 import "dotenv/config"
 import { Pool } from "pg"
 
-async function dbConnect(): Promise<void> {
+/* async function dbConnect(): Promise<void> {
     const pool = new Pool({
         user: process.env.DB_USER,
         host: process.env.DB_HOST,
@@ -20,7 +20,24 @@ async function dbConnect(): Promise<void> {
     }
 }
 
-export default dbConnect;
+export default dbConnect; */
+
+async function dbConnection():Promise<void>{
+	const connect=new Pool({
+		connectionString:process.env.DB_URI
+	})
+	
+	try{
+		const client=await connect.connect()
+		console.log(`DB CONNECTED`)
+		client.release()
+	}catch(error){
+		console.error(`Error to connect DB!`)
+		throw error
+	}
+}
+
+export default dbConnection
 
 
 

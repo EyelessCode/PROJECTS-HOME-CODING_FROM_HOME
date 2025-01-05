@@ -25,9 +25,9 @@ const update=(req:Request,res:Response)=>{
     }
 }
 
-const createItem=(req:Request,res:Response)=>{
+const createItem=({body}:Request,res:Response)=>{
     try {
-        
+        res.send(body)
     } catch (error) {
         handleHttp(res,'ERROR_CREATE_ITEM')
     }

@@ -4,6 +4,7 @@ import { Car } from '../interface/carInterface';
 const prisma=new PrismaClient()
 
 const insertItem=async(carDAta:{
+    name:string
     color:string
     gas:'gasoline'|'electric'
     year:number

@@ -28,10 +28,9 @@ const update=(req:Request,res:Response)=>{
 
 const createItem=async({body}:Request,res:Response)=>{
     try {
-        const responseItem=await insertItem(body)
-        res.send(responseItem)
+
     } catch (error) {
-        handleHttp(res,'ERROR_CREATE_BLOG')
+        handleHttp(res,'ERROR_CREATE_BLOG',error)
     }
 }
 

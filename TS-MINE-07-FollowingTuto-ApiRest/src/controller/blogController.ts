@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { handleHttp } from "../util/error.handle"
+import { insertItem } from "../service/itemService"
 
 const getItem=(req:Request,res:Response)=>{
     try {
@@ -25,9 +26,10 @@ const update=(req:Request,res:Response)=>{
     }
 }
 
-const createItem=({body}:Request,res:Response)=>{
+const createItem=async({body}:Request,res:Response)=>{
     try {
-        res.send(body)
+        const responseItem=await insertItem(body)
+        res.send(responseItem)
     } catch (error) {
         handleHttp(res,'ERROR_CREATE_BLOG')
     }

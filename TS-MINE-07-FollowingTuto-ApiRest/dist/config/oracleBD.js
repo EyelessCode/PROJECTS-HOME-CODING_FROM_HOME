@@ -11,25 +11,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const pg_1 = require("pg");
-function dbConnect() {
+function dbConnection() {
     return __awaiter(this, void 0, void 0, function* () {
-        const pool = new pg_1.Pool({
-            user: process.env.DB_USER,
-            host: process.env.DB_HOST,
-            database: process.env.DB_NAME,
-            password: process.env.DB_PASSWORD,
-            port: Number(process.env.DB_PORT),
+        const connect = new pg_1.Pool({
+            connectionString: process.env.DB_URI
         });
         try {
-            const client = yield pool.connect();
-            console.log("BD CONNECTED!");
+            const client = yield connect.connect();
+            console.log(`DB CONNECTED`);
             client.release();
         }
         catch (error) {
-            console.error(`Error connecting to the database:`);
+            console.error(`Error to connect DB!`);
             throw error;
         }
     });
 }
-exports.default = dbConnect;
+exports.default = dbConnection;
 //# sourceMappingURL=oracleBD.js.map

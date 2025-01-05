@@ -13,16 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Car{
-  id Int @id @default(autoincrement())
-  color String
-  gas GAS @default(gasoline)
-  year Int
+model Car {
+  id          Int    @id @default(autoincrement())
+  color       String
+  gas         GAS    @default(gasoline)
+  year        Int
   description String
-  price Float
+  price       Float
 }
 
-enum GAS{
+enum GAS {
   gasoline
   electric
 }

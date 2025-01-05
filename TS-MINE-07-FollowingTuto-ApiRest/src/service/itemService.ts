@@ -10,10 +10,16 @@ const insertItem=async(carDAta:{
     description:string
     price:number
 })=>{
-    const responseInsert=await prisma.Car.create({
-        data:carDAta
-    })
-    return responseInsert
+    try {
+        const responseInsert=await prisma.Car.create({
+            data:carDAta
+        })
+
+        return responseInsert
+    } catch (error) {
+        console.error(`Error to insert a Car!`,error);
+        throw new Error(`It was not possible to insert a Car!`)
+    }
 }
 
 export {insertItem}

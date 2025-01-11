@@ -1,0 +1,24 @@
+{
+  "name": "ts-mine-08-backendandfrontend",
+  "version": "1.0.0",
+  "description": "Making a frontend then a backend",
+  "keywords": [
+    "frontend",
+    "backend"
+  ],
+  "homepage": "https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME#readme",
+  "bugs": {
+    "url": "https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME.git"
+  },
+  "license": "ISC",
+  "author": "eyelesscode",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

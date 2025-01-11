@@ -1,6 +1,6 @@
 
 const url='http://localhost:4000'
-const API='/api/vitalSign.html'
+const API='/vitalSign.html'
 
 async function connection() {
     try {

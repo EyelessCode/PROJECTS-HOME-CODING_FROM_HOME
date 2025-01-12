@@ -13,7 +13,7 @@ app.use(express.json())
 // app.use(express.static('public/view'))
 app.use(express.static(path.join(__dirname,'..','public')))
 
-app.get('/',(req:Request,res:Response)=>{
+app.get('/vitalSign',(req:Request,res:Response)=>{
     res.sendFile(path.join(__dirname,'..','view','vitalSign.html'))
 })
 

@@ -21,7 +21,7 @@
 
         <section>
             <div class="container">
-                <table class="tbTable" id="tbVitalSign" >
+                <table class="tbTable" id="tbVitalSign">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -37,40 +37,62 @@
             </div>
 
             <div class="containerBody">
-                <div class="search-container">
-                    <input type="text" name="text" class="inputSearch"
-                        placeholder="id...">
-                    <span class="iconSearch">
-                        <svg width="19px" height="19px" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg"><g
-                                id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-                                id="SVGRepo_tracerCarrier"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"></g><g
-                                id="SVGRepo_iconCarrier"> <path opacity="1"
-                                    d="M14 5H20" stroke="#000"
-                                    stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path> <path
-                                    opacity="1" d="M14 8H17" stroke="#000"
-                                    stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path> <path
-                                    d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2"
-                                    stroke="#000" stroke-width="2.5"
+                <div class="inputSearchButton">
+                    <div class="search-container">
+                        <input type="text" name="text" class="inputSearch"
+                            placeholder="id...">
+                        <span class="iconSearch">
+                            <svg width="19px" height="19px" viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"><g
+                                    id="SVGRepo_bgCarrier"
+                                    stroke-width="0"></g><g
+                                    id="SVGRepo_tracerCarrier"
                                     stroke-linecap="round"
-                                    stroke-linejoin="round"></path> <path
-                                    opacity="1" d="M22 22L20 20" stroke="#000"
-                                    stroke-width="3.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path> </g></svg>
-                    </span>
+                                    stroke-linejoin="round"></g><g
+                                    id="SVGRepo_iconCarrier"> <path opacity="1"
+                                        d="M14 5H20" stroke="#000"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path> <path
+                                        opacity="1" d="M14 8H17" stroke="#000"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path> <path
+                                        d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2"
+                                        stroke="#000" stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path> <path
+                                        opacity="1" d="M22 22L20 20"
+                                        stroke="#000"
+                                        stroke-width="3.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </g></svg>
+                        </span>
+                    </div>
+
+                    <button class="btnSearchClass" id="btnSearch">
+                        Search
+                        <svg class="svgSearch"
+                            xmlns="http://www.w3.org/2000/svg" height="180px"
+                            viewBox="0 -960 960 960" width="180px"
+                            fill="#000000"><path fill-rule="evenodd"
+                                d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z" /></svg>
+                    </button>
                 </div>
 
                 <div class="description-container">
                     <input type="text" name="text" class="inputDescription"
                         placeholder="Description...">
                     <span class="iconDescription">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="black"><path d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                            viewBox="0 -960 960 960" width="32px"
+                            fill="black"><path
+                                d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z" /></svg>
                     </span>
                 </div>
+
             </div>
 
             <div class="containerFooter">

@@ -187,19 +187,19 @@
 }
 
 /* From Uiverse.io by boryanakrasteva */
-.input-container {
+.search-container {
     width: 220px;
     position: relative;
 }
 
-.icon {
+.iconSearch {
     position: absolute;
     right: 10px;
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
 }
 
-.input {
+.inputSearch {
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -210,13 +210,13 @@
     letter-spacing: 2px;
 }
 
-.input:focus {
+.inputSearch:focus {
     outline: none;
     border: 0.5px solid black;
     box-shadow: -5px -5px 0px black;
 }
 
-.input-container:hover>.icon {
+.search-container:hover>.iconSearch {
     animation: anim 1s linear infinite;
 }
 
@@ -230,4 +230,76 @@
     50% {
         transform: translateY(calc(-50% - 5px)) scale(1.1);
     }
+}
+
+/* From Uiverse.io by boryanakrasteva */
+.description-container {
+    width: 220px;
+    position: relative;
+}
+
+.iconDescription {
+    position: absolute;
+    right: 2.5px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+}
+
+.inputDescription {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.inputDescription:focus {
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+}
+
+.description-container:hover>.iconDescription {
+    animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+
+    0%,
+    100% {
+        transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+}
+
+/* Here my code */
+.tbTable{
+    display: flex;
+    /* width: 100%; */
+    flex-flow: column wrap;
+    /* justify-content: center; */
+    /* justify-items: center; */
+    /* justify-self: center; */
+    align-items: center;
+
+    /* justify-content: center; */
+    /* width: 50%; */
+    border-collapse: collapse;
+}
+
+.tbTable th,.tbTable td{
+    border: 1px solid black;
+    width: 15vw;
+
+}
+
+.tbTable th,.tbTable td{
+    padding: 8px;
+    text-align: center;
 }

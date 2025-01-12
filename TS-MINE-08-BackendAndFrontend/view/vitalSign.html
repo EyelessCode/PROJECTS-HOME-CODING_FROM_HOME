@@ -21,7 +21,7 @@
 
         <section>
             <div class="container">
-                <table id="tbVitalSign">
+                <table class="tbTable" id="tbVitalSign" >
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -37,10 +37,10 @@
             </div>
 
             <div class="containerBody">
-                <div class="input-container">
-                    <input type="text" name="text" class="input"
+                <div class="search-container">
+                    <input type="text" name="text" class="inputSearch"
                         placeholder="search id...">
-                    <span class="icon">
+                    <span class="iconSearch">
                         <svg width="19px" height="19px" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg"><g
                                 id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -63,13 +63,17 @@
                                     stroke-linejoin="round"></path> </g></svg>
                     </span>
                 </div>
+
+                <div class="description-container">
+                    <input type="text" name="text" class="inputDescription"
+                        placeholder="Description...">
+                    <span class="iconDescription">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="black"><path d="M319-250h322v-60H319v60Zm0-170h322v-60H319v60ZM220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554v-186H220v680h520v-494H551ZM220-820v186-186 680-680Z"/></svg>
+                    </span>
+                </div>
             </div>
 
             <div class="containerFooter">
-                <!-- <button id="btnAddVitalSign">ADD</button> -->
-                <!-- <button id="btnAddVitalSign">ADD</button> -->
-                <!-- <button id="btnAddVitalSign">ADD</button> -->
-
                 <button class="btnInsertClass" id="btnInsert">
                     Insert
                     <svg class="svgInsert" xmlns="http://www.w3.org/2000/svg"

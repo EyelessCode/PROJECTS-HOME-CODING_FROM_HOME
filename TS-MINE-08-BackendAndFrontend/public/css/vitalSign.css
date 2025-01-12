@@ -164,7 +164,7 @@
     margin-right: 20px;
     fill: white;
     transition-duration: 0.3s;
-    stroke: currentColor;
+    stroke: white;
     stroke-width: 2;
 }
 

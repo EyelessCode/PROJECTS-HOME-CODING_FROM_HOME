@@ -194,26 +194,28 @@
 
 .iconSearch {
     position: absolute;
-    right: 10px;
+    left: 87px;
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
 }
 
 .inputSearch {
-    width: 100%;
+    width: 50%;
     height: 40px;
     padding: 10px;
     transition: .2s linear;
-    border: 2.5px solid black;
+    border: 2.5px solid rgb(4, 56, 178);
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: blueviolet;
+
 }
 
 .inputSearch:focus {
     outline: none;
-    border: 0.5px solid black;
-    box-shadow: -5px -5px 0px black;
+    border: 0.5px solid rgb(2, 29, 93);
+    box-shadow: -5px -5px 0px rgb(2, 29, 93);
 }
 
 .search-container:hover>.iconSearch {
@@ -240,26 +242,27 @@
 
 .iconDescription {
     position: absolute;
-    right: 2.5px;
+    left: 397px;
     top: calc(50% + 5px);
     transform: translateY(calc(-50% - 5px));
 }
 
 .inputDescription {
-    width: 100%;
-    height: 40px;
+    width: 200%;
+    height: 80px;
     padding: 10px;
     transition: .2s linear;
-    border: 2.5px solid black;
+    border: 2.5px solid rgb(0, 177, 3);
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: #136913;
 }
 
 .inputDescription:focus {
     outline: none;
-    border: 0.5px solid black;
-    box-shadow: -5px -5px 0px black;
+    border: 0.5px solid rgb(2, 119, 4);
+    box-shadow: -5px -5px 0px rgb(2, 119, 4);
 }
 
 .description-container:hover>.iconDescription {
@@ -296,10 +299,30 @@
 .tbTable th,.tbTable td{
     border: 1px solid black;
     width: 15vw;
+    transition: all 0.1s ease-in-out;
 
+}
+
+.tbTable th:hover,
+.tbTable td:hover{
+    background-color: #c5b328;
+    border-color: #c5b328;
+    font-weight: bolder;
 }
 
 .tbTable th,.tbTable td{
     padding: 8px;
     text-align: center;
+}
+
+body{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    margin: 10px;
+
 }

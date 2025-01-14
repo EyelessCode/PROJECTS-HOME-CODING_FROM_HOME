@@ -15,5 +15,8 @@ app.use(express.static(path.join(__dirname,'..','public')))
 app.get('/vitalSign',(req:Request,res:Response)=>{
     res.sendFile(path.join(__dirname,'..','view','vitalSign.html'))
 })
+app.get('/vitalSign',(req:Request,res:Response)=>{
+    res.sendFile(path.join(__dirname,'..','view','xd.html'))
+})
 
 app.listen(PORT,()=>console.log(`SERVER LISTENING IN ${PORT}`))

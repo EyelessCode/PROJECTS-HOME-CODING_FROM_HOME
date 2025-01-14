@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Tabla y Registro</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button" onclick="generateTable()">Generar Tabla</button>
+        <button class="button" onclick="generateRegister()">Generar Registro</button>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        function generateTable() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = ''; // Limpia el contenido actual
+
+            const table = document.createElement('table');
+            table.border = '1';
+
+            const header = table.createTHead();
+            const headerRow = header.insertRow(0);
+            const cell1 = headerRow.insertCell(0);
+            const cell2 = headerRow.insertCell(1);
+            cell1.innerHTML = '<b>ID</b>';
+            cell2.innerHTML = '<b>Descripción</b>';
+
+            const body = table.createTBody();
+            const row = body.insertRow(0);
+            const cell3 = row.insertCell(0);
+            const cell4 = row.insertCell(1);
+            cell3.innerHTML = '1';
+            cell4.innerHTML = 'Ejemplo';
+
+            contentDiv.appendChild(table);
+        }
+
+        function generateRegister() {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = ''; // Limpia el contenido actual
+
+            const form = document.createElement('form');
+            form.innerHTML = `
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <button type="submit">Registrar</button>
+            `;
+
+            contentDiv.appendChild(form);
+        }
+    </script>
+</body>
+</html>

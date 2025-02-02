@@ -1,0 +1,24 @@
+{
+  "name": "ts-mine-09-apirest_store",
+  "version": "1.0.0",
+  "description": "practice to make an apirest",
+  "keywords": [
+    "store",
+    "apirest"
+  ],
+  "homepage": "https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME#readme",
+  "bugs": {
+    "url": "https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EyelessCode/PROJECTS-HOME-CODING_FROM_HOME.git"
+  },
+  "license": "ISC",
+  "author": "EyelessCode",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

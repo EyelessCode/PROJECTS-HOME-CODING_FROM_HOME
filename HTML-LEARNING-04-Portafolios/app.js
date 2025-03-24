@@ -14,4 +14,6 @@ app.get('/portafolio',(req,res)=>{
     res.sendFile(path.join(__dirname,'view','index.html'))
 })
 
-app.listen(PORT,()=>console.log(`ESUCHANDO EN ${PORT}`))
+app.listen(PORT,()=>{
+    console.log(`ESUCHANDO EN ${PORT}`)
+})

@@ -15,5 +15,5 @@ app.get('/portafolio',(req,res)=>{
 })
 
 app.listen(PORT,()=>{
-    console.log(`ESUCHANDO EN ${PORT}`)
+    console.log(`ESCUCHANDO EN EL PUERTO: ${PORT}`)
 })

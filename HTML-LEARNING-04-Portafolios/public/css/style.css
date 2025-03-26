@@ -6,13 +6,47 @@
     font-size: 1em;
 }
 
+body{
+    background-color: bisque;
+}
+
 header{
     background-color: aquamarine;
     border: 2px solid blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+    height: 100%;
+
 }
 
-header>nav{
+nav>ul{
+    list-style: none;
+}
+
+nav>ul>li{
+    display: inline-block;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+ul>li>a{
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+
+}
+
+ul>li:hover{
+    transform: scale(1.2);
+    text-shadow: 0 1px 0 black;
+}
+
+footer{
+    background-color: darkgray;
+    border: 2px solid blue;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    flex-flow: row;
-    justify-content: space-between;
 }

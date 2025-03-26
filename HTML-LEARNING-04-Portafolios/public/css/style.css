@@ -27,22 +27,42 @@ header>.logo img{
     border-radius: 10em;
     animation: rgbBorder 2s infinite;
     border: 3.5px solid;
+    transition: all 0.3s ease-in-out;
 }
 
-@keyframes rgbBorder{
-    0%{
-        border-color: red;
-    }
 
-    33%{
-        border-color: green;
-    }
-    66%{
-        border-color: blue;
-    }
-    100%{
-        border-color: red;
-    }
+
+header>.logo img:hover{
+    transform: scale(1.2);
+}
+
+header>.logo{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+header>.logo>h1{
+    font-size: 1.3em;
+    margin: 0 0.5em;
+    position: relative;
+}
+
+header>.logo>h1::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    /* background-color: rgbBackgroundColor; */
+    animation: rgbBackgroundColor 2s infinite;
+    transition: all 0.3s ease;
+}
+
+header>.logo>h1:hover::after{
+    width: 100%;
 }
 
 nav>ul{
@@ -55,24 +75,54 @@ nav>ul>li{
     transition: all 0.3s ease;
 }
 
+nav>ul>li:hover{
+    transform: scale(1.2);
+    text-shadow: 0 1px 0 black;
+}
+
 ul>li>a{
     text-decoration: none;
     padding: 5px;
     color: black;
     font-size: 1.2em;
+    position: relative;
+}
+
+ul>li>a::after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    transition: all 0.3s ease;
+    width: 0;
+    content: "";
+    animation: rgbBackgroundColor 2s infinite;
+}
+
+ul>li>a:hover{
     animation: rgbText 2s infinite;
 }
 
-ul>li:hover{
-    transform: scale(1.2);
-    text-shadow: 0 1px 0 black;
+ul>li>a:hover::after{
+    width: 100%;
+}
+
+footer{
+    background-color: darkgray;
+    border: 2px solid blue;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+footer>p>span:hover{
+    animation: rgbText 2s infinite;
 }
 
 @keyframes rgbText{
     0%{
         color: red;
     }
-
     33%{
         color: green;
     }
@@ -84,10 +134,32 @@ ul>li:hover{
     }
 }
 
-footer{
-    background-color: darkgray;
-    border: 2px solid blue;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+@keyframes rgbBorder{
+    0%{
+        border-color: red;
+    }
+    33%{
+        border-color: green;
+    }
+    66%{
+        border-color: blue;
+    }
+    100%{
+        border-color: red;
+    }
+}
+
+@keyframes rgbBackgroundColor{
+    0%{
+        background-color: red;
+    }
+    33%{
+        background-color: green;
+    }
+    66%{
+        background-color: blue;
+    }
+    100%{
+        background-color: red;
+    }
 }

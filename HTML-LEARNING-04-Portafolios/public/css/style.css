@@ -21,6 +21,30 @@ header{
 
 }
 
+header>.logo img{
+    width: auto;
+    height: 17vh;
+    border-radius: 10em;
+    animation: rgbBorder 2s infinite;
+    border: 3.5px solid;
+}
+
+@keyframes rgbBorder{
+    0%{
+        border-color: red;
+    }
+
+    33%{
+        border-color: green;
+    }
+    66%{
+        border-color: blue;
+    }
+    100%{
+        border-color: red;
+    }
+}
+
 nav>ul{
     list-style: none;
 }
@@ -35,12 +59,29 @@ ul>li>a{
     text-decoration: none;
     padding: 5px;
     color: black;
-
+    font-size: 1.2em;
+    animation: rgbText 2s infinite;
 }
 
 ul>li:hover{
     transform: scale(1.2);
     text-shadow: 0 1px 0 black;
+}
+
+@keyframes rgbText{
+    0%{
+        color: red;
+    }
+
+    33%{
+        color: green;
+    }
+    66%{
+        color: blue;
+    }
+    100%{
+        color: red;
+    }
 }
 
 footer{

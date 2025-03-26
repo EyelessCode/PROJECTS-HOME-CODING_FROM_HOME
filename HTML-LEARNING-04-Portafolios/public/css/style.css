@@ -30,10 +30,8 @@ header>.logo img{
     transition: all 0.3s ease-in-out;
 }
 
-
-
 header>.logo img:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 header>.logo{
@@ -46,10 +44,18 @@ header>.logo{
 header>.logo>h1{
     font-size: 1.3em;
     margin: 0 0.5em;
-    position: relative;
 }
 
-header>.logo>h1::after{
+article>h2,
+article>h3,
+header>.logo>h1{
+    position: relative;
+    display: inline;
+}
+
+header>.logo>h1::after,
+article>h2::after,
+article>h3::after{
     content: "";
     position: absolute;
     left: 0;
@@ -61,18 +67,17 @@ header>.logo>h1::after{
     transition: all 0.3s ease;
 }
 
-header>.logo>h1:hover::after{
+header>.logo>h1:hover::after,
+article>h2:hover::after,
+article>h3:hover::after{
     width: 100%;
-}
-
-nav>ul{
-    list-style: none;
 }
 
 nav>ul>li{
     display: inline-block;
     padding: 0 20px;
     transition: all 0.3s ease;
+    list-style: none;
 }
 
 nav>ul>li:hover{
@@ -84,7 +89,7 @@ ul>li>a{
     text-decoration: none;
     padding: 5px;
     color: black;
-    font-size: 1.2em;
+    font-size: 1.4em;
     position: relative;
 }
 
@@ -107,12 +112,34 @@ ul>li>a:hover::after{
     width: 100%;
 }
 
+main>.proyectos{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+.proyectos>article{
+    border: 2px solid;
+    animation: rgbBorder 2s infinite;
+    border-radius: 50px;
+    position: relative;
+    padding: 2em;
+    text-align: center;
+    display: inline;
+}
+
+ul>li>span{
+    animation: rgbText 2s infinite;
+}
+
 footer{
     background-color: darkgray;
     border: 2px solid blue;
     justify-content: center;
     align-items: center;
     display: flex;
+    transition: all 0.3s ease;
 }
 
 footer>p>span:hover{

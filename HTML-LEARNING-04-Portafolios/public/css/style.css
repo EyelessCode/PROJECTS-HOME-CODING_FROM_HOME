@@ -50,7 +50,19 @@ article>h2,
 article>h3,
 header>.logo>h1{
     position: relative;
-    display: inline;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+article>h3{
+    font-size: 1.2em;
+    margin: 15px 0 5px;
+
+}
+
+article>h2{
+    font-size: 1.7em;
+    margin: 5px 0 25px;
 }
 
 header>.logo>h1::after,
@@ -123,13 +135,25 @@ main>.proyectos{
     border: 2px solid;
     animation: rgbBorder 2s infinite;
     border-radius: 50px;
-    position: relative;
     padding: 2em;
     text-align: center;
-    display: inline;
+    margin: 1em 2em;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-ul>li>span{
+article>ul{
+    list-style: none;
+    display: flex;
+    flex-flow: column ;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+ul>li>#rgbColor{
     animation: rgbText 2s infinite;
 }
 

@@ -140,6 +140,36 @@ main>.proyectos{
     margin: 1em 2em;
     max-width: 100%;
     max-height: 100%;
+    grid-template-rows: 2;
+}
+
+.textF{
+    grid-column: 1/2;
+    grid-template-rows: 1;
+
+}
+
+main>h1{
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+main>h1::after{
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    animation: rgbBackgroundColor 2s infinite;
+    position: absolute;
+    content: "";
+    transition: all 0.3s ease;
+}
+
+main>h1:hover::after{
+    width: 100%;
 }
 
 article>ul{

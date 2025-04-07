@@ -12,13 +12,23 @@ header{
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-    border-radius: 0 0 20% 20%;
+    border-radius: 0 0 20vh 20vh;
 }
 
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: bisque;
     color: black;
+
+    main>h1{
+        font-size: 3em;
+        margin: 0 550px 20px;
+        text-align: center;
+        position: relative;
+        background-color: rgb(253, 187, 100);
+        border-radius: 0 0 45vh 45vh;
+        padding: 5px 0 15px;
+    }
 }
 
 main{
@@ -56,6 +66,14 @@ nav>ul>li:hover{
     display: flex;
     justify-content: start;
     align-items: center;
+
+    h1{
+        font-size: 2em;
+        position: relative;
+        margin: 0 7.5px;
+        transition: all 0.3s ease;
+        animation: rgbColor 2s infinite;
+    }
 }
 
 .logo>a>img{
@@ -79,42 +97,53 @@ nav>ul>li:hover{
     height: 100%;
 }
 
-.logo>h1{
-    font-size: 2em;
-    position: relative;
-    margin: 0 7.5px;
-    transition: all 0.3s ease;
-    animation: rgbColor 2s infinite;
-}
-
 main>section{
     display: grid;
     grid-template-columns: repeat(3, minmax(25%, 50%));
     justify-content: center;
-    align-items: center;
     gap: 1.5%;
-}
-
-main>h1{
-    font-size: 3em;
-    margin: 20px 0;
-    text-align: center;
-    position: relative;
 }
 
 section>article{
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
     align-items: center;
     padding: 20px;
     border-radius: 25px;
     margin: 0 2%;
+    text-align: center;
+    border: 2px solid;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    h2{
+        font-size: 2em;
+        margin: 10px 0 20px;
+        position: relative;
+    }
 }
 
 section>.tarjeta-1{
     background-color: greenyellow;
-    border: 2px solid green;
+    border-color: green;
+}
+
+section>.tarjeta-2{
+    background-color: darkgoldenrod;
+    border-color: yellow;
+}
+
+section>.tarjeta-3{
+    background-color: deeppink;
+    border-color: purple;
+}
+
+.tarjeta-1:hover,.tarjeta-2:hover,
+.tarjeta-3:hover{
+    transform: scale(1.02);
+}
+
+section>.galeria{
 }
 
 @keyframes rgbBorder {

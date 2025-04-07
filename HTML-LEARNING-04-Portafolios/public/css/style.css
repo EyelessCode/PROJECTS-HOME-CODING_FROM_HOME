@@ -12,6 +12,7 @@ header{
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
+    border-radius: 0 0 20% 20%;
 }
 
 body{
@@ -28,6 +29,9 @@ main{
 nav>ul{
     display: flex;
     font-size: 1.3em;
+}
+
+ul{
     list-style: none;
 }
 
@@ -55,8 +59,8 @@ nav>ul>li:hover{
 }
 
 .logo>a>img{
-    width: 120px;
-    height: 120px;
+    width: min(77.5vw,120px);
+    /* height: 120px; */
     border-radius: 50%;
     margin: 0 7.5px;
     position: relative;
@@ -79,12 +83,38 @@ nav>ul>li:hover{
     font-size: 2em;
     position: relative;
     margin: 0 7.5px;
+    transition: all 0.3s ease;
+    animation: rgbColor 2s infinite;
 }
 
-.logo>h1::after{
-    content: "";
-    left: 0;
-    bottom: 0;
+main>section{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(25%, 50%));
+    justify-content: center;
+    align-items: center;
+    gap: 1.5%;
+}
+
+main>h1{
+    font-size: 3em;
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+section>article{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 0 2%;
+}
+
+section>.tarjeta-1{
+    background-color: greenyellow;
+    border: 2px solid green;
 }
 
 @keyframes rgbBorder {
@@ -102,6 +132,24 @@ nav>ul>li:hover{
     }
     100%{
         border-color: red;
+    }
+}
+
+@keyframes rgbColor {
+    0%{
+        color: red;
+    }
+    25%{
+        color: green;
+    }
+    50%{
+        color: blue;
+    }
+    75%{
+        color: yellow;
+    }
+    100%{
+        color: red;
     }
 }
 

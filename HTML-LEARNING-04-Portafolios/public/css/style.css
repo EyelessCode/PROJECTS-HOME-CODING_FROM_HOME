@@ -4,21 +4,57 @@
     box-sizing: border-box;
 }
 
+header{
+    background-color: rgb(211, 153, 76);
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: bisque;
     color: black;
 }
 
+main{
+    display: grid;
+    font-size: 1em;
+}
+
+nav>ul{
+    display: flex;
+    font-size: 1.3em;
+    list-style: none;
+}
+
+nav>li{
+    position: relative;
+}
+
+nav>ul>li>a{
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+nav>ul>li:hover{
+    border-radius: 25px;
+    background-color: rgb(164, 119, 61);
+}
+
 .logo{
     display: flex;
     justify-content: start;
     align-items: center;
-    margin: 20px;
-    padding: 20px;
 }
 
-.logo>img{
+.logo>a>img{
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -27,10 +63,10 @@ body{
     border: 7px solid;
     transition: all 0.3s ease;
     animation: rgbBorder 2s infinite;
-
+    cursor: pointer;
 }
 
-.logo>img::after{
+.logo>a>img::after{
     content: "";
     position: absolute;
     top: 0;
@@ -40,7 +76,15 @@ body{
 }
 
 .logo>h1{
-    font-size: 3.5em;
+    font-size: 2em;
+    position: relative;
+    margin: 0 7.5px;
+}
+
+.logo>h1::after{
+    content: "";
+    left: 0;
+    bottom: 0;
 }
 
 @keyframes rgbBorder {
@@ -58,5 +102,23 @@ body{
     }
     100%{
         border-color: red;
+    }
+}
+
+@keyframes rgbBackground{
+    0%{
+        background-color: red;
+    }
+    25%{
+        background-color: green;
+    }
+    50%{
+        background-color: blue;
+    }
+    75%{
+        background-color: yellow;
+    }
+    100%{
+        background-color: red;
     }
 }

@@ -115,17 +115,33 @@ section>article{
     border: 2px solid;
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
 
     h2{
         font-size: 2em;
         margin: 10px 0 20px;
         position: relative;
     }
+
+    #rgbColor{
+        position: relative;
+        animation: rgbColor 2s infinite;
+    }
+
+    h3{
+        font-size: 1.5em;
+        margin: 20px 0 7.5px;
+        position: relative;
+    }
+}
+
+section>article:hover{
+    animation: rgbBorder 2s infinite;
 }
 
 section>.tarjeta-1{
-    background-color: greenyellow;
-    border-color: green;
+    background-color: green;
+    border-color: greenyellow;
 }
 
 section>.tarjeta-2{
@@ -143,7 +159,8 @@ section>.tarjeta-3{
     transform: scale(1.02);
 }
 
-section>.galeria{
+.galeria{
+    padding: 20px 0 7.5px;
 }
 
 @keyframes rgbBorder {

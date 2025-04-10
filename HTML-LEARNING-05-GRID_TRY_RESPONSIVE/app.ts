@@ -8,6 +8,7 @@ const PORT=process.env.PORT||2000
 app.use(cors())
 app.use(express.json())
 
+//! TEST
 app.get("/grid-R",(req:Request,res:Response)=>{
     res.send("Hello World!")
 })

@@ -108,7 +108,7 @@ section>article{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px 20px;
     border-radius: 25px;
     margin: 0 2%;
     text-align: center;
@@ -116,16 +116,21 @@ section>article{
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
-
+    transition: all 0.3s ease;
     h2{
         font-size: 2em;
-        margin: 10px 0 20px;
+        /* margin: 10px 0 20px; */
         position: relative;
+        padding: 10px 40px 20px;
+        border-radius: 0 0 25vh 25vh;
     }
 
     #rgbColor{
         position: relative;
         animation: rgbColor 2s infinite;
+        text-decoration: underline;
+        cursor: help;
+        text-decoration-thickness: 2px;
     }
 
     h3{
@@ -142,25 +147,100 @@ section>article:hover{
 section>.tarjeta-1{
     background-color: green;
     border-color: greenyellow;
+
+    h2{
+        background-color: greenyellow;
+    }
 }
 
 section>.tarjeta-2{
     background-color: darkgoldenrod;
     border-color: yellow;
+
+    h2{
+        background-color: yellow;
+    }
 }
 
 section>.tarjeta-3{
-    background-color: deeppink;
-    border-color: purple;
+    background-color: purple;
+    border-color: deeppink;
+    color: white;
+
+    h2{
+        color: black;
+        background-color: deeppink;
+    }
 }
 
 .tarjeta-1:hover,.tarjeta-2:hover,
 .tarjeta-3:hover{
     transform: scale(1.02);
+    >h2{
+        outline: 3.5px solid;
+        animation: rgbOutline 2s infinite;
+    }
 }
 
 .galeria{
-    padding: 20px 0 7.5px;
+    width: 100%;
+    max-width: 800px;
+    margin: 5px auto 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.galeria ul{
+    display: flex;
+    width: 100%;
+    animation: slide 15s infinite alternate ease-in-out;
+}
+
+.galeria li{
+    width: 100%;
+    min-width: 300px;
+    flex: 0 0 auto;
+}
+
+.galeria img{
+    width: 100%;
+    height: min(400px, 100%);
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+footer{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: gray;
+    margin: 60px 0 0;
+    border-radius: 50vh 50vh 0 0;
+    font-size: 1.2em;
+
+    span{
+        animation: rgbColor 2s infinite;
+    }
+}
+
+@keyframes slide {
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    75%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(-200%);
+    }
 }
 
 @keyframes rgbBorder {
@@ -178,6 +258,24 @@ section>.tarjeta-3{
     }
     100%{
         border-color: red;
+    }
+}
+
+@keyframes rgbOutline {
+    0%{
+        outline-color: red;
+    }
+    25%{
+        outline-color: green;
+    }
+    50%{
+        outline-color: blue;
+    }
+    75%{
+        outline-color: yellow;
+    }
+    100%{
+        outline-color: red;
     }
 }
 

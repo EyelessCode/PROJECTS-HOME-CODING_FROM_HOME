@@ -19,6 +19,36 @@ body{
     min-width: 100vw;
 }
 
+.contenedor>*{
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid black;
+    text-align: center;
+}
+
 .contenedor{
     display: grid;
+    gap: 20px;
+    grid-template: 
+        "header" minmax(auto,120px)
+        "main" minmax(100vh,450px)
+        "footer" minmax(auto,70px)
+    ;
+
+    .header{
+        background-color: orange;
+        grid-area: header;
+    }
+    .main{
+        background-color: red;
+        grid-area: main;
+    }
+    .footer{
+        background-color: gray;
+        grid-area: footer;
+    }
+
+    @media (min-width:768px) {
+        
+    }
 }

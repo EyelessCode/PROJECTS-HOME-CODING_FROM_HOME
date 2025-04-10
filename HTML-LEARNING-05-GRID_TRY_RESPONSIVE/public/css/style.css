@@ -30,9 +30,9 @@ body{
     display: grid;
     gap: 20px;
     grid-template: 
-        "header" minmax(auto,120px)
-        "main" minmax(100vh,450px)
-        "footer" minmax(auto,70px)
+        "header" auto
+        "main" auto
+        "footer" auto
     ;
 
     .header{
@@ -49,6 +49,26 @@ body{
     }
 
     @media (min-width:768px) {
-        
+        grid-template: 
+            "header" auto
+            "main" auto
+            "footer" auto
+        ;
+    }
+
+    @media (min-width:1280px) {
+        grid-template: 
+            "header header" auto
+            "main main" auto
+            "footer footer" auto
+        ;
+    }
+
+    @media (min-width:1680px) {
+        grid-template: 
+            "header header header" auto
+            "main main main" auto
+            "footer footer footer" auto
+        ;
     }
 }

@@ -77,7 +77,7 @@ body{
 header{
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	background-color: var(--color-primario);
 }
@@ -88,27 +88,51 @@ header{
 	gap: 10px;
 }
 
-.menu li{
-	display: inline-block;
-	position: relative;
-	list-style: none;
-	padding: 5px 10px;
+.menu{
+	display: flex;
+	flex-flow: row;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
 }
 
-.menu li a:hover{
-	background-color: slategrey;
-	border-radius: 10px;
+.submenu,.sub-submenu{
+	display: none;
+	position: absolute;
+	min-width: 100%;
 }
 
 .submenu{
-	display: none;
+	top: 100%;
+	left: 0;
+	text-align: center;
+	border-radius: 10px;
 }
 
-.menu li a,
-.submenu li a{
+.sub-submenu{
+	top: 0;
+	right: 100%;
+}
+
+.item{
+	list-style: none;
+	position: relative;
+}
+
+.item:hover .submenu,
+.submenu>.item:hover .sub-submenu{
 	display: block;
-	text-decoration: none;
-	padding: 15px;
-	color: white;
+	background-color: aquamarine;
 }
 
+.link-a{
+	text-decoration: none;
+	color: white;
+	padding: 1rem;
+	border-radius: 10px;
+	display: block;
+}
+
+.link-a:hover{
+	background-color: violet;
+}

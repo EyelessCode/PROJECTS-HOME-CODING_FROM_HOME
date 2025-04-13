@@ -139,9 +139,15 @@ header{
 	padding: 1rem;
 	display: block;
 	margin: auto;
+	border-radius: 0.8rem;
+	transition: all 0.1s ease-in-out;
 }
 
 .link-a:hover{
 	background-color: #40B4E4;
 	color: #2C3E50;
+}
+
+#link-a-unique:hover{
+	border-radius: 30px;
 }

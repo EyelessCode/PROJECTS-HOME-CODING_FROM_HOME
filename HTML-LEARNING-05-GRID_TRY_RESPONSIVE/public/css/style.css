@@ -4,16 +4,16 @@
 	box-sizing: border-box;
 }
 
-:root{
+/* :root{
 	--color-primario: darkgreen;
 	--color-secundario: beige;
 	--acento: yellow;
 	--color-texto: black;
-}
+} */
 
 body{
-	background-color: var(--color-secundario);
-	color: var(--color-texto);
+	background-color: beige;
+	color: black;
 	font-family: Arial, Helvetica, sans-serif;
 	min-height: 100vh;
 	min-width: 100vw;
@@ -79,7 +79,8 @@ header{
 	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: center;
-	background-color: var(--color-primario);
+	background-color: #2E5E3B;
+	color: white;
 }
 
 .logo{
@@ -94,45 +95,53 @@ header{
 	gap: 2rem;
 	justify-content: center;
 	align-items: center;
+	color: #FFFFFF;
+	background-color: #204229;
+	border-radius: 30px;
 }
 
 .submenu,.sub-submenu{
 	display: none;
 	position: absolute;
 	min-width: 100%;
+	/* background-color: #2E5E3B; */
 }
 
 .submenu{
 	top: 100%;
 	left: 0;
-	text-align: center;
 	border-radius: 10px;
+	font-size: 0.8em;
 }
 
 .sub-submenu{
 	top: 0;
 	right: 100%;
+	border-radius: 10px;
 }
 
 .item{
 	list-style: none;
 	position: relative;
+	margin: auto;
+
 }
 
 .item:hover .submenu,
 .submenu>.item:hover .sub-submenu{
 	display: block;
-	background-color: aquamarine;
+	background-color: #2E5E3B;
 }
 
 .link-a{
 	text-decoration: none;
 	color: white;
 	padding: 1rem;
-	border-radius: 10px;
 	display: block;
+	margin: auto;
 }
 
 .link-a:hover{
-	background-color: violet;
+	background-color: #40B4E4;
+	color: #2C3E50;
 }

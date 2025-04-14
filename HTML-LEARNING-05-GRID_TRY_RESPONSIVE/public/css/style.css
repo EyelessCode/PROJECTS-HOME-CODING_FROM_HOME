@@ -269,7 +269,7 @@ main>h1{
 }
 
 .article-2:hover{
-	box-shadow: 0 0 25px #69635e80;
+	box-shadow: 0 0 25px #3f3d3b80;
 }
 
 .article-3{
@@ -297,8 +297,34 @@ main>h1{
 .article-5{
 	outline: 2px solid #40B4E4;
 	background-color: #ffffff;
+	color: #214b43;
+	transition: all 0.3s ease;
+}
+
+.article-5:hover{
+	box-shadow: 0 0 25px #40B4E480;
+}
+
+.article-6{
+	outline: 2px solid #8fff07;
+	background-color: #fbff7d;
 	color: #1A1A1A;
 	transition: all 0.3s ease;
+}
+
+.article-6:hover{
+	box-shadow: 0 0 25px #8fff0780;
+}
+
+.article-7{
+	outline: 2px solid #f4ff2d;
+	background-color: #bffc7f;
+	color: #2b3b56;
+	transition: all 0.3s ease;
+}
+
+.article-7:hover{
+	box-shadow: 0 0 25px #d3da49;
 }
 
 @keyframes rgbAmarilloColor{

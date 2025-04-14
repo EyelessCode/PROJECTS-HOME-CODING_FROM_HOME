@@ -327,6 +327,28 @@ main>h1{
 	box-shadow: 0 0 25px #d3da49;
 }
 
+.article-8{
+	outline: 2px solid #ff6b6b;
+	background-color: #fcfca0;
+	color: #6a2a2a;
+	transition: all 0.3s ease;
+}
+
+.article-8:hover{
+	box-shadow: 0 0 25px #ff6a6a;
+}
+
+.article-9{
+	outline: 2px solid #83eed3;
+	background-color: #fab676;
+	color: #000000;
+	transition: all 0.3s ease;
+}
+
+.article-9:hover{
+	box-shadow: 0 0 25px #70fad7;
+}
+
 @keyframes rgbAmarilloColor{
 	0%{
 		color: #FFD700;

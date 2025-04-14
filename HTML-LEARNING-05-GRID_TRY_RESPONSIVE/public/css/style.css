@@ -83,12 +83,21 @@ header{
 	color: white;
 }
 
+/*! COMIENZO LOGO */
 .logo{
 	display: flex;
 	align-items: center;
 	gap: 10px;
 }
 
+.logo img{
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+/*! CIERRE LOGO */
+
+/*! COMIENZO MENÚ */
 .menu{
 	display: flex;
 	flex-flow: row;
@@ -144,10 +153,11 @@ header{
 }
 
 .link-a:hover{
-	background-color: #40B4E4;
-	color: #2C3E50;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #FFD700;
 }
 
 #link-a-unique:hover{
 	border-radius: 30px;
 }
+/*! CIERRE MENÚ */

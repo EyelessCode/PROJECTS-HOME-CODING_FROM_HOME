@@ -20,6 +20,33 @@ body{
 	min-height: 100vh;
 	min-width: 100vw;
 	font-size: 1.2em;
+	position: relative;
+}
+
+body::before{
+	content: "";
+	position: absolute;
+	top: 160px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, beige, #70fad7, #70fad7, beige);
+	background-size: cover;
+	opacity: 0.5;
+	z-index: -1;
+}
+
+body::after{
+	content: "";
+	position: absolute;
+	top: 230px;
+	left: 700px;
+	width: 150px;
+	height: 700px;
+	background-color: #6a2a2a;
+	background-size: cover;
+	z-index: -1;
+	border-radius: 4vh 4vh 4vh 4vh;
 }
 
 .contenedor{

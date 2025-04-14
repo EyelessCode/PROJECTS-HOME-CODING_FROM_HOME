@@ -199,6 +199,23 @@ header{
 #link-a-unique:hover{
 	border-radius: 30px;
 }
+
+ul>li>a>span>img{
+	width: 15px;
+	height: 15px;
+	transition: all 0.3s ease;
+	top: 1px;
+	position: relative;
+}
+
+ul>li>a:hover>span>img{
+	transform: rotate(90deg);
+	/* transition: all 0.3s ease; */
+}
+
+ul>li>a:hover>#sub-submenu-left>img{
+	transform: rotate(180deg);
+}
 /*! CIERRE MENÚ */
 
 main>h1{

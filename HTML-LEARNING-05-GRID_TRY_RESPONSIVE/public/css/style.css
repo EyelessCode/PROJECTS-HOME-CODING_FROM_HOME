@@ -225,7 +225,55 @@ main>h1{
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
+	/* outline: 2px solid #40B4E4; */
+	/* background-color: #E6F4F1; */
+	border-radius: 30px;
+	padding: 30px;
+	/* color: #2C3E50; */
+}
+
+.article-1{
+	outline: 2px solid #40B4E4;
+	background-color: #E6F4F1;
+	color: #2C3E50;
+	transition: all 0.3s ease;
+}
+
+.article-1:hover{
+	box-shadow: 0 0 25px #40B4E480;
+}
+
+.article-2{
 	outline: 2px solid #2E5E3B;
+	background-color: #F0F7E6;
+	color: #333333;
+	transition: all 0.3s ease;
+}
+
+.article-2:hover{
+	box-shadow: 0 0 25px #69635e80;
+}
+
+.article-3{
+	outline: 2px solid #6D6D6D;
+	background-color: #F5F5F5;
+	color: #1A1A1A;
+	transition: all 0.3s ease;
+}
+
+.article-3:hover{
+	box-shadow: 0 0 25px #b0909080;
+}
+
+.article-4{
+	outline: 2px solid #FF6B6B;
+	background-color: #FFF3E6;
+	color: #1A1A1A;
+	transition: all 0.3s ease;
+}
+
+.article-4:hover{
+	box-shadow: 0 0 25px #FF6B6B;
 }
 
 @keyframes rgbAmarilloColor{

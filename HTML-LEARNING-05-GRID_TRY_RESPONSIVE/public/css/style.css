@@ -26,10 +26,10 @@ body{
 body::before{
 	content: "";
 	position: absolute;
-	top: 160px;
+	top: 40%;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	background: linear-gradient(to bottom, beige, #70fad7, #70fad7, beige,
 		#6D6D6D, #ff6b6b, #ff6b6b,#96480d);
 	background-size: cover;
@@ -43,7 +43,7 @@ body::after{
 	top: 230px;
 	left: 700px;
 	width: 150px;
-	height: 700px;
+	height: 1050px;
 	background-color: #6a2a2a;
 	background-size: cover;
 	z-index: -1;
@@ -246,6 +246,7 @@ ul>li>a:hover>#sub-submenu-left>img{
 }
 /*! CIERRE MENÚ */
 
+/*! COMIENZO DEL MAIN */
 main>h1{
 	text-align: center;
 	margin: -1.3rem 9rem 2rem;
@@ -376,7 +377,18 @@ main>h1{
 .article-9:hover{
 	box-shadow: 0 0 25px #70fad7;
 }
+/*! CIERRE DEL MAIN */
 
+/*! COMIENZO FOOTER */
+footer{
+	background-color: #e86c1f;
+	color: #fff;
+	border-radius: 15vh 15vh 0 0;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
 @keyframes rgbAmarilloColor{
 	0%{
 		color: #FFD700;

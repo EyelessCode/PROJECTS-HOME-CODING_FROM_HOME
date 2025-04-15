@@ -280,6 +280,33 @@ main>h1{
 	text-align: justify;
 }
 
+.galeria-img{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.galeria-img ul{
+	display: flex;
+	width: 100%;
+	animation: slide 15s infinite alternate ease-in-out;
+}
+
+.galeria-img li{
+	width: 100%;
+	flex: 0 0 auto;
+	list-style: none;
+}
+
+.galeria-img img{
+	width: 100%;
+	height: min(300px, 100%);
+	object-fit: cover;
+	transition: all 0.3s ease;
+	border-radius: 25px;
+}
+
 .article-1{
 	outline: 2px solid #40B4E4;
 	background-color: #E6F4F1;
@@ -426,7 +453,6 @@ footer{
 
 .social img:hover{
 	transform: scale(1.2);
-	transition: all 0.3s ease;
 }
 
 .legal{
@@ -461,6 +487,24 @@ footer{
 	}
 }
 /*! CIERRE FOOTER */
+
+@keyframes slide{
+	0%{
+		transform: translateX(0);
+	}
+	25%{
+		transform: translateX(-100%);
+	}
+	50%{
+		transform: translateX(-100%);
+	}
+	75%{
+		transform: translateX(-200%);
+	}
+	100%{
+		transform: translateX(-300%);
+	}
+}
 
 @keyframes rgbAmarilloColor{
 	0%{

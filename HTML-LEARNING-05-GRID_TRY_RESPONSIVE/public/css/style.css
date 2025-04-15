@@ -409,6 +409,26 @@ footer{
 	}
 }
 
+.social{
+	display: flex;
+	gap: 0 3rem;
+	background-color: #bffc7f;
+	padding: 1.4rem 3rem;
+	border-radius: 0 0 15vh 15vh;
+}
+
+.social img{
+	margin-top: 10px;
+	width: 54px;
+	height: 54px;
+	transition: all 0.3s ease;
+}
+
+.social img:hover{
+	transform: scale(1.2);
+	transition: all 0.3s ease;
+}
+
 .legal{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

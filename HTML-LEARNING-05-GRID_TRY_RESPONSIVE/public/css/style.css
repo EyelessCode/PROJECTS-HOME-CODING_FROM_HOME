@@ -388,7 +388,51 @@ footer{
 	flex-flow: column;
 	justify-content: center;
 	align-items: center;
+
+	a{
+		text-decoration: none;
+	}
 }
+
+.copyright{
+	margin: 15px 0;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.legal{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem 11rem;
+	font-size: 0.9em;
+	padding: 1.5rem 8em;
+	background-color: #96480d;
+	border-radius: 50vh 50vh 0 0;
+	text-align: center;
+	a{
+		color: #000000;
+		position: relative;
+	}
+
+	a::after{
+		content: "";
+		display: block;
+		width: 0%;
+		position: absolute;
+		height: 2px;
+		top: 100%;
+		left: 0;
+		background-color: #000000;
+		transition: width 0.3s ease-in-out;
+	}
+
+	a:hover::after{
+		width: 100%;
+	}
+}
+
 @keyframes rgbAmarilloColor{
 	0%{
 		color: #FFD700;

@@ -195,6 +195,7 @@ header{
 	top: 0;
 	right: 100%;
 	border-radius: 10px;
+	text-align: center;
 }
 
 .item{
@@ -400,12 +401,18 @@ footer{
 	flex-flow: column;
 	justify-content: center;
 	align-items: center;
+	gap: 1rem 0;
+	font-size: 0.8em;
+
+	span{
+		font-weight: bolder;
+	}
 }
 
 .legal{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 1rem 11rem;
+	gap: 1rem 10rem;
 	font-size: 0.9em;
 	padding: 1.5rem 8em;
 	background-color: #96480d;
@@ -414,6 +421,7 @@ footer{
 	a{
 		color: #000000;
 		position: relative;
+		padding: 5px;
 	}
 
 	a::after{
@@ -432,6 +440,7 @@ footer{
 		width: 100%;
 	}
 }
+/*! CIERRE FOOTER */
 
 @keyframes rgbAmarilloColor{
 	0%{

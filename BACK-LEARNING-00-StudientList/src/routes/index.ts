@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { readdirSync } from "fs";
 
-const ruta=Router()
+export const ruta=Router()
 const PATH=`${__dirname}`
 
 const cortar=(file:string)=>{

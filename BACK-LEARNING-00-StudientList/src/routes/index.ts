@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { readdirSync } from "fs";
 
-export const ruta=Router()
+const ruta=Router()
 const PATH=`${__dirname}`
 
 const cortar=(file:string)=>{
@@ -15,7 +15,9 @@ readdirSync(PATH).filter((file)=>{
     if (clean!=='index') {
         import (`./${clean}`).then((modulo)=>{
             console.log(`Ruta: ${clean}`);
-            ruta.use(`/${clean}`,modulo.ruta)
+            ruta.use(`/router-${clean}`,modulo.ruta)
         })
     }
 })
+
+export {ruta}

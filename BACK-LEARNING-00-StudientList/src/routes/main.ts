@@ -1,6 +1,9 @@
 import { Request, Response, Router } from "express";
 
-export const ruta=Router()
-ruta.get("/main",(req:Request,res:Response)=>{
-    res.send(`Hola`)
+const ruta=Router()
+
+ruta.get("/html",(req:Request,res:Response)=>{
+    res.send(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
 })
+
+export {ruta}

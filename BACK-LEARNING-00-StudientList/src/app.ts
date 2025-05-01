@@ -11,4 +11,4 @@ app.use(express.json())
 
 app.use("/test",ruta)
 
-app.listen(PORT,()=>console.log(`=> ${PORT}`))
+app.listen(PORT,()=>console.log(`=> http://localhost:1002`))

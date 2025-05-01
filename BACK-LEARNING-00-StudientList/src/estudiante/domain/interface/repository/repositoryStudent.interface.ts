@@ -1,5 +1,6 @@
 import { IdStudent } from '../../validation/model/idStudent.value';
 import { ClassEstudiante } from '../model/estudiante.model';
+
 export interface RepositoryEstudiante{
     getAll():Promise<ClassEstudiante[]>
     getOneById(id:IdStudent):Promise<ClassEstudiante|null>

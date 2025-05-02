@@ -22,12 +22,23 @@ export class ClassEstudiante{
         return `${this.nombre} - ${this.apellido}`
     }
 
-    public mapeoPrimitivo(){
+    public mapeoPrimitivo():any{
         return{
             id:this.id.id,
             nombre:this.nombre.nombre,
             apellido:this.apellido.apellido,
             edad:this.edad.edad
         }
+    }
+
+    public mapeoDominio(id:any,nombre:any,apellido:any,
+        edad:any
+    ):ClassEstudiante{
+        return new ClassEstudiante(
+            new IdStudent(id.id),
+            new NombreStudent(nombre.nombre),
+            new ApellidoStudent(apellido.apellido),
+            new EdadStudent(edad.edad),
+        )
     }
 }

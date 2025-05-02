@@ -2,7 +2,7 @@ import { ClassEstudiante } from "../../../domain/interface/model/estudiante.mode
 import { IRepositoryEstudiante } from "../../../domain/interface/repository/repositoryStudent.repository.interface";
 import { IdStudent } from "../../../domain/validation/model/idStudent.value";
 
-export class RepositoryStudent implements IRepositoryEstudiante{
+export class RepositoryInMemoryStudent implements IRepositoryEstudiante{
     private estudiante:ClassEstudiante[]=[]
 
     async getAll(): Promise<ClassEstudiante[]> {

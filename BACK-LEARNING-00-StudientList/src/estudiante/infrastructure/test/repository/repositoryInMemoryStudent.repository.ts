@@ -1,6 +1,7 @@
 import { ClassEstudiante } from "../../../domain/interface/model/estudiante.model";
 import { IRepositoryEstudiante } from "../../../domain/interface/repository/repositoryStudent.repository.interface";
 import { IdStudent } from "../../../domain/validation/model/idStudent.value";
+import { StudentNotFound } from "../../../domain/validation/util/studentNotFound.util";
 
 export class RepositoryInMemoryStudent implements IRepositoryEstudiante{
     private estudiante:ClassEstudiante[]=[]
@@ -14,14 +15,17 @@ export class RepositoryInMemoryStudent implements IRepositoryEstudiante{
     }
 
     async create(student: ClassEstudiante): Promise<void> {
-        throw new Error("Method not implemented.");
+        this.estudiante.push(student)
     }
 
     async edit(student: ClassEstudiante): Promise<void> {
-        throw new Error("Method not implemented.");
+        const index=this.estudiante.findIndex((e)=>e.id.id===student.id.id)
+        this.estudiante[index]=student
     }
 
     async delete(id: IdStudent): Promise<void> {
-        throw new Error("Method not implemented.");
+        if(!id.id)throw new StudentNotFound(`No se encontró el estudiante ?${id.id}?!`)
+        
+        this.estudiante=this.estudiante.filter((student)=>student.id.id!==id.id)
     }
 }

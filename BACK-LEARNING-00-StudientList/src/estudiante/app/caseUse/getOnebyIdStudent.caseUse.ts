@@ -9,7 +9,8 @@ export class CaseUseGetOneByIdStudent{
     async run(id:number):Promise<ClassEstudiante>{
         const estudiante=await this.repo.getOneById(new IdStudent(id))
 
-        if(!estudiante)throw new StudentNotFound(`Estudiante no se pude encontrar!`)
+        if(!estudiante)throw new StudentNotFound(`No se pudo encontrar el `+
+            `estudiante!`)
 
         return estudiante
     }

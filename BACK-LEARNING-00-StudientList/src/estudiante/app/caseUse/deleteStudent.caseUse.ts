@@ -1,9 +1,9 @@
-import { RepositoryEstudiante } from "../../domain/interface/repository/repositoryStudent.repository.interface";
+import { IRepositoryEstudiante } from "../../domain/interface/repository/repositoryStudent.repository.interface";
 import { IdStudent } from "../../domain/validation/model/idStudent.value";
 import { StudentNotFound } from "../../domain/validation/util/studentNotFound.util";
 
 export class CaseUseDeleteStudent{
-    constructor(private repo:RepositoryEstudiante){}
+    constructor(private repo:IRepositoryEstudiante){}
 
     async run(id:number):Promise<void>{
         const estudiante=new IdStudent(id)

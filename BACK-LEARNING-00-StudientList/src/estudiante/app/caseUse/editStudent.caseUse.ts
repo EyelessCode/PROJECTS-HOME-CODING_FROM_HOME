@@ -1,5 +1,5 @@
 import { ClassEstudiante } from "../../domain/interface/model/estudiante.model";
-import { RepositoryEstudiante } from "../../domain/interface/repository/repositoryStudent.repository.interface";
+import { IRepositoryEstudiante } from "../../domain/interface/repository/repositoryStudent.repository.interface";
 import { ApellidoStudent } from "../../domain/validation/model/apellidoStudent.value";
 import { EdadStudent } from "../../domain/validation/model/EdadStudent.value";
 import { IdStudent } from "../../domain/validation/model/idStudent.value";
@@ -7,7 +7,7 @@ import { NombreStudent } from "../../domain/validation/model/nombreStudent.value
 import { StudentNotFound } from "../../domain/validation/util/studentNotFound.util";
 
 export class CaseUseEditStudent{
-    constructor(private repo:RepositoryEstudiante){}
+    constructor(private repo:IRepositoryEstudiante){}
 
     async run(id:number,nombre:string,
         apellido:string,edad:number

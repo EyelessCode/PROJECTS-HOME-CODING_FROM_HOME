@@ -14,13 +14,6 @@ type PostgresStudent={
 }
 
 export class RepositoryPostgresStudent implements IRepositoryEstudiante{
-    client:Pool
-    constructor(databaseUrl:string){
-        this.client=new Pool({
-            connectionString:databaseUrl
-        })
-    }
-
     private mapeoDominio(student:PostgresStudent):ClassEstudiante{
         return new ClassEstudiante(
             new IdStudent(student.id),
@@ -29,6 +22,13 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
             new EdadStudent(student.edad)
         )
     }
+
+    client:Pool
+    constructor(databaseUrl:string){
+        this.client=new Pool({
+            connectionString:databaseUrl
+        })
+    }
     
     async getAll(): Promise<ClassEstudiante[]> {
         const query={
@@ -36,7 +36,6 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
         }
 
         const resultado=await this.client.query<PostgresStudent>(query)
-
         return resultado.rows.map((row)=>this.mapeoDominio(row))
     }
     async getOneById(id: IdStudent): Promise<ClassEstudiante | null> {

@@ -20,7 +20,7 @@ export class CaseUseEditStudent{
         )
 
         const estudianteExiste=await this.repo.getOneById(estudiante.id)
-        if(!estudianteExiste)throw new StudentNotFound(`No se encontró un estudiante!`)
+        if(!estudianteExiste)throw new StudentNotFound(`No se encontró el estudiante ?${estudiante.id}?!`)
 
         return this.repo.edit(estudiante)
     }

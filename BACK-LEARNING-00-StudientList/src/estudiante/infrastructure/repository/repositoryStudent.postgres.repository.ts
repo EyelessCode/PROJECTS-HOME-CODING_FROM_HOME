@@ -38,17 +38,50 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
         const resultado=await this.client.query<PostgresStudent>(query)
         return resultado.rows.map((row)=>this.mapeoDominio(row))
     }
+
     async getOneById(id: IdStudent): Promise<ClassEstudiante | null> {
-        throw new Error("Method not implemented.");
+        const query={
+            text:`SELECT * FROM student WHERE id=$1`,
+            values:[id.id]
+        }
+
+        const resultado=await this.client.query<PostgresStudent>(query)
+        if(resultado.rows.length===0)throw null
+
+        const fila=resultado.rows[0]
+
+        return this.mapeoDominio(fila)
     }
+
     async create(student: ClassEstudiante): Promise<void> {
-        throw new Error("Method not implemented.");
+        const query={
+            text:`INSERT INTO student (id,nombre,apellido,edad) VALUES($1,$2,$3,$4)`,
+            values:[student.id.id,student.nombre.nombre,
+                student.apellido.apellido,student.edad.edad
+            ]
+        }
+
+        await this.client.query(query)
     }
+
     async edit(student: ClassEstudiante): Promise<void> {
-        throw new Error("Method not implemented.");
+        const query={
+            text:`UPDATE student SET nombre=$1,apellido=$2,edad=$3 `+
+            `WHERE id=$4`,
+            values:[student.nombre.nombre,student.apellido.apellido,
+                student.edad.edad,student.id.id
+            ]
+        }
+
+        await this.client.query(query)
     }
     async delete(id: IdStudent): Promise<void> {
-        throw new Error("Method not implemented.");
+        const query={
+            text:`DELETE FROM student WHERE id=$1`,
+            values:[id.id]
+        }
+
+        await this.client.query(query)
     }
 
 }

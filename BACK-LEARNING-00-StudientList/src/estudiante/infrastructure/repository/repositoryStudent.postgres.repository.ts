@@ -75,6 +75,7 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
 
         await this.client.query(query)
     }
+    
     async delete(id: IdStudent): Promise<void> {
         const query={
             text:`DELETE FROM student WHERE id=$1`,

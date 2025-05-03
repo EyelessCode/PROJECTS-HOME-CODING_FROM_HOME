@@ -4,7 +4,7 @@ import { IRepositoryEstudiante } from "../../domain/interface/repository/reposit
 import { IdStudent } from "../../domain/validation/model/idStudent.value";
 import { NombreStudent } from "../../domain/validation/model/nombreStudent.value";
 import { ApellidoStudent } from "../../domain/validation/model/apellidoStudent.value";
-import { EdadStudent } from "../../domain/validation/model/EdadStudent.value";
+import { EdadStudent } from "../../domain/validation/model/edadStudent.value";
 
 type PostgresStudent={
     id:number,

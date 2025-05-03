@@ -1,5 +1,5 @@
 import { ApellidoStudent } from "../../validation/model/apellidoStudent.value"
-import { EdadStudent } from "../../validation/model/EdadStudent.value"
+import { EdadStudent } from "../../validation/model/edadStudent.value"
 import { IdStudent } from "../../validation/model/idStudent.value"
 import { NombreStudent } from "../../validation/model/nombreStudent.value"
 

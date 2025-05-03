@@ -19,6 +19,8 @@ export class RepositoryInMemoryStudent implements IRepositoryEstudiante{
     }
 
     async edit(student: ClassEstudiante): Promise<void> {
+        if(!student.id)throw new StudentNotFound(`No se encontró el estudiante ?${student.id}?!`)
+
         const index=this.estudiante.findIndex((e)=>e.id.id===student.id.id)
         this.estudiante[index]=student
     }

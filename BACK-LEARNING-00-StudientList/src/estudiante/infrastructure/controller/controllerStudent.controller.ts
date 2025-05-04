@@ -36,7 +36,7 @@ export class ControllerStudent{
 
             await container.student.create.run(id,nombre,apellido,edad)
 
-            return res.status(201).send()
+            return res.status(201).json(req.body).send()
         } catch (error) {
             next(error)
         }
@@ -51,7 +51,7 @@ export class ControllerStudent{
 
             await container.student.edit.run(id,nombre,apellido,edad)
 
-            return res.status(204).send()
+            return res.status(204).json(req.body).send()
         } catch (error) {
             if(error instanceof StudentNotFound){
                 res.status(404).json({

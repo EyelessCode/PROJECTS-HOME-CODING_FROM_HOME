@@ -3,7 +3,7 @@ import { container } from "../../../shared/infrastructure/containerServices.shar
 import { StudentNotFound } from "../../domain/validation/util/studentNotFound.util";
 
 export class ControllerStudent{
-    async getAll(req:Request,res:Response,next:NextFunction){
+    getAll=async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
         try {
             const student=await container.student.getAll.run()
             return res.json(student.map((s)=>s.mapeoPrimitivo())).status(200)
@@ -12,7 +12,7 @@ export class ControllerStudent{
         }
     }
 
-    async getOneById(req:Request,res:Response,next:NextFunction){
+    getOneById=async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
         try {
             const student=await container.student.getOneById.run(Number(req.params.id))
             return res.json(student.mapeoPrimitivo()).status(200)
@@ -27,7 +27,7 @@ export class ControllerStudent{
         }
     }
 
-    async create(req:Request,res:Response,next:NextFunction){
+    create=async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
         try {
             const {id,nombre,apellido,edad}=req.body as {
                 id:number,nombre:string,apellido:string,
@@ -42,7 +42,7 @@ export class ControllerStudent{
         }
     }
 
-    async edit(req:Request,res:Response,next:NextFunction){
+    edit=async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
         try {
             const {id,nombre,apellido,edad}=req.body as {
                 id:number,nombre:string,apellido:string,
@@ -63,7 +63,7 @@ export class ControllerStudent{
         }
     }
 
-    async delete(req:Request,res:Response,next:NextFunction){
+    delete=async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
         try {
             await container.student.delete.run(Number(req.params.id))
             

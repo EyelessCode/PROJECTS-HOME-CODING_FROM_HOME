@@ -9,7 +9,7 @@ export class CaseUseDeleteStudent{
         const estudiante=new IdStudent(id)
 
         const estudianteExiste=await this.repo.getOneById(estudiante)
-        if(!estudianteExiste)throw new StudentNotFound(`No se encontró el estudiante ?${estudiante.id}?!`)
+        if(!estudianteExiste)throw new StudentNotFound(`No se encontró el estudiante ?${id}?!`)
 
         return this.repo.delete(estudiante)
     }

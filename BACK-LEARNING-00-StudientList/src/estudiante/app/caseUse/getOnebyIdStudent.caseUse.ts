@@ -10,7 +10,7 @@ export class CaseUseGetOneByIdStudent{
         const estudiante=await this.repo.getOneById(new IdStudent(id))
 
         if(!estudiante)throw new StudentNotFound(`No se pudo encontrar el `+
-            `estudiante!`)
+            `estudiante ${id}!`)
 
         return estudiante
     }

@@ -6,8 +6,8 @@ import { CaseUseGetOneByIdStudent } from "../../estudiante/app/caseUse/getOnebyI
 import { RepositoryPostgresStudent } from "../../estudiante/infrastructure/repository/repositoryStudent.postgres.repository";
 import { RepositoryInMemoryStudent } from "../../estudiante/infrastructure/test/repository/repositoryInMemoryStudent.repository";
 
-// const repo=new RepositoryPostgresStudent(`postgresql://eyelesscode:cris03022@localhost:5432/student_temp`)
-const repo=new RepositoryInMemoryStudent()
+const repo=new RepositoryPostgresStudent(`postgresql://eyelesscode:cris03022@localhost:5432/student_temp`)
+// const repo=new RepositoryInMemoryStudent()
 
 const container={
     student:{

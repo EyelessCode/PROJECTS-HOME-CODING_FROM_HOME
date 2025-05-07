@@ -4,7 +4,7 @@ export class IdStudent{
     constructor(id:number) {
         this.id=id
         this.numNegativo()
-        this.noFloat()
+        // this.noFloat()
     }
 
     private numNegativo(){
@@ -13,11 +13,11 @@ export class IdStudent{
         }
     }
 
-    private noFloat(){
+    /* private noFloat(){
         if (!Number.isInteger(this.id)) {
             throw new Error(`El ID debe de ser un número entero!`)
         }
-    }
+    } */
 
     private noRepeat(){
         if (this.id===this.id) {

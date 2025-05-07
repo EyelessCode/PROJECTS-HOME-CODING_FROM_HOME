@@ -55,8 +55,8 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
 
     async create(student: ClassEstudiante): Promise<void> {
         const query={
-            text:`INSERT INTO student (id,nombre,apellido,edad) VALUES($1,$2,$3,$4)`,
-            values:[student.id.id,student.nombre.nombre,
+            text:`INSERT INTO student (nombre,apellido,edad) VALUES($1,$2,$3)`,
+            values:[student.nombre.nombre,
                 student.apellido.apellido,student.edad.edad
             ]
         }

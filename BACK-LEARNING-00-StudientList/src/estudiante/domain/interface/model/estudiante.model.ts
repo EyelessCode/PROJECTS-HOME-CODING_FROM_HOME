@@ -6,7 +6,7 @@ import { NombreStudent } from "../../validation/model/nombreStudent.value"
 export class ClassEstudiante{
     id:IdStudent
     nombre:NombreStudent
-    apellido:ApellidoStudent
+    apellido?:ApellidoStudent
     edad:EdadStudent
 
     constructor(id:IdStudent,nombre:NombreStudent,
@@ -26,7 +26,7 @@ export class ClassEstudiante{
         return{
             id:this.id.id,
             nombre:this.nombre.nombre,
-            apellido:this.apellido.apellido,
+            apellido:this.apellido?.apellido,
             edad:this.edad.edad
         }
     }

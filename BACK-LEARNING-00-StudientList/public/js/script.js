@@ -11,7 +11,7 @@ document.querySelector(".form_content").addEventListener("submit",async (e)=>{
     console.log(`Abriendo formulario...`);
 
     const estudiante={
-        id:Number(document.querySelector("#txtId").value),
+        // id:Number(document.querySelector("#txtId").value),
         nombre:document.querySelector("#txtNombre").value,
         apellido:document.querySelector("#txtApellido").value,
         edad:Number(document.querySelector("#txtEdad").value)

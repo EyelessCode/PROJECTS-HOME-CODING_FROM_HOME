@@ -57,7 +57,7 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
         const query={
             text:`INSERT INTO student (nombre,apellido,edad) VALUES($1,$2,$3)`,
             values:[student.nombre.nombre,
-                student.apellido.apellido,student.edad.edad
+                student.apellido?.apellido||"",student.edad.edad
             ]
         }
 
@@ -68,7 +68,7 @@ export class RepositoryPostgresStudent implements IRepositoryEstudiante{
         const query={
             text:`UPDATE student SET nombre=$1,apellido=$2,edad=$3 `+
             `WHERE id=$4`,
-            values:[student.nombre.nombre,student.apellido.apellido,
+            values:[student.nombre.nombre,student.apellido?.apellido,
                 student.edad.edad,student.id.id
             ]
         }

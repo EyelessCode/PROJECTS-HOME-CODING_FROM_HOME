@@ -6,26 +6,39 @@
         <meta name="keywords" content="HTML, CSS, JS, NODEJS y TS">
         <meta name="description" content="Es sólo para prueba!">
         <meta name="author" content="EyelessCode">
+        <link rel="stylesheet" href="../css/style.css">
         <title>PRUEBA</title>
     </head>
     <body>
         <header>
-            <div class="logo_container">
-                <div class="img_logo">
-                    <img id="imgLogo" src="#" alt="IMG!">
+            <div class="header_container">
+                <div class="logo_container">
+                    <div class="img_logo">
+                        <img id="imgLogo" src="#" alt="IMG!">
+                    </div>
+                    <div class="text_logo">
+                        <p id="pTexto">LISTA DE ESTUDIANTES!</p>
+                    </div>
                 </div>
-                <div class="text_logo">
-                    <p id="pTexto">LISTA DE ESTUDIANTES!</p>
+    
+                <div class="btn_mobileMenu">
+                    <button type="button" id="btnAbrirMenuMobile">
+                        <i class="bi bi-list"></i>
+                    </button>
                 </div>
+                <nav class="nav_container">
+                    <div class="btn_mobileMenu">
+                        <button type="button" id="btnCerrarMenuMobile">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                    <ul class="list_container">
+                        <li class="list_items"><a href="#">Inicio</a></li>
+                        <li class="list_items"><a href="#">Servicios</a></li>
+                        <li class="list_items"><a href="#">Nosotros</a></li>
+                    </ul>
+                </nav>
             </div>
-
-            <nav class="nav_container">
-                <ul class="list_container">
-                    <li class="list_items"><a href="#">Inicio</a></li>
-                    <li class="list_items"><a href="#">Servicios</a></li>
-                    <li class="list_items"><a href="#">Nosotros</a></li>
-                </ul>
-            </nav>
         </header>
         <main>
             <section class="section_container">

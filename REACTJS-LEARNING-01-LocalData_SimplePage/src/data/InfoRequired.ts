@@ -32,7 +32,7 @@ export const characters:Character[]=[
         attackType:"Physical",
         height:170,
         description:`We don't know any things about her yet...`,
-        splashArtUrl:"https://i.ibb.co/pvd9K5Bv/evelyn-splashart-zzz.webp",
+        splashArtUrl:"https://i.ibb.co/rKTPCvVL/Jane-Doe-Splash-Art.webp",
         iconUrl:"https://i.ibb.co/dsrL8Wkr/Jane-Doe-Icon.webp"
     },
 

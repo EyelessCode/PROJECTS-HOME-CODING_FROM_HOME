@@ -1,25 +1,6 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+HU:wght@100..400&family=Poetsen+One&family=Quattrocento:wght@400;700&family=Space+Grotesk:wght@300..700&family=Unbounded:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Bungee&family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+HU:wght@100..400&family=Poetsen+One&family=Quattrocento:wght@400;700&family=Space+Grotesk:wght@300..700&family=Unbounded:wght@200..900&display=swap');
 
-.css-navbar{
-    opacity: 0;
-    visibility: hidden;
-
-    background-color: rgb(75, 26, 121);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    /* gap: 2rem 0.2rem; */
-    border-radius: 0 0 0 5vh;
-    box-shadow: 0 0 100vmax rgba(0, 0, 0, 0.5);
-    max-width: 0;
-    transition: all 0.3s ease-in;
-    outline: 2px solid;
-}
-
-.css-visible{
-    opacity: 1;
-    visibility: visible;
-    max-width: 15px;
+.test{
 }

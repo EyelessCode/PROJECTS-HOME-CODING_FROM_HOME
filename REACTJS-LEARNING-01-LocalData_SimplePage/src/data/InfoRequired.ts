@@ -7,8 +7,19 @@ export interface Character{
     height?:number|null,
     description:string,
     splashArtUrl:string,
-    iconUrl:string
+    iconUrl:string,
+    bgColor:string
 
+}
+
+export interface InfoHome{
+    url:string,
+    description:string
+}
+
+export const infoHome:InfoHome={
+    url:"https://i.ibb.co/jv1LCkBJ/Zenless-Zone-Zero-Splash-Art.webp",
+    description:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas cum, labore corporis quam earum possimus quos, voluptates delectus voluptas eius voluptate quia optio! Consequuntur aperiam modi sed esse ullam deleniti?`
 }
 
 export const characters:Character[]=[
@@ -21,7 +32,8 @@ export const characters:Character[]=[
         height:173,
         description:`Evelyn serves as the bodyguard and manager for Astra Yao, and as such has to micromanage both of their lives consistently due to Astra's busy schedule. She is often quite serious and no nonsense, being well guarded around others (an attitude developed during her prior career as part of The Organization), though she is notably more relaxed around Astra and the Phaethon siblings due to their time spent together.`,
         splashArtUrl:"https://i.ibb.co/pvd9K5Bv/evelyn-splashart-zzz.webp",
-        iconUrl:"https://i.ibb.co/V0K2ttt9/Evelyn-Icon.webp"
+        iconUrl:"https://i.ibb.co/V0K2ttt9/Evelyn-Icon.webp",
+        bgColor:"darkred"
     },
 
     {
@@ -33,7 +45,9 @@ export const characters:Character[]=[
         height:170,
         description:`We don't know any things about her yet...`,
         splashArtUrl:"https://i.ibb.co/rKTPCvVL/Jane-Doe-Splash-Art.webp",
-        iconUrl:"https://i.ibb.co/dsrL8Wkr/Jane-Doe-Icon.webp"
+        iconUrl:"https://i.ibb.co/dsrL8Wkr/Jane-Doe-Icon.webp",
+        bgColor:"darkblue"
+
     },
 
     {
@@ -45,7 +59,8 @@ export const characters:Character[]=[
         height:165.5,
         description:`Nicole Demara is the founder and current leader of the Cunning Hares odd-job agency. Despite taking on any and all Hollow-related commissions and typically charging a high commission fee, she struggles with finances, leading the Cunning Hares to frequently be in debt, sometimes bordering on bankruptcy. Due to this and her all-or nothing approach, the Cunning Hares have become somewhat infamous in the space, with many clients blacklisting her completely and reviews received on Inter-Knot painting her in an unflattering light.`,
         splashArtUrl:"https://i.ibb.co/8LWWbrZ6/Nicole-Splash-Art-ZZZ.webp",
-        iconUrl:"https://i.ibb.co/23djwWC3/Nicole-Demara-Icon.webp"
+        iconUrl:"https://i.ibb.co/23djwWC3/Nicole-Demara-Icon.webp",
+        bgColor:"deeppink"
         // https://i.ibb.co/jv1LCkBJ/Zenless-Zone-Zero-Splash-Art.webp
     }
 ]

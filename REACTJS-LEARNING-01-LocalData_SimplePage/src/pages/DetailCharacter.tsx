@@ -1,6 +1,6 @@
-import { InfoCharacter } from "../components/layout/InfoCharacter"
-import { NavMenu } from "../components/layout/NavMenu"
-import { SplashArt } from "../components/layout/SplashArt"
+import { InfoCharacter } from "../components/molecule/InfoCharacter"
+import { NavMenu } from "../components/molecule/NavMenu"
+import { SplashArt } from "../components/molecule/SplashArt"
 
 const DetailCharacter = () => {
     return (

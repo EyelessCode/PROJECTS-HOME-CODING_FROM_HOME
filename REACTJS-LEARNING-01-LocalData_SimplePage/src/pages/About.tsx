@@ -1,4 +1,4 @@
-import { NavMenu } from "../components/layout/NavMenu"
+import { NavMenu } from "../components/molecule/NavMenu"
 
 const About = () => {
     return (

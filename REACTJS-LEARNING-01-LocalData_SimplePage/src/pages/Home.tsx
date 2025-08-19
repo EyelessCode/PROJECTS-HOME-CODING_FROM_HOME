@@ -1,6 +1,7 @@
-import { InfoCharacter } from "../components/layout/InfoCharacter"
-import { NavMenu } from "../components/layout/NavMenu"
-import { SplashArt } from "../components/layout/SplashArt"
+import { Detail } from "../components/molecule/Detail";
+import { InfoCharacter } from "../components/molecule/InfoCharacter"
+import { NavMenu } from "../components/molecule/NavMenu"
+import { SplashArt } from "../components/molecule/SplashArt"
 import { characters, infoHome } from '../data/InfoRequired';
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
             <NavMenu/>
             <SplashArt title="Zenless Zone Zero" url={infoHome.url} description={infoHome.description} />
             <InfoCharacter characterMini={characters} />
+            <Detail/>
         </body>
     )
 }

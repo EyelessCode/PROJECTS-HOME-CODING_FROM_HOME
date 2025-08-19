@@ -14,8 +14,8 @@ const SplashArt:React.FC<Items> = ({description,title,url}) => {
                 {/* <img src={url} alt="" /> */}
             </section>
             <article className="flex justify-center items-center flex-col text-center text-black z-40">
-                <h2 className="font-[Poetsen_One,sans_serif] font-extrabold tracking-[0.2em] text-5xl ">{title}</h2>
-                <p className="font-bold">{description}</p>
+                <h2 className="font-[Poetsen_One,sans_serif] font-extrabold tracking-[0.2em] text-5xl">{title}</h2>
+                <p className="font-bold mt-6">{description}</p>
             </article>
             <section className="absolute left-1/2 bottom-1/8 transform -translate-x-1/2 animate-bounce">
                 <Icon icon="line-md:arrow-down" width="54" height="54" />

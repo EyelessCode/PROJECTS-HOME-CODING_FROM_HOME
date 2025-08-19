@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router"
 import { Icon } from "@iconify/react";
-import { HamburgerMenu } from "../molecule/HamburgerMenu";
+import { HamburgerMenu } from "./HamburgerMenu";
 
 const NavMenu = () => {
     const menuList=[

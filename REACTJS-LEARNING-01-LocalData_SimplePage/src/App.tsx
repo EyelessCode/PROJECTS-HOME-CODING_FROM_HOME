@@ -1,4 +1,4 @@
-import { PageRoutes } from "./routes/PageRoutes"
+import PageRoutes from "./routes/PageRoutes"
 
 function App() {
 

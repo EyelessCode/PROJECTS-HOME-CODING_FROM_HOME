@@ -4,7 +4,7 @@ import { Home } from '../pages/Home'
 import { DetailCharacter } from '../pages/DetailCharacter'
 import NotFoundPage from '../pages/NotFoundPage'
 
-const PageRoutes = () => {
+function PageRoutes() {
     return (
         <BrowserRouter>
             <Routes>
@@ -17,4 +17,4 @@ const PageRoutes = () => {
     )
 }
 
-export {PageRoutes}
+export default PageRoutes

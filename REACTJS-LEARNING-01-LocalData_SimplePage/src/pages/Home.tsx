@@ -1,17 +1,17 @@
-import { Detail } from "../components/molecule/Detail";
-import { InfoCharacter } from "../components/molecule/InfoCharacter"
-import { NavMenu } from "../components/molecule/NavMenu"
-import { SplashArt } from "../components/molecule/SplashArt"
-import { characters, infoHome } from '../data/InfoRequired';
+
+import {Helmet} from "react-helmet"
+import { BodyHome } from "../components/organism/BodyHome"
+import { Header, heroLogo, menuList } from "../global"
 
 const Home = () => {
     return (
-        <body className="text-black min-h-screen min-w-screen bg-[#ffdfb9] flex flex-col">
-            <NavMenu/>
-            <SplashArt title="Zenless Zone Zero" url={infoHome.url} description={infoHome.description} />
-            <InfoCharacter characterMini={characters} />
-            <Detail/>
-        </body>
+        <>
+            <Helmet>
+                <title>Wiki Home | Zenless Zone Zero</title>
+            </Helmet>
+            <Header endUrl={menuList} title={heroLogo.title} logoUrl={heroLogo.logoUrl} />
+            <BodyHome/>
+        </>
     )
 }
 

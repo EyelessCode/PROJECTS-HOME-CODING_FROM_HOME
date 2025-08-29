@@ -1,9 +1,9 @@
-import { NavMenu } from "../components/molecule/NavMenu"
+import { Header } from "../components/organism/Header"
 
 const About = () => {
     return (
         <div>
-            <NavMenu/>
+            <Header/>
             <h1>About</h1>
         </div>
     )

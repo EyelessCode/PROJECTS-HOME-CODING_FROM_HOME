@@ -8,32 +8,35 @@ public class UserId extends GenericNumericValidator{
     private final Byte value;
 
     public UserId(Byte value) {
-        this.value = (value != null) ? value : generateId();
+        if (value==null) {
+            this.value=generateId();
+        }else{
+            onlyPositiveNumber(value);
+            this.value=value;
+        }
     }
 
     public Byte getValue() {
         return value;
     }
 
-    private synchronized Byte generateId() {
-        if (value==null) {
-            return currentId++;
-            
-        }
-        if (currentId == Byte.MAX_VALUE) {
-            throw new IllegalStateException("Se alcanzó el límite de IDs.");
+    private synchronized Byte generateId(){
+        if (currentId==Byte.MAX_VALUE) {
+            throw new GenericNumberInvalidException("IDs limit has been reached.");
         }
         return currentId++;
     }
 
-    /* private synchronized autoincrementId(){
-        currentId=onlyPositiveNumber(currentId);
-        if (param==null) {
-            return currentId++;
-        }
-        if (param.equals(currentId)) {
-            throw new GenericNumberInvalidException("User's ID must not be duplicated.");
-        }
-        return currentId++;
-    } */
+    @Override
+    public boolean equals(Object obj) {
+        if(this==obj)return true;
+        if(!(obj instanceof UserId))return false;
+        UserId other=(UserId)obj;
+        return this.value==other.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Byte.hashCode(value);
+    }
 }

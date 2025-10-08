@@ -16,22 +16,13 @@ public class User {
     private final UserAge age;
     
     public User(UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
+        this.id=new UserId(null);
         this.ic = ic;
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;
         this.age = age;
     }
-
-    //? For testing...
-    /* public User(UserId id, UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
-        this.id = id;
-        this.ic = ic;
-        this.name = name;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.age = age;
-    } */
 
     public UserId getId() {
         return id;
@@ -62,7 +53,7 @@ public class User {
         return (
             "\n"+"=".repeat(5)+" USER "+"=".repeat(5)+
             "\nID: "+id.getValue()+"\tIC: "+ic.getValue()+
-            "\nNAME: "+name.getValue()+"\tLASTNAME: "+lastname.getValue()+
+            "\nNAME: "+name.getValue()+"\t\tLASTNAME: "+lastname.getValue()+
             "\nGENDER: "+gender.getDescription()+
             "\nAGE: "+age.getValue()+
             "\n"+"=".repeat(12)

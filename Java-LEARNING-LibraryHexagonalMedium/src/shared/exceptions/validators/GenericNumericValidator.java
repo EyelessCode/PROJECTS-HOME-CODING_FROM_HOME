@@ -13,11 +13,11 @@ public abstract class GenericNumericValidator {
         return value;
     }
 
-    protected byte onlyPositiveNumber(Byte value){
+    protected void onlyPositiveNumber(Byte value){
         value=byteBound(value);
         if (value<=0) {
             throw new GenericNumberInvalidException("It cannot be a negative number.");
         }
-        return value;
+        // return value;
     }
 }

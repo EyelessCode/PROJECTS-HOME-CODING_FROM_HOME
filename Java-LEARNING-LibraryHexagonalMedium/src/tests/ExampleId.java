@@ -16,7 +16,7 @@ public class ExampleId extends GenericNumericValidator{
     }
 
     private Byte autoincrementId(Byte value){
-        currentId=byteBound(currentId);
+        // currentId=byteBound(currentId);
         if (value==null) {
             return currentId++;
         }

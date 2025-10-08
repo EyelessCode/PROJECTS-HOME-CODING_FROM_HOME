@@ -7,6 +7,9 @@ public class UserIc extends GenericStringValidator{
     private final String value;
 
     public UserIc(String value) {
+        if (value==null||value.isBlank()) {
+            throw new GenericStringBoundaryException("User's IC cannot be empty or null.");
+        }
         this.value=icBound(value);
     }
 
@@ -15,9 +18,6 @@ public class UserIc extends GenericStringValidator{
     }
 
     private String icBound(String param){
-        if (param==null||param.isBlank()) {
-            throw new GenericStringBoundaryException("User's IC cannot be empty or null.");
-        }
         param=param.trim();
         if (!param.matches("[0-9 ]*")) {
             throw new GenericStringBoundaryException("User's IC must be numeric.");
@@ -26,5 +26,18 @@ public class UserIc extends GenericStringValidator{
             return param;
         }
         throw new GenericStringBoundaryException("User's IC must be 10 characters long.");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this==obj)return true;
+        if(!(obj instanceof UserIc))return false;
+        UserIc other=(UserIc)obj;
+        return this.value.equalsIgnoreCase(other.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return value.toLowerCase().hashCode();
     }
 }

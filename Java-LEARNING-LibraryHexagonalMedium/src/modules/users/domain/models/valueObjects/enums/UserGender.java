@@ -1,6 +1,6 @@
 package modules.users.domain.models.valueObjects.enums;
 
-import modules.users.domain.exceptions.UserGenderInvalidException;
+import modules.users.domain.exceptions.models.UserGenderInvalidException;
 
 public enum UserGender {
     M("MALE"),

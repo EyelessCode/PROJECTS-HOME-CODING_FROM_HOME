@@ -1,67 +1,70 @@
 package modules.users.domain.models;
 
-import modules.users.domain.exceptions.validators.UserValidator;
+import modules.users.domain.models.valueObjects.UserAge;
+import modules.users.domain.models.valueObjects.UserIc;
+import modules.users.domain.models.valueObjects.UserId;
+import modules.users.domain.models.valueObjects.UserLastname;
+import modules.users.domain.models.valueObjects.UserName;
+import modules.users.domain.models.valueObjects.enums.UserGender;
 
-public class User extends UserValidator{
-    private Byte id;
-    private final String ic,name,lastname;
-    private final char gender;
-    private final byte age;
+public class User {
+    private UserId id;
+    private final UserIc ic;
+    private final UserName name;
+    private final UserLastname lastname;
+    private final UserGender gender;
+    private final UserAge age;
     
-    public User(String ic, String name, String lastname, char gender, byte age) {
+    public User(UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
         this.ic = ic;
         this.name = name;
         this.lastname = lastname;
-        this.gender = genderValidator(gender);
+        this.gender = gender;
         this.age = age;
     }
 
     //? For testing...
-    public User(Byte id, String ic, String name, String lastname, char gender, byte age) {
+    /* public User(UserId id, UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
         this.id = id;
         this.ic = ic;
         this.name = name;
         this.lastname = lastname;
-        this.gender = genderValidator(gender);
+        this.gender = gender;
         this.age = age;
-    }
+    } */
 
-    public Byte getId() {
+    public UserId getId() {
         return id;
     }
 
-    public String getIc() {
+    public UserIc getIc() {
         return ic;
     }
 
-    public String getName() {
+    public UserName getName() {
         return name;
     }
 
-    public String getLastname() {
+    public UserLastname getLastname() {
         return lastname;
     }
 
-    public char getGender() {
+    public UserGender getGender() {
         return gender;
     }
 
-    public byte getAge() {
+    public UserAge getAge() {
         return age;
     }
-
-    public void setId(Byte id) {
-        this.id = id;
-    }
-
+    
     @Override
     public String toString() {
         return (
             "\n"+"=".repeat(5)+" USER "+"=".repeat(5)+
-            "\nID: "+id+"\tIC: "+ic+
-            "\nNAME: "+name+"\tLASTNAME: "+lastname+
-            "\nGENDER: "+gender+
-            "\nAGE: "+age+
+            "\nID: "+id.getValue()+"\tIC: "+ic.getValue()+
+            "\nNAME: "+name.getValue()+"\tLASTNAME: "+lastname.getValue()+
+            "\nGENDER: "+gender.getDescription()+
+            "\nAGE: "+age.getValue()+
             "\n"+"=".repeat(12)
         );
     }

@@ -14,7 +14,8 @@ import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 import modules.users.domain.services.UserServiceValidator;
 
 public class UserService extends UserServiceValidator implements IUserServiceInport{
-    private IUserRepositoryOutpor repository;
+    // private final Set<UserIc>icRegistry=new HashSet<>();
+    private final IUserRepositoryOutpor repository;
 
     public UserService(IUserRepositoryOutpor repository){
         this.repository=repository;
@@ -53,14 +54,26 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
 
     @Override
     public void removeUserById(byte id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeUserById'");
+        boolean isEmpty=repository.getById(id).isEmpty();
+        if (!isEmpty) {
+            repository.deleteById(id);
+            return;
+        }
+        throw new UserNotFoundException("User couldn't be found.");
     }
 
     @Override
     public List<User> findUsersByFullnameOrIc(String value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findUsersByFullnameOrIc'");
+        boolean isEmpty=repository.getAll().isEmpty();
+        if (!isEmpty) {
+            String search=value.toLowerCase();
+            List<User>users=repository.getAll().stream()
+                .filter(param->param.getName().getValue().toLowerCase().contains(search)
+                    ||param.getLastname().getValue().toLowerCase().contains(search)
+                    ||param.getIc().getValue().equals(search))
+                .toList();
+            return users;
+        }
+        throw new UserNotFoundException("Users or user couldn't be found.");
     }
-    
 }

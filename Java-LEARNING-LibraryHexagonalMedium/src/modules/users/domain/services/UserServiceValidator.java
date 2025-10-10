@@ -17,9 +17,9 @@ public abstract class UserServiceValidator {
         if (icRegistry.contains(userIc)) {
             throw new UserIcInvalidException("This User's IC has been used.");
         }
-        icRegistry.add(userIc);
         if (name==null||lastname==null) {
             throw new UserNameInvalidException("User's name or lastname cannot be null value");
         }
+        icRegistry.add(userIc);
     }
 }

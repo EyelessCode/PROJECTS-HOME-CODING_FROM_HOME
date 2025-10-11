@@ -3,6 +3,7 @@ package modules.users.app.services;
 import java.util.List;
 import java.util.Optional;
 
+import modules.users.domain.exceptions.UserCouldNotBeCreated;
 import modules.users.domain.exceptions.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.models.valueObjects.UserAge;
@@ -25,6 +26,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public void createUser(String ic, String name, String lastname, String gender, byte age) {
         propertiesExpected(ic, name, lastname);
+        icDuplicated(ic);
         User user=new User(
             new UserIc(ic),
             new UserName(name),
@@ -32,6 +34,9 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             UserGender.genderValidatorFromInput(gender),
             new UserAge(age)
         );
+        if (!(user instanceof User)) {
+            throw new UserCouldNotBeCreated("User couldn't be created.");
+        }
         repository.save(user);
     }
 
@@ -45,18 +50,26 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     }
 
     @Override
-    public Optional<User> findUserById(Byte id) {
-        boolean isEmpty=repository.getById(id).isEmpty();
-        if (!isEmpty) {
+    public Optional<User> findUser(Byte id) {
+        boolean isEmpty=repository.getAll().isEmpty();
+        boolean notFound=repository.getById(id).isEmpty();
+        if (isEmpty) {
+            throw new UsersNotFoundException("User list is empty.");
+        }
+        if (!notFound) {
             return repository.getById(id);
         }
         throw new UsersNotFoundException("User couldn't be found.");
     }
 
     @Override
-    public void removeUserById(byte id) {
-        boolean isEmpty=repository.getById(id).isEmpty();
-        if (!isEmpty) {
+    public void removeUser(byte id) {
+        boolean isEmpty=repository.getAll().isEmpty();
+        boolean notFound=repository.getById(id).isEmpty();
+        if (isEmpty) {
+            throw new UsersNotFoundException("User list is empty.");
+        }
+        if (!notFound) {
             repository.deleteById(id);
             return;
         }
@@ -64,7 +77,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     }
 
     @Override
-    public List<User> findUsersByFullnameOrIc(String value) {
+    public List<User> findUsers(String value) {
         boolean isEmpty=repository.getAll().isEmpty();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
@@ -79,5 +92,33 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             return users;
         }
         throw new UsersNotFoundException("Users or user couldn't be found.");
+    }
+
+    @Override
+    public Optional<User> findUser(String ic) {
+        boolean isEmpty=repository.getAll().isEmpty();
+        if (isEmpty) {
+            throw new UsersNotFoundException("User list is empty.");
+        }
+        Optional<User>found=repository.getAll().stream().filter(user->user.getIc().getValue().equals(ic)).findFirst();
+        if (!found.isPresent()) {
+            throw new UsersNotFoundException("User couldn't be found.");
+        }
+        return found;
+    }
+
+    @Override
+    public void removeUser(String ic) {
+        boolean isEmpty=repository.getAll().isEmpty();
+        if (isEmpty) {
+            throw new UsersNotFoundException("User list is empty.");
+        }
+        Optional<User>found=repository.getAll().stream().filter(user->user.getIc().getValue().equals(ic)).findFirst();
+        if (found.isPresent()) {
+            User user=found.get();
+            repository.deleteById(user.getId().getValue());
+            return;
+        }
+        throw new UsersNotFoundException("User couldn't be found.");
     }
 }

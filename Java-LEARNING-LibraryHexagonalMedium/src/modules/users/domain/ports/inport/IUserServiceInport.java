@@ -10,9 +10,11 @@ public interface IUserServiceInport {
     //todo: CRUD
     void createUser(String ic,String name,String lastname,String gender,byte age);
     List<User>findUsers();
-    Optional<User> findUserById(Byte id);
-    void removeUserById(byte id);
+    Optional<User>findUser(Byte id);
+    void removeUser(byte id);
     
     //todo: methods to improve UX.
-    List<User>findUsersByFullnameOrIc(String value);
+    List<User>findUsers(String value);
+    Optional<User>findUser(String ic);
+    void removeUser(String ic);
 }

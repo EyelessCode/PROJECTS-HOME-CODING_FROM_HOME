@@ -10,13 +10,31 @@ public class GenericConsole{
     protected String inCaseExit(String message){
         System.out.print(message);
         String string=scanner.nextLine().trim();
-        if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||(string.equalsIgnoreCase("X")||string.equalsIgnoreCase("GO BACK"))) {
-            throw new GenericStringBoundaryException("Cancelating process..."+"\nGoing back...");
+        if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||(string.equalsIgnoreCase("X")||string.equalsIgnoreCase("ZZZ"))||(string.equalsIgnoreCase("BACK")||string.equalsIgnoreCase("GO BACK"))) {
+            throw new GenericStringBoundaryException(
+                "-- Cancelating process... --"+
+                "\n<<<--- Going back... --->>>"
+            );
         }
         return string;
     }
 
-    protected byte fromInputOption(){
+    protected String fromInputOption(){
+        String string;
+        while (true) {
+            try {
+                // We don't need 'inCaseExit' method.
+                System.out.print("Enter an option -->: ");
+                string=scanner.nextLine();
+                return string;
+            } catch (NumberFormatException ex) {
+                System.out.println("Error: "+ex.getMessage());
+            }
+        }
+    }
+
+    //? Original
+    /* protected byte fromInputOption(){
         String string;
         byte option;
         while (true) {
@@ -32,5 +50,5 @@ public class GenericConsole{
                 System.out.println("Error: "+ex.getMessage());
             }
         }
-    }
+    } */
 }

@@ -18,6 +18,7 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
     private byte currentId=1;
     private Map<UserId,User>userMemory=new HashMap<>();
 
+    //? Initial local datas (For testing).
     public UserRepositoryInMemory(){
         userMemory.put(new UserId(currentId++), new User(new UserIc("0974852960"), new UserName("Roberto"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)29)));
         userMemory.put(new UserId(currentId++), new User(new UserIc("0985987874"), new UserName("Daniel"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)23)));

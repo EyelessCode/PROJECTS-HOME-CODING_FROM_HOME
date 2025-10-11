@@ -1,8 +1,9 @@
 package modules.users.app.services;
 
 import java.util.List;
+import java.util.Optional;
 
-import modules.users.domain.exceptions.UserNotFoundException;
+import modules.users.domain.exceptions.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.models.valueObjects.UserAge;
 import modules.users.domain.models.valueObjects.UserIc;
@@ -40,16 +41,16 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (!isEmpty) {
             return repository.getAll();
         }
-        throw new UserNotFoundException("Users couldn't be found.");
+        throw new UsersNotFoundException("User list is empty.");
     }
 
     @Override
-    public byte findUserById(byte id) {
+    public Optional<User> findUserById(Byte id) {
         boolean isEmpty=repository.getById(id).isEmpty();
         if (!isEmpty) {
-            return repository.getById(id).get().getId().getValue();
+            return repository.getById(id);
         }
-        throw new UserNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User couldn't be found.");
     }
 
     @Override
@@ -59,21 +60,24 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             repository.deleteById(id);
             return;
         }
-        throw new UserNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User couldn't be found.");
     }
 
     @Override
     public List<User> findUsersByFullnameOrIc(String value) {
         boolean isEmpty=repository.getAll().isEmpty();
-        if (!isEmpty) {
-            String search=value.toLowerCase();
-            List<User>users=repository.getAll().stream()
-                .filter(param->param.getName().getValue().toLowerCase().contains(search)
-                    ||param.getLastname().getValue().toLowerCase().contains(search)
-                    ||param.getIc().getValue().equals(search))
-                .toList();
+        if (isEmpty) {
+            throw new UsersNotFoundException("User list is empty.");
+        }
+        String search=value.toLowerCase();
+        List<User>users=repository.getAll().stream()
+            .filter(param->param.getName().getValue().toLowerCase().contains(search)
+                ||param.getLastname().getValue().toLowerCase().contains(search)
+                ||param.getIc().getValue().equals(search))
+            .toList();
+        if (!users.isEmpty()) {
             return users;
         }
-        throw new UserNotFoundException("Users or user couldn't be found.");
+        throw new UsersNotFoundException("Users or user couldn't be found.");
     }
 }

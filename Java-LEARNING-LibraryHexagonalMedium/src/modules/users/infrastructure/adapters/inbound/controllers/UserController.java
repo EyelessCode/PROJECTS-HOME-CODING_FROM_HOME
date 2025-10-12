@@ -2,10 +2,11 @@ package modules.users.infrastructure.adapters.inbound.controllers;
 
 
 import modules.users.app.services.UserService;
-import modules.users.domain.exceptions.UserCouldNotBeCreated;
+import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
 import modules.users.domain.exceptions.UsersNotFoundException;
 import modules.users.domain.ui.console.UserConsole;
 import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
+import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 public class UserController extends UserConsole{
@@ -102,8 +103,61 @@ public class UserController extends UserConsole{
             String gender=inCaseExit("Enter a gender (M|F): ");
             String ageString=inCaseExit("Enter age: ");
             byte age=Byte.parseByte(ageString);
-            service.createUser(ic, name, lastname, gender, age);
-        } catch (UserCouldNotBeCreated ex) {
+            System.out.printf(
+                "%n"+"=".repeat(5)+" USER "+"=".repeat(5)+
+                "%nIC: %s"+
+                "%nNAME: %s"+"\t\tLASTNAME: %s"+
+                "%nGENDER: %s"+
+                "%nAGE: %d"+
+                "%n"+"=".repeat(12),
+                ic,name,lastname,gender.toUpperCase(),age
+            );
+            System.out.println("\nIs anything ok (YES or CANCEL)?");
+            String confirm=inCaseExit("Enter your answer: ");
+            if (confirm.equalsIgnoreCase("YES")) {
+                service.createUser(ic, name, lastname, gender, age);
+                System.out.println("-- User created --");
+                return;
+            }else if(confirm.equalsIgnoreCase("CANCEL")){
+                System.out.println("-- User NOT created --");
+                return;
+            }
+            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+        } catch (UserCouldNotBeCreatedException ex) {
+            System.out.println("Error: "+ex.getMessage());
+        }catch(GenericStringBoundaryException ex){
+            System.out.println(ex.getMessage());
+        }catch(GenericNumberInvalidException ex){
+            System.out.println("Error: "+ex.getMessage());
+        }
+    }
+
+    private void deleteUser(){
+        System.out.println("\n-- REMOVING USER --");
+        try {
+            String ic=inCaseExit("Enter User's IC: ");
+            var user=service.findUser(ic).get();
+            System.out.printf(
+                "%n"+"=".repeat(5)+" USER "+"=".repeat(5)+
+                "%nIC: %s"+
+                "%nNAME: %s"+"\t\tLASTNAME: %s"+
+                "%nGENDER: %s"+
+                "%nAGE: %d"+
+                "%n"+"=".repeat(12),
+                user.getIc().getValue(),user.getName().getValue(),user.getLastname().getValue(),user.getGender().getDescription(),user.getAge().getValue()
+            );
+            System.out.println("\nAre you sure to delete this User (YES or CANCEL)?");
+            String confirm=inCaseExit("Enter your answer: ");
+            if (confirm.equalsIgnoreCase("YES")) {
+                service.removeUser(ic);
+                System.out.println("-- User deleted --");
+                return;
+            }else if(confirm.equalsIgnoreCase("CANCEL")){
+                System.out.println("-- Deleting process canceled --");
+                return;
+            }
+            throw new GenericStringBoundaryException("Unexpected response. Deletion process canceled.");
+        } catch (UsersNotFoundException ex) {
             System.out.println("Error: "+ex.getMessage());
         }catch(GenericStringBoundaryException ex){
             System.out.println(ex.getMessage());
@@ -119,7 +173,7 @@ public class UserController extends UserConsole{
                 case "1"->showAllUsers();
                 case "2"->searchUserOptions();
                 case "3"->createUser();
-                case "4"->throw new UnsupportedOperationException("Unimplemented method.");
+                case "4"->deleteUser();
                 case "5"->{System.out.println("Removing the admin privileges...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-5).");
             }

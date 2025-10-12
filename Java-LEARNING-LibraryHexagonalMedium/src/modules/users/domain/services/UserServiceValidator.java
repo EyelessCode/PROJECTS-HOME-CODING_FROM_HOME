@@ -3,13 +3,13 @@ package modules.users.domain.services;
 import java.util.HashSet;
 import java.util.Set;
 
-import modules.users.domain.exceptions.UserCouldNotBeCreated;
+import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
 import modules.users.domain.exceptions.models.UserIcInvalidException;
 import modules.users.domain.exceptions.models.UserNameInvalidException;
 import modules.users.domain.models.valueObjects.UserIc;
 
 public abstract class UserServiceValidator {
-    private final Set<UserIc>icRegistry=new HashSet<>();
+    protected final Set<UserIc>icRegistry=new HashSet<>();
 
     //? Initial local datas (for testing).
     public UserServiceValidator(){
@@ -20,7 +20,7 @@ public abstract class UserServiceValidator {
         icRegistry.add(new UserIc("0990010147"));
     }
 
-    protected void propertiesExpected(String ic,String name,String lastname){
+    protected void propertiesExpected(String ic,String name,String lastname,Byte age){
         if (ic==null) {
             throw new UserIcInvalidException("User's IC cannot be null value.");
         }
@@ -32,7 +32,8 @@ public abstract class UserServiceValidator {
     protected void icDuplicated(String ic){
         UserIc userIc=new UserIc(ic);
         if (icRegistry.contains(userIc)) {
-            throw new UserCouldNotBeCreated("This User's IC has been used.");
+            // System.out.println(icRegistry.toString());
+            throw new UserCouldNotBeCreatedException("This User's IC has been used.");
         }
         icRegistry.add(userIc);
     }

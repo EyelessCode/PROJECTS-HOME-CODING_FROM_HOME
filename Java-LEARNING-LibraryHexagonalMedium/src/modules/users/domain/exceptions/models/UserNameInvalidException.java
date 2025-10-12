@@ -1,6 +1,8 @@
 package modules.users.domain.exceptions.models;
 
-public class UserNameInvalidException extends RuntimeException{
+import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
+
+public class UserNameInvalidException extends UserCouldNotBeCreatedException{
     public UserNameInvalidException(String message){
         super(message);
     }

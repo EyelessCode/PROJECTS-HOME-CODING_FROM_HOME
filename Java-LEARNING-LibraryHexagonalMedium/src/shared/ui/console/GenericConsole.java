@@ -2,6 +2,7 @@ package shared.ui.console;
 
 import java.util.Scanner;
 
+import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 public class GenericConsole{
@@ -12,7 +13,7 @@ public class GenericConsole{
         String string=scanner.nextLine().trim();
         if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||(string.equalsIgnoreCase("X")||string.equalsIgnoreCase("ZZZ"))||(string.equalsIgnoreCase("BACK")||string.equalsIgnoreCase("GO BACK"))) {
             throw new GenericStringBoundaryException(
-                "-- Cancelating process... --"+
+                "-- Cancelating process --"+
                 "\n<<<--- Going back... --->>>"
             );
         }
@@ -27,7 +28,7 @@ public class GenericConsole{
                 System.out.print("Enter an option -->: ");
                 string=scanner.nextLine();
                 return string;
-            } catch (NumberFormatException ex) {
+            } catch (GenericNumberInvalidException ex) {
                 System.out.println("Error: "+ex.getMessage());
             }
         }

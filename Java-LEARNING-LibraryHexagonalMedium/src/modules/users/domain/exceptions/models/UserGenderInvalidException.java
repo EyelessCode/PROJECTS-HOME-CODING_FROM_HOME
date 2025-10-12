@@ -1,6 +1,8 @@
 package modules.users.domain.exceptions.models;
 
-public class UserGenderInvalidException extends RuntimeException{
+import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
+
+public class UserGenderInvalidException extends UserCouldNotBeCreatedException{
     public UserGenderInvalidException(String message){
         super(message);
     }

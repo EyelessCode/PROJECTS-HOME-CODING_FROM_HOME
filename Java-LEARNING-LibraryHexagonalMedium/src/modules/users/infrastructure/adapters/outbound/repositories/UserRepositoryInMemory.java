@@ -44,6 +44,6 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
 
     @Override
     public void deleteById(byte id) {
-        userMemory.get(new UserId(id));
+        userMemory.remove(new UserId(id));
     }
 }

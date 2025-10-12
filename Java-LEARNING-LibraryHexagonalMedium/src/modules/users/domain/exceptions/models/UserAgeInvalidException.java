@@ -1,6 +1,8 @@
 package modules.users.domain.exceptions.models;
 
-public class UserAgeInvalidException extends RuntimeException{
+import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
+
+public class UserAgeInvalidException extends UserCouldNotBeCreatedException{
     public UserAgeInvalidException(String message){
         super(message);
     }

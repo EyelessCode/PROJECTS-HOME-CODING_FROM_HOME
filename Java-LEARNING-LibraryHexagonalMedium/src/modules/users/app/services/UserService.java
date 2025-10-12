@@ -3,7 +3,6 @@ package modules.users.app.services;
 import java.util.List;
 import java.util.Optional;
 
-import modules.users.domain.exceptions.UserCouldNotBeCreated;
 import modules.users.domain.exceptions.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.models.valueObjects.UserAge;
@@ -24,8 +23,8 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     }
 
     @Override
-    public void createUser(String ic, String name, String lastname, String gender, byte age) {
-        propertiesExpected(ic, name, lastname);
+    public void createUser(String ic, String name, String lastname, String gender, Byte age) {
+        propertiesExpected(ic, name, lastname,age);
         icDuplicated(ic);
         User user=new User(
             new UserIc(ic),
@@ -34,9 +33,6 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             UserGender.genderValidatorFromInput(gender),
             new UserAge(age)
         );
-        if (!(user instanceof User)) {
-            throw new UserCouldNotBeCreated("User couldn't be created.");
-        }
         repository.save(user);
     }
 
@@ -116,7 +112,11 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         Optional<User>found=repository.getAll().stream().filter(user->user.getIc().getValue().equals(ic)).findFirst();
         if (found.isPresent()) {
             User user=found.get();
-            repository.deleteById(user.getId().getValue());
+            // System.out.println(user.toString());
+            Byte id=user.getId().getValue();
+            // System.out.println(id);
+            repository.deleteById(id);
+            icRegistry.remove(found.get().getIc());
             return;
         }
         throw new UsersNotFoundException("User couldn't be found.");

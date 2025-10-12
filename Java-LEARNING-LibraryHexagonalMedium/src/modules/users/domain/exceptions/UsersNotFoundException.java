@@ -1,6 +1,6 @@
 package modules.users.domain.exceptions;
 
-public class UsersNotFoundException extends RuntimeException{
+public class UsersNotFoundException extends UserCouldNotBeCreatedException{
     public UsersNotFoundException(String message){
         super(message);
     }

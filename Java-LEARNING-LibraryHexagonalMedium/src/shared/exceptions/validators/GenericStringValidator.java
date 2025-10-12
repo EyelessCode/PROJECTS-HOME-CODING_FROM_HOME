@@ -22,7 +22,7 @@ public abstract class GenericStringValidator {
     protected String stringCleaner(String value){
         value=stringNotNull(value);
         if (!value.matches("[a-zA-Z ]*")) {
-            throw new GenericStringBoundaryException("String cannot have special characters.");
+            throw new GenericStringBoundaryException("String cannot have special characters or numbers.");
         }
         return value;
     }

@@ -1,6 +1,6 @@
 package shared.exceptions;
 
-public class GenericNumberInvalidException extends RuntimeException{
+public class GenericNumberInvalidException extends NumberFormatException{
     public GenericNumberInvalidException(String message) {
         super(message);
     }

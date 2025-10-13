@@ -8,7 +8,7 @@ public class UserId extends GenericNumericValidator{
     private final Byte value;
 
     public UserId(Byte value) {
-        if (value==null) {
+        if (!byteNotNull(value)) {
             this.value=generateId();
         }else{
             onlyPositiveNumber(value);
@@ -22,7 +22,7 @@ public class UserId extends GenericNumericValidator{
 
     private synchronized Byte generateId(){
         if (currentId==Byte.MAX_VALUE) {
-            throw new GenericNumberInvalidException("IDs limit has been reached.");
+            throw new GenericNumberInvalidException("User IDs limit has been reached.");
         }
         return currentId++;
     }

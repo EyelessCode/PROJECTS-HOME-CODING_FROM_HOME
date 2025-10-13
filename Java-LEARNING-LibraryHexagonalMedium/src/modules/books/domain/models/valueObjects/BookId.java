@@ -8,7 +8,7 @@ public class BookId extends GenericNumericValidator{
     private final Byte value;
 
     public BookId(Byte value){
-        if (value==null) {
+        if (!byteNotNull(value)) {
             this.value=generatedId();
         }else{
             onlyPositiveNumber(value);
@@ -18,7 +18,7 @@ public class BookId extends GenericNumericValidator{
 
     private synchronized Byte generatedId(){
         if (currentId==Byte.MAX_VALUE) {
-            throw new GenericNumberInvalidException("Book's ID has been reached.");
+            throw new GenericNumberInvalidException("Book IDs has been reached.");
         }
         return currentId++;
     }

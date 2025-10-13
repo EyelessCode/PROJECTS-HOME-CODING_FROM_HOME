@@ -10,6 +10,13 @@ public abstract class GenericNumericValidator {
         return value;
     }
 
+    private short shortBound(Short value){
+        if (value==Short.MAX_VALUE) {
+            throw new GenericNumberInvalidException("Number limit has been reached.");
+        }
+        return value;
+    }
+
     protected boolean byteNotNull(Byte value){
         if (value==null) {
             return false;
@@ -17,11 +24,24 @@ public abstract class GenericNumericValidator {
         return true;
     }
 
-    protected void onlyPositiveNumber(Byte value){
+    protected boolean shortNotNull(Short value){
+        if (value==null) {
+            return false;
+        }
+        return true;
+    }
+
+    protected void onlyPositiveByte(Byte value){
         value=byteBound(value);
         if (value<=0) {
             throw new GenericNumberInvalidException("It cannot be a negative number.");
         }
-        // return value;
+    }
+
+    protected void onlyPositiveShort(Short value){
+        value=shortBound(value);
+        if (value<=0) {
+            throw new GenericNumberInvalidException("It cannot be a negative number.");
+        }
     }
 }

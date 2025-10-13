@@ -13,7 +13,23 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   └── 📁 services/
 │   │   │   ├── 📁 domain/
 │   │   │   │   ├── 📁 exceptions/
+│   │   │   │   │   ├── 📁 models/
+│   │   │   │   │   │   ├── ☕ BookGenderInvalidException.java
+│   │   │   │   │   │   ├── ☕ BookLocalDateInvalidException.java
+│   │   │   │   │   │   └── ☕ BookPagesInvalidException.java
+│   │   │   │   │   ├── ☕ BookCouldNotBeCreatedException.java
+│   │   │   │   │   └── ☕ BooksNotFoundException.java
 │   │   │   │   ├── 📁 models/
+│   │   │   │   │   ├── 📁 valueObjects/
+│   │   │   │   │   │   ├── 📁 enums/
+│   │   │   │   │   │   │   └── ☕ BookGender.java
+│   │   │   │   │   │   ├── ☕ BookAuthor.java
+│   │   │   │   │   │   ├── ☕ BookIbn.java
+│   │   │   │   │   │   ├── ☕ BookId.java
+│   │   │   │   │   │   ├── ☕ BookPages.java
+│   │   │   │   │   │   ├── ☕ BookReleaseDate.java
+│   │   │   │   │   │   └── ☕ BookTitle.java
+│   │   │   │   │   └── ☕ Book.java
 │   │   │   │   ├── 📁 ports/
 │   │   │   │   │   ├── 📁 inport/
 │   │   │   │   │   └── 📁 outport/
@@ -51,7 +67,8 @@ It's a library's system applying adapters and ports arquitecture.
 │   │       │   │   │   ├── ☕ UserGenderInvalidException.java
 │   │       │   │   │   ├── ☕ UserIcInvalidException.java
 │   │       │   │   │   └── ☕ UserNameInvalidException.java
-│   │       │   │   ├── ☕ UserCouldNotBeCreated.java
+│   │       │   │   ├── ☕ UserCouldNotBeCreatedException.java
+│   │       │   │   ├── ☕ UserInvalidException.java
 │   │       │   │   └── ☕ UsersNotFoundException.java
 │   │       │   ├── 📁 models/
 │   │       │   │   ├── 📁 valueObjects/

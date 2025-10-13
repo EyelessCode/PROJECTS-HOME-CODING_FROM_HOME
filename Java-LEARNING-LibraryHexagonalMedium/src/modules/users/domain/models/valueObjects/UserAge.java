@@ -19,7 +19,7 @@ public class UserAge extends GenericNumericValidator{
     }
 
     private byte ageValidator(Byte param){
-        onlyPositiveNumber(param);
+        onlyPositiveByte(param);
         if (param>120) {
             throw new UserAgeInvalidException("User's age isn't real. Please enter a real age.");
         }

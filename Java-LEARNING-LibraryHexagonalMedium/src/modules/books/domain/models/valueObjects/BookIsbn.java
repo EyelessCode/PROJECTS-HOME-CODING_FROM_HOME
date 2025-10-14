@@ -1,6 +1,6 @@
 package modules.books.domain.models.valueObjects;
 
-import modules.books.domain.exceptions.models.BookIbnInvalidException;
+import modules.books.domain.exceptions.models.BookIsbnInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 import shared.exceptions.validators.GenericStringValidator;
 
@@ -25,7 +25,7 @@ public class BookIsbn extends GenericStringValidator{
     private String isbnBound(String param){
         param=param.trim();
         if (!param.matches("[0-9 ]*")) {
-            throw new BookIbnInvalidException("Book ISBN must have digits.");
+            throw new BookIsbnInvalidException("Book ISBN must have digits.");
         }
         return param;
     }

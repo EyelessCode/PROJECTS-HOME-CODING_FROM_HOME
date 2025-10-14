@@ -1,16 +1,18 @@
 package modules.books.domain.models.valueObjects;
 
+import modules.books.domain.exceptions.models.BookIbnInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 import shared.exceptions.validators.GenericStringValidator;
 
-public class BookIbn extends GenericStringValidator{
+public class BookIsbn extends GenericStringValidator{
     private final String value;
 
-    public BookIbn(String value){
-        if (stringNotNull(value)) {
+    public BookIsbn(String value){
+        if (!stringNotNull(value)) {
             throw new GenericStringBoundaryException("Book's IBN cannot be a null value or blank.");
         }
-        if (value.length()==10||value.length()==13) {
+        value=isbnBound(value);
+        if (!(value.length()==10||value.length()==13)) {
             throw new GenericStringBoundaryException("Book's IBN must be between 10 or 13 digits.");
         }
         this.value=value;
@@ -20,12 +22,20 @@ public class BookIbn extends GenericStringValidator{
         return value;
     }
 
+    private String isbnBound(String param){
+        param=param.trim();
+        if (!param.matches("[0-9 ]*")) {
+            throw new BookIbnInvalidException("Book ISBN must have digits.");
+        }
+        return param;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(this==obj)return true;
         if(obj==null)return false;
         if(getClass()!=obj.getClass())return false;
-        BookIbn other=(BookIbn)obj;
+        BookIsbn other=(BookIsbn)obj;
         if(value==null){
             if (other.value!=null) {
                 return false;

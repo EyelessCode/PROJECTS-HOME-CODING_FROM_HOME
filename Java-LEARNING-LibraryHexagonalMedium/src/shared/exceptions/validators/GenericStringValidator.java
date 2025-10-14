@@ -14,9 +14,9 @@ public abstract class GenericStringValidator {
     protected boolean stringNotNull(String value){
         if (value==null||value.isBlank()) {
             // throw new GenericStringBoundaryException("String cannot be empty or null.");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     protected String stringCleanedBound(String value){

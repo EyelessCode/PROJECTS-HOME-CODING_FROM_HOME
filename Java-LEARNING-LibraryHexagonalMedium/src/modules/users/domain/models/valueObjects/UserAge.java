@@ -7,7 +7,7 @@ public class UserAge extends GenericNumericValidator{
     private final Byte value;
 
     public UserAge(Byte value){
-        if (byteNotNull(value)) {
+        if (!byteNotNull(value)) {
             throw new UserAgeInvalidException("User's age cannot be a null value or blank.");
         }
         value=ageValidator(value);

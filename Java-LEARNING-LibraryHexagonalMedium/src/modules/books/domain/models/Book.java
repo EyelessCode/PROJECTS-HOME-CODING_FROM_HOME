@@ -2,7 +2,7 @@ package modules.books.domain.models;
 
 import modules.books.domain.models.valueObjects.BookAuthor;
 import modules.books.domain.models.valueObjects.BookAvailability;
-import modules.books.domain.models.valueObjects.BookIbn;
+import modules.books.domain.models.valueObjects.BookIsbn;
 import modules.books.domain.models.valueObjects.BookId;
 import modules.books.domain.models.valueObjects.BookPages;
 import modules.books.domain.models.valueObjects.BookReleaseDate;
@@ -12,16 +12,17 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 public class Book {
     private BookId id;
     private BookAvailability availability;
-    private final BookIbn ibn;
+    private final BookIsbn isbn;
     private final BookTitle title;
     private final BookAuthor author;
     private final BookReleaseDate releaseDate;
     private final BookPages pages;
     private final BookGender gender;
 
-    public Book(BookIbn ibn, BookTitle title, BookAuthor author, BookReleaseDate releaseDate, BookPages pages,
+    public Book(BookIsbn isbn, BookTitle title, BookAuthor author, BookReleaseDate releaseDate, BookPages pages,
             BookGender gender) {
-        this.ibn = ibn;
+        this.id=new BookId(null);
+        this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.releaseDate = releaseDate;
@@ -34,8 +35,8 @@ public class Book {
         return id;
     }
 
-    public BookIbn getIbn() {
-        return ibn;
+    public BookIsbn getIsbn() {
+        return isbn;
     }
 
     public BookTitle getTitle() {
@@ -74,11 +75,11 @@ public class Book {
     public String toString() {
         return(
             "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
-            "\nID: "+id.getValue()+"\tIBN: "+ibn.getValue()+
+            "\nID: "+id.getValue()+"\tISBN: "+isbn.getValue()+
             "\nTITLE: "+title.getValue()+
             "\nAUTHOR: "+author.getValue()+"\tRELEASE DATE: "+releaseDate.getValue()+
             "\nPAGES: "+pages.getValue()+"\tGENDER: "+gender.getDescription()+
-            "\n== AVAILABLE: "+availability.toString()+" =="+
+            "\n== AVAILABILITY: "+availability.toString()+" =="+
             "\n"+"=".repeat(12)
         );
     }

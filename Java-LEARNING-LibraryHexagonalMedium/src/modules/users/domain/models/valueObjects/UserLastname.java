@@ -7,7 +7,7 @@ public class UserLastname extends GenericStringValidator{
     private final String value;
 
     public UserLastname(String value){
-        if (stringNotNull(value)) {
+        if (!stringNotNull(value)) {
             throw new UserNameInvalidException("User's name cannot be a null value or blank.");
         }
         this.value=stringCleanedBound(value);

@@ -1,6 +1,7 @@
 package modules.books.domain.models;
 
 import modules.books.domain.models.valueObjects.BookAuthor;
+import modules.books.domain.models.valueObjects.BookAvailability;
 import modules.books.domain.models.valueObjects.BookIbn;
 import modules.books.domain.models.valueObjects.BookId;
 import modules.books.domain.models.valueObjects.BookPages;
@@ -10,13 +11,13 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 
 public class Book {
     private BookId id;
+    private BookAvailability availability;
     private final BookIbn ibn;
     private final BookTitle title;
     private final BookAuthor author;
     private final BookReleaseDate releaseDate;
     private final BookPages pages;
     private final BookGender gender;
-    //? Here's book available; idk if make with primitive type or composition or wrapper.
 
     public Book(BookIbn ibn, BookTitle title, BookAuthor author, BookReleaseDate releaseDate, BookPages pages,
             BookGender gender) {
@@ -26,6 +27,7 @@ public class Book {
         this.releaseDate = releaseDate;
         this.pages = pages;
         this.gender = gender;
+        this.availability=new BookAvailability(true);
     }
 
     public BookId getId() {
@@ -56,5 +58,28 @@ public class Book {
         return gender;
     }
 
-    
+    public BookAvailability getAvailability() {
+        return availability;
+    }
+
+    public void lead(){
+        this.availability=availability.lend();
+    }
+
+    public void returnBook(){
+        this.availability=availability.returnBook();
+    }
+
+    @Override
+    public String toString() {
+        return(
+            "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+            "\nID: "+id.getValue()+"\tIBN: "+ibn.getValue()+
+            "\nTITLE: "+title.getValue()+
+            "\nAUTHOR: "+author.getValue()+"\tRELEASE DATE: "+releaseDate.getValue()+
+            "\nPAGES: "+pages.getValue()+"\tGENDER: "+gender.getDescription()+
+            "\n== AVAILABLE: "+availability.toString()+" =="+
+            "\n"+"=".repeat(12)
+        );
+    }
 }

@@ -5,7 +5,6 @@ import java.util.Set;
 
 import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
 import modules.users.domain.exceptions.models.UserIcInvalidException;
-import modules.users.domain.exceptions.models.UserNameInvalidException;
 import modules.users.domain.models.valueObjects.UserIc;
 
 public abstract class UserServiceValidator {
@@ -20,21 +19,18 @@ public abstract class UserServiceValidator {
         icRegistry.add(new UserIc("0990010147"));
     }
 
-    protected void propertiesExpected(String ic,String name,String lastname,Byte age){
-        if (ic==null) {
-            throw new UserIcInvalidException("User's IC cannot be null value.");
-        }
-        if (name==null||lastname==null) {
-            throw new UserNameInvalidException("User's name or lastname cannot be null value");
-        }
-    }
-
     protected void icDuplicated(String ic){
         UserIc userIc=new UserIc(ic);
         if (icRegistry.contains(userIc)) {
-            // System.out.println(icRegistry.toString());
-            throw new UserCouldNotBeCreatedException("This User's IC has been used.");
+            throw new UserIcInvalidException("User's IC already registered.");
         }
         icRegistry.add(userIc);
+    }
+
+    protected void anythingNull(String ic, String name, String lastname, String gender, Byte age){
+        if ((ic==null&&name==null&&lastname==null&&gender==null&&age==null)
+        ||(ic==null||name==null||lastname==null||gender==null||age==null)) {
+            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+        }
     }
 }

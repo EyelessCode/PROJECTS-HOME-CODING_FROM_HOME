@@ -28,7 +28,14 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
     }
 
     @Override
-    public User save(User user) {
+    public User save(String ic, String name, String lastname, String gender, Byte age) {
+        User user=new User(
+            new UserIc(ic),
+            new UserName(name),
+            new UserLastname(lastname),
+            UserGender.genderValidatorFromInput(gender),
+            new UserAge(age)
+        );
         return userMemory.put(user.getId(), user);
     }
 

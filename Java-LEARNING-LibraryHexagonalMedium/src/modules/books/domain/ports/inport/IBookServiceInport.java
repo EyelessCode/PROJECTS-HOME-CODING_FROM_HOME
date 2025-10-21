@@ -8,12 +8,12 @@ import modules.books.domain.models.Book;
 public interface IBookServiceInport {
     // TRADITIONAL CRUD
     void saveBook(String isbn,String title,String author,String releaseDate,Short pages,String gender);
-    void deleteBook(Byte id);
+    void removeBook(Byte id);
     List<Book>getBooks();
     Optional<Book>getBook(Byte id);
 
     // CUSTOM METHODS
-    void deleteBook(String isbn);
+    void removeBook(String isbn);
     List<Book>getBooks(String value);
     Optional<Book>getBook(String isbn);
 }

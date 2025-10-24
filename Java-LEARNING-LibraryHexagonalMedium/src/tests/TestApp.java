@@ -10,6 +10,7 @@ import modules.books.domain.models.valueObjects.BookPages;
 import modules.books.domain.models.valueObjects.BookReleaseDate;
 import modules.books.domain.models.valueObjects.BookTitle;
 import modules.books.domain.models.valueObjects.enums.BookGender;
+import modules.books.infrastructure.adapters.inbound.controllers.BookController;
 import modules.users.infrastructure.adapters.inbound.controllers.UserController;
 
 public class TestApp {
@@ -26,7 +27,9 @@ public class TestApp {
 
         System.out.println(book3.toString()); */
 
-        UserController u=new UserController();
-        u.userRun();
+        /* UserController u=new UserController();
+        u.userRun(); */
+        BookController b=new BookController();
+        b.bookRun();
     }
 }

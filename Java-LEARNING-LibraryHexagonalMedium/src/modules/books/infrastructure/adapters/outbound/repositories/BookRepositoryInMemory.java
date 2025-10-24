@@ -25,7 +25,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
         bookMemory.put(new BookId(currentId++), new Book(
             new BookIsbn("9788490627568"),
             new BookTitle("The Little Prince"),
-            new BookAuthor("Antoine de Saint-Exupéry"),
+            new BookAuthor("Antoine de Saint Exupéry"),
             new BookReleaseDate(LocalDate.of(1943, 4, 6)),
             new BookPages((short)96),
             BookGender.NARRATIVE

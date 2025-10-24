@@ -5,7 +5,7 @@ import shared.exceptions.GenericStringBoundaryException;
 public abstract class GenericStringValidator {
     private String stringCleaner(String value){
         // value=stringNotNull(value);
-        if (!value.matches("[a-zA-Z ]*")) {
+        if (!value.matches("[\\p{L} ]*")) {
             throw new GenericStringBoundaryException("String cannot have special characters or numbers.");
         }
         return value;

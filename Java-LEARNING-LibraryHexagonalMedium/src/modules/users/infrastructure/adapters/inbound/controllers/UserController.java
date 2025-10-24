@@ -26,7 +26,7 @@ public class UserController extends UserConsole{
     protected void options() {
         String option;
         while (true) {
-            userMenu();
+            menu();
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllUsers();
@@ -42,7 +42,7 @@ public class UserController extends UserConsole{
     protected void searchUserOptions() {
         String option;
         while (true) {
-            searchUserMenu();
+            searchMenu();
             option=fromInputOption();
             switch (option) {
                 case "1"->searchUserById();

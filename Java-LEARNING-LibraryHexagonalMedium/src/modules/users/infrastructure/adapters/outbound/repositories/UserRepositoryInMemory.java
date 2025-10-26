@@ -41,14 +41,22 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
 
     @Override
     public User update(String ic, String name, String lastname, String gender, Byte age) {
-        User user=new User(
+        Optional<Map.Entry<UserId,User>>existingEntry=userMemory.entrySet().stream().
+            filter(u->u.getValue().getIc().getValue().equals(ic)).findFirst();
+        /* if (!existingEntry.isPresent()) {
+            return null;
+        } */
+        UserId userId=existingEntry.get().getKey();
+        User updatedUser = new User(
+            userId, // <-- aquí pasamos el ID original
             new UserIc(ic),
             new UserName(name),
             new UserLastname(lastname),
             UserGender.genderValidatorFromInput(gender),
             new UserAge(age)
         );
-        return userMemory.put(user.getId(), user);
+        userMemory.put(userId, updatedUser);
+        return updatedUser;
     }
 
     @Override

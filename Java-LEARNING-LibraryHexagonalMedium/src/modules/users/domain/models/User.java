@@ -24,6 +24,15 @@ public class User {
         this.age = age;
     }
 
+    public User(UserId id,UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
+        this.id=id;
+        this.ic = ic;
+        this.name = name;
+        this.lastname = lastname;
+        this.gender = gender;
+        this.age = age;
+    }
+
     public UserId getId() {
         return id;
     }

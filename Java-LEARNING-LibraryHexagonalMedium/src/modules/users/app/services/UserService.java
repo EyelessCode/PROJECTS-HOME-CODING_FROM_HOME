@@ -27,15 +27,12 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     public void modifyUser(String ic,String name, String lastname, String gender, Byte age) {
         anythingNull(name, lastname, gender, age);
         // User user=findUser(ic).get();
-        boolean isEmpty=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst().isEmpty();
-        User user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst().get();
-        if (!isEmpty) {
-            boolean isPresent=icRegistry.contains(user.getIc());
-            if (isPresent) {
-                repository.update(user.getIc().getValue(),name,lastname,gender,age);
-                return;
-            }
-            throw new UsersNotFoundException("User couldn't be found.");
+        Optional<User> user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
+        if (!user.isEmpty()) {
+            // boolean isPresent=icRegistry.contains(user.getIc());
+            repository.update(ic,name,lastname,gender,age);
+            return;
+            // throw new UsersNotFoundException("User couldn't be found.");
         }
         throw new UsersNotFoundException("User couldn't be found.");
     }
@@ -52,11 +49,11 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public Optional<User> findUser(Byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean notFound=repository.getById(id).isEmpty();
+        Optional<User> user=repository.getById(id).stream().findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!notFound) {
+        if (!user.isEmpty()) {
             return repository.getById(id);
         }
         throw new UsersNotFoundException("User couldn't be found.");
@@ -65,11 +62,11 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public void removeUser(byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean notFound=repository.getById(id).isEmpty();
+        Optional<User> user=repository.getById(id).stream().findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!notFound) {
+        if (!user.isEmpty()) {
             repository.deleteById(id);
             return;
         }

@@ -24,6 +24,23 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     }
 
     @Override
+    public void modifyUser(String ic,String name, String lastname, String gender, Byte age) {
+        anythingNull(name, lastname, gender, age);
+        // User user=findUser(ic).get();
+        boolean isEmpty=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst().isEmpty();
+        User user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst().get();
+        if (!isEmpty) {
+            boolean isPresent=icRegistry.contains(user.getIc());
+            if (isPresent) {
+                repository.update(user.getIc().getValue(),name,lastname,gender,age);
+                return;
+            }
+            throw new UsersNotFoundException("User couldn't be found.");
+        }
+        throw new UsersNotFoundException("User couldn't be found.");
+    }
+
+    @Override
     public List<User> findUsers() {
         boolean isEmpty=repository.getAll().isEmpty();
         if (!isEmpty) {

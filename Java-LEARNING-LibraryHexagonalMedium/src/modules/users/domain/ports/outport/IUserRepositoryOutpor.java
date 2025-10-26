@@ -7,6 +7,7 @@ import modules.users.domain.models.User;
 
 public interface IUserRepositoryOutpor {
     User save(String ic, String name, String lastname, String gender, Byte age);
+    User update(String ic, String name, String lastname, String gender, Byte age);
     List<User>getAll();
     Optional<User> getById(Byte id);
     void deleteById(byte id);

@@ -19,7 +19,7 @@ public class UserIc extends GenericStringValidator{
 
     private String icBound(String param){
         param=param.trim();
-        if (!param.matches("[0-9 ]*")) {
+        if (!param.matches("[\\p{N} ]*")) {
             throw new GenericStringBoundaryException("User's IC must be numeric.");
         }
         if (param.length()==10) {

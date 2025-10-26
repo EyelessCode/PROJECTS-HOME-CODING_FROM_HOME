@@ -33,4 +33,11 @@ public abstract class UserServiceValidator {
             throw new UserCouldNotBeCreatedException("User couldn't be created.");
         }
     }
+
+    protected void anythingNull(String name, String lastname, String gender, Byte age){
+        if ((name==null&&lastname==null&&gender==null&&age==null)
+        ||(name==null||lastname==null||gender==null||age==null)) {
+            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+        }
+    }
 }

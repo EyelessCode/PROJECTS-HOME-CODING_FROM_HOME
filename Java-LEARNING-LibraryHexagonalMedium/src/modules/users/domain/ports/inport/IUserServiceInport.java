@@ -9,6 +9,7 @@ public interface IUserServiceInport {
     //? I'll make the instance over all classes.
     //todo: CRUD
     void createUser(String ic,String name,String lastname,String gender,Byte age);
+    void modifyUser(String ic,String name,String lastname,String gender,Byte age);
     List<User>findUsers();
     Optional<User>findUser(Byte id);
     void removeUser(byte id);

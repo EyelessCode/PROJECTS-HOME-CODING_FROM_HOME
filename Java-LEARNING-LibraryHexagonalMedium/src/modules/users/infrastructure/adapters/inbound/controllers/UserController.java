@@ -30,15 +30,16 @@ public class UserController extends UserConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllUsers();
-                case "2"->searchUserOptions();
-                case "3"->{System.out.println("Exiting the User menu...");return;}
+                case "2"->searchUsers();
+                case "3"->modifyUser();
+                case "4"->{System.out.println("Exiting the User menu...");return;}
                 case "root"->rootOptions();
-                default->System.out.println("Invalid option. Please enter a valid option (1-3).");
+                default->System.out.println("Invalid option. Please enter a valid option (1-4).");
             }
         }
     }
 
-    @Override
+    /* @Override
     protected void searchUserOptions() {
         String option;
         while (true) {
@@ -51,7 +52,7 @@ public class UserController extends UserConsole{
                 default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }
-    }
+    } */
 
     private void showAllUsers(){
         try {
@@ -81,6 +82,69 @@ public class UserController extends UserConsole{
             id=Byte.parseByte(string);
             service.findUser(id).stream().forEach(System.out::println);
         } catch (UsersNotFoundException ex) {
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }
+    }
+
+    private void modifyUser(){
+        String ic;
+        try {
+            ic=inCaseExit("Enter your IC: ");
+            boolean isEmpty=service.findUser(ic).isEmpty();
+            if (isEmpty) {
+                throw new UsersNotFoundException("User couldn't be found.");
+            }
+            // String ic=inCaseExit("Enter IC: ");
+            String name=inCaseExit("Enter name: ");
+            String lastname=inCaseExit("Enter lastname: ");
+            String gender=inCaseExit("Enter a gender (M|F): ");
+            String ageString=inCaseExit("Enter age: ");
+            // ageString=(ageString.isBlank())?"0":ageString;
+            Byte age=((ageString.isBlank())?null:Byte.parseByte(ageString));
+            // age=Byte.parseByte(ageString);
+            System.out.printf(
+                "%n"+"=".repeat(5)+" USER "+"=".repeat(5)+
+                "%nIC: %s"+
+                "%nNAME: %s"+"\t\tLASTNAME: %s"+
+                "%nGENDER: %s"+
+                "%nAGE: %s"+
+                "%n"+"=".repeat(12),
+                ic,name,lastname,gender.toUpperCase(),ageString
+            );
+            System.out.println("\nIs anything ok (YES or CANCEL)?");
+            String confirm=inCaseExit("Enter your answer: ");
+            if (confirm.equalsIgnoreCase("YES")) {
+                service.modifyUser(ic, name, lastname, gender, age);
+                System.out.println("-- User modified --");
+                return;
+            }else if(confirm.equalsIgnoreCase("CANCEL")){
+                System.out.println("-- User NOT Modified --");
+                return;
+            }
+            throw new UserCouldNotBeCreatedException("User couldn't be modified.");
+        }catch(GenericStringBoundaryException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(GenericNumberInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(UserInvalidException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+
@@ -222,11 +286,12 @@ public class UserController extends UserConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllUsers();
-                case "2"->searchUserOptions();
+                case "2"->searchUsers();
                 case "3"->createUser();
-                case "4"->deleteUser();
-                case "5"->{System.out.println("Removing the admin privileges...");return;}
-                default->System.out.println("Invalid option. Please enter a valid option (1-5).");
+                case "4"->modifyUser();
+                case "5"->deleteUser();
+                case "6"->{System.out.println("Removing the admin privileges...");return;}
+                default->System.out.println("Invalid option. Please enter a valid option (1-6).");
             }
         }
     }

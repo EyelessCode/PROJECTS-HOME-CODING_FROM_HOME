@@ -36,6 +36,18 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
             UserGender.genderValidatorFromInput(gender),
             new UserAge(age)
         );
+        return userMemory.putIfAbsent(user.getId(), user);
+    }
+
+    @Override
+    public User update(String ic, String name, String lastname, String gender, Byte age) {
+        User user=new User(
+            new UserIc(ic),
+            new UserName(name),
+            new UserLastname(lastname),
+            UserGender.genderValidatorFromInput(gender),
+            new UserAge(age)
+        );
         return userMemory.put(user.getId(), user);
     }
 

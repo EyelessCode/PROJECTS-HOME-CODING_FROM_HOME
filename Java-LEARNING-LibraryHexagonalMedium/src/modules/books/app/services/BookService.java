@@ -31,7 +31,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             throw new BooksNotFoundException("Book list is empty.");
         }
         if (!book.isEmpty()) {
-            repository.delete(id);
+            repository.delete(book.get().getId().getValue());
             return;
         }
         throw new BooksNotFoundException("Book couldn't be found.");

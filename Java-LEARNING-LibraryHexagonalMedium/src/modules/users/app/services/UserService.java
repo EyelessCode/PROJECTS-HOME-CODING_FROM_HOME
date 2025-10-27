@@ -54,7 +54,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             throw new UsersNotFoundException("User list is empty.");
         }
         if (!user.isEmpty()) {
-            return repository.getById(id);
+            return user;
         }
         throw new UsersNotFoundException("User couldn't be found.");
     }
@@ -67,7 +67,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             throw new UsersNotFoundException("User list is empty.");
         }
         if (!user.isEmpty()) {
-            repository.deleteById(id);
+            repository.deleteById(user.get().getId().getValue());
             return;
         }
         throw new UsersNotFoundException("User couldn't be found.");
@@ -94,28 +94,28 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public Optional<User> findUser(String ic) {
         boolean isEmpty=repository.getAll().isEmpty();
+        Optional<User>user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        Optional<User>found=repository.getAll().stream().filter(user->user.getIc().getValue().equals(ic)).findFirst();
-        if (!found.isPresent()) {
-            throw new UsersNotFoundException("User couldn't be found.");
+        if (!user.isEmpty()) {
+            return user;
         }
-        return found;
+        throw new UsersNotFoundException("User couldn't be found.");
     }
 
     @Override
     public void removeUser(String ic) {
         boolean isEmpty=repository.getAll().isEmpty();
+        Optional<User>user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        Optional<User>found=repository.getAll().stream().filter(user->user.getIc().getValue().equals(ic)).findFirst();
-        if (!found.isEmpty()) {
-            User user=found.get();
-            Byte id=user.getId().getValue();
-            repository.deleteById(id);
-            icRegistry.remove(found.get().getIc());
+        if (!user.isEmpty()) {
+            // User user=found.get();
+            // Byte id=user.getId().getValue();
+            repository.deleteById(user.get().getId().getValue());
+            icRegistry.remove(user.get().getIc());
             return;
         }
         throw new UsersNotFoundException("User couldn't be found.");

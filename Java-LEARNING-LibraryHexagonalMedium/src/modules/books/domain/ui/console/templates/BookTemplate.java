@@ -28,7 +28,7 @@ public abstract class BookTemplate extends GenericTemplates{
         );
     }
 
-    @Override
+    /* @Override
     protected void searchMenu() {
         System.out.println(
             "\n"+"=".repeat(5)+" SEARCH OPTION "+"=".repeat(5)+
@@ -36,5 +36,5 @@ public abstract class BookTemplate extends GenericTemplates{
             "\n2. By title, author or gender."+
             "\n3 Go back."
         );
-    }
+    } */
 }

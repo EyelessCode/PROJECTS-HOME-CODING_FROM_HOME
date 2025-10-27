@@ -79,6 +79,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             new BookPages(pages),
             BookGender.genderValidatorFromInput(gender)
         );
+        bookMemory.putIfAbsent(book.getId(), book);
         return book;
     }
 

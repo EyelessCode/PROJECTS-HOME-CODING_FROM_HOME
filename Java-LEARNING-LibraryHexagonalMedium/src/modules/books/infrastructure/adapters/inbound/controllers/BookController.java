@@ -25,24 +25,9 @@ public class BookController extends BookConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllBooks();
-                case "2"->searchBookOptions();
+                case "2"->showAllBooks();
                 case "3"->{System.out.println("Exiting the Book menu...");return;}
                 case "root"->rootOptions();
-                default->System.out.println("Invalid option. Please enter a valid option (1-3).");
-            }
-        }
-    }
-
-    @Override
-    protected void searchBookOptions() {
-        String option;
-        while (true) {
-            searchBookOptions();
-            option=fromInputOption();
-            switch (option) {
-                case "1"->throw new IllegalArgumentException();
-                case "2"->throw new IllegalArgumentException();
-                case "3"->{System.out.println("Exiting...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }

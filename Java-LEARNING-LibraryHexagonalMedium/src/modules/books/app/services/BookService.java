@@ -26,21 +26,21 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     @Override
     public void removeBook(Byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean isPresent=repository.getById(id).isPresent();
-        if (!isEmpty) {
-            if (isPresent) {
-                repository.delete(id);
-            }
-            throw new BooksNotFoundException("Book couldn't be found.");
+        Optional<Book> book=repository.getById(id).stream().findFirst();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
         }
-        throw new BooksNotFoundException("Book list is empty.");
+        if (!book.isEmpty()) {
+            repository.delete(id);
+            return;
+        }
+        throw new BooksNotFoundException("Book couldn't be found.");
     }
 
     @Override
     public List<Book> getBooks() {
-        boolean isEmpty=repository.getAll().isEmpty();
-        if (!isEmpty) {
-            List<Book>books=repository.getAll().stream().toList();
+        List<Book>books=repository.getAll().stream().toList();
+        if (!books.isEmpty()) {
             return books;
         }
         throw new BooksNotFoundException("Book list is empty.");
@@ -49,59 +49,56 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     @Override
     public Optional<Book> getBook(Byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean isPresent=repository.getById(id).isPresent();
-        if (!isEmpty) {
-            if (isPresent) {
-                return repository.getById(id);
-            }
-            throw new BooksNotFoundException("Book couldn't be found.");
+        Optional<Book>book=repository.getById(id).stream().findFirst();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
         }
-        throw new BooksNotFoundException("Book list is empty.");
+        if (!book.isEmpty()) {
+            return book;
+        }
+        throw new BooksNotFoundException("Book couldn't be found.");
     }
 
     @Override
     public void removeBook(String isbn) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean isPresent=repository.getAll().stream().
-            filter(b->b.getIsbn().getValue().equals(isbn)).findFirst().isPresent();
-        if (!isEmpty) {
-            if (isPresent) {
-                Book book=repository.getAll().stream().filter(b->b.getIsbn().getValue().equals(isbn)).findFirst().get();
-                repository.delete(book.getId().getValue());
-            }
-            throw new BooksNotFoundException("Book couldn't be found.");
+        Optional<Book> book=repository.getAll().stream().
+            filter(b->b.getIsbn().getValue().equals(isbn)).findFirst();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
         }
-        throw new BooksNotFoundException("Book list is empty.");
+        if (!book.isEmpty()) {
+            repository.delete(book.get().getId().getValue());
+            return;
+        }
+        throw new BooksNotFoundException("Book couldn't be found.");
     }
 
     @Override
     public List<Book> getBooks(String value) {
         boolean isEmpty=repository.getAll().isEmpty();
-        if (!isEmpty) {
-            boolean isNotPresent=repository.getAll().stream().
-                filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().contains(value)||bs.getAuthor().getValue().contains(value)||bs.getGender().getDescription().contains(value)).toList().isEmpty();
-            if (!isNotPresent) {
-                List<Book>books=repository.getAll().stream().
-                    filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().contains(value)||bs.getAuthor().getValue().contains(value)||bs.getGender().getDescription().contains(value)).toList();
-                return books;
-            }
-            throw new BooksNotFoundException("Book list with '"+value+"' as value couldn't be found.");
+        List<Book>books=repository.getAll().stream().
+            filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().contains(value)||bs.getAuthor().getValue().contains(value)||bs.getGender().getDescription().contains(value)).toList();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
         }
-        throw new BooksNotFoundException("Book list is empty.");
+        if (!books.isEmpty()) {
+            return books;
+        }
+        throw new BooksNotFoundException("Book list with '"+value+"' as value couldn't be found.");
     }
 
     @Override
     public Optional<Book> getBook(String isbn) {
         boolean isEmpty=repository.getAll().isEmpty();
-        boolean isPresent=repository.getAll().stream().
-            filter(b->b.getIsbn().getValue().equals(isbn)).findFirst().isPresent();
-        if (!isEmpty) {
-            if (isPresent) {
-                Book book=repository.getAll().stream().filter(b->b.getIsbn().getValue().equals(isbn)).findFirst().get();
-                repository.getById(book.getId().getValue());
-            }
-            throw new BooksNotFoundException("Book couldn't be found.");
+        Optional<Book>book=repository.getAll().stream().
+            filter(b->b.getIsbn().getValue().equals(isbn)).findFirst();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
         }
-        throw new BooksNotFoundException("Book list is empty.");
+        if (!book.isEmpty()) {
+            repository.getById(book.get().getId().getValue());
+        }
+        throw new BooksNotFoundException("Book couldn't be found.");
     }
 }

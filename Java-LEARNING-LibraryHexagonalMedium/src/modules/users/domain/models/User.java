@@ -24,6 +24,7 @@ public class User {
         this.age = age;
     }
 
+    //? For modify
     public User(UserId id,UserIc ic, UserName name, UserLastname lastname, UserGender gender, UserAge age) {
         this.id=id;
         this.ic = ic;

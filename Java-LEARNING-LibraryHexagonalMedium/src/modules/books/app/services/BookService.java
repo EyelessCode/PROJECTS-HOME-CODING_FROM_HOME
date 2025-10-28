@@ -24,6 +24,11 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     }
 
     @Override
+    public void modify(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
+        
+    }
+
+    @Override
     public void removeBook(Byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
         Optional<Book> book=repository.getById(id).stream().findFirst();

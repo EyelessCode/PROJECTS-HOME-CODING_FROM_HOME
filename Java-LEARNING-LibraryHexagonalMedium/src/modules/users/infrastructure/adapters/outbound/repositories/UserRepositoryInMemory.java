@@ -47,9 +47,10 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
             return null;
         } */
         UserId userId=existingEntry.get().getKey();
+        UserIc userIc=existingEntry.get().getValue().getIc();
         User updatedUser = new User(
             userId, // <-- aquí pasamos el ID original
-            new UserIc(ic),
+            userIc,
             new UserName(name),
             new UserLastname(lastname),
             UserGender.genderValidatorFromInput(gender),

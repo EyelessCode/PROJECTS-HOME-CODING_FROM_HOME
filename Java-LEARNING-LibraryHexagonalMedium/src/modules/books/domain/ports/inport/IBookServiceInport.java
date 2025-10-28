@@ -8,6 +8,7 @@ import modules.books.domain.models.Book;
 public interface IBookServiceInport {
     // TRADITIONAL CRUD
     void saveBook(String isbn,String title,String author,String releaseDate,Short pages,String gender);
+    void modify(String isbn,String title,String author,String releaseDate,Short pages,String gender);
     void removeBook(Byte id);
     List<Book>getBooks();
     Optional<Book>getBook(Byte id);

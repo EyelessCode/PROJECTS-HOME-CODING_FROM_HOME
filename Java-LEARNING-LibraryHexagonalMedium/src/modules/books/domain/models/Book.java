@@ -30,6 +30,18 @@ public class Book {
         this.gender = gender;
         this.availability=new BookAvailability(true);
     }
+    //? For modify
+    public Book(BookId id,BookIsbn isbn, BookTitle title, BookAuthor author, BookReleaseDate releaseDate, BookPages pages,
+            BookGender gender) {
+        this.id=id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.releaseDate = releaseDate;
+        this.pages = pages;
+        this.gender = gender;
+        this.availability=new BookAvailability(true);
+    }
 
     public BookId getId() {
         return id;

@@ -20,6 +20,7 @@ import modules.books.domain.ports.outport.IBookRepositoryOutport;
 public class BookRepositoryInMemory implements IBookRepositoryOutport{
     private byte currentId=1;
     private Map<BookId,Book>bookMemory=new HashMap<>();
+    private DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     public BookRepositoryInMemory(){
         bookMemory.put(new BookId(currentId++), new Book(
@@ -70,7 +71,6 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
 
     @Override
     public Book create(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
-        DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
         Book book=new Book(
             new BookIsbn(isbn),
             new BookTitle(title),
@@ -80,6 +80,25 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             BookGender.genderValidatorFromInput(gender)
         );
         bookMemory.putIfAbsent(book.getId(), book);
+        return book;
+    }
+
+    @Override
+    public Book update(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
+        Optional<Map.Entry<BookId,Book>>existingEntry=bookMemory.entrySet().stream().
+            filter(b->b.getValue().getIsbn().getValue().equals(isbn)).findFirst();
+        BookId bookId=existingEntry.get().getKey();
+        BookIsbn bookIsbn=existingEntry.get().getValue().getIsbn();
+        Book book=new Book(
+            bookId,
+            bookIsbn,
+            new BookTitle(title),
+            new BookAuthor(author),
+            new BookReleaseDate(LocalDate.parse(releaseDate, formatterDate)),
+            new BookPages(pages),
+            BookGender.genderValidatorFromInput(gender)
+        );
+        bookMemory.put(bookId, book);
         return book;
     }
 

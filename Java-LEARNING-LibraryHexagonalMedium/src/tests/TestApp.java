@@ -27,9 +27,9 @@ public class TestApp {
 
         System.out.println(book3.toString()); */
 
-        UserController u=new UserController();
-        u.userRun();
-        // BookController b=new BookController();
-        // b.bookRun();
+        // UserController u=new UserController();
+        // u.userRun();
+        BookController b=new BookController();
+        b.bookRun();
     }
 }

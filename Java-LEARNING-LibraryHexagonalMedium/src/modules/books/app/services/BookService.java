@@ -25,7 +25,17 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
 
     @Override
     public void modify(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
-        
+        isNotNull(isbn, title, author, releaseDate, pages, gender);
+        boolean isEmpty=repository.getAll().isEmpty();
+        Optional<Book>book=repository.getAll().stream().filter(b->b.getIsbn().getValue().equals(isbn)).findFirst();
+        if (isEmpty) {
+            throw new BooksNotFoundException("Book list is empty.");
+        }
+        if (!book.isEmpty()) {
+            repository.update(isbn, title, author, releaseDate, pages, gender);
+            return;
+        }
+        throw new BooksNotFoundException("Book couldn't be found.");
     }
 
     @Override
@@ -83,7 +93,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     public List<Book> getBooks(String value) {
         boolean isEmpty=repository.getAll().isEmpty();
         List<Book>books=repository.getAll().stream().
-            filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().contains(value)||bs.getAuthor().getValue().contains(value)||bs.getGender().getDescription().contains(value)).toList();
+            filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().equalsIgnoreCase(value)||bs.getAuthor().getValue().equalsIgnoreCase(value)||bs.getGender().getDescription().equalsIgnoreCase(value)).toList();
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }

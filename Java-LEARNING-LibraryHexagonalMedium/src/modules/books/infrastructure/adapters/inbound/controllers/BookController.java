@@ -25,7 +25,7 @@ public class BookController extends BookConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllBooks();
-                case "2"->showAllBooks();
+                case "2"->searchBooks();
                 case "3"->{System.out.println("Exiting the Book menu...");return;}
                 case "root"->rootOptions();
                 default->System.out.println("Invalid option. Please enter a valid option (1-3).");
@@ -36,6 +36,31 @@ public class BookController extends BookConsole{
     private void showAllBooks(){
         try {
             service.getBooks().forEach(books->System.out.printf(
+                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
+                books.getIsbn().getValue(),
+                books.getTitle().getValue(),
+                books.getAuthor().getValue(),
+                books.getPages().getValue(),
+                books.getReleaseDate().getValue(),
+                books.getGender().getDescription(),
+                books.getAvailability().isValue()
+            ));
+        } catch (BooksNotFoundException ex) {
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }
+    }
+
+    private void searchBooks(){
+        String string;
+        try {
+            string=inCaseExit("Enter a ISBN, title, author or gender: ");
+            service.getBooks(string).forEach(books->System.out.printf(
                 "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
                 books.getIsbn().getValue(),
                 books.getTitle().getValue(),

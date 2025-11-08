@@ -3,7 +3,6 @@ package modules.users.app.services;
 import java.util.List;
 import java.util.Optional;
 
-import modules.books.domain.exceptions.BooksNotFoundException;
 import modules.users.domain.exceptions.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.ports.inport.IUserServiceInport;
@@ -31,7 +30,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         boolean isEmpty=repository.getAll().isEmpty();
         Optional<User> user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
-            throw new BooksNotFoundException("Book list is empty.");
+            throw new UsersNotFoundException("Book list is empty.");
         }
         if (!user.isEmpty()) {
             // boolean isPresent=icRegistry.contains(user.getIc());

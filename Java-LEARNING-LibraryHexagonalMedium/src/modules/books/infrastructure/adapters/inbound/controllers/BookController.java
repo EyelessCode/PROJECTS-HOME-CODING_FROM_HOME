@@ -29,10 +29,11 @@ public class BookController extends BookConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllBooks();
-                case "2"->searchBooks();
-                case "3"->{System.out.println("Exiting the Book menu...");return;}
+                case "2"->showAllBookGenders();
+                case "3"->searchBooks();
+                case "4"->{System.out.println("Exiting the Book menu...");return;}
                 case "root"->rootOptions();
-                default->System.out.println("Invalid option. Please enter a valid option (1-3).");
+                default->System.out.println("Invalid option. Please enter a valid option (1-4).");
             }
         }
     }
@@ -158,12 +159,13 @@ public class BookController extends BookConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllBooks();
-                case "2"->searchBooks();
-                case "3"->createBook();
-                case "4"->throw new IllegalArgumentException();
-                case "5"->{System.out.println("Removing the admin privileges...");return;}
-                case "test"->showAllBookGenders();
-                default->System.out.println("Invalid option. Please enter a valid option (1-5).");
+                case "2"->showAllBookGenders();
+                case "3"->searchBooks();
+                case "4"->createBook();
+                case "5"->throw new IllegalArgumentException();
+                case "6"->{System.out.println("Removing the admin privileges...");return;}
+                // case "test"->showAllBookGenders();
+                default->System.out.println("Invalid option. Please enter a valid option (1-6).");
             }
         }
     }

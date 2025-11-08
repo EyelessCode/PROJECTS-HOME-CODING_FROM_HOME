@@ -1,10 +1,13 @@
 package modules.books.app.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import modules.books.domain.exceptions.BooksNotFoundException;
+import modules.books.domain.exceptions.models.BookGenderInvalidException;
 import modules.books.domain.models.Book;
+import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.domain.ports.inport.IBookServiceInport;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
 import modules.books.domain.services.BookServiceValidator;
@@ -115,5 +118,14 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             repository.getById(book.get().getId().getValue());
         }
         throw new BooksNotFoundException("Book couldn't be found.");
+    }
+
+    @Override
+    public List<String> getbookGenders(){
+        List<String> gender=Arrays.stream(BookGender.values()).map(BookGender::getDescription).toList();
+        if (!gender.isEmpty()) {
+            return gender;
+        }
+        throw new BookGenderInvalidException("Book genders list is empty.");
     }
 }

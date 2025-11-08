@@ -16,5 +16,6 @@ public interface IBookServiceInport {
     // CUSTOM METHODS
     void removeBook(String isbn);
     List<Book>getBooks(String value);
+    List<String>getbookGenders();
     Optional<Book>getBook(String isbn);
 }

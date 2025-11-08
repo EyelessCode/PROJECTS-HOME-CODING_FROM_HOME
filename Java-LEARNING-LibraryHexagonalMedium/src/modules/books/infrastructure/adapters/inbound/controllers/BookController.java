@@ -1,9 +1,13 @@
 package modules.books.infrastructure.adapters.inbound.controllers;
 
 import modules.books.app.services.BookService;
+import modules.books.domain.exceptions.BookCouldNotBeCreatedException;
+import modules.books.domain.exceptions.BookInvalidException;
 import modules.books.domain.exceptions.BooksNotFoundException;
 import modules.books.domain.ui.console.BookConsole;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
+import shared.exceptions.GenericNumberInvalidException;
+import shared.exceptions.GenericStringBoundaryException;
 
 public class BookController extends BookConsole{
     private BookService service;
@@ -81,6 +85,72 @@ public class BookController extends BookConsole{
         }
     }
 
+    private void createBook(){
+        System.out.println("\n-- CREATING BOOK --");
+        try {
+            String isbn=inCaseExit("Enter ISBN: ");
+            String title=inCaseExit("Enter title: ");
+            String author=inCaseExit("Enter author: ");
+            String releaseDate=inCaseExit("Enter a release date: ");
+            String pagesString=inCaseExit("Enter pages: ");
+            String gender=inCaseExit("Enter gender: ");
+            Short pages=((pagesString.isBlank())?null:Short.parseShort(pagesString));
+            System.out.printf(
+                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "\nISBN: %s"+
+                "\nTITLE: %s"+
+                "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
+                "\nPAGES: %d"+"\tGENDER: %s"+
+                "\n"+"=".repeat(12),
+                isbn,title,author,releaseDate,pages,gender
+            );
+            System.out.println("\nIs anything ok (YES or CANCEL)?");
+            String confirm=inCaseExit("Enter your answer: ");
+            if (confirm.equalsIgnoreCase("YES")) {
+                service.saveBook(isbn, title, author, releaseDate, pages, gender);
+                System.out.println("-- Book created --");
+                return;
+            }else if(confirm.equalsIgnoreCase("CANCEL")){
+                System.out.println("-- Book NOT created --");
+                return;
+            }
+            throw new BookCouldNotBeCreatedException("Book couldn't be created.");
+        }catch(GenericStringBoundaryException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(GenericNumberInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(BookInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }
+    }
+
+    private void showAllBookGenders(){
+        service.getbookGenders().forEach(b->System.out.printf(
+            "%n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+            "%nGENDERS: %s"+
+            "%n"+"=".repeat(12),
+            b
+        ));
+    }
+
     private void rootOptions(){
         String option;
         while (true) {
@@ -88,10 +158,11 @@ public class BookController extends BookConsole{
             option=fromInputOption();
             switch (option) {
                 case "1"->showAllBooks();
-                case "2"->throw new IllegalArgumentException();
-                case "3"->throw new IllegalArgumentException();
+                case "2"->searchBooks();
+                case "3"->createBook();
                 case "4"->throw new IllegalArgumentException();
                 case "5"->{System.out.println("Removing the admin privileges...");return;}
+                case "test"->showAllBookGenders();
                 default->System.out.println("Invalid option. Please enter a valid option (1-5).");
             }
         }

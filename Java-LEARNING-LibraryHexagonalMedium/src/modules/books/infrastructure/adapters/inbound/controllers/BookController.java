@@ -143,6 +143,67 @@ public class BookController extends BookConsole{
         }
     }
 
+    private void modifyBook(){
+        String isbn;
+        try {
+            isbn=inCaseExit("Enter an ISBN: ");
+            boolean isEmpty=service.getBook(isbn).isEmpty();
+            if (isEmpty) {
+                throw new BooksNotFoundException("Book couldn't be found.");
+            }
+            String title=inCaseExit("Enter new title: ");
+            String author=inCaseExit("Enter new author: ");
+            String releaseDate=inCaseExit("Enter new release date: ");
+            String pagesString=inCaseExit("Enter new pages: ");
+            String gender=inCaseExit("Enter new gender: ");
+            Short pages=((pagesString.isBlank())?null:Short.parseShort(pagesString));
+            System.out.printf(
+                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "\nISBN: %s"+
+                "\nTITLE: %s"+
+                "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
+                "\nPAGES: %d"+"\tGENDER: %s"+
+                "\n"+"=".repeat(12),
+                isbn,title,author,releaseDate,pages,gender
+            );
+            System.out.println("\nIs anything ok (YES or CANCEL)?");
+            String confirm=inCaseExit("Enter your answer: ");
+            if (confirm.equalsIgnoreCase("YES")) {
+                service.modifyBook(isbn, title, author, releaseDate, pages, gender);
+                System.out.println("-- Book modified --");
+                return;
+            }else if(confirm.equalsIgnoreCase("CANCEL")){
+                System.out.println("-- Book NOT modified --");
+                return;
+            }
+            throw new BookCouldNotBeCreatedException("Book couldn't be created.");
+        }catch(GenericStringBoundaryException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(GenericNumberInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(BookInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }
+    }
+
     private void showAllBookGenders(){
         service.getbookGenders().forEach(b->System.out.printf(
             "%n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
@@ -162,10 +223,11 @@ public class BookController extends BookConsole{
                 case "2"->showAllBookGenders();
                 case "3"->searchBooks();
                 case "4"->createBook();
-                case "5"->throw new IllegalArgumentException();
-                case "6"->{System.out.println("Removing the admin privileges...");return;}
+                case "5"->modifyBook();
+                case "6"->modifyBook();
+                case "7"->{System.out.println("Removing the admin privileges...");return;}
                 // case "test"->showAllBookGenders();
-                default->System.out.println("Invalid option. Please enter a valid option (1-6).");
+                default->System.out.println("Invalid option. Please enter a valid option (1-7).");
             }
         }
     }

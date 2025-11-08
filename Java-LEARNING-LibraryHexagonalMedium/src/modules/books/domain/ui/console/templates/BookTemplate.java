@@ -25,8 +25,9 @@ public abstract class BookTemplate extends GenericTemplates{
             "\n2. View all genders."+
             "\n3. Search book."+
             "\n4. Create book."+
-            "\n5. Remove book."+
-            "\n6. Quit admin."
+            "\n5. Modify book."+
+            "\n6. Remove book."+
+            "\n7. Quit admin."
         );
     }
 

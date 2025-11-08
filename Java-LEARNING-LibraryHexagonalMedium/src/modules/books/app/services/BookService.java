@@ -27,7 +27,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     }
 
     @Override
-    public void modify(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
+    public void modifyBook(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
         isNotNull(isbn, title, author, releaseDate, pages, gender);
         boolean isEmpty=repository.getAll().isEmpty();
         Optional<Book>book=repository.getAll().stream().filter(b->b.getIsbn().getValue().equals(isbn)).findFirst();
@@ -115,7 +115,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             throw new BooksNotFoundException("Book list is empty.");
         }
         if (!book.isEmpty()) {
-            repository.getById(book.get().getId().getValue());
+            return repository.getById(book.get().getId().getValue());
         }
         throw new BooksNotFoundException("Book couldn't be found.");
     }

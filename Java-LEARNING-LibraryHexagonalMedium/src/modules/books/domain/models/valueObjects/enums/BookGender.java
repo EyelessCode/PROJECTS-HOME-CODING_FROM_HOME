@@ -1,6 +1,6 @@
 package modules.books.domain.models.valueObjects.enums;
 
-import modules.books.domain.exceptions.models.BookGenderInvalidException;
+import modules.books.domain.exceptions.models.valueObjects.BookGenderInvalidException;
 
 public enum BookGender {
     NARRATIVE("NARRATIVE"),

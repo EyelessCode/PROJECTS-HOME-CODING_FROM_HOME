@@ -3,7 +3,7 @@ package modules.users.app.services;
 import java.util.List;
 import java.util.Optional;
 
-import modules.users.domain.exceptions.UsersNotFoundException;
+import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.ports.inport.IUserServiceInport;
 import modules.users.domain.ports.outport.IUserRepositoryOutpor;

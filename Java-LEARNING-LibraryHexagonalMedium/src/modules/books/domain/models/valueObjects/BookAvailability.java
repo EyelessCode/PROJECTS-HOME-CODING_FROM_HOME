@@ -1,6 +1,6 @@
 package modules.books.domain.models.valueObjects;
 
-import modules.books.domain.exceptions.models.BookStateInvalidException;
+import modules.books.domain.exceptions.models.valueObjects.BookStateInvalidException;
 
 public class BookAvailability {
     private final Boolean value;

@@ -1,6 +1,6 @@
 package modules.loans.domain.models.valueObjects;
 
-import shared.exceptions.GenericNumberInvalidException;
+import modules.loans.domain.exceptions.models.valueObjects.BookLoanIdInvalidException;
 import shared.exceptions.validators.GenericNumericValidator;
 
 public class BookLoanId extends GenericNumericValidator{
@@ -22,7 +22,7 @@ public class BookLoanId extends GenericNumericValidator{
 
     private synchronized Byte generatedId(){
         if (currentId==Byte.MAX_VALUE) {
-            throw new GenericNumberInvalidException("Loan IDs has been reached.");
+            throw new BookLoanIdInvalidException("Loan IDs has been reached.");
         }
         return currentId++;
     }

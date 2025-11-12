@@ -1,6 +1,6 @@
 package modules.users.domain.models.valueObjects;
 
-import modules.users.domain.exceptions.models.UserNameInvalidException;
+import modules.users.domain.exceptions.models.valueObjects.UserNameInvalidException;
 import shared.exceptions.validators.GenericStringValidator;
 
 public class UserLastname extends GenericStringValidator{

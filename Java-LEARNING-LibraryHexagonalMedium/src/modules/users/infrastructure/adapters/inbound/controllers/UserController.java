@@ -2,9 +2,9 @@ package modules.users.infrastructure.adapters.inbound.controllers;
 
 
 import modules.users.app.services.UserService;
-import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
-import modules.users.domain.exceptions.UserInvalidException;
-import modules.users.domain.exceptions.UsersNotFoundException;
+import modules.users.domain.exceptions.models.UserCouldNotBeCreatedException;
+import modules.users.domain.exceptions.models.UserInvalidException;
+import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.ui.console.UserConsole;
 import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
 import shared.exceptions.GenericNumberInvalidException;

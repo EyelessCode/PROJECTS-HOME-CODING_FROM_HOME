@@ -1,6 +1,6 @@
 package modules.books.domain.models.valueObjects;
 
-import modules.books.domain.exceptions.models.BookIsbnInvalidException;
+import modules.books.domain.exceptions.models.valueObjects.BookIsbnInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 import shared.exceptions.validators.GenericStringValidator;
 

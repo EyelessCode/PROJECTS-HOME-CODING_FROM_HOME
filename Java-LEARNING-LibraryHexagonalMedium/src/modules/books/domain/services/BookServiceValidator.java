@@ -3,8 +3,8 @@ package modules.books.domain.services;
 import java.util.HashSet;
 import java.util.Set;
 
-import modules.books.domain.exceptions.BookCouldNotBeCreatedException;
-import modules.books.domain.exceptions.models.BookIsbnInvalidException;
+import modules.books.domain.exceptions.models.BookCouldNotBeCreatedException;
+import modules.books.domain.exceptions.models.valueObjects.BookIsbnInvalidException;
 import modules.books.domain.models.valueObjects.BookIsbn;
 
 public abstract class BookServiceValidator {

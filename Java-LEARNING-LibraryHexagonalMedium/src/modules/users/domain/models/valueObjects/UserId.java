@@ -1,6 +1,6 @@
 package modules.users.domain.models.valueObjects;
 
-import shared.exceptions.GenericNumberInvalidException;
+import modules.users.domain.exceptions.models.valueObjects.UserIdInvalidException;
 import shared.exceptions.validators.GenericNumericValidator;
 
 public class UserId extends GenericNumericValidator{
@@ -22,7 +22,7 @@ public class UserId extends GenericNumericValidator{
 
     private synchronized Byte generateId(){
         if (currentId==Byte.MAX_VALUE) {
-            throw new GenericNumberInvalidException("User IDs limit has been reached.");
+            throw new UserIdInvalidException("User IDs limit has been reached.");
         }
         return currentId++;
     }

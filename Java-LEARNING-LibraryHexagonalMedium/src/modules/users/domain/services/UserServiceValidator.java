@@ -3,8 +3,8 @@ package modules.users.domain.services;
 import java.util.HashSet;
 import java.util.Set;
 
-import modules.users.domain.exceptions.UserCouldNotBeCreatedException;
-import modules.users.domain.exceptions.models.UserIcInvalidException;
+import modules.users.domain.exceptions.models.UserCouldNotBeCreatedException;
+import modules.users.domain.exceptions.models.valueObjects.UserIcInvalidException;
 import modules.users.domain.models.valueObjects.UserIc;
 
 public abstract class UserServiceValidator {

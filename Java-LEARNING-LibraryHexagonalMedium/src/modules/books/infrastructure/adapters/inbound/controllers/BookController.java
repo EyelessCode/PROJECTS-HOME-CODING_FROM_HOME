@@ -1,9 +1,9 @@
 package modules.books.infrastructure.adapters.inbound.controllers;
 
 import modules.books.app.services.BookService;
-import modules.books.domain.exceptions.BookCouldNotBeCreatedException;
-import modules.books.domain.exceptions.BookInvalidException;
-import modules.books.domain.exceptions.BooksNotFoundException;
+import modules.books.domain.exceptions.models.BookCouldNotBeCreatedException;
+import modules.books.domain.exceptions.models.BookInvalidException;
+import modules.books.domain.exceptions.models.BooksNotFoundException;
 import modules.books.domain.ui.console.BookConsole;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import shared.exceptions.GenericNumberInvalidException;

@@ -1,6 +1,6 @@
 package modules.books.domain.models.valueObjects;
 
-import modules.books.domain.exceptions.models.BookPagesInvalidException;
+import modules.books.domain.exceptions.models.valueObjects.BookPagesInvalidException;
 import shared.exceptions.validators.GenericNumericValidator;
 
 public class BookPages extends GenericNumericValidator{

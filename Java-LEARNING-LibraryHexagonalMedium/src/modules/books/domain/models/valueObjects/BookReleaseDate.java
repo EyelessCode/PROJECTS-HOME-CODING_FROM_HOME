@@ -2,7 +2,7 @@ package modules.books.domain.models.valueObjects;
 
 import java.time.LocalDate;
 
-import modules.books.domain.exceptions.models.BookLocalDateInvalidException;
+import modules.books.domain.exceptions.models.valueObjects.BookLocalDateInvalidException;
 
 public class BookReleaseDate {
     private final LocalDate value;

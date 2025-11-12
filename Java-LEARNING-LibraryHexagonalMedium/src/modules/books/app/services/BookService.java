@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import modules.books.domain.exceptions.BooksNotFoundException;
-import modules.books.domain.exceptions.models.BookGenderInvalidException;
+import modules.books.domain.exceptions.models.BooksNotFoundException;
+import modules.books.domain.exceptions.models.valueObjects.BookGenderInvalidException;
 import modules.books.domain.models.Book;
 import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.domain.ports.inport.IBookServiceInport;

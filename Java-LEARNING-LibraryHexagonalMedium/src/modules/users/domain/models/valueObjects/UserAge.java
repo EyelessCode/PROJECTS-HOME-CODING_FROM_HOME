@@ -1,6 +1,6 @@
 package modules.users.domain.models.valueObjects;
 
-import modules.users.domain.exceptions.models.UserAgeInvalidException;
+import modules.users.domain.exceptions.models.valueObjects.UserAgeInvalidException;
 import shared.exceptions.validators.GenericNumericValidator;
 
 public class UserAge extends GenericNumericValidator{

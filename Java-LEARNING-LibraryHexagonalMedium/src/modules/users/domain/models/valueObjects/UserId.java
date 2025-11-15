@@ -8,10 +8,10 @@ public class UserId extends GenericNumericValidator{
     private final Byte value;
 
     public UserId(Byte value) {
-        if (!byteNotNull(value)) {
+        if (!numberNotNull(value)) {
             this.value=generateId();
         }else{
-            onlyPositiveByte(value);
+            onlyPositiveNumber(value);
             this.value=value;
         }
     }

@@ -8,8 +8,8 @@ public class BookId extends GenericNumericValidator{
     private final Byte value;
 
     public BookId(Byte value){
-        if (!byteNotNull(value)) {
-            onlyPositiveByte(value);
+        if (!numberNotNull(value)) {
+            onlyPositiveNumber(value);
             this.value=value;
         }
         throw new BookIdInvalidException("Book ID cannot be a null value.");

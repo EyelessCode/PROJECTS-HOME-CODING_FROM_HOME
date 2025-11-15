@@ -4,14 +4,14 @@ import modules.loans.domain.exceptions.models.valueObjects.BookLoanIdInvalidExce
 import shared.exceptions.validators.GenericNumericValidator;
 
 public class BookLoanId extends GenericNumericValidator{
-    private static Byte currentId;
+    private static Byte currentId=1;
     private final Byte value;
 
     public BookLoanId(Byte value){
-        if (!byteNotNull(value)) {
+        if (!numberNotNull(value)) {
             this.value=generatedId();
         }else{
-            onlyPositiveByte(value);
+            onlyPositiveNumber(value);
             this.value=value;
         }
     }

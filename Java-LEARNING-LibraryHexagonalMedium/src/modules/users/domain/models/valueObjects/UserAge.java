@@ -7,10 +7,10 @@ public class UserAge extends GenericNumericValidator{
     private final Byte value;
 
     public UserAge(Byte value){
-        if (!byteNotNull(value)) {
+        if (!numberNotNull(value)) {
             throw new UserAgeInvalidException("User's age cannot be a null value or blank.");
         }
-        value=ageValidator(value);
+        ageValidator(value);
         this.value=value;
     }
 
@@ -18,11 +18,11 @@ public class UserAge extends GenericNumericValidator{
         return value;
     }
 
-    private byte ageValidator(Byte param){
-        onlyPositiveByte(param);
-        if (param>120) {
-            throw new UserAgeInvalidException("User's age isn't real. Please enter a real age.");
+    private void ageValidator(Byte param){
+        onlyPositiveNumber(param);
+        if (!(param>120)) {
+            return;
         }
-        return param;
+        throw new UserAgeInvalidException("User's age isn't real. Please enter a real age.");
     }
 }

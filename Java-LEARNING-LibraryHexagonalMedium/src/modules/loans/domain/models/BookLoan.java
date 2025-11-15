@@ -23,14 +23,15 @@ public class BookLoan {
         this.remainingDays=new BookLoanRemainingDays(deliveryDate,returnDate);
     }
 
-    /* public BookLoan(BookLoanId id, BookId bookId, UserId userId, BookLoanDates deliveryDate,
+    public BookLoan(BookLoanId id, BookId bookId, UserId userId, BookLoanDates deliveryDate,
             BookLoanDates returnDate) {
         this.id = id;
         this.bookId = bookId;
         this.userId = userId;
         this.deliveryDate = deliveryDate;
         this.returnDate = returnDate;
-    } */
+        this.remainingDays=new BookLoanRemainingDays(deliveryDate,returnDate);
+    }
 
     public BookLoanId getId() {
         return id;

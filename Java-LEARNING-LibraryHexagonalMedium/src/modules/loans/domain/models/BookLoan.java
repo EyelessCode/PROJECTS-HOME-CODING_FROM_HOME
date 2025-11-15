@@ -1,7 +1,5 @@
 package modules.loans.domain.models;
 
-import java.time.temporal.ChronoUnit;
-
 import modules.books.domain.models.valueObjects.BookId;
 import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
@@ -22,7 +20,7 @@ public class BookLoan {
         this.userId = userId;
         this.deliveryDate = deliveryDate;
         this.returnDate = returnDate;
-        // this.remainingDays=ChronoUnit.DAYS.between(deliveryDate,returnDate);
+        this.remainingDays=new BookLoanRemainingDays(deliveryDate,returnDate);
     }
 
     /* public BookLoan(BookLoanId id, BookId bookId, UserId userId, BookLoanDates deliveryDate,
@@ -52,6 +50,10 @@ public class BookLoan {
 
     public BookLoanDates getReturnDate() {
         return returnDate;
+    }
+    
+    public BookLoanRemainingDays getRemainingDays() {
+        return remainingDays;
     }
 
     private boolean overlaps(){

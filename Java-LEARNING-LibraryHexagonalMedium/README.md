@@ -12,15 +12,17 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │       └── ☕ BookService.java
 │   │   │   ├── 📁 domain
 │   │   │   │   ├── 📁 exceptions
-│   │   │   │   │   ├── 📁 models
-│   │   │   │   │   │   ├── ☕ BookGenderInvalidException.java
-│   │   │   │   │   │   ├── ☕ BookIsbnInvalidException.java
-│   │   │   │   │   │   ├── ☕ BookLocalDateInvalidException.java
-│   │   │   │   │   │   ├── ☕ BookPagesInvalidException.java
-│   │   │   │   │   │   └── ☕ BookStateInvalidException.java
-│   │   │   │   │   ├── ☕ BookCouldNotBeCreatedException.java
-│   │   │   │   │   ├── ☕ BookInvalidException.java
-│   │   │   │   │   └── ☕ BooksNotFoundException.java
+│   │   │   │   │   └── 📁 models
+│   │   │   │   │       ├── 📁 valueObjects
+│   │   │   │   │       │   ├── ☕ BookGenderInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookIdInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookIsbnInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookLocalDateInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookPagesInvalidException.java
+│   │   │   │   │       │   └── ☕ BookStateInvalidException.java
+│   │   │   │   │       ├── ☕ BookCouldNotBeCreatedException.java
+│   │   │   │   │       ├── ☕ BookInvalidException.java
+│   │   │   │   │       └── ☕ BooksNotFoundException.java
 │   │   │   │   ├── 📁 models
 │   │   │   │   │   ├── 📁 valueObjects
 │   │   │   │   │   │   ├── 📁 enums
@@ -58,7 +60,24 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   └── 📁 services
 │   │   │   ├── 📁 domain
 │   │   │   │   ├── 📁 exceptions
+│   │   │   │   │   └── 📁 models
+│   │   │   │   │       ├── 📁 valueObjects
+│   │   │   │   │       │   ├── ☕ BookIdInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookLoanDateInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookLoanIdInvalidException.java
+│   │   │   │   │       │   ├── ☕ BookLoanRemainingDaysException.java
+│   │   │   │   │       │   └── ☕ UserIdInvalidException.java
+│   │   │   │   │       ├── ☕ BookLoanCouldntBeCreatedException.java
+│   │   │   │   │       ├── ☕ BookLoanInvalidException.java
+│   │   │   │   │       └── ☕ BookLoanNotFoundException.java
 │   │   │   │   ├── 📁 models
+│   │   │   │   │   ├── 📁 valueObjects
+│   │   │   │   │   │   ├── ☕ BookId.java
+│   │   │   │   │   │   ├── ☕ BookLoanDates.java
+│   │   │   │   │   │   ├── ☕ BookLoanId.java
+│   │   │   │   │   │   ├── ☕ BookLoanRemainingDays.java
+│   │   │   │   │   │   └── ☕ UserId.java
+│   │   │   │   │   └── ☕ BookLoan.java
 │   │   │   │   ├── 📁 ports
 │   │   │   │   │   ├── 📁 inport
 │   │   │   │   │   └── 📁 outport
@@ -75,14 +94,16 @@ It's a library's system applying adapters and ports arquitecture.
 │   │       │       └── ☕ UserService.java
 │   │       ├── 📁 domain
 │   │       │   ├── 📁 exceptions
-│   │       │   │   ├── 📁 models
-│   │       │   │   │   ├── ☕ UserAgeInvalidException.java
-│   │       │   │   │   ├── ☕ UserGenderInvalidException.java
-│   │       │   │   │   ├── ☕ UserIcInvalidException.java
-│   │       │   │   │   └── ☕ UserNameInvalidException.java
-│   │       │   │   ├── ☕ UserCouldNotBeCreatedException.java
-│   │       │   │   ├── ☕ UserInvalidException.java
-│   │       │   │   └── ☕ UsersNotFoundException.java
+│   │       │   │   └── 📁 models
+│   │       │   │       ├── 📁 valueObjects
+│   │       │   │       │   ├── ☕ UserAgeInvalidException.java
+│   │       │   │       │   ├── ☕ UserGenderInvalidException.java
+│   │       │   │       │   ├── ☕ UserIcInvalidException.java
+│   │       │   │       │   ├── ☕ UserIdInvalidException.java
+│   │       │   │       │   └── ☕ UserNameInvalidException.java
+│   │       │   │       ├── ☕ UserCouldNotBeCreatedException.java
+│   │       │   │       ├── ☕ UserInvalidException.java
+│   │       │   │       └── ☕ UsersNotFoundException.java
 │   │       │   ├── 📁 models
 │   │       │   │   ├── 📁 valueObjects
 │   │       │   │   │   ├── 📁 enums
@@ -120,15 +141,15 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   └── ☕ GenericStringValidator.java
 │   │   │   ├── ☕ GenericNumberInvalidException.java
 │   │   │   └── ☕ GenericStringBoundaryException.java
-│   │   ├── 📁 ui
-│   │   │   └── 📁 console
-│   │   │       ├── 📁 templates
-│   │   │       │   └── ☕ GenericTemplates.java
-│   │   │       └── ☕ GenericConsole.java
-│   │   └── ☕ App.java
-│   └── 📁 tests
-│       ├── ☕ ExampleId.java
-│       └── ☕ TestApp.java
+│   │   └── 📁 ui
+│   │       └── 📁 console
+│   │           ├── 📁 templates
+│   │           │   └── ☕ GenericTemplates.java
+│   │           └── ☕ GenericConsole.java
+│   ├── 📁 tests
+│   │   ├── ☕ ExampleId.java
+│   │   └── ☕ TestApp.java
+│   └── ☕ App.java
 └── 📝 README.md
 ```
 ---

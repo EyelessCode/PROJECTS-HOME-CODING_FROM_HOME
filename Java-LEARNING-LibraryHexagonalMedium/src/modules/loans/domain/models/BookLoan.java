@@ -56,9 +56,4 @@ public class BookLoan {
     public BookLoanRemainingDays getRemainingDays() {
         return remainingDays;
     }
-
-    private boolean overlaps(){
-        // Lo dejé para terminarlo después
-        return true;
-    }
 }

@@ -1,7 +1,9 @@
 package tests;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 import modules.books.domain.models.Book;
 import modules.books.domain.models.valueObjects.BookAuthor;
@@ -29,7 +31,25 @@ public class TestApp {
 
         // UserController u=new UserController();
         // u.userRun();
-        BookController b=new BookController();
-        b.bookRun();
+        // BookController b=new BookController();
+        // b.bookRun();
+        String datee="2030/10/23";
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate=LocalDate.parse(datee, formatter);
+        dateValidator(localDate);
+    }
+    private static void dateValidator(LocalDate param){
+        /* if (LocalDate.now().getYear()!=param.getYear()) {
+            throw new BookLoanDateInvalidException("Loan date must be current year.");
+        } */
+        System.out.println(LocalDate.now()+" added 1.800 days "+LocalDate.now().plusDays(1_800));
+        if (!param.isAfter(LocalDate.now())) {
+            throw new RuntimeException("Loan date cannot be earlier of current date.");
+        }
+        System.out.println("Is after.");
+        if (!param.isBefore(LocalDate.now().plusDays(1_800))) {
+            throw new RuntimeException("Is after 1800 days.");
+        }
+        System.out.println("Is before to 1800 days.");
     }
 }

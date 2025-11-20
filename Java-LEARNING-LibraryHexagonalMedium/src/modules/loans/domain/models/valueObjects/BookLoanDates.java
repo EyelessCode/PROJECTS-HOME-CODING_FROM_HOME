@@ -20,14 +20,11 @@ public class BookLoanDates {
     }
 
     private void dateValidator(LocalDate param){
-        if (LocalDate.now().getYear()!=param.getYear()) {
-            throw new BookLoanDateInvalidException("Loan date must be current year.");
-        }
-        if (!LocalDate.now().isAfter(param)) {
+        if (!param.isAfter(LocalDate.now())) {
             throw new BookLoanDateInvalidException("Loan date cannot be earlier of current date.");
         }
-        if (!(LocalDate.now().getMonthValue()<param.getMonth().plus(60).getValue())) {
-            throw new BookLoanDateInvalidException("Loan date cannot be earlier of current date.");
+        if (!param.isBefore(LocalDate.now().plusDays(1_800))) {
+            throw new BookLoanDateInvalidException("The maximum loan period allowed is 1,800 days.");
         }
     }
 }

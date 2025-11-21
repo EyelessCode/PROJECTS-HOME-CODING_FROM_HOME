@@ -7,6 +7,7 @@ import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.models.valueObjects.UserAge;
 import modules.users.domain.models.valueObjects.UserIc;
+import modules.users.domain.models.valueObjects.UserId;
 import modules.users.domain.models.valueObjects.UserLastname;
 import modules.users.domain.models.valueObjects.UserName;
 import modules.users.domain.models.valueObjects.enums.UserGender;
@@ -54,7 +55,6 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             new UserAge((age==null)?oldUser.get().getAge().getValue():age)
         );
         repository.update(user);
-        return;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public Optional<User> findUser(Byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        Optional<User> user=repository.getById(id).stream().findFirst();
+        Optional<User> user=repository.getById(new UserId(id)).stream().findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
@@ -82,12 +82,12 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public void removeUser(byte id) {
         boolean isEmpty=repository.getAll().isEmpty();
-        Optional<User> user=repository.getById(id).stream().findFirst();
+        Optional<User> user=repository.getById(new UserId(id)).stream().findFirst();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
         if (!user.isEmpty()) {
-            repository.deleteById(user.get().getId().getValue());
+            repository.deleteById(user.get().getId());
             return;
         }
         throw new UsersNotFoundException("User couldn't be found.");
@@ -134,7 +134,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (!user.isEmpty()) {
             // User user=found.get();
             // Byte id=user.getId().getValue();
-            repository.deleteById(user.get().getId().getValue());
+            repository.deleteById(user.get().getId());
             icRegistry.remove(user.get().getIc());
             return;
         }

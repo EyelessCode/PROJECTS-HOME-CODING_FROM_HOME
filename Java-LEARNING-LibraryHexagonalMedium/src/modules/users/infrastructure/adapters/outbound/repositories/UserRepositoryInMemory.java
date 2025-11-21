@@ -49,12 +49,12 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
     }
 
     @Override
-    public Optional<User> getById(Byte id) {
-        return Optional.ofNullable(userMemory.get(new UserId(id)));
+    public Optional<User>getById(UserId id) {
+        return Optional.ofNullable(userMemory.get(id));
     }
 
     @Override
-    public void deleteById(byte id) {
-        userMemory.remove(new UserId(id));
+    public void deleteById(UserId id) {
+        userMemory.remove(id);
     }
 }

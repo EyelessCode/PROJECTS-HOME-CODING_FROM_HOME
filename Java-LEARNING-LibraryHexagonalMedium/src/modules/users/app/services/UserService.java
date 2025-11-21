@@ -37,7 +37,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
 
     @Override
     public void modifyUser(String ic,String name, String lastname, String gender, Byte age) {
-        anythingNull(name, lastname, gender, age);
+        // anythingNull(name, lastname, gender, age);
         boolean isEmpty=repository.getAll().isEmpty();
         Optional<User> oldUser=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
@@ -47,11 +47,11 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             throw new UsersNotFoundException("User couldn't be found.");
         }
         User user=new User(
-            new UserIc(ic),
-            new UserName(name),
-            new UserLastname(lastname),
-            UserGender.genderValidatorFromInput(gender),
-            new UserAge(age)
+            oldUser.get().getIc(),
+            new UserName((name.isBlank()||name.isEmpty())?oldUser.get().getName().getValue():name),
+            new UserLastname((lastname.isBlank()||lastname.isEmpty())?oldUser.get().getLastname().getValue():lastname),
+            UserGender.genderValidatorFromInput((gender.isBlank()||gender.isEmpty())?oldUser.get().getGender().name():gender),
+            new UserAge((age==null)?oldUser.get().getAge().getValue():age)
         );
         repository.update(user);
         return;

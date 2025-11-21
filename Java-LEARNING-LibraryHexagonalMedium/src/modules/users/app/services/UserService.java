@@ -5,6 +5,11 @@ import java.util.Optional;
 
 import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.models.User;
+import modules.users.domain.models.valueObjects.UserAge;
+import modules.users.domain.models.valueObjects.UserIc;
+import modules.users.domain.models.valueObjects.UserLastname;
+import modules.users.domain.models.valueObjects.UserName;
+import modules.users.domain.models.valueObjects.enums.UserGender;
 import modules.users.domain.ports.inport.IUserServiceInport;
 import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 import modules.users.domain.services.UserServiceValidator;
@@ -20,25 +25,36 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     public void createUser(String ic, String name, String lastname, String gender, Byte age) {
         anythingNull(ic, name, lastname, gender, age);
         icDuplicated(ic); //? only exist in this place (Service) because idk how can i installed in Repository.
-        repository.save(ic,name,lastname,gender,age);
+        User user=new User(
+            new UserIc(ic),
+            new UserName(name),
+            new UserLastname(lastname),
+            UserGender.genderValidatorFromInput(gender),
+            new UserAge(age)
+        );
+        repository.create(user);
     }
 
     @Override
     public void modifyUser(String ic,String name, String lastname, String gender, Byte age) {
         anythingNull(name, lastname, gender, age);
-        // User user=findUser(ic).get();
         boolean isEmpty=repository.getAll().isEmpty();
-        Optional<User> user=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
+        Optional<User> oldUser=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
-            throw new UsersNotFoundException("Book list is empty.");
+            throw new UsersNotFoundException("User list is empty.");
         }
-        if (!user.isEmpty()) {
-            // boolean isPresent=icRegistry.contains(user.getIc());
-            repository.update(ic,name,lastname,gender,age);
-            return;
-            // throw new UsersNotFoundException("User couldn't be found.");
+        if (oldUser.isEmpty()) {
+            throw new UsersNotFoundException("User couldn't be found.");
         }
-        throw new UsersNotFoundException("User couldn't be found.");
+        User user=new User(
+            new UserIc(ic),
+            new UserName(name),
+            new UserLastname(lastname),
+            UserGender.genderValidatorFromInput(gender),
+            new UserAge(age)
+        );
+        repository.update(user);
+        return;
     }
 
     @Override

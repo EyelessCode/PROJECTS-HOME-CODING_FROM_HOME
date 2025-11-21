@@ -28,35 +28,18 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
     }
 
     @Override
-    public User save(String ic, String name, String lastname, String gender, Byte age) {
-        User user=new User(
-            new UserIc(ic),
-            new UserName(name),
-            new UserLastname(lastname),
-            UserGender.genderValidatorFromInput(gender),
-            new UserAge(age)
-        );
-        return userMemory.putIfAbsent(user.getId(), user);
+    public User create(User user) {
+        User newUser=userMemory.putIfAbsent(new UserId(null), user);
+        return newUser;
     }
 
     @Override
-    public User update(String ic, String name, String lastname, String gender, Byte age) {
-        Optional<Map.Entry<UserId,User>>existingEntry=userMemory.entrySet().stream().
-            filter(u->u.getValue().getIc().getValue().equals(ic)).findFirst();
-        /* if (!existingEntry.isPresent()) {
-            return null;
-        } */
-        UserId userId=existingEntry.get().getKey();
-        UserIc userIc=existingEntry.get().getValue().getIc();
-        User updatedUser = new User(
-            userId, // <-- aquí pasamos el ID original
-            userIc,
-            new UserName(name),
-            new UserLastname(lastname),
-            UserGender.genderValidatorFromInput(gender),
-            new UserAge(age)
-        );
-        userMemory.put(userId, updatedUser);
+    public User update(User user) {
+        Optional<Map.Entry<UserId,User>>exist=userMemory.entrySet().stream().
+            filter(u->u.getValue().getIc().getValue().equals(user.getIc().getValue())).findFirst();
+        UserId id=exist.get().getKey();
+        // UserIc ic=exist.get().getValue().getIc();
+        User updatedUser=userMemory.put(id, user);
         return updatedUser;
     }
 

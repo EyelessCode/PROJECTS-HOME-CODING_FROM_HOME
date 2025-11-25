@@ -1,7 +1,6 @@
 package modules.books.infrastructure.adapters.outbound.repositories;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,7 @@ import modules.books.domain.ports.outport.IBookRepositoryOutport;
 public class BookRepositoryInMemory implements IBookRepositoryOutport{
     private byte currentId=1;
     private Map<BookId,Book>bookMemory=new HashMap<>();
-    private DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    // private DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     public BookRepositoryInMemory(){
         bookMemory.put(new BookId(currentId++), new Book(
@@ -70,41 +69,23 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
     }
 
     @Override
-    public Book create(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
-        Book book=new Book(
-            new BookIsbn(isbn),
-            new BookTitle(title),
-            new BookAuthor(author),
-            new BookReleaseDate(LocalDate.parse(releaseDate, formatterDate)),
-            new BookPages(pages),
-            BookGender.genderValidatorFromInput(gender)
-        );
-        bookMemory.putIfAbsent(book.getId(), book);
-        return book;
+    public Book create(Book book) {
+        Book newBook=bookMemory.putIfAbsent(new BookId(null), book);
+        return newBook;
     }
 
     @Override
-    public Book update(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
-        Optional<Map.Entry<BookId,Book>>existingEntry=bookMemory.entrySet().stream().
-            filter(b->b.getValue().getIsbn().getValue().equals(isbn)).findFirst();
-        BookId bookId=existingEntry.get().getKey();
-        BookIsbn bookIsbn=existingEntry.get().getValue().getIsbn();
-        Book book=new Book(
-            bookId,
-            bookIsbn,
-            new BookTitle(title),
-            new BookAuthor(author),
-            new BookReleaseDate(LocalDate.parse(releaseDate, formatterDate)),
-            new BookPages(pages),
-            BookGender.genderValidatorFromInput(gender)
-        );
-        bookMemory.put(bookId, book);
-        return book;
+    public Book update(Book book) {
+        Optional<Map.Entry<BookId,Book>>exist=bookMemory.entrySet().stream()
+            .filter(b->b.getValue().getIsbn().getValue().equals(book.getIsbn().getValue())).findFirst();
+        BookId id=exist.get().getKey();
+        Book updatedBook=bookMemory.put(id, book);
+        return updatedBook;
     }
 
     @Override
-    public void delete(Byte id) {
-        bookMemory.remove(new BookId(id));
+    public void delete(BookId id) {
+        bookMemory.remove(id);
     }
 
     @Override
@@ -113,7 +94,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
     }
 
     @Override
-    public Optional<Book> getById(Byte id) {
-        return Optional.ofNullable(bookMemory.get(new BookId(id)));
+    public Optional<Book> getById(BookId id) {
+        return Optional.ofNullable(bookMemory.get(id));
     }
 }

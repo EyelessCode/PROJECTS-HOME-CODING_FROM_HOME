@@ -29,10 +29,10 @@ public class TestApp {
 
         System.out.println(book3.toString()); */
 
-        UserController u=new UserController();
-        u.userRun();
-        // BookController b=new BookController();
-        // b.bookRun();
+        // UserController u=new UserController();
+        // u.userRun();
+        BookController b=new BookController();
+        b.bookRun();
         /* String datee="2030/10/23";
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate=LocalDate.parse(datee, formatter);

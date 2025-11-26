@@ -1,9 +1,12 @@
 package modules.books.infrastructure.adapters.inbound.controllers;
 
+import java.util.Optional;
+
 import modules.books.app.services.BookService;
 import modules.books.domain.exceptions.models.BookCouldNotBeCreatedException;
 import modules.books.domain.exceptions.models.BookInvalidException;
 import modules.books.domain.exceptions.models.BooksNotFoundException;
+import modules.books.domain.models.Book;
 import modules.books.domain.ui.console.BookConsole;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import shared.exceptions.GenericNumberInvalidException;
@@ -95,7 +98,7 @@ public class BookController extends BookConsole{
             String releaseDate=inCaseExit("Enter a release date: ");
             String pagesString=inCaseExit("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
-            Short pages=((pagesString.isBlank())?null:Short.parseShort(pagesString));
+            Short pages=((pagesString.isBlank()||pagesString.isEmpty())?0:Short.parseShort(pagesString));
             System.out.printf(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
@@ -147,8 +150,8 @@ public class BookController extends BookConsole{
         String isbn;
         try {
             isbn=inCaseExit("Enter an ISBN: ");
-            boolean isEmpty=service.getBook(isbn).isEmpty();
-            if (isEmpty) {
+            Optional<Book> oldBook=service.getBook(isbn);
+            if (oldBook.isEmpty()) {
                 throw new BooksNotFoundException("Book couldn't be found.");
             }
             String title=inCaseExit("Enter new title: ");
@@ -156,7 +159,7 @@ public class BookController extends BookConsole{
             String releaseDate=inCaseExit("Enter new release date: ");
             String pagesString=inCaseExit("Enter new pages: ");
             String gender=inCaseExit("Enter new gender: ");
-            Short pages=((pagesString.isBlank())?null:Short.parseShort(pagesString));
+            Short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
             System.out.printf(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
@@ -164,7 +167,12 @@ public class BookController extends BookConsole{
                 "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
                 "\nPAGES: %d"+"\tGENDER: %s"+
                 "\n"+"=".repeat(12),
-                isbn,title,author,releaseDate,pages,gender
+                isbn,
+                (title.isBlank()||title.isEmpty()?oldBook.get().getTitle().getValue():title),
+                (author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author,
+                (releaseDate.isBlank()||releaseDate.isEmpty())?oldBook.get().getReleaseDate().getValue().toString():releaseDate,
+                (pages<=0||pages==null)?oldBook.get().getPages().getValue():pages,
+                (gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender
             );
             System.out.println("\nIs anything ok (YES or CANCEL)?");
             String confirm=inCaseExit("Enter your answer: ");
@@ -177,6 +185,14 @@ public class BookController extends BookConsole{
                 return;
             }
             throw new BookCouldNotBeCreatedException("Book couldn't be created.");
+        }catch(NullPointerException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+

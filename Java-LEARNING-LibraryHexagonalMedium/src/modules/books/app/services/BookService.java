@@ -52,6 +52,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (oldBook.isEmpty()) {
             throw new BooksNotFoundException("Book couldn't be found.");
         }
+        //! make an exception for the fucking date parse.
         Book book=new Book(
             oldBook.get().getIsbn(),
             new BookTitle((title.isBlank()||title.isEmpty())?oldBook.get().getTitle().getValue():title),
@@ -60,7 +61,6 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             new BookPages((pages<=0||pages==null)?oldBook.get().getPages().getValue():pages),
             BookGender.genderValidatorFromInput((gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender)
         );
-        System.out.println("Console-log: "+oldBook.get().getReleaseDate().toString());
         repository.update(book);
     }
 

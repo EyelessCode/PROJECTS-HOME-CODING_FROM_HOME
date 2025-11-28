@@ -154,23 +154,47 @@ public class BookController extends BookConsole{
             if (oldBook.isEmpty()) {
                 throw new BooksNotFoundException("Book couldn't be found.");
             }
+                System.out.println("\tOld save: press 'ENTER' -> "+oldBook.get().getTitle().getValue()+"'");
             String title=inCaseExit("Enter new title: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getAuthor().getValue()+"'");
             String author=inCaseExit("Enter new author: ");
-            String releaseDate=inCaseExit("Enter new release date: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getYear()+"'");
+            String releaseDateYear=numbeString("Enter new year: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getMonthValue()+"'");
+            String releaseDateMonth=numbeString("Enter new digit of month: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getDayOfMonth()+"'");
+            String releaseDateDay=numbeString("Enter new day: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getPages().getValue()+"'");
             String pagesString=inCaseExit("Enter new pages: ");
+
+                System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getGender().name()+"'");
             String gender=inCaseExit("Enter new gender: ");
+
+            String releaseDate=(releaseDateYear.isBlank()?oldBook.get().getReleaseDate().getValue().getYear():releaseDateYear)+
+            "/"+(releaseDateMonth.isBlank()?oldBook.get().getReleaseDate().getValue().getMonthValue():releaseDateMonth)+
+            "/"+(releaseDateDay.isBlank()?oldBook.get().getReleaseDate().getValue().getDayOfMonth():releaseDateDay);
+            System.out.println(releaseDate);
             Short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
             System.out.printf(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
                 "\nTITLE: %s"+
+                // "\nAUTHOR: %s"+"\tRELEASE DATE: %d/%d/%d"+
                 "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
                 "\nPAGES: %d"+"\tGENDER: %s"+
                 "\n"+"=".repeat(12),
                 isbn,
                 (title.isBlank()||title.isEmpty()?oldBook.get().getTitle().getValue():title),
                 (author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author,
-                (releaseDate.isBlank()||releaseDate.isEmpty())?oldBook.get().getReleaseDate().getValue().toString():releaseDate,
+                (releaseDate.isBlank()||releaseDate.isEmpty()?oldBook.get().getReleaseDate().getValue().toString():releaseDate),
+                /* (releaseDateYear.isBlank()||releaseDateYear.isEmpty())?oldBook.get().getReleaseDate().getValue().getYear():Short.parseShort(releaseDateYear),
+                (releaseDateMonth.isBlank()||releaseDateMonth.isEmpty())?oldBook.get().getReleaseDate().getValue().getMonthValue():Short.parseShort(releaseDateMonth),
+                (releaseDateDay.isBlank()||releaseDateDay.isEmpty())?oldBook.get().getReleaseDate().getValue().getDayOfMonth():Short.parseShort(releaseDateDay), */
                 (pages<=0||pages==null)?oldBook.get().getPages().getValue():pages,
                 (gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender
             );
@@ -185,14 +209,6 @@ public class BookController extends BookConsole{
                 return;
             }
             throw new BookCouldNotBeCreatedException("Book couldn't be created.");
-        }catch(NullPointerException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
-            );
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+

@@ -24,7 +24,7 @@ public class BookIsbn extends GenericStringValidator{
 
     private String isbnBound(String param){
         param=param.trim();
-        if (!param.matches("[0-9 ]*")) {
+        if (!param.matches("^\\d+$*")) {
             throw new BookIsbnInvalidException("Book ISBN must have digits.");
         }
         return param;

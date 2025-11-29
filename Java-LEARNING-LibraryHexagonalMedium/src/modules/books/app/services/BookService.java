@@ -19,6 +19,7 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.domain.ports.inport.IBookServiceInport;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
 import modules.books.domain.services.BookServiceValidator;
+import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 
 public class BookService extends BookServiceValidator implements IBookServiceInport{
     private final IBookRepositoryOutport repository;
@@ -52,7 +53,9 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (oldBook.isEmpty()) {
             throw new BooksNotFoundException("Book couldn't be found.");
         }
-        //! make an exception for the fucking date parse.
+        if (!releaseDate.matches("^\\d{4}/\\d{2}/\\d{2}$")) {
+            throw new BookLoanDateInvalidException("Date invalid. Please try again.");
+        }
         Book book=new Book(
             oldBook.get().getIsbn(),
             new BookTitle((title.isBlank()||title.isEmpty())?oldBook.get().getTitle().getValue():title),

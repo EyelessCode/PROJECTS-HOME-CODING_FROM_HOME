@@ -184,7 +184,6 @@ public class BookController extends BookConsole{
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
                 "\nTITLE: %s"+
-                // "\nAUTHOR: %s"+"\tRELEASE DATE: %d/%d/%d"+
                 "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
                 "\nPAGES: %d"+"\tGENDER: %s"+
                 "\n"+"=".repeat(12),
@@ -192,9 +191,6 @@ public class BookController extends BookConsole{
                 (title.isBlank()||title.isEmpty()?oldBook.get().getTitle().getValue():title),
                 (author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author,
                 (releaseDate.isBlank()||releaseDate.isEmpty()?oldBook.get().getReleaseDate().getValue().toString():releaseDate),
-                /* (releaseDateYear.isBlank()||releaseDateYear.isEmpty())?oldBook.get().getReleaseDate().getValue().getYear():Short.parseShort(releaseDateYear),
-                (releaseDateMonth.isBlank()||releaseDateMonth.isEmpty())?oldBook.get().getReleaseDate().getValue().getMonthValue():Short.parseShort(releaseDateMonth),
-                (releaseDateDay.isBlank()||releaseDateDay.isEmpty())?oldBook.get().getReleaseDate().getValue().getDayOfMonth():Short.parseShort(releaseDateDay), */
                 (pages<=0||pages==null)?oldBook.get().getPages().getValue():pages,
                 (gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender
             );

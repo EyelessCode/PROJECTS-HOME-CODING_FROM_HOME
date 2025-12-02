@@ -17,12 +17,11 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
 
 public class BookRepositoryInMemory implements IBookRepositoryOutport{
-    private byte currentId=1;
+    // private byte currentId=1;
     private Map<BookId,Book>bookMemory=new HashMap<>();
-    // private DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     public BookRepositoryInMemory(){
-        bookMemory.put(new BookId(currentId++), new Book(
+        bookMemory.putIfAbsent(new BookId((byte)1), new Book(
             new BookIsbn("9788490627568"),
             new BookTitle("The Little Prince"),
             new BookAuthor("Antoine de Saint Exupéry"),
@@ -31,7 +30,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             BookGender.NARRATIVE
         ));
 
-        bookMemory.put(new BookId(currentId++), new Book(
+        bookMemory.putIfAbsent(new BookId((byte)2), new Book(
             new BookIsbn("9780060883287"),
             new BookTitle("One Hundred Years of Solitude"),
             new BookAuthor("Gabriel García Márquez"),
@@ -40,7 +39,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             BookGender.NARRATIVE
         ));
 
-        bookMemory.put(new BookId(currentId++), new Book(
+        bookMemory.putIfAbsent(new BookId((byte)3), new Book(
             new BookIsbn("9780143126393"),
             new BookTitle("The Shadow of the Wind"),
             new BookAuthor("Carlos Ruiz Zafón"),
@@ -49,7 +48,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             BookGender.MYSTERY
         ));
 
-        bookMemory.put(new BookId(currentId++), new Book(
+        bookMemory.putIfAbsent(new BookId((byte)4), new Book(
             new BookIsbn("9780060934347"),
             new BookTitle("Don Quixote"),
             new BookAuthor("Miguel de Cervantes"),
@@ -58,7 +57,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
             BookGender.CLASSIC
         ));
 
-        bookMemory.put(new BookId(currentId++), new Book(
+        bookMemory.putIfAbsent(new BookId((byte)5), new Book(
             new BookIsbn("9780439023528"),
             new BookTitle("The Hunger Games"),
             new BookAuthor("Suzanne Collins"),

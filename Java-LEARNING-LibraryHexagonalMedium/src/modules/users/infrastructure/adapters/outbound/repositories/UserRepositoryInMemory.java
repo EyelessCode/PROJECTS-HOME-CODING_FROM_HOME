@@ -15,16 +15,16 @@ import modules.users.domain.models.valueObjects.enums.UserGender;
 import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 
 public class UserRepositoryInMemory implements IUserRepositoryOutpor{
-    private byte currentId=1;
+    // private byte currentId=1;
     private Map<UserId,User>userMemory=new HashMap<>();
 
     //? Initial local datas (For testing).
     public UserRepositoryInMemory(){
-        userMemory.put(new UserId(currentId++), new User(new UserIc("0974852960"), new UserName("Roberto"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)29)));
-        userMemory.put(new UserId(currentId++), new User(new UserIc("0985987874"), new UserName("Daniel"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)23)));
-        userMemory.put(new UserId(currentId++), new User(new UserIc("0969963695"), new UserName("Lenin"), new UserLastname("Castillo"), UserGender.M, new UserAge((byte)41)));
-        userMemory.put(new UserId(currentId++), new User(new UserIc("0958852100"), new UserName("Esther"), new UserLastname("Verdezoto"), UserGender.F, new UserAge((byte)14)));
-        userMemory.put(new UserId(currentId++), new User(new UserIc("0990010147"), new UserName("Nicole"), new UserLastname("Demara"), UserGender.F, new UserAge((byte)21)));
+        userMemory.putIfAbsent(new UserId((byte)1), new User(new UserIc("0974852960"), new UserName("Roberto"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)29)));
+        userMemory.putIfAbsent(new UserId((byte)2), new User(new UserIc("0985987874"), new UserName("Daniel"), new UserLastname("Mendoza"), UserGender.M, new UserAge((byte)23)));
+        userMemory.putIfAbsent(new UserId((byte)3), new User(new UserIc("0969963695"), new UserName("Lenin"), new UserLastname("Castillo"), UserGender.M, new UserAge((byte)41)));
+        userMemory.putIfAbsent(new UserId((byte)4), new User(new UserIc("0958852100"), new UserName("Esther"), new UserLastname("Verdezoto"), UserGender.F, new UserAge((byte)14)));
+        userMemory.putIfAbsent(new UserId((byte)5), new User(new UserIc("0990010147"), new UserName("Nicole"), new UserLastname("Demara"), UserGender.F, new UserAge((byte)21)));
     }
 
     @Override

@@ -1,44 +1,83 @@
 package modules.loans.infrastructure.adapters.outbound.repositories;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import modules.books.domain.models.valueObjects.BookId;
 import modules.loans.domain.models.BookLoan;
+import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
+import modules.loans.domain.models.valueObjects.UserId;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
 
 public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
-    private byte currentId=1;
     private Map<BookLoanId,BookLoan>loanInMemory=new HashMap<>();
-    private DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     public BookLoanRepositoryInMemory(){
+        loanInMemory.putIfAbsent(
+            new BookLoanId((byte)1),
+            new BookLoan(
+                // new BookLoanId((byte)1),
+                new BookId((byte)1),
+                new UserId((byte)1),
+                new BookLoanDates(LocalDate.now()),
+                new BookLoanDates(LocalDate.now().plusMonths(1))
+            )
+        );
+        
+        loanInMemory.putIfAbsent(
+            new BookLoanId((byte)2),
+            new BookLoan(
+                new BookId((byte)2),
+                new UserId((byte)2),
+                new BookLoanDates(LocalDate.now()),
+                new BookLoanDates(LocalDate.now().plusDays(4))
+            )
+        );
 
+        loanInMemory.putIfAbsent(
+            new BookLoanId((byte)3),
+            new BookLoan(
+                new BookId((byte)3),
+                new UserId((byte)3),
+                new BookLoanDates(LocalDate.now()),
+                new BookLoanDates(LocalDate.now().plusWeeks(2))
+            )
+        );
     }
     
     @Override
-    public BookLoan create(Byte userId, Byte bookId, LocalDate deliveryDate, LocalDate returnDate) {
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+    public BookLoan create(BookLoan bookLoan) {
+        BookLoan newBookLoan=loanInMemory.putIfAbsent(new BookLoanId(null), bookLoan);
+        return newBookLoan;
     }
+
     @Override
-    public BookLoan update(Byte userId, Byte bookId, LocalDate deliveryDate, LocalDate returnDate) {
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public BookLoan update(BookLoan bookLoan) {
+        Optional<Map.Entry<BookLoanId,BookLoan>>exist=loanInMemory.entrySet().stream().
+            filter(lb->lb.getValue().getUserId().getValue().equals(bookLoan.getUserId().getValue())&&lb.getValue().getBookId().getValue().equals(bookLoan.getBookId().getValue())).findFirst();
+        BookLoanId bookLoanId=exist.get().getKey();
+        BookLoan updateBookLoan=loanInMemory.put(bookLoanId, bookLoan);
+        return updateBookLoan;
     }
+
     @Override
-    public void delete(Byte id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public void delete(BookLoanId id) {
+        loanInMemory.remove(id);
     }
+
     @Override
     public List<BookLoan> getAll() {
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+        List<BookLoan>bookLoans=loanInMemory.values().stream().toList();
+        return bookLoans;
     }
     @Override
-    public Optional<BookLoan> getById(Byte id) {
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    public Optional<BookLoan> getById(BookLoanId id) {
+        Optional<BookLoan>bookLoan=Optional.ofNullable(loanInMemory.get(id));
+        return bookLoan;
     }
 
 

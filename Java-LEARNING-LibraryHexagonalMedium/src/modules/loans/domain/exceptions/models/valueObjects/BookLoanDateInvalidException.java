@@ -1,9 +1,10 @@
 package modules.loans.domain.exceptions.models.valueObjects;
 
-import modules.loans.domain.exceptions.models.BookLoanInvalidException;
+import java.time.DateTimeException;
 
-public class BookLoanDateInvalidException extends BookLoanInvalidException{
-    public BookLoanDateInvalidException(String message,BookLoanInvalidException ex){
+
+public class BookLoanDateInvalidException extends DateTimeException{
+    public BookLoanDateInvalidException(String message,DateTimeException ex){
         super(message, ex);
     }
 
@@ -11,5 +12,4 @@ public class BookLoanDateInvalidException extends BookLoanInvalidException{
         super(message);
     }
 
-    public BookLoanDateInvalidException(){}
 }

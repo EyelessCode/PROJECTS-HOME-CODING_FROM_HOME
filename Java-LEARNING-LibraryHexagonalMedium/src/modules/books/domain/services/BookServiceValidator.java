@@ -33,7 +33,6 @@ public abstract class BookServiceValidator {
 
     protected LocalDate dateValidator(String releaseDate) throws BookLocalDateInvalidException{
         if (!releaseDate.matches("^\\d{4}/\\d{2}/\\d{2}$")) {
-            // throw new BookLocalDateInvalidException("Date invalid. Please try again.");
             throw new BookLocalDateInvalidException("Date invalid. Please try again.");
         }
         return LocalDate.parse(releaseDate,formatterDate);

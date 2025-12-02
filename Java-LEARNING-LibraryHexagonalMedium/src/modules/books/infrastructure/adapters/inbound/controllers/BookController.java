@@ -6,6 +6,7 @@ import modules.books.app.services.BookService;
 import modules.books.domain.exceptions.models.BookCouldNotBeCreatedException;
 import modules.books.domain.exceptions.models.BookInvalidException;
 import modules.books.domain.exceptions.models.BooksNotFoundException;
+import modules.books.domain.exceptions.models.valueObjects.BookLocalDateInvalidException;
 import modules.books.domain.models.Book;
 import modules.books.domain.ui.console.BookConsole;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
@@ -95,7 +96,10 @@ public class BookController extends BookConsole{
             String isbn=inCaseExit("Enter ISBN: ");
             String title=inCaseExit("Enter title: ");
             String author=inCaseExit("Enter author: ");
-            String releaseDate=inCaseExit("Enter a release date: ");
+            String releaseDateYear=numbeString("Enter year: ");
+            String releaseDateMonth=numbeString("Enter digit of month: ");
+            String releaseDateDay=numbeString("Enter day: ");
+            String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?(releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
             String pagesString=inCaseExit("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
             Short pages=((pagesString.isBlank()||pagesString.isEmpty())?0:Short.parseShort(pagesString));
@@ -128,6 +132,14 @@ public class BookController extends BookConsole{
                 "\n"+".".repeat(15)
             );
         }catch(GenericNumberInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(BookLocalDateInvalidException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+
@@ -214,6 +226,14 @@ public class BookController extends BookConsole{
                 "\n"+".".repeat(15)
             );
         }catch(GenericNumberInvalidException ex){
+            System.out.println(
+                "\n"+".".repeat(30)+
+                "\nError: "+ex.getMessage()+
+                "\nCause: "+ex.getCause()+
+                "\nException: "+ex.getClass().getSimpleName()+
+                "\n"+".".repeat(15)
+            );
+        }catch(BookLocalDateInvalidException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+

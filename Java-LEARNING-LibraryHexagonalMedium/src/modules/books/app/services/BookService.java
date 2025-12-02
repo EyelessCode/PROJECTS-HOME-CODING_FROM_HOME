@@ -1,7 +1,6 @@
 package modules.books.app.services;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -19,24 +18,23 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.domain.ports.inport.IBookServiceInport;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
 import modules.books.domain.services.BookServiceValidator;
-import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 
 public class BookService extends BookServiceValidator implements IBookServiceInport{
     private final IBookRepositoryOutport repository;
-    private final DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     public BookService(IBookRepositoryOutport repository){
         this.repository=repository;
     }
 
     @Override
-    public void saveBook(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
-        isNotNull(isbn, title, author, releaseDate, pages, gender);
+    public void saveBook(String isbn, String title, String author, String releaseDateString, Short pages, String gender) {
+        isNotNull(isbn, title, author, releaseDateString, pages, gender);
+        LocalDate releaseDate=dateValidator(releaseDateString);
         Book book=new Book(
             new BookIsbn(isbn),
             new BookTitle(title),
             new BookAuthor(author),
-            new BookReleaseDate(LocalDate.parse(releaseDate, formatterDate)),
+            new BookReleaseDate(releaseDate),
             new BookPages(pages),
             BookGender.genderValidatorFromInput(gender)
         );
@@ -44,23 +42,22 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     }
 
     @Override
-    public void modifyBook(String isbn, String title, String author, String releaseDate, Short pages, String gender) {
+    public void modifyBook(String isbn, String title, String author, String releaseDateString, Short pages, String gender) {
         boolean isEmpty=repository.getAll().isEmpty();
+        LocalDate releaseDate=dateValidator(releaseDateString);
         Optional<Book> oldBook=repository.getAll().stream().filter(b->b.getIsbn().getValue().equals(isbn)).findFirst();
+
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
         if (oldBook.isEmpty()) {
             throw new BooksNotFoundException("Book couldn't be found.");
         }
-        if (!releaseDate.matches("^\\d{4}/\\d{2}/\\d{2}$")) {
-            throw new BookLoanDateInvalidException("Date invalid. Please try again.");
-        }
         Book book=new Book(
             oldBook.get().getIsbn(),
             new BookTitle((title.isBlank()||title.isEmpty())?oldBook.get().getTitle().getValue():title),
             new BookAuthor((author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author),
-            new BookReleaseDate((releaseDate.isBlank()||releaseDate.isEmpty())?oldBook.get().getReleaseDate().getValue():LocalDate.parse(releaseDate,formatterDate)),
+            new BookReleaseDate((releaseDateString.isBlank()||releaseDateString.isEmpty())?oldBook.get().getReleaseDate().getValue():releaseDate),
             new BookPages((pages<=0||pages==null)?oldBook.get().getPages().getValue():pages),
             BookGender.genderValidatorFromInput((gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender)
         );

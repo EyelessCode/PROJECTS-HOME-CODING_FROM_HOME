@@ -48,7 +48,7 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
             )
         );
     }
-    
+
     @Override
     public BookLoan create(BookLoan bookLoan) {
         BookLoan newBookLoan=loanInMemory.putIfAbsent(new BookLoanId(null), bookLoan);
@@ -74,11 +74,10 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
         List<BookLoan>bookLoans=loanInMemory.values().stream().toList();
         return bookLoans;
     }
+
     @Override
     public Optional<BookLoan> getById(BookLoanId id) {
         Optional<BookLoan>bookLoan=Optional.ofNullable(loanInMemory.get(id));
         return bookLoan;
     }
-
-
 }

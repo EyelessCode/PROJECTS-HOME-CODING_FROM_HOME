@@ -58,6 +58,7 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   ├── 📁 loans
 │   │   │   ├── 📁 app
 │   │   │   │   └── 📁 services
+│   │   │   │       └── ☕ BookLoanService.java
 │   │   │   ├── 📁 domain
 │   │   │   │   ├── 📁 exceptions
 │   │   │   │   │   └── 📁 models
@@ -80,14 +81,18 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   │   └── ☕ BookLoan.java
 │   │   │   │   ├── 📁 ports
 │   │   │   │   │   ├── 📁 inport
+│   │   │   │   │   │   └── ☕ IBookLoanServiceInport.java
 │   │   │   │   │   └── 📁 outport
+│   │   │   │   │       └── ☕ IBookLoanRepositoryOutport.java
 │   │   │   │   └── 📁 services
+│   │   │   │       └── ☕ BookLoanServiceValidator.java
 │   │   │   └── 📁 infrastructure
 │   │   │       └── 📁 adapters
 │   │   │           ├── 📁 inbound
 │   │   │           │   └── 📁 controllers
 │   │   │           └── 📁 outbound
 │   │   │               └── 📁 repositories
+│   │   │                   └── ☕ BookLoanRepositoryInMemory.java
 │   │   └── 📁 users
 │   │       ├── 📁 app
 │   │       │   └── 📁 services

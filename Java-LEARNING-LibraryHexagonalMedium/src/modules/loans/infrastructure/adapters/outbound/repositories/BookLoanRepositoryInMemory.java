@@ -51,8 +51,7 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
 
     @Override
     public BookLoan create(BookLoan bookLoan) {
-        BookLoan newBookLoan=loanInMemory.putIfAbsent(new BookLoanId(null), bookLoan);
-        return newBookLoan;
+        return loanInMemory.putIfAbsent(new BookLoanId(null), bookLoan);
     }
 
     @Override
@@ -60,8 +59,7 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
         Optional<Map.Entry<BookLoanId,BookLoan>>exist=loanInMemory.entrySet().stream().
             filter(lb->lb.getValue().getUserId().getValue().equals(bookLoan.getUserId().getValue())&&lb.getValue().getBookId().getValue().equals(bookLoan.getBookId().getValue())).findFirst();
         BookLoanId bookLoanId=exist.get().getKey();
-        BookLoan updateBookLoan=loanInMemory.put(bookLoanId, bookLoan);
-        return updateBookLoan;
+        return loanInMemory.put(bookLoanId, bookLoan);
     }
 
     @Override
@@ -71,13 +69,11 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
 
     @Override
     public List<BookLoan> getAll() {
-        List<BookLoan>bookLoans=loanInMemory.values().stream().toList();
-        return bookLoans;
+        return loanInMemory.values().stream().toList();
     }
 
     @Override
     public Optional<BookLoan> getById(BookLoanId id) {
-        Optional<BookLoan>bookLoan=Optional.ofNullable(loanInMemory.get(id));
-        return bookLoan;
+        return Optional.ofNullable(loanInMemory.get(id));
     }
 }

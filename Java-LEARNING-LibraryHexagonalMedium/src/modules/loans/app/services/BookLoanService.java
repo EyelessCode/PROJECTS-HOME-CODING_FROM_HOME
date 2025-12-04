@@ -90,8 +90,18 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
 
     @Override
     public List<BookLoan> getAllLoans(String value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllLoans'");
+        List<BookLoan>loans=repository.getAll().stream()
+            .filter(loan->loan.getBookId().getValue().toString().equals(value)
+                ||loan.getUserId().getValue().toString().equals(value))
+            .toList();
+        boolean isEmpty=repository.getAll().isEmpty();
+        if (isEmpty) {
+            throw new BookLoanNotFoundException("Loan list is empty.");
+        }
+        if (loans.isEmpty()) {
+            throw new BookLoanNotFoundException("Loan couldn't be found.");
+        }
+        return loans;
     }
 
     @Override

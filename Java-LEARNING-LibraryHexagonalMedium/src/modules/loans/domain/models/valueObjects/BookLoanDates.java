@@ -20,10 +20,10 @@ public class BookLoanDates {
     }
 
     private void dateValidator(LocalDate param){
-        if (!param.isAfter(LocalDate.now())) {
+        if (param.isBefore(LocalDate.now())) {
             throw new BookLoanDateInvalidException("Loan date cannot be earlier of current date.");
         }
-        if (!param.isBefore(LocalDate.now().plusDays(1_800))) {
+        if (param.isAfter(LocalDate.now().plusDays(1_800))) {
             throw new BookLoanDateInvalidException("The maximum loan period allowed is 1,800 days.");
         }
     }

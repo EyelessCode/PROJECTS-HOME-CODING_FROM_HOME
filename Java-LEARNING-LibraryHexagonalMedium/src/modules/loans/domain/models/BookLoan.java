@@ -56,4 +56,16 @@ public class BookLoan {
     public BookLoanRemainingDays getRemainingDays() {
         return remainingDays;
     }
+
+    @Override
+    public String toString() {
+        return "BookLoan{" +
+                "id=" + id.getValue() +
+                ", bookId=" + bookId.getValue() +
+                ", userId=" + userId +
+                ", deliveryDate=" + deliveryDate.getValue() +
+                ", returnDate=" + returnDate.getValue() +
+                ", remainingDays=" + remainingDays.getValue() +
+                '}';
+    }
 }

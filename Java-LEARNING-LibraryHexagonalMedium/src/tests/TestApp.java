@@ -22,27 +22,10 @@ import modules.users.infrastructure.adapters.outbound.repositories.UserRepositor
 
 public class TestApp {
     public static void main(String[] args) {
-        /* Book book1=new Book(new BookIsbn("1111111111111"), new BookTitle("TITLE 1"), new BookAuthor("AUTHOR"), new BookReleaseDate(LocalDate.of(2014, Month.APRIL, 15)), new BookPages((short)1_547), BookGender.LYRICAL);
-        Book book2=new Book(new BookIsbn("1111111111111"), new BookTitle("TITLE 2"), new BookAuthor("AUTHOR"), new BookReleaseDate(LocalDate.of(2019, Month.JANUARY, 2)), new BookPages((short)6_789), BookGender.LYRICAL);
-        Book book3=new Book(new BookIsbn("1111111111111"), new BookTitle("TITLE 3"), new BookAuthor("AUTHOR"), new BookReleaseDate(LocalDate.of(2011, Month.OCTOBER, 20)), new BookPages((short)4_151), BookGender.ROMANCE);
-
-        System.out.println(book1.toString());
-        System.out.println(book2.toString());
-        System.out.println(book3.toString());
-
-        book3.lead();
-
-        System.out.println(book3.toString()); */
-
-        // UserController u=new UserController();
-        // u.userRun();
+//         UserController u=new UserController();
+//         u.userRun();
 //        BookController b=new BookController();
 //        b.bookRun();
-        /* String datee="2030/10/23";
-        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate localDate=LocalDate.parse(datee, formatter);
-        dateValidator(localDate); */
-
         BookLoanController blc=new BookLoanController();
         blc.loanRun();
     }

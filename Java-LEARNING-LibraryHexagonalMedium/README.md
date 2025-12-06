@@ -58,6 +58,8 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   ├── 📁 loans
 │   │   │   ├── 📁 app
 │   │   │   │   └── 📁 services
+│   │   │   │       ├── 📁 dtos
+│   │   │   │       │   └── ☕ BookLoanDTO.java
 │   │   │   │       └── ☕ BookLoanService.java
 │   │   │   ├── 📁 domain
 │   │   │   │   ├── 📁 exceptions
@@ -73,23 +75,27 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   │       └── ☕ BookLoanNotFoundException.java
 │   │   │   │   ├── 📁 models
 │   │   │   │   │   ├── 📁 valueObjects
-│   │   │   │   │   │   ├── ☕ BookId.java
 │   │   │   │   │   │   ├── ☕ BookLoanDates.java
 │   │   │   │   │   │   ├── ☕ BookLoanId.java
-│   │   │   │   │   │   ├── ☕ BookLoanRemainingDays.java
-│   │   │   │   │   │   └── ☕ UserId.java
+│   │   │   │   │   │   └── ☕ BookLoanRemainingDays.java
 │   │   │   │   │   └── ☕ BookLoan.java
 │   │   │   │   ├── 📁 ports
 │   │   │   │   │   ├── 📁 inport
 │   │   │   │   │   │   └── ☕ IBookLoanServiceInport.java
 │   │   │   │   │   └── 📁 outport
 │   │   │   │   │       └── ☕ IBookLoanRepositoryOutport.java
-│   │   │   │   └── 📁 services
-│   │   │   │       └── ☕ BookLoanServiceValidator.java
+│   │   │   │   ├── 📁 services
+│   │   │   │   │   └── ☕ BookLoanServiceValidator.java
+│   │   │   │   └── 📁 ui
+│   │   │   │       └── 📁 console
+│   │   │   │           ├── 📁 templates
+│   │   │   │           │   └── ☕ BookLoanTemplate.java
+│   │   │   │           └── ☕ BookLoanConsole.java
 │   │   │   └── 📁 infrastructure
 │   │   │       └── 📁 adapters
 │   │   │           ├── 📁 inbound
 │   │   │           │   └── 📁 controllers
+│   │   │           │       └── ☕ BookLoanController.java
 │   │   │           └── 📁 outbound
 │   │   │               └── 📁 repositories
 │   │   │                   └── ☕ BookLoanRepositoryInMemory.java
@@ -155,6 +161,8 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   ├── ☕ ExampleId.java
 │   │   └── ☕ TestApp.java
 │   └── ☕ App.java
+├── ⚙️ .gitignore
+├── 📄 Java-LEARNING-LibraryHexagonalMedium.iml
 └── 📝 README.md
 ```
 ---

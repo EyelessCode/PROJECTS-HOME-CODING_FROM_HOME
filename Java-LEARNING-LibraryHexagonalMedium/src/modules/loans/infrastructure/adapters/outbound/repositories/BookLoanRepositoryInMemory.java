@@ -10,7 +10,6 @@ import modules.books.domain.models.valueObjects.BookId;
 import modules.loans.domain.models.BookLoan;
 import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
-import modules.loans.domain.models.valueObjects.UserId;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
 
 public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{

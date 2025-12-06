@@ -1,10 +1,8 @@
 package modules.loans.domain.models;
 
 import modules.books.domain.models.valueObjects.BookId;
-import modules.loans.domain.models.valueObjects.BookLoanDates;
-import modules.loans.domain.models.valueObjects.BookLoanId;
-import modules.loans.domain.models.valueObjects.BookLoanRemainingDays;
-import modules.loans.domain.models.valueObjects.UserId;
+import modules.loans.domain.models.valueObjects.*;
+import modules.users.domain.models.valueObjects.UserId;
 
 public class BookLoan {
     private BookLoanId id;
@@ -62,7 +60,7 @@ public class BookLoan {
         return "BookLoan{" +
                 "id=" + id.getValue() +
                 ", bookId=" + bookId.getValue() +
-                ", userId=" + userId +
+                ", userId=" + userId.getValue() +
                 ", deliveryDate=" + deliveryDate.getValue() +
                 ", returnDate=" + returnDate.getValue() +
                 ", remainingDays=" + remainingDays.getValue() +

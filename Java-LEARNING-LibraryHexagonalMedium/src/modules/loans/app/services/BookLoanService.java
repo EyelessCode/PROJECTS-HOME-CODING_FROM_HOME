@@ -7,15 +7,16 @@ import java.util.Optional;
 import modules.books.domain.models.Book;
 import modules.books.domain.models.valueObjects.BookId;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
+import modules.loans.app.services.dtos.BookLoanDTO;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
 import modules.loans.domain.models.BookLoan;
 import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
-import modules.loans.domain.models.valueObjects.UserId;
 import modules.loans.domain.ports.inport.IBookLoanServiceInport;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
 import modules.loans.domain.services.BookLoanServiceValidator;
 import modules.users.domain.models.User;
+import modules.users.domain.models.valueObjects.UserId;
 import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 
 public class BookLoanService extends BookLoanServiceValidator implements IBookLoanServiceInport{
@@ -53,7 +54,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         BookId oldBookId=oldBookLoan.get().getBookId();
         LocalDate deliveryDate=dateValidator(deliveryDateString);
         LocalDate returnDate=dateValidator(returnDateString);
-        if (!oldBookLoan.isPresent()) {
+        if (oldBookLoan.isEmpty()) {
             throw new BookLoanNotFoundException("Loan couldn't be found.");
         }
         if (loanList) {
@@ -69,8 +70,25 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public List<BookLoan> getAllLoans() {
-        List<BookLoan>bookLoans=loanRepository.getAll();
+    public List<BookLoanDTO> getAllLoans() {
+        List<BookLoanDTO>bookLoans=loanRepository.getAll().stream().
+                map(loan->{
+                    User user=userRepository.getById(loan.getUserId()).get();
+                    Book book=bookRepository.getById(loan.getBookId()).get();
+                    return new BookLoanDTO(
+                            loan.getId().getValue(),
+                            user.getId().getValue(),
+                            book.getId().getValue(),
+                            user.getIc().getValue(),
+                            user.getName().getValue(),
+                            user.getLastname().getValue(),
+                            book.getIsbn().getValue(),
+                            book.getTitle().getValue(),
+                            book.getAuthor().getValue(),
+                            loan.getDeliveryDate().getValue(),
+                            loan.getReturnDate().getValue()
+                    );
+                }).toList();
         if (bookLoans.isEmpty()) {
             throw new BookLoanNotFoundException("Loan list is empty.");
         }
@@ -78,8 +96,25 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public Optional<BookLoan> getLoan(Byte id) {
-        Optional<BookLoan>bookLoan=loanRepository.getById(new BookLoanId(id));
+    public Optional<BookLoanDTO> getLoan(Byte id) {
+        Optional<BookLoanDTO>bookLoan=loanRepository.getById(new BookLoanId(id)).stream().
+                map(loan->{;
+                User user=userRepository.getById(loan.getUserId()).get();
+                Book book=bookRepository.getById(loan.getBookId()).get();
+                return new BookLoanDTO(
+                        loan.getId().getValue(),
+                        user.getId().getValue(),
+                        book.getId().getValue(),
+                        user.getIc().getValue(),
+                        user.getName().getValue(),
+                        user.getLastname().getValue(),
+                        book.getIsbn().getValue(),
+                        book.getTitle().getValue(),
+                        book.getAuthor().getValue(),
+                        loan.getDeliveryDate().getValue(),
+                        loan.getReturnDate().getValue()
+                );
+            }).findFirst();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
@@ -94,32 +129,36 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
         }
+        if (bookLoan.isEmpty()){
+            throw new BookLoanNotFoundException("Loan couldn't be found.");
+        }
         loanRepository.delete(bookLoan.get().getId());
     }
 
     @Override
-    public List<BookLoan> getAllLoans(String value) {
-        List<User>users=userRepository.getAll().stream()
-                .filter(user->user.getIc().getValue().equals(value)
-                        ||(user.getName().getValue().equalsIgnoreCase(value)
-                        ||user.getLastname().getValue().equalsIgnoreCase(value))).toList();
-        if (users.isEmpty()){
-            System.out.println("\nNo users found with the given "+value+" value.");
-        }
-        List<Book>books=bookRepository.getAll().stream()
-                .filter(book->book.getIsbn().getValue().equals(value)
-                        ||book.getTitle().getValue().equalsIgnoreCase(value)
-                        ||book.getAuthor().getValue().equalsIgnoreCase(value)).toList();
-        if (books.isEmpty()) {
-            System.out.println("\nNo books found with the given "+value+" value.");
-        }
-        List<BookLoan>loans=loanRepository.getAll().stream()
-                .filter(loan->users.stream()
-                        .anyMatch(user->user.getId().getValue().equals(loan.getUserId().getValue()))
-                        ||
-                        books.stream()
-                        .anyMatch(book->book.getId().getValue().equals(loan.getBookId().getValue()))
-                ).toList();
+    public List<BookLoanDTO> getAllLoans(String value) {
+        List<BookLoanDTO>loans=loanRepository.getAll().stream().
+                map(bookLoan ->{
+                    User user=userRepository.getById(bookLoan.getUserId()).get();
+                    Book book=bookRepository.getById(bookLoan.getBookId()).get();
+                    return new BookLoanDTO(
+                            bookLoan.getId().getValue(),
+                            user.getId().getValue(),
+                            book.getId().getValue(),
+                            user.getIc().getValue(),
+                            user.getName().getValue(),
+                            user.getLastname().getValue(),
+                            book.getIsbn().getValue(),
+                            book.getTitle().getValue(),
+                            book.getAuthor().getValue(),
+                            bookLoan.getDeliveryDate().getValue(),
+                            bookLoan.getReturnDate().getValue()
+                    );
+                }).filter(loan->(loan.userName().equalsIgnoreCase(value)
+                    ||loan.userLastName().equalsIgnoreCase(value))
+                    ||(loan.bookTitle().equalsIgnoreCase(value)
+                    ||loan.bookAuthor().equalsIgnoreCase(value))
+                    ||(loan.userIc().equals(value)||loan.bookIsbn().equals(value))).toList();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
@@ -131,10 +170,25 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public List<BookLoan> getAllLoans(LocalDate value) {
-        List<BookLoan>loans=loanRepository.getAll().stream()
-                .filter(loan->value.isAfter(loan.getDeliveryDate().getValue())&&
-                        value.isBefore(loan.getReturnDate().getValue())).toList();
+    public List<BookLoanDTO> getAllLoans(LocalDate value) {
+        List<BookLoanDTO>loans=loanRepository.getAll().stream().
+                map(loan->{
+                    User user=userRepository.getById(loan.getUserId()).get();
+                    Book book=bookRepository.getById(loan.getBookId()).get();
+                    return new BookLoanDTO(
+                          loan.getId().getValue(),
+                          user.getId().getValue(),
+                          book.getId().getValue(),
+                          user.getIc().getValue(),
+                          user.getName().getValue(),
+                          user.getLastname().getValue(),
+                          book.getIsbn().getValue(),
+                          book.getTitle().getValue(),
+                          book.getAuthor().getValue(),
+                          loan.getDeliveryDate().getValue(),
+                          loan.getReturnDate().getValue()
+                    );
+                }).filter(loan->loan.returnDate().isBefore(value)).toList();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
@@ -151,31 +205,57 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
         }
-        Optional<User>user=userRepository.getAll().stream()
-                .filter(u->u.getIc().getValue().equals(value)).findFirst();
-        if (user.isEmpty()){
-            System.out.println("\nNo user found with the given IC: "+value);
-        }
-        Optional<Book>book=bookRepository.getAll().stream()
-                .filter(b->b.getIsbn().getValue().equals(value)).findFirst();
-        if (book.isEmpty()) {
-            System.out.println("\nNo book found with the given ISBN: " + value);
-        }
-        if (user.isEmpty()&&book.isEmpty()){
-            throw new BookLoanNotFoundException("No user or book found with the given value: "+value);
-        }
-        Optional<BookLoan>loan=loanRepository.getAll().stream()
-                .filter(l->l.getBookId().getValue().equals(book.get().getId().getValue())
-                    ||l.getUserId().getValue().equals(user.get().getId().getValue())).findFirst();
+        Optional<BookLoanDTO>loan=loanRepository.getAll().stream().
+                map(lb->{
+                    User user=userRepository.getById(lb.getUserId()).get();
+                    Book book=bookRepository.getById(lb.getBookId()).get();
+                    return new BookLoanDTO(
+                            lb.getId().getValue(),
+                            user.getId().getValue(),
+                            book.getId().getValue(),
+                            user.getIc().getValue(),
+                            user.getName().getValue(),
+                            user.getLastname().getValue(),
+                            book.getIsbn().getValue(),
+                            book.getTitle().getValue(),
+                            book.getAuthor().getValue(),
+                            lb.getDeliveryDate().getValue(),
+                            lb.getReturnDate().getValue()
+                    );
+                }).filter(lb->lb.userIc().equals(value)||lb.bookIsbn().equals(value)).findFirst();
         if (loan.isEmpty()){
             throw new BookLoanNotFoundException("Loan couldn't be found.");
         }
-        loanRepository.delete(loan.get().getId());
+        loanRepository.delete(new BookLoanId(loan.get().id()));
     }
 
     @Override
-    public Optional<BookLoan> getLoan(String value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLoan'");
+    public Optional<BookLoanDTO> getLoan(String value) {
+        boolean isEmpty=loanRepository.getAll().isEmpty();
+        if (isEmpty) {
+            throw new BookLoanNotFoundException("Loan list is empty.");
+        }
+        Optional<BookLoanDTO>loan=loanRepository.getAll().stream().
+                map(lb->{
+                    User user=userRepository.getById(lb.getUserId()).get();
+                    Book book=bookRepository.getById(lb.getBookId()).get();
+                    return new BookLoanDTO(
+                            lb.getId().getValue(),
+                            user.getId().getValue(),
+                            book.getId().getValue(),
+                            user.getIc().getValue(),
+                            user.getName().getValue(),
+                            user.getLastname().getValue(),
+                            book.getIsbn().getValue(),
+                            book.getTitle().getValue(),
+                            book.getAuthor().getValue(),
+                            lb.getDeliveryDate().getValue(),
+                            lb.getReturnDate().getValue()
+                    );
+                }).filter(lb->lb.userIc().equals(value)||lb.bookIsbn().equals(value)).findFirst();
+        if (loan.isEmpty()){
+            throw new BookLoanNotFoundException("Loan couldn't be found.");
+        }
+        return loan;
     }
 }

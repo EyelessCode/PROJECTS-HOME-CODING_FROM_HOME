@@ -170,7 +170,8 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public List<BookLoanDTO> getAllLoans(LocalDate value) {
+    public List<BookLoanDTO> getAllLoansByDate(String value) {
+        LocalDate date=dateValidator(value);
         List<BookLoanDTO>loans=loanRepository.getAll().stream().
                 map(loan->{
                     User user=userRepository.getById(loan.getUserId()).get();
@@ -188,7 +189,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                           loan.getDeliveryDate().getValue(),
                           loan.getReturnDate().getValue()
                     );
-                }).filter(loan->loan.returnDate().isBefore(value)).toList();
+                }).filter(loan->loan.returnDate().isBefore(date)).toList();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");

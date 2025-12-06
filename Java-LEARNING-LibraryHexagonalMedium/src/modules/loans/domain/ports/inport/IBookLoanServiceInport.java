@@ -18,7 +18,7 @@ public interface IBookLoanServiceInport {
 
     // Customs
     List<BookLoanDTO>getAllLoans(String value); //? User IC, name or Book ISBN, author, title
-    List<BookLoanDTO>getAllLoans(LocalDate value); //? Loan dates (only if 'returnDate' is less to the 'value')
+    List<BookLoanDTO>getAllLoansByDate(String value); //? Loan dates (only if 'returnDate' is less to the 'value')
     void removeLoan(String value); //? User IC or Book ISBN
     Optional<BookLoanDTO>getLoan(String value); //? User IC or Book ISBN
 }

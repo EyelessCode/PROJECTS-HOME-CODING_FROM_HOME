@@ -5,7 +5,7 @@ import modules.loans.domain.models.valueObjects.*;
 import modules.users.domain.models.valueObjects.UserId;
 
 public class BookLoan {
-    private BookLoanId id;
+    private final BookLoanId id;
     private final BookId bookId;
     private final UserId userId;
     private final BookLoanDates deliveryDate,returnDate;

@@ -31,8 +31,8 @@ public abstract  class BookLoanTemplate extends GenericTemplates {
     protected void submenu(){
         System.out.println(
                 "\n"+"-".repeat(5)+" SUBMENU LOANS "+"-".repeat(5)+
-                        "\n1. Search by Dates (Only date before return date)."+
-                        "\n2. Get Loans"+
+                        "\n1. Get Loans by Date (Only date before return date)."+
+                        "\n2. Get Loans."+
                         "\n3. Go back."
         );
     }

@@ -11,9 +11,10 @@ import modules.loans.domain.models.BookLoan;
 import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
+import modules.users.domain.models.valueObjects.UserId;
 
 public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
-    private Map<BookLoanId,BookLoan>loanInMemory=new HashMap<>();
+    private final Map<BookLoanId,BookLoan>loanInMemory=new HashMap<>();
 
     public BookLoanRepositoryInMemory(){
         loanInMemory.putIfAbsent(

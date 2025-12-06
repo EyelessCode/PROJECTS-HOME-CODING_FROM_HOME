@@ -15,6 +15,7 @@ import modules.books.domain.models.valueObjects.enums.BookGender;
 import modules.books.infrastructure.adapters.inbound.controllers.BookController;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import modules.loans.app.services.BookLoanService;
+import modules.loans.infrastructure.adapters.inbound.controllers.BookLoanController;
 import modules.loans.infrastructure.adapters.outbound.repositories.BookLoanRepositoryInMemory;
 import modules.users.infrastructure.adapters.inbound.controllers.UserController;
 import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
@@ -42,13 +43,7 @@ public class TestApp {
         LocalDate localDate=LocalDate.parse(datee, formatter);
         dateValidator(localDate); */
 
-        // For services works
-        BookLoanRepositoryInMemory loanRepositoryInMemory=new BookLoanRepositoryInMemory();
-        BookRepositoryInMemory bookRepositoryInMemory=new BookRepositoryInMemory();
-        UserRepositoryInMemory userRepositoryInMemory=new UserRepositoryInMemory();
-
-        // Services
-        BookLoanService loanService=new BookLoanService(loanRepositoryInMemory, bookRepositoryInMemory, userRepositoryInMemory);
-        loanService.getAllLoans("0974852960").forEach(l-> System.out.printf("%s%n",l.toString()));
+        BookLoanController blc=new BookLoanController();
+        blc.loanRun();
     }
 }

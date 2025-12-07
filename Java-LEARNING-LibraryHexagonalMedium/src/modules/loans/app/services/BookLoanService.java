@@ -82,11 +82,17 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                             user.getIc().getValue(),
                             user.getName().getValue(),
                             user.getLastname().getValue(),
+                            user.getGender().getDescription(),
+                            user.getAge().getValue(),
                             book.getIsbn().getValue(),
                             book.getTitle().getValue(),
                             book.getAuthor().getValue(),
+                            book.getReleaseDate().getValue(),
+                            book.getPages().getValue(),
+                            book.getGender().getDescription(),
                             loan.getDeliveryDate().getValue(),
-                            loan.getReturnDate().getValue()
+                            loan.getReturnDate().getValue(),
+                            loan.getRemainingDays().getValue()
                     );
                 }).toList();
         if (bookLoans.isEmpty()) {
@@ -108,11 +114,17 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                         user.getIc().getValue(),
                         user.getName().getValue(),
                         user.getLastname().getValue(),
+                        user.getGender().getDescription(),
+                        user.getAge().getValue(),
                         book.getIsbn().getValue(),
                         book.getTitle().getValue(),
                         book.getAuthor().getValue(),
+                        book.getReleaseDate().getValue(),
+                        book.getPages().getValue(),
+                        book.getGender().getDescription(),
                         loan.getDeliveryDate().getValue(),
-                        loan.getReturnDate().getValue()
+                        loan.getReturnDate().getValue(),
+                        loan.getRemainingDays().getValue()
                 );
             }).findFirst();
         boolean isEmpty=loanRepository.getAll().isEmpty();
@@ -137,6 +149,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
 
     @Override
     public List<BookLoanDTO> getAllLoans(String value) {
+        String search=value.toLowerCase();
         List<BookLoanDTO>loans=loanRepository.getAll().stream().
                 map(bookLoan ->{
                     User user=userRepository.getById(bookLoan.getUserId()).get();
@@ -148,17 +161,24 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                             user.getIc().getValue(),
                             user.getName().getValue(),
                             user.getLastname().getValue(),
+                            user.getGender().getDescription(),
+                            user.getAge().getValue(),
                             book.getIsbn().getValue(),
                             book.getTitle().getValue(),
                             book.getAuthor().getValue(),
+                            book.getReleaseDate().getValue(),
+                            book.getPages().getValue(),
+                            book.getGender().getDescription(),
                             bookLoan.getDeliveryDate().getValue(),
-                            bookLoan.getReturnDate().getValue()
+                            bookLoan.getReturnDate().getValue(),
+                            bookLoan.getRemainingDays().getValue()
                     );
-                }).filter(loan->(loan.userName().equalsIgnoreCase(value)
-                    ||loan.userLastName().equalsIgnoreCase(value))
-                    ||(loan.bookTitle().equalsIgnoreCase(value)
-                    ||loan.bookAuthor().equalsIgnoreCase(value))
-                    ||(loan.userIc().equals(value)||loan.bookIsbn().equals(value))).toList();
+                }).filter(loan->(loan.userName().toLowerCase().contains(search)
+                    ||loan.userLastName().toLowerCase().contains(search))
+                    ||(loan.bookTitle().toLowerCase().contains(search)
+                    ||loan.bookAuthor().toLowerCase().contains(search))
+                    ||(loan.userIc().equals(search)||loan.bookIsbn().equals(search))
+                    ||(loan.bookGender().toLowerCase().contains(search))).toList();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
@@ -177,19 +197,26 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                     User user=userRepository.getById(loan.getUserId()).get();
                     Book book=bookRepository.getById(loan.getBookId()).get();
                     return new BookLoanDTO(
-                          loan.getId().getValue(),
-                          user.getId().getValue(),
-                          book.getId().getValue(),
-                          user.getIc().getValue(),
-                          user.getName().getValue(),
-                          user.getLastname().getValue(),
-                          book.getIsbn().getValue(),
-                          book.getTitle().getValue(),
-                          book.getAuthor().getValue(),
-                          loan.getDeliveryDate().getValue(),
-                          loan.getReturnDate().getValue()
+                            loan.getId().getValue(),
+                            user.getId().getValue(),
+                            book.getId().getValue(),
+                            user.getIc().getValue(),
+                            user.getName().getValue(),
+                            user.getLastname().getValue(),
+                            user.getGender().getDescription(),
+                            user.getAge().getValue(),
+                            book.getIsbn().getValue(),
+                            book.getTitle().getValue(),
+                            book.getAuthor().getValue(),
+                            book.getReleaseDate().getValue(),
+                            book.getPages().getValue(),
+                            book.getGender().getDescription(),
+                            loan.getDeliveryDate().getValue(),
+                            loan.getReturnDate().getValue(),
+                            loan.getRemainingDays().getValue()
                     );
-                }).filter(loan->loan.returnDate().isBefore(date)).toList();
+                }).filter(loan->(loan.returnDate().isBefore(date)
+                        ||loan.returnDate().isEqual(date))).toList();
         boolean isEmpty=loanRepository.getAll().isEmpty();
         if (isEmpty) {
             throw new BookLoanNotFoundException("Loan list is empty.");
@@ -217,11 +244,17 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                             user.getIc().getValue(),
                             user.getName().getValue(),
                             user.getLastname().getValue(),
+                            user.getGender().getDescription(),
+                            user.getAge().getValue(),
                             book.getIsbn().getValue(),
                             book.getTitle().getValue(),
                             book.getAuthor().getValue(),
+                            book.getReleaseDate().getValue(),
+                            book.getPages().getValue(),
+                            book.getGender().getDescription(),
                             lb.getDeliveryDate().getValue(),
-                            lb.getReturnDate().getValue()
+                            lb.getReturnDate().getValue(),
+                            lb.getRemainingDays().getValue()
                     );
                 }).filter(lb->lb.userIc().equals(value)||lb.bookIsbn().equals(value)).findFirst();
         if (loan.isEmpty()){
@@ -247,11 +280,17 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                             user.getIc().getValue(),
                             user.getName().getValue(),
                             user.getLastname().getValue(),
+                            user.getGender().getDescription(),
+                            user.getAge().getValue(),
                             book.getIsbn().getValue(),
                             book.getTitle().getValue(),
                             book.getAuthor().getValue(),
+                            book.getReleaseDate().getValue(),
+                            book.getPages().getValue(),
+                            book.getGender().getDescription(),
                             lb.getDeliveryDate().getValue(),
-                            lb.getReturnDate().getValue()
+                            lb.getReturnDate().getValue(),
+                            lb.getRemainingDays().getValue()
                     );
                 }).filter(lb->lb.userIc().equals(value)||lb.bookIsbn().equals(value)).findFirst();
         if (loan.isEmpty()){

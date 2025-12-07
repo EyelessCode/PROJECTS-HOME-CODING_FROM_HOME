@@ -23,8 +23,9 @@ public abstract  class BookLoanTemplate extends GenericTemplates {
                         "\n1. View all loans."+
                         "\n2. Search loan (Fullname, IC, Title, Author, or ISBN)."+
                         "\n3. Create loan."+
-                        "\n4. Remove loan (Fullname, IC, Title, Author, or ISBN)."+
-                        "\n5. Go back."
+                        "\n4. modify loan."+
+                        "\n5. Remove loan (Fullname, IC, Title, Author, or ISBN)."+
+                        "\n6. Go back."
         );
     }
 

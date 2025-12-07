@@ -47,6 +47,16 @@ public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
                 new BookLoanDates(LocalDate.now().plusWeeks(2))
             )
         );
+
+        loanInMemory.putIfAbsent(
+            new BookLoanId((byte)4),
+            new BookLoan(
+                new BookId((byte)4),
+                new UserId((byte)4),
+                new BookLoanDates(LocalDate.now()),
+                new BookLoanDates(LocalDate.now())
+            )
+        );
     }
 
     @Override

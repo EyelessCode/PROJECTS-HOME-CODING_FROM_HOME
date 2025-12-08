@@ -9,7 +9,7 @@ public abstract class BookTemplate extends GenericTemplates{
             // "\n"+":".repeat(7)+" ¡WELCOME! "+":".repeat(7)+
             "\n"+"=".repeat(5)+" BOOK MENU "+"=".repeat(5)+
             "\n1. View all books."+
-            "\n2. View all genders."+
+            "\n2. View genders."+
             "\n3. Search book."+
             // "\n-- 3 Create user. --"+
             // "\n-- 4 Remove user. --"+
@@ -22,7 +22,7 @@ public abstract class BookTemplate extends GenericTemplates{
             "\n"+"-".repeat(5)+" ADMIN MOD "+"-".repeat(5)+
             "\n"+"=".repeat(5)+" BOOK MENU "+"=".repeat(5)+
             "\n1. View all books."+
-            "\n2. View all genders."+
+            "\n2. View genders."+
             "\n3. Search book."+
             "\n4. Create book."+
             "\n5. Modify book."+

@@ -10,7 +10,7 @@ import modules.books.domain.models.valueObjects.BookTitle;
 import modules.books.domain.models.valueObjects.enums.BookGender;
 
 public class Book {
-    private BookId id;
+    private final BookId id;
     private BookAvailability availability;
     private final BookIsbn isbn;
     private final BookTitle title;
@@ -86,13 +86,11 @@ public class Book {
     @Override
     public String toString() {
         return(
-            "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
-            "\nID: "+id.getValue()+"\tISBN: "+isbn.getValue()+
-            "\nTITLE: "+title.getValue()+
-            "\nAUTHOR: "+author.getValue()+"\tRELEASE DATE: "+releaseDate.getValue()+
-            "\nPAGES: "+pages.getValue()+"\tGENDER: "+gender.getDescription()+
-            "\n== AVAILABILITY: "+availability.toString()+" =="+
-            "\n"+"=".repeat(12)
+                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "\nISBN: "+isbn.getValue()+"\tTITLE: "+title.getValue()+"\tGENDER: "+gender.getDescription()+
+                "\nAUTHOR: "+author.getValue()+"\tRELEASE DATE: "+releaseDate.getValue()+
+                "\nPAGES: "+pages.getValue()+"\t\t== AVAILABILITY: "+availability.toString()+" =="+
+                "\n"+"=".repeat(12)
         );
     }
 }

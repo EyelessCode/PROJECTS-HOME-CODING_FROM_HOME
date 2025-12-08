@@ -33,7 +33,7 @@ public abstract  class BookLoanTemplate extends GenericTemplates {
     protected void submenu(){
         System.out.println(
                 "\n"+"-".repeat(5)+" HOW TO SEARCH "+"-".repeat(5)+
-                        "\n1. Get Loans by Date (Only date before return date)."+
+                        "\n1. Get Loans by Date (minor to return date)."+
                         "\n2. Get Loans by anything (less dates)."+
                         "\n3. Go back."
         );

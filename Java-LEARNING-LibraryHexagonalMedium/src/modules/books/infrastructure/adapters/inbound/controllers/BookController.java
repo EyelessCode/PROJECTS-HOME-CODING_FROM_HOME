@@ -14,7 +14,7 @@ import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 public class BookController extends BookConsole{
-    private BookService service;
+    private final BookService service;
 
     public BookController(){
         BookRepositoryInMemory repository=new BookRepositoryInMemory();
@@ -44,23 +44,24 @@ public class BookController extends BookConsole{
 
     private void showAllBooks(){
         try {
-            service.getBooks().forEach(books->System.out.printf(
-                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
-                books.getIsbn().getValue(),
-                books.getTitle().getValue(),
-                books.getAuthor().getValue(),
-                books.getPages().getValue(),
-                books.getReleaseDate().getValue(),
-                books.getGender().getDescription(),
-                books.getAvailability().isValue()
-            ));
+//            service.getBooks().forEach(books->System.out.printf(
+//                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
+//                books.getIsbn().getValue(),
+//                books.getTitle().getValue(),
+//                books.getAuthor().getValue(),
+//                books.getPages().getValue(),
+//                books.getReleaseDate().getValue(),
+//                books.getGender().getDescription(),
+//                books.getAvailability().isValue()
+//            ));
+            service.getBooks().forEach(System.out::println);
         } catch (BooksNotFoundException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }
     }
@@ -69,23 +70,32 @@ public class BookController extends BookConsole{
         String string;
         try {
             string=inCaseExit("Enter a ISBN, title, author or gender: ");
-            service.getBooks(string).forEach(books->System.out.printf(
-                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
-                books.getIsbn().getValue(),
-                books.getTitle().getValue(),
-                books.getAuthor().getValue(),
-                books.getPages().getValue(),
-                books.getReleaseDate().getValue(),
-                books.getGender().getDescription(),
-                books.getAvailability().isValue()
-            ));
-        } catch (BooksNotFoundException ex) {
+//            service.getBooks(string).forEach(books->System.out.printf(
+//                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
+//                books.getIsbn().getValue(),
+//                books.getTitle().getValue(),
+//                books.getAuthor().getValue(),
+//                books.getPages().getValue(),
+//                books.getReleaseDate().getValue(),
+//                books.getGender().getDescription(),
+//                books.getAvailability().isValue()
+//            ));
+            service.getBooks(string).forEach(System.out::println);
+        } catch (GenericStringBoundaryException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
+            );
+        } catch (BooksNotFoundException ex) {
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                            "\nError: "+ex.getMessage()+
+                            "\nCause: "+ex.getCause()+
+                            "\nException: "+ex.getClass().getSimpleName()+
+                            "\n"+".".repeat(30)
             );
         }
     }
@@ -102,7 +112,7 @@ public class BookController extends BookConsole{
             String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?(releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
             String pagesString=inCaseExit("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
-            Short pages=((pagesString.isBlank()||pagesString.isEmpty())?0:Short.parseShort(pagesString));
+            Short pages= pagesString.isBlank()?0:Short.parseShort(pagesString);
             System.out.printf(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
@@ -112,13 +122,13 @@ public class BookController extends BookConsole{
                 "\n"+"=".repeat(12),
                 isbn,title,author,releaseDate,pages,gender
             );
-            System.out.println("\nIs anything ok (YES or CANCEL)?");
-            String confirm=inCaseExit("Enter your answer: ");
+            System.out.println("\nIs anything ok (YES or NO)?");
+            String confirm=inCaseExit("Enter: ");
             if (confirm.equalsIgnoreCase("YES")) {
                 service.saveBook(isbn, title, author, releaseDate, pages, gender);
                 System.out.println("-- Book created --");
                 return;
-            }else if(confirm.equalsIgnoreCase("CANCEL")){
+            }else if(confirm.equalsIgnoreCase("NO")){
                 System.out.println("-- Book NOT created --");
                 return;
             }
@@ -137,7 +147,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }catch(BookLocalDateInvalidException ex){
             System.out.println(
@@ -145,7 +155,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }catch(BookInvalidException ex){
             System.out.println(
@@ -153,19 +163,20 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }
     }
 
     private void modifyBook(){
+        System.out.println("\n-- MODIFYING BOOK --");
         String isbn;
         try {
             isbn=inCaseExit("Enter an ISBN: ");
             Optional<Book> oldBook=service.getBook(isbn);
-            if (oldBook.isEmpty()) {
-                throw new BooksNotFoundException("Book couldn't be found.");
-            }
+//            if (oldBook.isEmpty()) {
+//                throw new BooksNotFoundException("Book couldn't be found.");
+//            }
                 System.out.println("\tOld save: press 'ENTER' -> "+oldBook.get().getTitle().getValue()+"'");
             String title=inCaseExit("Enter new title: ");
 
@@ -190,8 +201,8 @@ public class BookController extends BookConsole{
             String releaseDate=(releaseDateYear.isBlank()?oldBook.get().getReleaseDate().getValue().getYear():releaseDateYear)+
             "/"+(releaseDateMonth.isBlank()?oldBook.get().getReleaseDate().getValue().getMonthValue():releaseDateMonth)+
             "/"+(releaseDateDay.isBlank()?oldBook.get().getReleaseDate().getValue().getDayOfMonth():releaseDateDay);
-            System.out.println(releaseDate);
-            Short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
+//            System.out.println(releaseDate);
+            short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
             System.out.printf(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: %s"+
@@ -200,19 +211,19 @@ public class BookController extends BookConsole{
                 "\nPAGES: %d"+"\tGENDER: %s"+
                 "\n"+"=".repeat(12),
                 isbn,
-                (title.isBlank()||title.isEmpty()?oldBook.get().getTitle().getValue():title),
-                (author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author,
-                (releaseDate.isBlank()||releaseDate.isEmpty()?oldBook.get().getReleaseDate().getValue().toString():releaseDate),
-                (pages<=0||pages==null)?oldBook.get().getPages().getValue():pages,
-                (gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender
+                title.isBlank() ?oldBook.get().getTitle().getValue():title,
+                author.isBlank() ?oldBook.get().getAuthor().getValue():author,
+                releaseDate.isBlank() ?oldBook.get().getReleaseDate().getValue().toString():releaseDate,
+                pages<=0 ?oldBook.get().getPages().getValue():pages,
+                gender.isBlank() ?oldBook.get().getGender().name():gender
             );
-            System.out.println("\nIs anything ok (YES or CANCEL)?");
+            System.out.println("\nIs anything ok (YES or NO)?");
             String confirm=inCaseExit("Enter your answer: ");
             if (confirm.equalsIgnoreCase("YES")) {
                 service.modifyBook(isbn, title, author, releaseDate, pages, gender);
                 System.out.println("-- Book modified --");
                 return;
-            }else if(confirm.equalsIgnoreCase("CANCEL")){
+            }else if(confirm.equalsIgnoreCase("NO")){
                 System.out.println("-- Book NOT modified --");
                 return;
             }
@@ -223,7 +234,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }catch(GenericNumberInvalidException ex){
             System.out.println(
@@ -231,7 +242,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }catch(BookLocalDateInvalidException ex){
             System.out.println(
@@ -239,7 +250,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }catch(BookInvalidException ex){
             System.out.println(
@@ -247,7 +258,7 @@ public class BookController extends BookConsole{
                 "\nError: "+ex.getMessage()+
                 "\nCause: "+ex.getCause()+
                 "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
+                "\n"+".".repeat(30)
             );
         }
     }
@@ -261,6 +272,43 @@ public class BookController extends BookConsole{
         ));
     }
 
+    private void removeBook(){
+        System.out.println("\n-- MODIFYING BOOK --");
+        String string;
+        try{
+            string=inCaseExit("Enter a ISBN: ");
+            Book book=service.getBook(string).get();
+            System.out.println(book.toString());
+            System.out.println("Is this the book (YES or NO)?");
+            String option=inCaseExit("Enter: ");
+            if (option.equalsIgnoreCase("YES")){
+                System.out.println("-- Book removed --");
+                service.removeBook(string);
+                return;
+            }else if(option.equalsIgnoreCase("NO")) {
+                System.out.println("-- Book NOT removed --");
+                return;
+            }
+            throw new GenericStringBoundaryException("Input unexcepted. Try again.");
+        }catch (GenericStringBoundaryException ex){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                            "\nError: "+ex.getMessage()+
+                            "\nCause: "+ex.getCause()+
+                            "\nException: "+ex.getClass().getSimpleName()+
+                            "\n"+".".repeat(30)
+            );
+        }catch (BooksNotFoundException ex){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+ex.getMessage()+
+                    "\nCause: "+ex.getCause()+
+                    "\nException: "+ex.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
+            );
+        }
+    }
+
     private void rootOptions(){
         String option;
         while (true) {
@@ -272,7 +320,7 @@ public class BookController extends BookConsole{
                 case "3"->searchBooks();
                 case "4"->createBook();
                 case "5"->modifyBook();
-                case "6"->modifyBook();
+                case "6"->removeBook();
                 case "7"->{System.out.println("Removing the admin privileges...");return;}
                 // case "test"->showAllBookGenders();
                 default->System.out.println("Invalid option. Please enter a valid option (1-7).");

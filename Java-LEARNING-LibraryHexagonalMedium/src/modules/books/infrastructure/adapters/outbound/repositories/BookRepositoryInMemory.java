@@ -18,7 +18,7 @@ import modules.books.domain.ports.outport.IBookRepositoryOutport;
 
 public class BookRepositoryInMemory implements IBookRepositoryOutport{
     // private byte currentId=1;
-    private Map<BookId,Book>bookMemory=new HashMap<>();
+    private final Map<BookId,Book>bookMemory=new HashMap<>();
 
     public BookRepositoryInMemory(){
         bookMemory.putIfAbsent(new BookId((byte)1), new Book(
@@ -69,8 +69,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
 
     @Override
     public Book create(Book book) {
-        Book newBook=bookMemory.putIfAbsent(new BookId(null), book);
-        return newBook;
+        return bookMemory.putIfAbsent(new BookId(null), book);
     }
 
     @Override
@@ -78,8 +77,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
         Optional<Map.Entry<BookId,Book>>exist=bookMemory.entrySet().stream()
             .filter(b->b.getValue().getIsbn().getValue().equals(book.getIsbn().getValue())).findFirst();
         BookId id=exist.get().getKey();
-        Book updatedBook=bookMemory.put(id, book);
-        return updatedBook;
+        return bookMemory.put(id, book);
     }
 
     @Override

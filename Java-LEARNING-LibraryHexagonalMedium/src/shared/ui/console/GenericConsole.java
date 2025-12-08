@@ -7,14 +7,17 @@ import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 public class GenericConsole{
-    private Scanner scanner=new Scanner(System.in);
+    private final Scanner scanner=new Scanner(System.in);
 
     protected String inCaseExit(String message){
         System.out.print(message);
         String string=scanner.nextLine().trim();
-        if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||(string.equalsIgnoreCase("X")||string.equalsIgnoreCase("ZZZ"))||(string.equalsIgnoreCase("BACK")||string.equalsIgnoreCase("GO BACK"))) {
+        if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||
+                (string.equalsIgnoreCase("X")||string.equalsIgnoreCase("ZZZ"))||
+                (string.equalsIgnoreCase("BACK")||string.equalsIgnoreCase("GO BACK"))||
+                (string.equalsIgnoreCase("NOP"))) {
             throw new GenericStringBoundaryException(
-                "\n-- Cancelating process --"+
+                "-- Cancelling process --"+
                 "\n<<<--- Going back... --->>>"
             );
         }

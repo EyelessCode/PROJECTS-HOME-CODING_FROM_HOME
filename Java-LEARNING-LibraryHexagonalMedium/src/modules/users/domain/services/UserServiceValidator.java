@@ -28,16 +28,14 @@ public abstract class UserServiceValidator {
     }
 
     protected void anythingNull(String ic, String name, String lastname, String gender, Byte age){
-        if ((ic==null&&name==null&&lastname==null&&gender==null&&age==null)
-        ||(ic==null||name==null||lastname==null||gender==null||age==null)) {
-            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+        if (((ic == null && name == null) || (lastname == null && gender == null)) || (age == null)) {
+            throw new UserCouldNotBeCreatedException("User couldn't be created. Null values found.");
         }
     }
 
     protected void anythingNull(String name, String lastname, String gender, Byte age){
-        if ((name==null&&lastname==null&&gender==null&&age==null)
-        ||(name==null||lastname==null||gender==null||age==null)) {
-            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+        if ((name == null && lastname == null) || (gender == null && age == null)) {
+            throw new UserCouldNotBeCreatedException("User couldn't be created. Null values found.");
         }
     }
 }

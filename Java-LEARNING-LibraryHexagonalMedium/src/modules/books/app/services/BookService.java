@@ -55,11 +55,11 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         }
         Book book=new Book(
             oldBook.get().getIsbn(),
-            new BookTitle((title.isBlank()||title.isEmpty())?oldBook.get().getTitle().getValue():title),
-            new BookAuthor((author.isBlank()||author.isEmpty())?oldBook.get().getAuthor().getValue():author),
-            new BookReleaseDate((releaseDateString.isBlank()||releaseDateString.isEmpty())?oldBook.get().getReleaseDate().getValue():releaseDate),
-            new BookPages((pages<=0||pages==null)?oldBook.get().getPages().getValue():pages),
-            BookGender.genderValidatorFromInput((gender.isBlank()||gender.isEmpty())?oldBook.get().getGender().name():gender)
+            new BookTitle(title.isBlank() ?oldBook.get().getTitle().getValue():title),
+            new BookAuthor(author.isBlank() ?oldBook.get().getAuthor().getValue():author),
+            new BookReleaseDate(releaseDateString.isBlank() ?oldBook.get().getReleaseDate().getValue():releaseDate),
+            new BookPages(pages<=0 ?oldBook.get().getPages().getValue():pages),
+            BookGender.genderValidatorFromInput(gender.isBlank() ?oldBook.get().getGender().name():gender)
         );
         repository.update(book);
     }
@@ -71,7 +71,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
-        if (!book.isEmpty()) {
+        if (book.isPresent()) {
             repository.delete(book.get().getId());
             return;
         }
@@ -94,7 +94,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
-        if (!book.isEmpty()) {
+        if (book.isPresent()) {
             return book;
         }
         throw new BooksNotFoundException("Book couldn't be found.");
@@ -108,7 +108,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
-        if (!book.isEmpty()) {
+        if (book.isPresent()) {
             repository.delete(book.get().getId());
             return;
         }
@@ -119,7 +119,10 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
     public List<Book> getBooks(String value) {
         boolean isEmpty=repository.getAll().isEmpty();
         List<Book>books=repository.getAll().stream().
-            filter(bs->bs.getIsbn().getValue().equals(value)||bs.getTitle().getValue().equalsIgnoreCase(value)||bs.getAuthor().getValue().equalsIgnoreCase(value)||bs.getGender().getDescription().equalsIgnoreCase(value)).toList();
+            filter(bs->bs.getIsbn().getValue().equals(value)||
+                    bs.getTitle().getValue().equalsIgnoreCase(value)||
+                    bs.getAuthor().getValue().equalsIgnoreCase(value)||
+                    bs.getGender().getDescription().equalsIgnoreCase(value)).toList();
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
@@ -137,7 +140,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }
-        if (!book.isEmpty()) {
+        if (book.isPresent()) {
             return book;
         }
         throw new BooksNotFoundException("Book couldn't be found.");

@@ -38,7 +38,6 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
 
     @Override
     public void modifyUser(String ic,String name, String lastname, String gender, Byte age) {
-        // anythingNull(name, lastname, gender, age);
         boolean isEmpty=repository.getAll().isEmpty();
         Optional<User> oldUser=repository.getAll().stream().filter(u->u.getIc().getValue().equals(ic)).findFirst();
         if (isEmpty) {
@@ -49,9 +48,9 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         }
         User user=new User(
             oldUser.get().getIc(),
-            new UserName((name.isBlank()||name.isEmpty())?oldUser.get().getName().getValue():name),
-            new UserLastname((lastname.isBlank()||lastname.isEmpty())?oldUser.get().getLastname().getValue():lastname),
-            UserGender.genderValidatorFromInput((gender.isBlank()||gender.isEmpty())?oldUser.get().getGender().name():gender),
+            new UserName(name.isBlank() ?oldUser.get().getName().getValue():name),
+            new UserLastname(lastname.isBlank() ?oldUser.get().getLastname().getValue():lastname),
+            UserGender.genderValidatorFromInput(gender.isBlank() ?oldUser.get().getGender().name():gender),
             new UserAge((age==null)?oldUser.get().getAge().getValue():age)
         );
         repository.update(user);
@@ -73,7 +72,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!user.isEmpty()) {
+        if (user.isPresent()) {
             return user;
         }
         throw new UsersNotFoundException("User couldn't be found.");
@@ -86,7 +85,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!user.isEmpty()) {
+        if (user.isPresent()) {
             repository.deleteById(user.get().getId());
             return;
         }
@@ -118,7 +117,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!user.isEmpty()) {
+        if (user.isPresent()) {
             return user;
         }
         throw new UsersNotFoundException("User couldn't be found.");
@@ -131,9 +130,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        if (!user.isEmpty()) {
-            // User user=found.get();
-            // Byte id=user.getId().getValue();
+        if (user.isPresent()) {
             repository.deleteById(user.get().getId());
             icRegistry.remove(user.get().getIc());
             return;

@@ -1,5 +1,6 @@
 package modules.books.infrastructure.adapters.inbound.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import modules.books.app.services.BookService;
@@ -44,17 +45,9 @@ public class BookController extends BookConsole{
 
     private void showAllBooks(){
         try {
-//            service.getBooks().forEach(books->System.out.printf(
-//                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
-//                books.getIsbn().getValue(),
-//                books.getTitle().getValue(),
-//                books.getAuthor().getValue(),
-//                books.getPages().getValue(),
-//                books.getReleaseDate().getValue(),
-//                books.getGender().getDescription(),
-//                books.getAvailability().isValue()
-//            ));
-            service.getBooks().forEach(System.out::println);
+            List<Book>books=service.getBooks();
+            books.forEach(System.out::println);
+            System.out.println(">".repeat(4)+" "+books.size()+" books registered.");
         } catch (BooksNotFoundException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -70,17 +63,9 @@ public class BookController extends BookConsole{
         String string;
         try {
             string=inCaseExit("Enter a ISBN, title, author or gender: ");
-//            service.getBooks(string).forEach(books->System.out.printf(
-//                "%n[ ISBN: %s "+"-".repeat(3)+" Title: %s "+"-".repeat(3)+"%nAuthor: %s "+"-".repeat(3)+" Pages: %d "+"-".repeat(3)+"%nRelease date: %s "+"-".repeat(3)+" Gender: %s "+"-".repeat(3)+" Availability: %b ]%n",
-//                books.getIsbn().getValue(),
-//                books.getTitle().getValue(),
-//                books.getAuthor().getValue(),
-//                books.getPages().getValue(),
-//                books.getReleaseDate().getValue(),
-//                books.getGender().getDescription(),
-//                books.getAvailability().isValue()
-//            ));
-            service.getBooks(string).forEach(System.out::println);
+            List<Book>books=service.getBooks(string);
+            books.forEach(System.out::println);
+            System.out.println(">".repeat(4)+" "+books.size()+" books found.");
         } catch (GenericStringBoundaryException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -109,18 +94,18 @@ public class BookController extends BookConsole{
             String releaseDateYear=numbeString("Enter year: ");
             String releaseDateMonth=numbeString("Enter digit of month: ");
             String releaseDateDay=numbeString("Enter day: ");
-            String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?(releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
+            String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?
+                    (releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
             String pagesString=inCaseExit("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
             Short pages= pagesString.isBlank()?0:Short.parseShort(pagesString);
             System.out.printf(
-                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
-                "\nISBN: %s"+
-                "\nTITLE: %s"+
-                "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
-                "\nPAGES: %d"+"\tGENDER: %s"+
-                "\n"+"=".repeat(12),
-                isbn,title,author,releaseDate,pages,gender
+                "%n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "%nISBN: %s"+"\tTITLE: %s"+"\tGENDER: %s"+
+                "%nAUTHOR: %s"+"\tRELEASE DATE: %s"+
+                "%nPAGES: %d"+
+                "%n"+"=".repeat(12),
+                isbn,title,gender,author,releaseDate,pages
             );
             System.out.println("\nIs anything ok (YES or NO)?");
             String confirm=inCaseExit("Enter: ");
@@ -174,9 +159,6 @@ public class BookController extends BookConsole{
         try {
             isbn=inCaseExit("Enter an ISBN: ");
             Optional<Book> oldBook=service.getBook(isbn);
-//            if (oldBook.isEmpty()) {
-//                throw new BooksNotFoundException("Book couldn't be found.");
-//            }
                 System.out.println("\tOld save: press 'ENTER' -> "+oldBook.get().getTitle().getValue()+"'");
             String title=inCaseExit("Enter new title: ");
 
@@ -204,18 +186,17 @@ public class BookController extends BookConsole{
 //            System.out.println(releaseDate);
             short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
             System.out.printf(
-                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
-                "\nISBN: %s"+
-                "\nTITLE: %s"+
-                "\nAUTHOR: %s"+"\tRELEASE DATE: %s"+
-                "\nPAGES: %d"+"\tGENDER: %s"+
-                "\n"+"=".repeat(12),
+                "%n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "%nISBN: %s"+"\tTITLE: %s"+"\tGENDER: %s"+
+                "%nAUTHOR: %s"+"\tRELEASE DATE: %s"+
+                "%nPAGES: %d"+
+                "%n"+"=".repeat(12),
                 isbn,
                 title.isBlank() ?oldBook.get().getTitle().getValue():title,
+                gender.isBlank() ?oldBook.get().getGender().name():gender,
                 author.isBlank() ?oldBook.get().getAuthor().getValue():author,
                 releaseDate.isBlank() ?oldBook.get().getReleaseDate().getValue().toString():releaseDate,
-                pages<=0 ?oldBook.get().getPages().getValue():pages,
-                gender.isBlank() ?oldBook.get().getGender().name():gender
+                pages<=0 ?oldBook.get().getPages().getValue():pages
             );
             System.out.println("\nIs anything ok (YES or NO)?");
             String confirm=inCaseExit("Enter your answer: ");
@@ -227,7 +208,7 @@ public class BookController extends BookConsole{
                 System.out.println("-- Book NOT modified --");
                 return;
             }
-            throw new BookCouldNotBeCreatedException("Book couldn't be created.");
+            throw new GenericStringBoundaryException("Book couldn't be created.");
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -252,7 +233,7 @@ public class BookController extends BookConsole{
                 "\nException: "+ex.getClass().getSimpleName()+
                 "\n"+".".repeat(30)
             );
-        }catch(BookInvalidException ex){
+        }catch(BooksNotFoundException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
                 "\nError: "+ex.getMessage()+
@@ -276,7 +257,7 @@ public class BookController extends BookConsole{
         System.out.println("\n-- MODIFYING BOOK --");
         String string;
         try{
-            string=inCaseExit("Enter a ISBN: ");
+            string=inCaseExit("Enter an ISBN: ");
             Book book=service.getBook(string).get();
             System.out.println(book.toString());
             System.out.println("Is this the book (YES or NO)?");
@@ -293,10 +274,10 @@ public class BookController extends BookConsole{
         }catch (GenericStringBoundaryException ex){
             System.out.println(
                     "\n"+".".repeat(30)+
-                            "\nError: "+ex.getMessage()+
-                            "\nCause: "+ex.getCause()+
-                            "\nException: "+ex.getClass().getSimpleName()+
-                            "\n"+".".repeat(30)
+                    "\nError: "+ex.getMessage()+
+                    "\nCause: "+ex.getCause()+
+                    "\nException: "+ex.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
             );
         }catch (BooksNotFoundException ex){
             System.out.println(

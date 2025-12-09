@@ -49,13 +49,4 @@ public enum BookGender {
         }
         throw new BookGenderInvalidException("Book's gender invalid. Please try it again.");
     }
-
-    /* @Override
-    public String toString() {
-        return( 
-            "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
-            "GENDERS: "+getDescription()+
-            "\n"+"=".repeat(12)
-        );
-    } */
 }

@@ -16,7 +16,7 @@ import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 
 public class UserRepositoryInMemory implements IUserRepositoryOutpor{
     // private byte currentId=1;
-    private Map<UserId,User>userMemory=new HashMap<>();
+    private final Map<UserId,User>userMemory=new HashMap<>();
 
     //? Initial local datas (For testing).
     public UserRepositoryInMemory(){
@@ -29,8 +29,7 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
 
     @Override
     public User create(User user) {
-        User newUser=userMemory.putIfAbsent(new UserId(null), user);
-        return newUser;
+        return userMemory.putIfAbsent(new UserId(null), user);
     }
 
     @Override
@@ -38,9 +37,7 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
         Optional<Map.Entry<UserId,User>>exist=userMemory.entrySet().stream().
             filter(u->u.getValue().getIc().getValue().equals(user.getIc().getValue())).findFirst();
         UserId id=exist.get().getKey();
-        // UserIc ic=exist.get().getValue().getIc();
-        User updatedUser=userMemory.put(id, user);
-        return updatedUser;
+        return userMemory.put(id, user);
     }
 
     @Override

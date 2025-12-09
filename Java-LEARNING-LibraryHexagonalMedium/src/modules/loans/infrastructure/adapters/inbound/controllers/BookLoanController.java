@@ -5,6 +5,7 @@ import modules.loans.app.services.BookLoanService;
 import modules.loans.app.services.dtos.BookLoanDTO;
 import modules.loans.domain.exceptions.models.BookLoanInvalidException;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
+import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 import modules.loans.domain.ui.console.BookLoanConsole;
 import modules.loans.infrastructure.adapters.outbound.repositories.BookLoanRepositoryInMemory;
 import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
@@ -81,25 +82,16 @@ public class BookLoanController extends BookLoanConsole {
 
     private void showAllLoans(){
         try{
-            service.getAllLoans().forEach(System.out::println);
-//            service.getAllLoans().forEach(loans -> System.out.printf(
-//                    "%n" + "=".repeat(4) + " Loan by %s %s " + "=".repeat(4) +
-//                            "%n" + "ISBN: %s" + "\tTitle: %s" + "\tAuthor: %s" +
-//                            "%n" + "User IC: %s" + "\tfullname: %s %s" +
-//                            "%n" + "Delivery Date: %s" + "\tReturn Date: %s" +
-//                            "%n" + "=".repeat(40) + "%n",
-//                    loans.userLastName(), loans.userName(),
-//                    loans.bookIsbn(), loans.bookTitle(), loans.bookAuthor(),
-//                    loans.userIc(), loans.userName(), loans.userLastName(),
-//                    loans.deliveryDate(), loans.returnDate()
-//            ));
+            List<BookLoanDTO>loans=service.getAllLoans();
+            loans.forEach(System.out::println);
+            System.out.println(">".repeat(4)+" "+loans.size()+" loans registered.");
         } catch (BookLoanNotFoundException e) {
             System.out.println(
                     "\n"+".".repeat(30)+
-                            "\nError: "+e.getMessage()+
-                            "\nCause: "+e.getCause()+
-                            "\nException: "+e.getClass().getSimpleName()+
-                            "\n"+".".repeat(15)
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(15)
             );
         }
     }
@@ -110,18 +102,9 @@ public class BookLoanController extends BookLoanConsole {
             String dateMonthString=inCaseExit("Enter a month (1-12): ");
             String dateDayString=inCaseExit("Enter a day (1-31): ");
             String dateString=dateYearString+"/"+dateMonthString+"/"+dateDayString;
-            service.getAllLoansByDate(dateString).forEach(System.out::println);
-//            service.getAllLoansByDate(dateString).forEach(loans->System.out.printf(
-//                    "%n"+"=".repeat(4)+" Loan by %s %s "+"=".repeat(4)+
-//                            "%n"+"ISBN: %s"+"\tTitle: %s"+"\tAuthor: %s"+
-//                            "%n"+"User IC: %s"+"\tfullname: %s %s"+
-//                            "%n"+"Delivery Date: %s"+"\tReturn Date: %s"+
-//                            "%n"+"=".repeat(40)+"%n",
-//                    loans.userLastName(),loans.userName(),
-//                    loans.bookIsbn(),loans.bookTitle(),loans.bookAuthor(),
-//                    loans.userIc(),loans.userName(),loans.userLastName(),
-//                    loans.deliveryDate(),loans.returnDate()
-//            ));
+            List<BookLoanDTO>loans=service.getAllLoansByDate(dateString);
+            loans.forEach(System.out::println);
+            System.out.println(">".repeat(4)+" "+loans.size()+" loans found.");
         } catch (GenericStringBoundaryException e) {
             System.out.println(
                     "\n"+".".repeat(30)+
@@ -130,7 +113,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nException: "+e.getClass().getSimpleName()+
                     "\n"+".".repeat(15)
             );
-        }catch (BookLoanNotFoundException e) {
+        }catch (BookLoanDateInvalidException e) {
             System.out.println(
                     "\n"+".".repeat(30)+
                     "\nError: "+e.getMessage()+
@@ -138,7 +121,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nException: "+e.getClass().getSimpleName()+
                     "\n"+".".repeat(15)
             );
-        }catch (BookLoanInvalidException e) {
+        }catch (BookLoanNotFoundException e) {
             System.out.println(
                     "\n"+".".repeat(30)+
                     "\nError: "+e.getMessage()+
@@ -156,18 +139,7 @@ public class BookLoanController extends BookLoanConsole {
             string=inCaseExit("Enter: ");
             List<BookLoanDTO> loans=service.getAllLoans(string);
             loans.forEach(System.out::println);
-//            loans.forEach(loan->System.out.printf(
-//                    "%n"+"=".repeat(4)+" Loan by %s %s "+"=".repeat(4)+
-//                            "%n"+"ISBN: %s"+"\tTitle: %s"+"\tAuthor: %s"+
-//                            "%n"+"User IC: %s"+"\tfullname: %s %s"+
-//                            "%n"+"Delivery Date: %s"+"\tReturn Date: %s"+
-//                            "%n"+"=".repeat(40)+"%n",
-//                    loan.userLastName(),loan.userName(),
-//                    loan.bookIsbn(),loan.bookTitle(),loan.bookAuthor(),
-//                    loan.userIc(),loan.userName(),loan.userLastName(),
-//                    loan.deliveryDate(),loan.returnDate()
-//            ));;
-            System.out.println(">".repeat(4)+" Found "+loans.size()+" Result.");
+            System.out.println(">".repeat(4)+" "+loans.size()+" loans found.");
         }catch (GenericStringBoundaryException e) {
             System.out.println(
                     "\n"+".".repeat(30)+

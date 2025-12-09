@@ -54,11 +54,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         BookId oldBookId=oldBookLoan.get().getBookId();
         LocalDate deliveryDate=dateValidator(deliveryDateString);
         LocalDate returnDate=dateValidator(returnDateString);
-        if (oldBookLoan.isEmpty()) {
-            throw new BookLoanNotFoundException("Loan couldn't be found.");
-        }
         if (loanList) {
             throw new BookLoanNotFoundException("Loan list is empty.");
+        }
+        if (oldBookLoan.isEmpty()) {
+            throw new BookLoanNotFoundException("Loan couldn't be found.");
         }
         BookLoan modifiedBookLoan=new BookLoan(
             oldBookId,

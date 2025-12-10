@@ -24,9 +24,9 @@ public class TestApp {
     public static void main(String[] args) {
 //         UserController u=new UserController();
 //         u.userRun();
-        BookController b=new BookController();
-        b.bookRun();
-//        BookLoanController blc=new BookLoanController();
-//        blc.loanRun();
+//        BookController b=new BookController();
+//        b.bookRun();
+        BookLoanController blc=new BookLoanController();
+        blc.loanRun();
     }
 }

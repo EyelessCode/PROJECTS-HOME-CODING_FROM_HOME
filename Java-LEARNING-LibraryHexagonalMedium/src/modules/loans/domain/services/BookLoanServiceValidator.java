@@ -15,8 +15,8 @@ public abstract class BookLoanServiceValidator {
         !a.getReturnDate().getValue().isBefore(b.getDeliveryDate().getValue()));
     }
 
-    protected void isNotNull(Byte userId, Byte bookId, String deliveryDateString, String returnDateString){
-        if ((userId==null||bookId==null)&&(deliveryDateString==null||returnDateString==null)) {
+    protected void isNotNull(String userIc, String bookIsbn, String deliveryDateString, String returnDateString){
+        if ((userIc==null||bookIsbn==null)&&(deliveryDateString==null||returnDateString==null)) {
             throw new BookLoanInvalidException("Invalid Loan. Please try again.");
         }
     }

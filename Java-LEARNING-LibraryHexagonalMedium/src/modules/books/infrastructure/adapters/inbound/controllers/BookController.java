@@ -25,6 +25,9 @@ public class BookController extends BookConsole{
     public void bookRun(){
         options();
     }
+    public void bookRootRun(){
+        rootOptions();
+    }
 
     @Override
     protected void options() {
@@ -36,8 +39,8 @@ public class BookController extends BookConsole{
                 case "1"->showAllBooks();
                 case "2"->showAllBookGenders();
                 case "3"->searchBooks();
-                case "4"->{System.out.println("Exiting the Book menu...");return;}
-                case "root"->rootOptions();
+                case "4"->{System.out.println("Going back to main Menu...");return;}
+//                case "root"->rootOptions();
                 default->System.out.println("Invalid option. Please enter a valid option (1-4).");
             }
         }
@@ -77,10 +80,10 @@ public class BookController extends BookConsole{
         } catch (BooksNotFoundException ex) {
             System.out.println(
                     "\n"+".".repeat(30)+
-                            "\nError: "+ex.getMessage()+
-                            "\nCause: "+ex.getCause()+
-                            "\nException: "+ex.getClass().getSimpleName()+
-                            "\n"+".".repeat(30)
+                    "\nError: "+ex.getMessage()+
+                    "\nCause: "+ex.getCause()+
+                    "\nException: "+ex.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
             );
         }
     }
@@ -91,9 +94,9 @@ public class BookController extends BookConsole{
             String isbn=inCaseExit("Enter ISBN: ");
             String title=inCaseExit("Enter title: ");
             String author=inCaseExit("Enter author: ");
-            String releaseDateYear=numbeString("Enter year: ");
-            String releaseDateMonth=numbeString("Enter digit of month: ");
-            String releaseDateDay=numbeString("Enter day: ");
+            String releaseDateYear= numberString("Enter year: ");
+            String releaseDateMonth= numberString("Enter digit of month: ");
+            String releaseDateDay= numberString("Enter day: ");
             String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?
                     (releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
             String pagesString=inCaseExit("Enter pages: ");
@@ -166,13 +169,13 @@ public class BookController extends BookConsole{
             String author=inCaseExit("Enter new author: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getYear()+"'");
-            String releaseDateYear=numbeString("Enter new year: ");
+            String releaseDateYear= numberString("Enter new year: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getMonthValue()+"'");
-            String releaseDateMonth=numbeString("Enter new digit of month: ");
+            String releaseDateMonth= numberString("Enter new digit of month: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getReleaseDate().getValue().getDayOfMonth()+"'");
-            String releaseDateDay=numbeString("Enter new day: ");
+            String releaseDateDay= numberString("Enter new day: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getPages().getValue()+"'");
             String pagesString=inCaseExit("Enter new pages: ");
@@ -302,7 +305,7 @@ public class BookController extends BookConsole{
                 case "4"->createBook();
                 case "5"->modifyBook();
                 case "6"->removeBook();
-                case "7"->{System.out.println("Removing the admin privileges...");return;}
+                case "7"->{System.out.println("Going back to main Menu...");return;}
                 // case "test"->showAllBookGenders();
                 default->System.out.println("Invalid option. Please enter a valid option (1-7).");
             }

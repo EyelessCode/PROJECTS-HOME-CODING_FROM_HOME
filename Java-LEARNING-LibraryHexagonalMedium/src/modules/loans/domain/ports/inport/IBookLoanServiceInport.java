@@ -10,8 +10,8 @@ import modules.loans.domain.models.BookLoan;
 
 public interface IBookLoanServiceInport {
     // Traditional
-    void saveLoan(Byte userId,Byte bookId,String deliveryDateString,String returnDateString);
-    void modifyLoan(Byte userId,Byte bookId,String deliveryDateString,String returnDateString);
+    void saveLoan(String userIc, String bookIsbn, String deliveryDateString,String returnDateString);
+    void modifyLoan(String userIc, String bookIsbn, String deliveryDateString,String returnDateString);
     List<BookLoanDTO>getAllLoans();
     Optional<BookLoanDTO>getLoan(Byte id);
     void removeLoan(Byte id);

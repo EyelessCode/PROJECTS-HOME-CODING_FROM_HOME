@@ -24,6 +24,9 @@ public class UserController extends UserConsole{
     public void userRun(){
         options();
     }
+    public void userRootRun(){
+        rootOptions();
+    }
 
     @Override
     protected void options() {
@@ -35,8 +38,8 @@ public class UserController extends UserConsole{
                 case "1"->showAllUsers();
                 case "2"->searchUsers();
                 case "3"->modifyUser();
-                case "4"->{System.out.println("Exiting the User menu...");return;}
-                case "root"->rootOptions();
+                case "4"->{System.out.println("Going back to main Menu...");return;}
+//                case "root"->rootOptions();
                 default->System.out.println("Invalid option. Please enter a valid option (1-4).");
             }
         }
@@ -280,7 +283,7 @@ public class UserController extends UserConsole{
                 case "3"->createUser();
                 case "4"->modifyUser();
                 case "5"->deleteUser();
-                case "6"->{System.out.println("Removing the admin privileges...");return;}
+                case "6"->{System.out.println("Going back to main Menu...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-6).");
             }
         }

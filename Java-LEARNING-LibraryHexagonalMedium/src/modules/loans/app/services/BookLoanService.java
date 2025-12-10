@@ -32,13 +32,24 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public void saveLoan(Byte userId, Byte bookId, String deliveryDateString, String returnDateString) {
-        isNotNull(userId, bookId, deliveryDateString, returnDateString);
+    public void saveLoan(String userIc, String bookIsbn, String deliveryDateString, String returnDateString) {
+        isNotNull(userIc, bookIsbn, deliveryDateString, returnDateString);
         LocalDate deliveryDate=dateValidator(deliveryDateString);
-        LocalDate returnDate=dateValidator(returnDateString);
+        LocalDate returnDate=deliveryDate.plusDays(Integer.parseInt(returnDateString));
+        Optional<Book>book=bookRepository.getAll().stream().
+                filter(b->bookIsbn.equals(b.getIsbn().getValue())).findFirst();
+        if (book.isEmpty()){
+            throw new BookLoanNotFoundException("Book couldn't be found.");
+        }
+        Optional<User> user=userRepository.getAll().stream().
+                filter(u->userIc.equals(u.getIc().getValue())).findFirst();
+        if (user.isEmpty()){
+            throw new BookLoanNotFoundException("User couldn't be found.");
+        }
+        book.get().lead();
         BookLoan bookLoan=new BookLoan(
-            new BookId(bookId),
-            new UserId(userId),
+            book.get().getId(),
+            user.get().getId(),
             new BookLoanDates(deliveryDate),
             new BookLoanDates(returnDate)
         );
@@ -46,25 +57,35 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
     }
 
     @Override
-    public void modifyLoan(Byte userId, Byte bookId, String deliveryDateString, String returnDateString) {
+    public void modifyLoan(String userIc, String bookIsbn, String deliveryDateString, String returnDateString) {
         boolean loanList=loanRepository.getAll().isEmpty();
-        Optional<BookLoan>oldBookLoan=loanRepository.getAll().stream().
-            filter(lb->lb.getBookId().getValue().equals(bookId)&&lb.getUserId().getValue().equals(userId)).findFirst();
-        UserId oldUserId=oldBookLoan.get().getUserId();
-        BookId oldBookId=oldBookLoan.get().getBookId();
-        LocalDate deliveryDate=dateValidator(deliveryDateString);
-        LocalDate returnDate=dateValidator(returnDateString);
         if (loanList) {
             throw new BookLoanNotFoundException("Loan list is empty.");
         }
+        LocalDate deliveryDate=dateValidator(deliveryDateString);
+        LocalDate returnDate=deliveryDate.plusDays(Integer.parseInt(returnDateString));
+        Optional<Book> book=bookRepository.getAll().stream().
+                filter(b->bookIsbn.equals(b.getIsbn().getValue())).findFirst();
+        if (book.isEmpty()){
+            throw new BookLoanNotFoundException("Book couldn't be found.");
+        }
+        Optional<User> user=userRepository.getAll().stream().
+                filter(u->userIc.equals(u.getIc().getValue())).findFirst();
+        if (user.isEmpty()){
+            throw new BookLoanNotFoundException("User couldn't be found.");
+        }
+//        book.get().lead();
+        Optional<BookLoan>oldBookLoan=loanRepository.getAll().stream().
+            filter(lb->lb.getBookId().getValue().equals(book.get().getId().getValue())&&
+                    lb.getUserId().getValue().equals(user.get().getId().getValue())).findFirst();
         if (oldBookLoan.isEmpty()) {
             throw new BookLoanNotFoundException("Loan couldn't be found.");
         }
         BookLoan modifiedBookLoan=new BookLoan(
-            oldBookId,
-            oldUserId,
-            new BookLoanDates((deliveryDateString.isBlank())?deliveryDate:oldBookLoan.get().getDeliveryDate().getValue()),
-            new BookLoanDates((returnDateString.isBlank())?returnDate:oldBookLoan.get().getReturnDate().getValue())
+            book.get().getId(),
+            user.get().getId(),
+            new BookLoanDates(deliveryDateString.isBlank()?deliveryDate:oldBookLoan.get().getDeliveryDate().getValue()),
+            new BookLoanDates(returnDateString.isBlank()?returnDate:oldBookLoan.get().getReturnDate().getValue())
         );
         loanRepository.update(modifiedBookLoan);
     }

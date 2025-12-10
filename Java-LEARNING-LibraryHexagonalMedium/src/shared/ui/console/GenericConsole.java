@@ -44,7 +44,7 @@ public class GenericConsole{
         }
     }
 
-    protected String numbeString(String message){
+    protected String numberString(String message){
         String string;
         try {
             System.out.print(message);

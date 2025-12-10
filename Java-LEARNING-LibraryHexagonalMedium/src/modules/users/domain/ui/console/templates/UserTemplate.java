@@ -27,17 +27,8 @@ public abstract class UserTemplate extends GenericTemplates{
             "\n3. Create user."+
             "\n4. Modify user."+
             "\n5. Remove user."+
-            "\n6. Quit admin."
+            "\n6. Go back."+
+            "\n"+"-".repeat(5)+" YOU MUST BE CAREFUL WITH >ROOT PRIVILEGES< "+"-".repeat(5)
         );
     }
-
-    /* @Override
-    protected void searchMenu() {
-        System.out.println(
-            "\n"+"=".repeat(5)+" SEARCH OPTION "+"=".repeat(5)+
-            "\n1. By only ID."+
-            "\n2. By name, lastname or IC."+
-            "\n3 Go back."
-        );
-    } */
 }

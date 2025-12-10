@@ -27,7 +27,9 @@ public abstract class BookTemplate extends GenericTemplates{
             "\n4. Create book."+
             "\n5. Modify book."+
             "\n6. Remove book."+
-            "\n7. Quit admin."
+            "\n7. Go back."+
+            "\n"+"-".repeat(5)+" YOU MUST BE CAREFUL WITH >ROOT PRIVILEGES< "+"-".repeat(5)
+
         );
     }
 

@@ -3,7 +3,7 @@ package modules.loans.infrastructure.adapters.inbound.controllers;
 import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import modules.loans.app.services.BookLoanService;
 import modules.loans.app.services.dtos.BookLoanDTO;
-import modules.loans.domain.exceptions.models.BookLoanInvalidException;
+import modules.loans.domain.exceptions.models.BookLoanCouldntBeCreatedException;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
 import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 import modules.loans.domain.ui.console.BookLoanConsole;
@@ -27,6 +27,9 @@ public class BookLoanController extends BookLoanConsole {
     public void loanRun() {
         options();
     }
+    public void loanRootRun() {
+        rootOptions();
+    }
 
     @Override
     protected void options() {
@@ -37,8 +40,8 @@ public class BookLoanController extends BookLoanConsole {
             switch (option) {
                 case "1"->subShowOptions();
                 case "2"->searchLoans();
-                case "3"->{System.out.println("Exiting the Book menu...");return;}
-                case "root"->rootOptions();
+                case "3"->{System.out.println("Going back to main Menu...");return;}
+//                case "root"->rootOptions();
                 default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }
@@ -52,14 +55,12 @@ public class BookLoanController extends BookLoanConsole {
             switch (option) {
                 case "1"->subShowOptions();
                 case "2"->searchLoans();
-//                case "3"->createLoan();
-                case "3"->{System.out.println("Removing the admin privileges...");return;}
+                case "3"->createLoan();
 //                case "4"->modifyLoan();
-                case "4"->{System.out.println("Removing the admin privileges...");return;}
+                case "4"->throw new UnsupportedOperationException("Delete loan not implemented yet.");
 //                case "4"->deleteLoan();
-                case "5"->{System.out.println("Removing the admin privileges...");return;}
-                case "6"->{System.out.println("Removing the admin privileges...");return;}
-                // case "test"->showAllBookGenders();
+                case "5"->throw new UnsupportedOperationException("Remove loan not implemented yet.");
+                case "6"->{System.out.println("Going back to main Menu...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-6).");
             }
         }
@@ -148,7 +149,58 @@ public class BookLoanController extends BookLoanConsole {
                     "\nException: "+e.getClass().getSimpleName()+
                     "\n"+".".repeat(15)
             );
-        }catch (BookLoanInvalidException e){
+        }catch (BookLoanNotFoundException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(15)
+            );
+        }
+    }
+
+    private void createLoan(){
+        System.out.println("-- CREATING LOAN --");
+        try{
+            String ic= numberString("Enter IC: ");
+            String isbn= numberString("Enter ISBN: ");
+            System.out.println("Creating delivery date...");
+            System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()+"' (YES/NO)?");
+            String dateString=null;
+            String dateOption=inCaseExit("Enter: ");
+            if (dateOption.equalsIgnoreCase("YES")){
+                dateString=LocalDate.now().toString();
+            } else if (dateOption.equalsIgnoreCase("NO")) {
+                System.out.println("\tSpecify the date:");
+                String yearDateString=numberString("Enter year: ");
+                String monthDateString=numberString("Enter month (1-12): ");
+                String dayDateString=numberString("Enter day (1-31): ");
+                dateString=yearDateString+"/"+monthDateString+"/"+dayDateString;
+            }else {
+                throw new BookLoanCouldntBeCreatedException("Invalid option for date creation. Try again.");
+            }
+            System.out.println("Creating return date...");
+            System.out.println("\t¡Only days!");
+            String plusDaysString=numberString("Enter how many days to return the book: ");
+            service.saveLoan(ic,isbn,dateString,plusDaysString);
+        }catch (GenericStringBoundaryException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(15)
+            );
+        }catch (BookLoanNotFoundException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(15)
+            );
+        }catch (BookLoanCouldntBeCreatedException e){
             System.out.println(
                     "\n"+".".repeat(30)+
                     "\nError: "+e.getMessage()+

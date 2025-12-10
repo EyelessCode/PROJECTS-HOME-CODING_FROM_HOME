@@ -117,12 +117,13 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
 
     @Override
     public List<Book> getBooks(String value) {
+        String search=value.toLowerCase();
         boolean isEmpty=repository.getAll().isEmpty();
         List<Book>books=repository.getAll().stream().
-            filter(bs->bs.getIsbn().getValue().equals(value)||
-                    bs.getTitle().getValue().equalsIgnoreCase(value)||
-                    bs.getAuthor().getValue().equalsIgnoreCase(value)||
-                    bs.getGender().getDescription().equalsIgnoreCase(value)).toList();
+            filter(bs->(bs.getIsbn().getValue().equals(search)||
+                    bs.getTitle().getValue().toLowerCase().contains(search))||
+                    (bs.getAuthor().getValue().toLowerCase().contains(search)||
+                    bs.getGender().getDescription().toLowerCase().contains(search))).toList();
         if (isEmpty) {
             throw new BooksNotFoundException("Book list is empty.");
         }

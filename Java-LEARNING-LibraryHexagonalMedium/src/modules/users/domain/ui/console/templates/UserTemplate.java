@@ -11,10 +11,9 @@ public abstract class UserTemplate extends GenericTemplates{
             "\n"+"=".repeat(5)+" USER MENU "+"=".repeat(5)+
             "\n1. View all users."+
             "\n2. Search user (IC or names)."+
-            "\n3. Modify user."+
+            "\n3. Go back."
             // "\n-- 3 Create user. --"+
             // "\n-- 4 Remove user. --"+
-            "\n4 Go back."
         );
     }
 

@@ -37,10 +37,10 @@ public class UserController extends UserConsole{
             switch (option) {
                 case "1"->showAllUsers();
                 case "2"->searchUsers();
-                case "3"->modifyUser();
-                case "4"->{System.out.println("Going back to main Menu...");return;}
+//                case "3"->modifyUser();
+                case "3"->{System.out.println("Going back to main Menu...");return;}
 //                case "root"->rootOptions();
-                default->System.out.println("Invalid option. Please enter a valid option (1-4).");
+                default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }
     }
@@ -155,6 +155,7 @@ public class UserController extends UserConsole{
         try {
             String string=inCaseExit("Enter User name, lastname or IC: ");
             List<User>users=service.findUsers(string);
+            users.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+users.size()+" users found.");
         } catch (GenericStringBoundaryException ex) {
             System.out.println(

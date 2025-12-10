@@ -38,8 +38,8 @@ public class SharedController extends GenericTemplates {
             menu();
             option=inCaseExit("Enter: ");
             switch (option) {
-                case "1"->bookController.bookRun();
-                case "2"->userController.userRun();
+                case "1"->userController.userRun();
+                case "2"->bookController.bookRun();
                 case "3"->loanController.loanRun();
                 case "root"->mainRootOptions();
                 case "4"->{System.out.println("Exiting the Main Menu...");return;}

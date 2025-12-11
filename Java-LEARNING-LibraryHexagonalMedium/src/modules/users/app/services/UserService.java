@@ -25,7 +25,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
     @Override
     public void createUser(String ic, String name, String lastname, String gender, Byte age) {
         anythingNull(ic, name, lastname, gender, age);
-        icDuplicated(ic); //? only exist in this place (Service) because idk how can i installed in Repository.
+        icDuplicated(ic); //? only exist in this place (Service) because idk how can I installed in Repository.
         User user=new User(
             new UserIc(ic),
             new UserName(name),
@@ -94,11 +94,11 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
 
     @Override
     public List<User> findUsers(String value) {
+        String search=value.toLowerCase();
         boolean isEmpty=repository.getAll().isEmpty();
         if (isEmpty) {
             throw new UsersNotFoundException("User list is empty.");
         }
-        String search=value.toLowerCase();
         List<User>users=repository.getAll().stream()
             .filter(param->param.getName().getValue().toLowerCase().contains(search)
                 ||param.getLastname().getValue().toLowerCase().contains(search)

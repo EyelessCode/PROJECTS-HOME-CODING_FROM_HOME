@@ -53,6 +53,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
             new BookLoanDates(deliveryDate),
             new BookLoanDates(returnDate)
         );
+
         loanRepository.create(bookLoan);
     }
 

@@ -152,13 +152,17 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   │   └── ☕ GenericStringValidator.java
 │   │   │   ├── ☕ GenericNumberInvalidException.java
 │   │   │   └── ☕ GenericStringBoundaryException.java
+│   │   ├── 📁 infrastructure
+│   │   │   └── 📁 adapters
+│   │   │       └── 📁 inbound
+│   │   │           └── 📁 controllers
+│   │   │               └── ☕ SharedController.java
 │   │   └── 📁 ui
 │   │       └── 📁 console
 │   │           ├── 📁 templates
 │   │           │   └── ☕ GenericTemplates.java
 │   │           └── ☕ GenericConsole.java
 │   ├── 📁 tests
-│   │   ├── ☕ ExampleId.java
 │   │   └── ☕ TestApp.java
 │   └── ☕ App.java
 ├── ⚙️ .gitignore

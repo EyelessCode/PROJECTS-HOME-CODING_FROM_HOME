@@ -12,6 +12,7 @@ import modules.users.infrastructure.adapters.outbound.repositories.UserRepositor
 import shared.exceptions.GenericStringBoundaryException;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BookLoanController extends BookLoanConsole {
@@ -163,14 +164,15 @@ public class BookLoanController extends BookLoanConsole {
     private void createLoan(){
         System.out.println("-- CREATING LOAN --");
         try{
-            String ic= numberString("Enter IC: ");
-            String isbn= numberString("Enter ISBN: ");
+            String ic=numberString("Enter IC: ");
+            String isbn=numberString("Enter ISBN: ");
             System.out.println("Creating delivery date...");
-            System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()+"' (YES/NO)?");
+            System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()
+                    .format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))+"' (YES/NO)?");
             String dateString=null;
             String dateOption=inCaseExit("Enter: ");
             if (dateOption.equalsIgnoreCase("YES")){
-                dateString=LocalDate.now().toString();
+                dateString=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
             } else if (dateOption.equalsIgnoreCase("NO")) {
                 System.out.println("\tSpecify the date:");
                 String yearDateString=numberString("Enter year: ");

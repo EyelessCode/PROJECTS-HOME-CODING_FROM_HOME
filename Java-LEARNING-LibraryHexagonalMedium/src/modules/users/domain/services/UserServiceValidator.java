@@ -11,13 +11,13 @@ public abstract class UserServiceValidator {
     protected final Set<UserIc>icRegistry=new HashSet<>();
 
     //? Initial local datas (for testing).
-    public UserServiceValidator(){
-        icRegistry.add(new UserIc("0974852960"));
-        icRegistry.add(new UserIc("0985987874"));
-        icRegistry.add(new UserIc("0969963695"));
-        icRegistry.add(new UserIc("0958852100"));
-        icRegistry.add(new UserIc("0990010147"));
-    }
+//    public UserServiceValidator(){
+//        icRegistry.add(new UserIc("0974852960"));
+//        icRegistry.add(new UserIc("0985987874"));
+//        icRegistry.add(new UserIc("0969963695"));
+//        icRegistry.add(new UserIc("0958852100"));
+//        icRegistry.add(new UserIc("0990010147"));
+//    }
 
     protected void icDuplicated(String ic){
         UserIc userIc=new UserIc(ic);

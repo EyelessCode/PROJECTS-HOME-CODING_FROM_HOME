@@ -48,7 +48,16 @@ public class GenericConsole{
         String string;
         try {
             System.out.print(message);
-            string=scanner.nextLine();
+            string=scanner.nextLine().trim();
+            if ((string.equalsIgnoreCase("EXIT")||string.equalsIgnoreCase("LEAVE"))||
+                    (string.equalsIgnoreCase("X")||string.equalsIgnoreCase("ZZZ"))||
+                    (string.equalsIgnoreCase("BACK")||string.equalsIgnoreCase("GO BACK"))||
+                    (string.equalsIgnoreCase("NOP"))) {
+                throw new GenericStringBoundaryException(
+                        "-- Cancelling process --"+
+                        "\n<<<--- Going back... --->>>"
+                );
+            }
             if (string.matches("^\\d+$")||string.isEmpty()){
                 return string;
             }

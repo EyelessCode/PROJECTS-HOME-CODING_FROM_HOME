@@ -56,8 +56,8 @@ public class SharedController extends GenericTemplates {
             System.out.print("0. Leave root privileges.\n");
             option=inCaseExit("Enter: ");
             switch (option) {
-                case "1"->bookController.bookRootRun();
-                case "2"->userController.userRootRun();
+                case "1"->userController.userRootRun();
+                case "2"->bookController.bookRootRun();
                 case "3"->loanController.loanRootRun();
                 case "4"->{
                     System.out.println("Exiting the Main Menu...");System.exit(0);

@@ -10,16 +10,14 @@ import modules.books.domain.exceptions.models.BooksNotFoundException;
 import modules.books.domain.exceptions.models.valueObjects.BookLocalDateInvalidException;
 import modules.books.domain.models.Book;
 import modules.books.domain.ui.console.BookConsole;
-import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 public class BookController extends BookConsole{
     private final BookService service;
 
-    public BookController(){
-        BookRepositoryInMemory repository=new BookRepositoryInMemory();
-        this.service=new BookService(repository);
+    public BookController(BookService service){
+        this.service=service;
     }
 
     public void bookRun(){

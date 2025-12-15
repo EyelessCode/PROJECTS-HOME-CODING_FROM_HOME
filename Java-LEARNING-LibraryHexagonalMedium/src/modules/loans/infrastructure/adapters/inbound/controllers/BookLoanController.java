@@ -1,14 +1,11 @@
 package modules.loans.infrastructure.adapters.inbound.controllers;
 
-import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import modules.loans.app.services.BookLoanService;
 import modules.loans.app.services.dtos.BookLoanDTO;
 import modules.loans.domain.exceptions.models.BookLoanCouldntBeCreatedException;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
 import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 import modules.loans.domain.ui.console.BookLoanConsole;
-import modules.loans.infrastructure.adapters.outbound.repositories.BookLoanRepositoryInMemory;
-import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
 import shared.exceptions.GenericStringBoundaryException;
 
 import java.time.LocalDate;
@@ -18,11 +15,8 @@ import java.util.List;
 public class BookLoanController extends BookLoanConsole {
     private final BookLoanService service;
 
-    public BookLoanController(){
-        BookLoanRepositoryInMemory loanRepositoryInMemory=new BookLoanRepositoryInMemory();
-        BookRepositoryInMemory bookRepositoryInMemory=new BookRepositoryInMemory();
-        UserRepositoryInMemory userRepositoryInMemory=new UserRepositoryInMemory();
-        this.service =new BookLoanService(loanRepositoryInMemory,bookRepositoryInMemory,userRepositoryInMemory);
+    public BookLoanController(BookLoanService service){
+        this.service = service;
     }
 
     public void loanRun() {

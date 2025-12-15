@@ -69,7 +69,7 @@ public class BookRepositoryInMemory implements IBookRepositoryOutport{
 
     @Override
     public Book create(Book book) {
-        return bookMemory.putIfAbsent(new BookId(null), book);
+        return bookMemory.putIfAbsent(book.getId(), book);
     }
 
     @Override

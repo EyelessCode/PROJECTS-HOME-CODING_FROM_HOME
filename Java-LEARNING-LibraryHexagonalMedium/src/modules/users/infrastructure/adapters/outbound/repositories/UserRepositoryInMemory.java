@@ -29,7 +29,7 @@ public class UserRepositoryInMemory implements IUserRepositoryOutpor{
 
     @Override
     public User create(User user) {
-        return userMemory.putIfAbsent(new UserId(null), user);
+        return userMemory.putIfAbsent(user.getId(), user);
     }
 
     @Override

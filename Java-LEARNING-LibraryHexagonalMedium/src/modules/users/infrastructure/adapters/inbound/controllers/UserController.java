@@ -3,11 +3,9 @@ package modules.users.infrastructure.adapters.inbound.controllers;
 
 import modules.users.app.services.UserService;
 import modules.users.domain.exceptions.models.UserCouldNotBeCreatedException;
-import modules.users.domain.exceptions.models.UserInvalidException;
 import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.ui.console.UserConsole;
-import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
 import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
@@ -16,9 +14,8 @@ import java.util.List;
 public class UserController extends UserConsole{
     private final UserService service;
 
-    public UserController(){
-        UserRepositoryInMemory repository=new UserRepositoryInMemory();
-        this.service=new UserService(repository);
+    public UserController(UserService service){
+        this.service = service;
     }
 
     public void userRun(){

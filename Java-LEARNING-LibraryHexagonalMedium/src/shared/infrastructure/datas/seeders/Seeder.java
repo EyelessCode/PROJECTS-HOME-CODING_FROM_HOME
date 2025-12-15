@@ -1,11 +1,8 @@
 package shared.infrastructure.datas.seeders;
 
 import modules.books.app.services.BookService;
-import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
 import modules.loans.app.services.BookLoanService;
-import modules.loans.infrastructure.adapters.outbound.repositories.BookLoanRepositoryInMemory;
 import modules.users.app.services.UserService;
-import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,14 +14,10 @@ public class Seeder {
     private final BookService bookService;
     private final UserService userService;
 
-    public Seeder(){
-        BookLoanRepositoryInMemory loanRepository=new BookLoanRepositoryInMemory();
-        BookRepositoryInMemory bookRepository=new BookRepositoryInMemory();
-        UserRepositoryInMemory userRepository=new UserRepositoryInMemory();
-
-        this.userService=new UserService(userRepository);
-        this.bookService=new BookService(bookRepository);
-        this.loanService=new BookLoanService(loanRepository,bookRepository,userRepository);
+    public Seeder(BookLoanService loanService, BookService bookService, UserService userService){
+        this.loanService=loanService;
+        this.bookService=bookService;
+        this.userService=userService;
     }
 
     public void load(){

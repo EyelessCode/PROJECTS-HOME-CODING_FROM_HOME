@@ -17,26 +17,11 @@ public class SharedController extends GenericTemplates {
     private final UserController userController;
     private final BookLoanController loanController;
 
-    public SharedController(){
-        UserRepositoryInMemory userRepository = new UserRepositoryInMemory();
-        BookRepositoryInMemory bookRepository = new BookRepositoryInMemory();
-        BookLoanRepositoryInMemory loanRepository = new BookLoanRepositoryInMemory();
-        UserService userService = new UserService(userRepository);
-        BookService bookService = new BookService(bookRepository);
-        BookLoanService loanService = new BookLoanService(
-                loanRepository,
-                bookRepository,
-                userRepository
-        );
-
-        this.bookController=new BookController(bookService);
-        this.userController=new UserController(userService);
-        this.loanController=new BookLoanController(loanService);
-        new Seeder(
-                loanService,
-                bookService,
-                userService
-        ).load();
+    public SharedController(BookController bookController,
+                UserController userController, BookLoanController loanController){
+        this.bookController=bookController;
+        this.userController=userController;
+        this.loanController=loanController;
     }
 
     public void run(){

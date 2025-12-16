@@ -225,8 +225,8 @@ public class BookLoanController extends BookLoanConsole {
         System.out.println("\n-- MODIFYING LOAN --");
         try{
             String ic=numberString("Enter IC: ");
-            BookLoanDTO loan=service.getLoan(ic).get();
-            System.out.println(loan);
+            BookLoanDTO oldLoan=service.getLoan(ic).get();
+            System.out.println(oldLoan);
             System.out.println("\nIs this the loan you want to modify (YES/NO)?");
             String option=inCaseExit("Enter: ");
             if (!option.equalsIgnoreCase("YES")) {
@@ -235,20 +235,21 @@ public class BookLoanController extends BookLoanConsole {
             }
             System.out.println("Modifying return date...");
             System.out.println("\t¡Only days!");
+                System.out.println("\tOld save: press 'ENTER' -> "+oldLoan.remainingDays()+"'");
             String plusDaysString = numberString("Enter how many days to return the book: ");
             long plusDays=plusDaysString.isBlank()?0:Long.parseLong(plusDaysString);
             System.out.println("\nConfirm modifying this loan (YES/NO)?");
             System.out.println(
-                    "\n"+"=".repeat(6)+" Loan by "+loan.userLastName()+" "+loan.userName()+" "+"=".repeat(6)+
+                    "\n"+"=".repeat(6)+" Loan by "+oldLoan.userLastName()+" "+oldLoan.userName()+" "+"=".repeat(6)+
                         "\ttoday date: "+LocalDate.now()+
                     "\n"+"+".repeat(3)+" Book "+"+".repeat(3)+
-                    "\n"+"ISBN: "+loan.bookIsbn()+"\tTitle: "+loan.bookTitle()+"\tAuthor: "+loan.bookAuthor()+
-                    "\tGender: "+loan.bookGender()+
+                    "\n"+"ISBN: "+oldLoan.bookIsbn()+"\tTitle: "+oldLoan.bookTitle()+"\tAuthor: "+oldLoan.bookAuthor()+
+                    "\tGender: "+oldLoan.bookGender()+
                     "\n"+"+".repeat(3)+" User "+"+".repeat(3)+
-                    "\n"+"IC: "+loan.userIc()+"\tfullname: "+loan.userName()+" "+loan.userLastName()+
-                        "\tGender: "+loan.userGender()+"\tAge: "+loan.userAge()+
+                    "\n"+"IC: "+oldLoan.userIc()+"\tfullname: "+oldLoan.userName()+" "+oldLoan.userLastName()+
+                        "\tGender: "+oldLoan.userGender()+"\tAge: "+oldLoan.userAge()+
                     "\n"+"+".repeat(3)+" Estimated dates "+"+".repeat(3)+
-                    "\n"+"Delivery Date: "+loan.deliveryDate()+"\tReturn Date: "+loan.deliveryDate().plusDays(plusDays)+
+                    "\n"+"Delivery Date: "+oldLoan.deliveryDate()+"\tReturn Date: "+oldLoan.deliveryDate().plusDays(plusDays)+
                         "\t\tRemaining days: >> "+(plusDays<=0?plusDays+" [MUST RETURN BOOK]":plusDays)+" <<"+
                     "\n"+"=".repeat(40)
             );
@@ -258,7 +259,7 @@ public class BookLoanController extends BookLoanConsole {
                 return;
             }
             System.out.println("-- Loan modified --");
-            service.modifyLoan(loan.userIc(), loan.bookIsbn(), loan.deliveryDate().toString(), plusDaysString);
+            service.modifyLoan(oldLoan.userIc(), oldLoan.bookIsbn(), oldLoan.deliveryDate().toString(), plusDaysString);
 //            throw new GenericStringBoundaryException("Loan modification cancelled by user.");
         }catch (GenericStringBoundaryException e){
             System.out.println(

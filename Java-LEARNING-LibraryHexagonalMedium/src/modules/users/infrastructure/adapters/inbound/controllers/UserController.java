@@ -95,10 +95,14 @@ public class UserController extends UserConsole{
         String ic;
         try {
             ic=numberString("Enter your IC: ");
-            service.findUser(ic).get();
+            User oldUser=service.findUser(ic).get();
+                System.out.println("\tOld save: press 'ENTER' -> "+oldUser.getName().getValue()+"'");
             String name=inCaseExit("Enter name: ");
+                System.out.println("\tOld save: press 'ENTER' -> "+oldUser.getLastname().getValue()+"'");
             String lastname=inCaseExit("Enter lastname: ");
+                System.out.println("\tOld save: press 'ENTER' -> "+oldUser.getGender().name().toUpperCase()+"'");
             String gender=inCaseExit("Enter a gender (M|F): ");
+                System.out.println("\tOld save: press 'ENTER' -> "+oldUser.getAge().getValue()+"'");
             String ageString=numberString("Enter age: ");
             Byte age=((ageString.isBlank())?null:Byte.parseByte(ageString));
             System.out.printf(
@@ -106,19 +110,20 @@ public class UserController extends UserConsole{
                 "%nIC: %s"+"\tNAME: %s"+"\tLASTNAME: %s"+
                 "%nGENDER: %s"+"\tAGE: %s"+
                 "%n"+"=".repeat(12),
-                ic,name,lastname,gender.toUpperCase(),ageString
+                ic,name.isBlank()?oldUser.getName().getValue():name,
+                lastname.isBlank()?oldUser.getLastname().getValue():lastname,
+                gender.isBlank()?oldUser.getGender().name().toUpperCase():gender.toUpperCase(),
+                ageString.isBlank()?oldUser.getAge().getValue():age
             );
             System.out.println("\nConfirm changes (YES or NO)?");
             String confirm=inCaseExit("Enter: ");
-            if (confirm.equalsIgnoreCase("YES")) {
-                service.modifyUser(ic, name, lastname, gender, age);
-                System.out.println("-- User modified --");
-                return;
-            }else if(confirm.equalsIgnoreCase("NO")){
+            if (!confirm.equalsIgnoreCase("YES")) {
                 System.out.println("-- User NOT Modified --");
                 return;
             }
-            throw new GenericStringBoundaryException("User couldn't be modified.");
+            service.modifyUser(ic, name, lastname, gender, age);
+            System.out.println("-- User modified --");
+//            throw new GenericStringBoundaryException("User couldn't be modified.");
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -189,15 +194,13 @@ public class UserController extends UserConsole{
             );
             System.out.println("\nConfirm creating this user (YES/NO)?");
             String confirm=inCaseExit("Enter: ");
-            if (confirm.equalsIgnoreCase("YES")) {
-                service.createUser(ic, name, lastname, gender, age);
-                System.out.println("-- User created --");
-                return;
-            }else if(confirm.equalsIgnoreCase("NO")){
+            if (!confirm.equalsIgnoreCase("YES")) {
                 System.out.println("-- User NOT created --");
                 return;
             }
-            throw new UserCouldNotBeCreatedException("User couldn't be created.");
+            service.createUser(ic, name, lastname, gender, age);
+            System.out.println("-- User created --");
+//            throw new UserCouldNotBeCreatedException("User couldn't be created.");
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -240,15 +243,13 @@ public class UserController extends UserConsole{
             );
             System.out.println("\nConfirm deleting this user (YES or NO)?");
             String confirm=inCaseExit("Enter: ");
-            if (confirm.equalsIgnoreCase("YES")) {
-                service.removeUser(ic);
-                System.out.println("-- User deleted --");
-                return;
-            }else if(confirm.equalsIgnoreCase("NO")){
+            if (!confirm.equalsIgnoreCase("YES")) {
                 System.out.println("-- Deleting process canceled --");
                 return;
             }
-            throw new GenericStringBoundaryException("Unexpected response. Deletion process canceled.");
+            service.removeUser(ic);
+            System.out.println("-- User deleted --");
+//            throw new GenericStringBoundaryException("Unexpected response. Deletion process canceled.");
         } catch (GenericStringBoundaryException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+

@@ -53,8 +53,7 @@ public class BookLoanController extends BookLoanConsole {
                 case "2"->searchLoans();
                 case "3"->createLoan();
                 case "4"->modifyLoan();
-//                case "5"->deleteLoan();
-                case "5"->throw new UnsupportedOperationException("Remove loan not implemented yet.");
+                case "5"->deleteLoan();
                 case "6"->{System.out.println("Going back to main Menu...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-6).");
             }
@@ -230,6 +229,39 @@ public class BookLoanController extends BookLoanConsole {
                     "\n"+".".repeat(30)
             );
         }catch (GenericNumberInvalidException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
+            );
+        }catch (BookLoanNotFoundException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
+            );
+        }
+    }
+
+    private void deleteLoan(){
+        String ic;
+        try{
+            ic=numberString("Enter IC: ");
+            BookLoanDTO loan=service.getLoan(ic).get();
+            System.out.println(loan.toString());
+            System.out.println("Is this the loan you want to delete (YES/NO)?");
+            String option=inCaseExit("Enter: ");
+            if (option.equalsIgnoreCase("YES")) {
+                service.removeLoan(ic);
+                System.out.println("-- LOAN DELETED --");
+                return;
+            }
+            throw new GenericStringBoundaryException("Loan deletion cancelled by user.");
+        }catch (GenericStringBoundaryException e){
             System.out.println(
                     "\n"+".".repeat(30)+
                     "\nError: "+e.getMessage()+

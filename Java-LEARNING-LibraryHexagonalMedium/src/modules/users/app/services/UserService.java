@@ -44,7 +44,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             throw new UsersNotFoundException("User list is empty.");
         }
         if (oldUser.isEmpty()) {
-            throw new UsersNotFoundException("User couldn't be found.");
+            throw new UsersNotFoundException("User with '"+ic+"' IC couldn't be found.");
         }
         User user=new User(
             oldUser.get().getIc(),
@@ -75,7 +75,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (user.isPresent()) {
             return user;
         }
-        throw new UsersNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User with '"+id+"' ID couldn't be found.");
     }
 
     @Override
@@ -89,7 +89,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             repository.deleteById(user.get().getId());
             return;
         }
-        throw new UsersNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User with '"+id+"' ID couldn't be found.");
     }
 
     @Override
@@ -107,7 +107,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (!users.isEmpty()) {
             return users;
         }
-        throw new UsersNotFoundException("Users or user couldn't be found.");
+        throw new UsersNotFoundException("User with '"+value+"' couldn't be found.");
     }
 
     @Override
@@ -120,7 +120,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
         if (user.isPresent()) {
             return user;
         }
-        throw new UsersNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User with '"+ic+"' IC couldn't be found.");
     }
 
     @Override
@@ -135,6 +135,6 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             icRegistry.remove(user.get().getIc());
             return;
         }
-        throw new UsersNotFoundException("User couldn't be found.");
+        throw new UsersNotFoundException("User with '"+ic+"' IC couldn't be found.");
     }
 }

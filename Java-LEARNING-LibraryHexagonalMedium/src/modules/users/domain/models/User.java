@@ -8,7 +8,7 @@ import modules.users.domain.models.valueObjects.UserName;
 import modules.users.domain.models.valueObjects.enums.UserGender;
 
 public class User {
-    private UserId id;
+    private final UserId id;
     private final UserIc ic;
     private final UserName name;
     private final UserLastname lastname;
@@ -62,10 +62,8 @@ public class User {
     public String toString() {
         return (
             "\n"+"=".repeat(5)+" USER "+"=".repeat(5)+
-            "\nID: "+id.getValue()+"\tIC: "+ic.getValue()+
-            "\nNAME: "+name.getValue()+"\t\tLASTNAME: "+lastname.getValue()+
-            "\nGENDER: "+gender.getDescription()+
-            "\nAGE: "+age.getValue()+
+            "\nIC: "+ic.getValue()+"\tNAME: "+name.getValue()+"\t\tLASTNAME: "+lastname.getValue()+
+            "\nGENDER: "+gender.getDescription()+"\nAGE: "+age.getValue()+
             "\n"+"=".repeat(12)
         );
     }

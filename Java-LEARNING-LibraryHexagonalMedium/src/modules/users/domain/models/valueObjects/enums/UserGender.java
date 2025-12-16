@@ -18,7 +18,7 @@ public enum UserGender {
 
     public static UserGender genderValidatorFromInput(String value){
         if (value==null||value.isBlank()) {
-            throw new UserGenderInvalidException("Gender input cannot be empty or null.");
+            throw new UserGenderInvalidException("Gender input cannot be empty or null. '"+value+"' invalid.");
         }
         value=value.trim().toUpperCase();
         for (UserGender gender : values()) {
@@ -26,6 +26,6 @@ public enum UserGender {
                 return gender;
             }
         }
-        throw new UserGenderInvalidException("Gender invalid. Please enter (M)ale or (F)emale.");
+        throw new UserGenderInvalidException("Gender '"+value+"' invalid. Please enter (M)ale or (F)emale.");
     }
 }

@@ -47,6 +47,7 @@ public class UserService extends UserServiceValidator implements IUserServiceInp
             throw new UsersNotFoundException("User with '"+ic+"' IC couldn't be found.");
         }
         User user=new User(
+            oldUser.get().getId(),
             oldUser.get().getIc(),
             new UserName(name.isBlank() ?oldUser.get().getName().getValue():name),
             new UserLastname(lastname.isBlank() ?oldUser.get().getLastname().getValue():lastname),

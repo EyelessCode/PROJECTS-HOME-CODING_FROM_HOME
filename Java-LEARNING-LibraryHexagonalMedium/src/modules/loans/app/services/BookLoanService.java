@@ -83,6 +83,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
             throw new BookLoanNotFoundException("Loan with '"+userIc+" IC and "+bookIsbn+" ISBN' couldn't be found.");
         }
         BookLoan modifiedBookLoan=new BookLoan(
+            oldBookLoan.get().getId(),
             book.get().getId(),
             user.get().getId(),
             new BookLoanDates(deliveryDateString.isBlank()?deliveryDate:oldBookLoan.get().getDeliveryDate().getValue()),

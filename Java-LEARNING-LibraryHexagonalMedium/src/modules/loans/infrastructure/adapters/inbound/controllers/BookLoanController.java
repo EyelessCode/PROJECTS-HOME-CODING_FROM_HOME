@@ -34,10 +34,9 @@ public class BookLoanController extends BookLoanConsole {
             menu();
             option=fromInputOption();
             switch (option) {
-                case "1"->subShowOptions();
+                case "1"->showAllLoans();
                 case "2"->searchLoans();
                 case "3"->{System.out.println("Going back to main Menu...");return;}
-//                case "root"->rootOptions();
                 default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }
@@ -49,28 +48,13 @@ public class BookLoanController extends BookLoanConsole {
             adminLoanMenu();
             option=fromInputOption();
             switch (option) {
-                case "1"->subShowOptions();
+                case "1"->showAllLoans();
                 case "2"->searchLoans();
                 case "3"->createLoan();
                 case "4"->modifyLoan();
                 case "5"->deleteLoan();
                 case "6"->{System.out.println("Going back to main Menu...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-6).");
-            }
-        }
-    }
-
-    @Override
-    protected void subShowOptions() {
-        String option;
-        while (true){
-            submenu();
-            option=fromInputOption();
-            switch (option){
-                case "1"->showAllLoansByDate();
-                case "2"->showAllLoans();
-                case "3"->{System.out.println("Exiting the Submenu...");return;}
-                default->System.out.println("Invalid option. Please enter a valid option (1-3).");
             }
         }
     }
@@ -134,12 +118,12 @@ public class BookLoanController extends BookLoanConsole {
             String plusDaysString=numberString("Enter how many days to return the book: ");
             long plusDays=plusDaysString.isBlank()?0:Long.parseLong(plusDaysString);
             System.out.println(
-                    "\n"+"=".repeat(6)+" Loan by "+"=".repeat(6)+
+                    "\n"+"=".repeat(6)+" Loan "+"=".repeat(6)+
                     "\ttoday date: "+LocalDate.now()+
-                    "\n"+"ISBN: "+isbn+"\t"+"IC: "+ic+
-                    "\n"+"+".repeat(3)+" Estimated dates "+"+".repeat(3)+
-                    "\n"+"Delivery Date: "+LocalDate.parse(dateString)+"\tReturn Date: "
-                            +LocalDate.parse(dateString).plusDays(plusDays)+
+                    "\n"+"ISBN: "+isbn+"\t\t"+"IC: "+ic+
+                    "\n"+"+".repeat(3)+" Estimated dates "+"+".repeat(3)+"\n"+"Delivery Date: "
+                            +LocalDate.parse(dateString,DateTimeFormatter.ofPattern("yyyy-M-d"))+"\tReturn Date: "
+                            +LocalDate.parse(dateString,DateTimeFormatter.ofPattern("yyyy-M-d")).plusDays(plusDays)+
                     "\t\tRemaining days: >> "+(plusDays<=0?plusDays+
                             " [MUST RETURN BOOK]":plusDays)+" <<"+
                     "\n"+"=".repeat(40)

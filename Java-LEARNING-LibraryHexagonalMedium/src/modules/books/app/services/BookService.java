@@ -54,6 +54,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             throw new BooksNotFoundException("Book '"+isbn+"' ISBN couldn't be found.");
         }
         Book book=new Book(
+            oldBook.get().getId(),
             oldBook.get().getIsbn(),
             new BookTitle(title.isBlank() ?oldBook.get().getTitle().getValue():title),
             new BookAuthor(author.isBlank() ?oldBook.get().getAuthor().getValue():author),

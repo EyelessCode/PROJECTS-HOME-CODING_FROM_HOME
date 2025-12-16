@@ -18,7 +18,7 @@ public abstract  class BookLoanTemplate extends GenericTemplates {
                 "\n"+"-".repeat(5)+" ADMIN MOD "+"-".repeat(5)+
                 "\n"+"=".repeat(5)+" LOAN MENU "+"=".repeat(5)+
                 "\n1. View all loans."+
-                "\n2. Search loan (date or any input)."+
+                "\n2. Search loans (date or any input)."+
                 "\n3. Create loan."+
                 "\n4. modify loan."+
                 "\n5. Remove loan (IC or ISBN)."+

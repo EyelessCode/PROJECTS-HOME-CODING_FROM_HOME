@@ -1,12 +1,9 @@
 package modules.loans.domain.ports.inport;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import modules.loans.app.services.dtos.BookLoanDTO;
-import modules.loans.domain.models.BookLoan;
-
 
 public interface IBookLoanServiceInport {
     // Traditional

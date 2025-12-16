@@ -1,7 +1,6 @@
 package modules.loans.app.services.dtos;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public record BookLoanDTO (
         // IDs

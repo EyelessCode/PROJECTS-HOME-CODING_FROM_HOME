@@ -1,17 +1,10 @@
 package modules.books.infrastructure.adapters.inbound.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import modules.books.app.services.BookService;
-import modules.books.domain.exceptions.models.BookCouldNotBeCreatedException;
-import modules.books.domain.exceptions.models.BookInvalidException;
-import modules.books.domain.exceptions.models.BooksNotFoundException;
-import modules.books.domain.exceptions.models.valueObjects.BookLocalDateInvalidException;
 import modules.books.domain.models.Book;
 import modules.books.domain.ui.console.BookConsole;
-import shared.exceptions.GenericNumberInvalidException;
-import shared.exceptions.GenericStringBoundaryException;
 
 public class BookController extends BookConsole{
     private final BookService service;

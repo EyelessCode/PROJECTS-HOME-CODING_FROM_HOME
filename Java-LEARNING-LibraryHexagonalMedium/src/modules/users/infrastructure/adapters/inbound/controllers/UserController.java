@@ -2,12 +2,8 @@ package modules.users.infrastructure.adapters.inbound.controllers;
 
 
 import modules.users.app.services.UserService;
-import modules.users.domain.exceptions.models.UserCouldNotBeCreatedException;
-import modules.users.domain.exceptions.models.UsersNotFoundException;
 import modules.users.domain.models.User;
 import modules.users.domain.ui.console.UserConsole;
-import shared.exceptions.GenericNumberInvalidException;
-import shared.exceptions.GenericStringBoundaryException;
 
 import java.util.List;
 
@@ -95,7 +91,6 @@ public class UserController extends UserConsole{
             }
             service.modifyUser(ic, name, lastname, gender, age);
             System.out.println("-- User modified --");
-//            throw new GenericStringBoundaryException("User couldn't be modified.");
         }catch (RuntimeException e){
             printError(e);
         }
@@ -136,7 +131,6 @@ public class UserController extends UserConsole{
             }
             service.createUser(ic, name, lastname, gender, age);
             System.out.println("-- User created --");
-//            throw new UserCouldNotBeCreatedException("User couldn't be created.");
         }catch (RuntimeException e){
             printError(e);
         }
@@ -163,7 +157,6 @@ public class UserController extends UserConsole{
             }
             service.removeUser(ic);
             System.out.println("-- User deleted --");
-//            throw new GenericStringBoundaryException("Unexpected response. Deletion process canceled.");
         }catch (RuntimeException e){
             printError(e);
         }

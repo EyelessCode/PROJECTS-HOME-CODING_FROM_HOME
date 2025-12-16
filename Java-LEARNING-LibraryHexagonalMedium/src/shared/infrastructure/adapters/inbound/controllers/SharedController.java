@@ -1,15 +1,8 @@
 package shared.infrastructure.adapters.inbound.controllers;
 
-import modules.books.app.services.BookService;
 import modules.books.infrastructure.adapters.inbound.controllers.BookController;
-import modules.books.infrastructure.adapters.outbound.repositories.BookRepositoryInMemory;
-import modules.loans.app.services.BookLoanService;
 import modules.loans.infrastructure.adapters.inbound.controllers.BookLoanController;
-import modules.loans.infrastructure.adapters.outbound.repositories.BookLoanRepositoryInMemory;
-import modules.users.app.services.UserService;
 import modules.users.infrastructure.adapters.inbound.controllers.UserController;
-import modules.users.infrastructure.adapters.outbound.repositories.UserRepositoryInMemory;
-import shared.infrastructure.datas.seeders.Seeder;
 import shared.ui.console.templates.GenericTemplates;
 
 public class SharedController extends GenericTemplates {

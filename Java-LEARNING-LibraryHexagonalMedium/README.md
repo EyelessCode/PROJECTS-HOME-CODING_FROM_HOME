@@ -153,10 +153,14 @@ It's a library's system applying adapters and ports arquitecture.
 │   │   │   ├── ☕ GenericNumberInvalidException.java
 │   │   │   └── ☕ GenericStringBoundaryException.java
 │   │   ├── 📁 infrastructure
-│   │   │   └── 📁 adapters
-│   │   │       └── 📁 inbound
-│   │   │           └── 📁 controllers
-│   │   │               └── ☕ SharedController.java
+│   │   │   ├── 📁 adapters
+│   │   │   │   └── 📁 inbound
+│   │   │   │       └── 📁 controllers
+│   │   │   │           └── ☕ SharedController.java
+│   │   │   ├── 📁 datas
+│   │   │   │   └── 📁 seeders
+│   │   │   │       └── ☕ Seeder.java
+│   │   │   └── ☕ AppContext.java
 │   │   └── 📁 ui
 │   │       └── 📁 console
 │   │           ├── 📁 templates

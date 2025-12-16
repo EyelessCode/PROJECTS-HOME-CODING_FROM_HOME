@@ -2,12 +2,7 @@ package modules.loans.infrastructure.adapters.inbound.controllers;
 
 import modules.loans.app.services.BookLoanService;
 import modules.loans.app.services.dtos.BookLoanDTO;
-import modules.loans.domain.exceptions.models.BookLoanCouldntBeCreatedException;
-import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
-import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 import modules.loans.domain.ui.console.BookLoanConsole;
-import shared.exceptions.GenericNumberInvalidException;
-import shared.exceptions.GenericStringBoundaryException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -180,7 +175,6 @@ public class BookLoanController extends BookLoanConsole {
             }
             System.out.println("-- Loan modified --");
             service.modifyLoan(oldLoan.userIc(), oldLoan.bookIsbn(), oldLoan.deliveryDate().toString(), plusDaysString);
-//            throw new GenericStringBoundaryException("Loan modification cancelled by user.");
         }catch (RuntimeException e){
             printError(e);
         }
@@ -201,7 +195,6 @@ public class BookLoanController extends BookLoanConsole {
             }
             System.out.println("-- Loan deleted --");
             service.removeLoan(ic);
-//            throw new GenericStringBoundaryException("Loan deletion cancelled by user.");
         }catch (RuntimeException e){
             printError(e);
         }

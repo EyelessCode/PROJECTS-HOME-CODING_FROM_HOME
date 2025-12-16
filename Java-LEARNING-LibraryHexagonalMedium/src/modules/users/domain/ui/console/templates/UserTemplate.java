@@ -7,13 +7,10 @@ public abstract class UserTemplate extends GenericTemplates{
     @Override
     protected void menu() {
         System.out.println(
-            // "\n"+":".repeat(7)+" ¡WELCOME! "+":".repeat(7)+
             "\n"+"=".repeat(5)+" USER MENU "+"=".repeat(5)+
             "\n1. View all users."+
             "\n2. Search user (IC or names)."+
             "\n3. Go back."
-            // "\n-- 3 Create user. --"+
-            // "\n-- 4 Remove user. --"+
         );
     }
 

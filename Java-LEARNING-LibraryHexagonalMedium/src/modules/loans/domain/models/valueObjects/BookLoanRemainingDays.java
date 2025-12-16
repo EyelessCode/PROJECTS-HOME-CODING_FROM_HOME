@@ -13,7 +13,6 @@ public class BookLoanRemainingDays extends GenericNumericValidator{
         if (isNumberNull(days)) {
             throw new BookLoanRemainingDaysException("Loan Remaining days cannot be a null value.");
         }
-//        onlyPositiveNumber(days);
         this.value=days;
     }
 

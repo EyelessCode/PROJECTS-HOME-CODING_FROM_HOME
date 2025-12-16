@@ -1,18 +1,14 @@
 package modules.loans.infrastructure.adapters.outbound.repositories;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import modules.books.domain.exceptions.models.BookInvalidException;
-import modules.books.domain.models.valueObjects.BookId;
 import modules.loans.domain.models.BookLoan;
-import modules.loans.domain.models.valueObjects.BookLoanDates;
 import modules.loans.domain.models.valueObjects.BookLoanId;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
-import modules.users.domain.models.valueObjects.UserId;
 
 public class BookLoanRepositoryInMemory implements IBookLoanRepositoryOutport{
     private final Map<BookLoanId,BookLoan>loanInMemory=new HashMap<>();

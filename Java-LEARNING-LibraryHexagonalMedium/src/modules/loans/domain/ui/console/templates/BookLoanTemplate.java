@@ -23,7 +23,6 @@ public abstract  class BookLoanTemplate extends GenericTemplates {
                 "\n4. modify loan."+
                 "\n5. Remove loan (IC or ISBN)."+
                 "\n6. Go back."+
-//                "\n0. Leave root privileges."+
                 "\n"+"-".repeat(5)+" YOU MUST BE CAREFUL WITH >ROOT PRIVILEGES< "+"-".repeat(5)
         );
     }

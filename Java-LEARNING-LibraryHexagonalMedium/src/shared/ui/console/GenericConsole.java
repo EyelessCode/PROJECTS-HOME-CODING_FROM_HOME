@@ -72,23 +72,4 @@ public class GenericConsole{
         //! I need to delete this, i just want to return a String, but this fucking thing wants another return
         return null;
     }
-
-    //? Original
-    /* protected byte fromInputOption(){
-        String string;
-        byte option;
-        while (true) {
-            string=inCaseExit("Enter an option -->: ");
-            // string=scanner.nextLine();
-            try {
-                option=Byte.parseByte(string);
-                if (option>0) {
-                    return option;
-                }
-                return -1;
-            } catch (NumberFormatException ex) {
-                System.out.println("Error: "+ex.getMessage());
-            }
-        }
-    } */
 }

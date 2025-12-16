@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import modules.books.domain.models.Book;
-import modules.books.domain.models.valueObjects.BookId;
 import modules.books.domain.ports.outport.IBookRepositoryOutport;
 import modules.loans.app.services.dtos.BookLoanDTO;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
@@ -16,7 +15,6 @@ import modules.loans.domain.ports.inport.IBookLoanServiceInport;
 import modules.loans.domain.ports.outport.IBookLoanRepositoryOutport;
 import modules.loans.domain.services.BookLoanServiceValidator;
 import modules.users.domain.models.User;
-import modules.users.domain.models.valueObjects.UserId;
 import modules.users.domain.ports.outport.IUserRepositoryOutpor;
 
 public class BookLoanService extends BookLoanServiceValidator implements IBookLoanServiceInport{
@@ -75,7 +73,6 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         if (user.isEmpty()){
             throw new BookLoanNotFoundException("User with '"+userIc+"' IC couldn't be found.");
         }
-//        book.get().lead();
         Optional<BookLoan>oldBookLoan=loanRepository.getAll().stream().
             filter(lb->lb.getBookId().getValue().equals(book.get().getId().getValue())&&
                     lb.getUserId().getValue().equals(user.get().getId().getValue())).findFirst();

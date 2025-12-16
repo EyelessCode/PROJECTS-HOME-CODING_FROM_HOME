@@ -7,14 +7,14 @@ import modules.users.domain.models.User;
 
 public interface IUserServiceInport {
     //? I'll make the instance over all classes.
-    //todo: CRUD
+    // CRUD
     void createUser(String ic,String name,String lastname,String gender,Byte age);
     void modifyUser(String ic,String name,String lastname,String gender,Byte age);
     List<User>findUsers();
     Optional<User>findUser(Byte id);
     void removeUser(byte id);
     
-    //todo: methods to improve UX.
+    // methods to improve UX.
     List<User>findUsers(String value);
     Optional<User>findUser(String ic);
     void removeUser(String ic);

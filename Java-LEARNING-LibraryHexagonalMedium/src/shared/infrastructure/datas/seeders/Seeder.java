@@ -5,11 +5,9 @@ import modules.loans.app.services.BookLoanService;
 import modules.users.app.services.UserService;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Seeder {
-//    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private final BookLoanService loanService;
     private final BookService bookService;
     private final UserService userService;

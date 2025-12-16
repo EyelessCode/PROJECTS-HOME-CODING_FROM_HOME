@@ -251,7 +251,7 @@ public class BookController extends BookConsole{
     }
 
     private void removeBook(){
-        System.out.println("\n-- MODIFYING BOOK --");
+        System.out.println("\n-- DELETING BOOK --");
         String string;
         try{
             string=numberString("Enter an ISBN: ");
@@ -298,7 +298,6 @@ public class BookController extends BookConsole{
                 case "5"->modifyBook();
                 case "6"->removeBook();
                 case "7"->{System.out.println("Going back to main Menu...");return;}
-                // case "test"->showAllBookGenders();
                 default->System.out.println("Invalid option. Please enter a valid option (1-7).");
             }
         }

@@ -88,11 +88,11 @@ public class Book {
     @Override
     public String toString() {
         return(
-                "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
+                "\n"+"=".repeat(3)+"ID: "+id.getValue()+"=".repeat(3)+" BOOK "+"=".repeat(5)+
                 "\nISBN: "+isbn.getValue()+"\tTITLE: "+title.getValue()+"\tGENDER: "+gender.getDescription()+
                 "\nAUTHOR: "+author.getValue()+"\t\tRELEASE DATE: "+releaseDate.getValue()+
                 "\nPAGES: "+pages.getValue()+"\t\t== AVAILABILITY: "+availability.toString()+" =="+
-                "\n"+"=".repeat(12)
+                "\n"+"=".repeat(18)
         );
     }
 }

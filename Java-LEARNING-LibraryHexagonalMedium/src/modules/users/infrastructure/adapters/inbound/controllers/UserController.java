@@ -62,7 +62,7 @@ public class UserController extends UserConsole{
         try {
             id=Byte.parseByte(string);
             User user=service.findUser(id).get();
-            System.out.println(user.toString());
+            System.out.println(user);
         } catch (GenericStringBoundaryException ex) {
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -108,7 +108,7 @@ public class UserController extends UserConsole{
                 "%n"+"=".repeat(12),
                 ic,name,lastname,gender.toUpperCase(),ageString
             );
-            System.out.println("\nIs anything ok (YES or NO)?");
+            System.out.println("\nConfirm changes (YES or NO)?");
             String confirm=inCaseExit("Enter: ");
             if (confirm.equalsIgnoreCase("YES")) {
                 service.modifyUser(ic, name, lastname, gender, age);
@@ -187,7 +187,7 @@ public class UserController extends UserConsole{
                 "%n"+"=".repeat(12),
                 ic,name,lastname,gender.toUpperCase(),ageString
             );
-            System.out.println("\nIs anything ok (YES or NO)?");
+            System.out.println("\nConfirm creating this user (YES/NO)?");
             String confirm=inCaseExit("Enter: ");
             if (confirm.equalsIgnoreCase("YES")) {
                 service.createUser(ic, name, lastname, gender, age);
@@ -226,9 +226,9 @@ public class UserController extends UserConsole{
     }
 
     private void deleteUser(){
-        System.out.println("\n-- REMOVING USER --");
+        System.out.println("\n-- DELETING USER --");
         try {
-            String ic=inCaseExit("Enter User's IC: ");
+            String ic=numberString("Enter User's IC: ");
             User user=service.findUser(ic).get();
             System.out.printf(
                 "%n"+"=".repeat(5)+" USER "+"=".repeat(5)+
@@ -238,7 +238,7 @@ public class UserController extends UserConsole{
                 user.getIc().getValue(),user.getName().getValue(),user.getLastname().getValue(),
                 user.getGender().getDescription(),user.getAge().getValue()
             );
-            System.out.println("\nAre you sure to delete this User (YES or NO)?");
+            System.out.println("\nConfirm deleting this user (YES or NO)?");
             String confirm=inCaseExit("Enter: ");
             if (confirm.equalsIgnoreCase("YES")) {
                 service.removeUser(ic);

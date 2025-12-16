@@ -29,7 +29,7 @@ public record BookLoanDTO (
     @Override
     public String toString() {
         return (
-                "\n"+"=".repeat(3)+"ID: "+id+"=".repeat(3)+" Loan by "+userLastName+" "+userName+" "+"=".repeat(6)+
+                "\n"+"=".repeat(3)+" ID: "+id+" "+"=".repeat(3)+" Loan by "+userLastName+" "+userName+" "+"=".repeat(6)+
                         "\ttoday date: "+LocalDate.now()+
                 "\n"+"+".repeat(3)+" Book "+"+".repeat(3)+
                 "\n"+"ISBN: "+bookIsbn+"\tTitle: "+bookTitle+"\tAuthor: "+bookAuthor+"\tGender: "+bookGender+

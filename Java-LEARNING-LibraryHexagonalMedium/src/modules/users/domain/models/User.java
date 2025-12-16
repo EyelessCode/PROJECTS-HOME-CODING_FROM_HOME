@@ -61,7 +61,7 @@ public class User {
     @Override
     public String toString() {
         return (
-            "\n"+"=".repeat(2)+"ID: "+id.getValue()+"=".repeat(3)+" USER "+"=".repeat(5)+
+            "\n"+"=".repeat(2)+" ID: "+id.getValue()+" "+"=".repeat(3)+" USER "+"=".repeat(5)+
             "\nIC: "+ic.getValue()+"\tNAME: "+name.getValue()+"\t\tLASTNAME: "+lastname.getValue()+
             "\nGENDER: "+gender.getDescription()+"\nAGE: "+age.getValue()+
             "\n"+"=".repeat(18)

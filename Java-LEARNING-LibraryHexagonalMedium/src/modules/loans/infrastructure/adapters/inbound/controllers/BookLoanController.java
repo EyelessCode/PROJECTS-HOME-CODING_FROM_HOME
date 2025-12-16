@@ -159,7 +159,6 @@ public class BookLoanController extends BookLoanConsole {
         try{
             String ic=numberString("Enter IC: ");
             String isbn=numberString("Enter ISBN: ");
-            BookLoanDTO loan=service.getLoan(ic).get();
             System.out.println("Creating delivery date...");
             System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()+"' (YES/NO)?");
             String dateString=null;
@@ -177,14 +176,9 @@ public class BookLoanController extends BookLoanConsole {
             String plusDaysString=numberString("Enter how many days to return the book: ");
             long plusDays=plusDaysString.isBlank()?0:Long.parseLong(plusDaysString);
             System.out.println(
-                    "\n"+"=".repeat(6)+" Loan by "+loan.userLastName()+" "+loan.userName()+" "+"=".repeat(6)+
+                    "\n"+"=".repeat(6)+" Loan by "+"=".repeat(6)+
                     "\ttoday date: "+LocalDate.now()+
-                    "\n"+"+".repeat(3)+" Book "+"+".repeat(3)+
-                    "\n"+"ISBN: "+loan.bookIsbn()+"\tTitle: "+loan.bookTitle()+"\tAuthor: "+loan.bookAuthor()+
-                            "\tGender: "+loan.bookGender()+
-                    "\n"+"+".repeat(3)+" User "+"+".repeat(3)+
-                    "\n"+"IC: "+loan.userIc()+"\tfullname: "+loan.userName()+" "+loan.userLastName()+
-                            "\tGender: "+loan.userGender()+"\tAge: "+loan.userAge()+
+                    "\n"+"ISBN: "+isbn+"\t"+"IC: "+ic+
                     "\n"+"+".repeat(3)+" Estimated dates "+"+".repeat(3)+
                     "\n"+"Delivery Date: "+LocalDate.parse(dateString)+"\tReturn Date: "
                             +LocalDate.parse(dateString).plusDays(plusDays)+

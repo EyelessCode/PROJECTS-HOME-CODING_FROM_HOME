@@ -95,8 +95,8 @@ public class BookController extends BookConsole{
             String releaseDateYear= numberString("Enter year: ");
             String releaseDateMonth= numberString("Enter digit of month: ");
             String releaseDateDay= numberString("Enter day: ");
-            String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?
-                    (releaseDateYear+"-"+releaseDateMonth+"-"+releaseDateDay):null;
+            String releaseDate=((releaseDateYear.isBlank()||releaseDateMonth.isBlank())||releaseDateDay.isBlank())?
+                    null:(releaseDateYear+"-"+releaseDateMonth+"-"+releaseDateDay);
             String pagesString=numberString("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
             Short pages= pagesString.isBlank()?0:Short.parseShort(pagesString);

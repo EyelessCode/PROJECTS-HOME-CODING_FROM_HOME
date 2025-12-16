@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 
 import modules.books.domain.models.Book;
 import modules.books.domain.models.valueObjects.BookAuthor;
@@ -31,6 +32,6 @@ public class TestApp {
 //        b.bookRun();
 //        BookLoanController blc=new BookLoanController();
 //        blc.loanRun();
-        System.out.println(LocalDate.parse(LocalDate.now().toString(),formatter));
+        System.out.println("8".length());
     }
 }

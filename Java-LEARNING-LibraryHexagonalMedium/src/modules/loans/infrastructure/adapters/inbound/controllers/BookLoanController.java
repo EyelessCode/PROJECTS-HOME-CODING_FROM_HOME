@@ -80,14 +80,8 @@ public class BookLoanController extends BookLoanConsole {
             List<BookLoanDTO>loans=service.getAllLoans();
             loans.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+loans.size()+" loans registered.");
-        } catch (BookLoanNotFoundException e) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -100,30 +94,8 @@ public class BookLoanController extends BookLoanConsole {
             List<BookLoanDTO>loans=service.getAllLoansByDate(dateString);
             loans.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+loans.size()+" loans found.");
-        } catch (GenericStringBoundaryException e) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanDateInvalidException e) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanNotFoundException e) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -135,22 +107,8 @@ public class BookLoanController extends BookLoanConsole {
             List<BookLoanDTO> loans=service.getAllLoans(string);
             loans.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+loans.size()+" loans found.");
-        }catch (GenericStringBoundaryException e) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanNotFoundException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -194,30 +152,8 @@ public class BookLoanController extends BookLoanConsole {
             }
             System.out.println("-- Loan created --");
             service.saveLoan(ic,isbn,dateString,plusDaysString);
-        }catch (GenericStringBoundaryException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanNotFoundException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanCouldntBeCreatedException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -261,30 +197,8 @@ public class BookLoanController extends BookLoanConsole {
             System.out.println("-- Loan modified --");
             service.modifyLoan(oldLoan.userIc(), oldLoan.bookIsbn(), oldLoan.deliveryDate().toString(), plusDaysString);
 //            throw new GenericStringBoundaryException("Loan modification cancelled by user.");
-        }catch (GenericStringBoundaryException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (GenericNumberInvalidException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanNotFoundException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -304,22 +218,8 @@ public class BookLoanController extends BookLoanConsole {
             System.out.println("-- Loan deleted --");
             service.removeLoan(ic);
 //            throw new GenericStringBoundaryException("Loan deletion cancelled by user.");
-        }catch (GenericStringBoundaryException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (BookLoanNotFoundException e){
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+e.getMessage()+
-                    "\nCause: "+e.getCause()+
-                    "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 }

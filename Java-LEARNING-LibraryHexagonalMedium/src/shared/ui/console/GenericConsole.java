@@ -33,15 +33,19 @@ public class GenericConsole{
                 string=scanner.nextLine();
                 return string;
             } catch (GenericNumberInvalidException ex) {
-                System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+ex.getMessage()+
-                    "\nCause: "+ex.getCause()+
-                    "\nException: "+ex.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
-                );
+                printError(ex);
             }
         }
+    }
+
+    protected void printError(Exception ex){
+        System.out.println(
+            "\n"+".".repeat(30)+
+            "\nError: "+ex.getMessage()+
+            "\nCause: "+ex.getCause()+
+            "\nException: "+ex.getClass().getSimpleName()+
+            "\n"+".".repeat(30)
+        );
     }
 
     protected String numberString(String message){
@@ -63,13 +67,7 @@ public class GenericConsole{
             }
 
         } catch (BookInvalidException ex) {
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(15)
-            );
+            printError(ex);
         }
         //! I need to delete this, i just want to return a String, but this fucking thing wants another return
         return null;

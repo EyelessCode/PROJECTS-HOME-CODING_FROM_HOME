@@ -45,14 +45,8 @@ public class UserController extends UserConsole{
             List<User>users=service.findUsers();
             users.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+users.size()+" users registered.");
-        } catch (UsersNotFoundException ex) {
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -63,30 +57,8 @@ public class UserController extends UserConsole{
             id=Byte.parseByte(string);
             User user=service.findUser(id).get();
             System.out.println(user);
-        } catch (GenericStringBoundaryException ex) {
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch (GenericNumberInvalidException ex) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+ex.getMessage()+
-                    "\nCause: "+ex.getCause()+
-                    "\nException: "+ex.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
-        }catch (UsersNotFoundException ex) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: "+ex.getMessage()+
-                    "\nCause: "+ex.getCause()+
-                    "\nException: "+ex.getClass().getSimpleName()+
-                    "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -124,30 +96,8 @@ public class UserController extends UserConsole{
             service.modifyUser(ic, name, lastname, gender, age);
             System.out.println("-- User modified --");
 //            throw new GenericStringBoundaryException("User couldn't be modified.");
-        }catch(GenericStringBoundaryException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch(GenericNumberInvalidException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch(UsersNotFoundException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -157,22 +107,8 @@ public class UserController extends UserConsole{
             List<User>users=service.findUsers(string);
             users.forEach(System.out::println);
             System.out.println(">".repeat(4)+" "+users.size()+" users found.");
-        } catch (GenericStringBoundaryException ex) {
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch (UsersNotFoundException ex) {
-            System.out.println(
-                    "\n"+".".repeat(30)+
-                    "\nError: " + ex.getMessage() +
-                    "\nCause: " + ex.getCause() +
-                    "\nException: " + ex.getClass().getSimpleName() +
-                    "\n" + ".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -201,30 +137,8 @@ public class UserController extends UserConsole{
             service.createUser(ic, name, lastname, gender, age);
             System.out.println("-- User created --");
 //            throw new UserCouldNotBeCreatedException("User couldn't be created.");
-        }catch(GenericStringBoundaryException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch(GenericNumberInvalidException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch(UserCouldNotBeCreatedException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 
@@ -250,22 +164,8 @@ public class UserController extends UserConsole{
             service.removeUser(ic);
             System.out.println("-- User deleted --");
 //            throw new GenericStringBoundaryException("Unexpected response. Deletion process canceled.");
-        } catch (GenericStringBoundaryException ex) {
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
-        }catch(UsersNotFoundException ex){
-            System.out.println(
-                "\n"+".".repeat(30)+
-                "\nError: "+ex.getMessage()+
-                "\nCause: "+ex.getCause()+
-                "\nException: "+ex.getClass().getSimpleName()+
-                "\n"+".".repeat(30)
-            );
+        }catch (RuntimeException e){
+            printError(e);
         }
     }
 

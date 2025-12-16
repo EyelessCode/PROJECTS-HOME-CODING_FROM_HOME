@@ -8,7 +8,7 @@ import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidEx
 import modules.loans.domain.models.BookLoan;
 
 public abstract class BookLoanServiceValidator {
-    private final DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    private final DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy-M-d");
 
     protected boolean overlaps(BookLoan a,BookLoan b){
         return(!a.getDeliveryDate().getValue().isAfter(b.getReturnDate().getValue())&&
@@ -22,9 +22,9 @@ public abstract class BookLoanServiceValidator {
     }
 
     protected LocalDate dateValidator(String date) throws BookLoanDateInvalidException{
-        if (!date.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+        if (!date.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$")) {
            throw new BookLoanDateInvalidException("Date invalid '"+date+"'. Please try again with YYYY/MM/DD.");
         }
-        return LocalDate.parse(date);
+        return LocalDate.parse(date,formatterDate);
     }
 }

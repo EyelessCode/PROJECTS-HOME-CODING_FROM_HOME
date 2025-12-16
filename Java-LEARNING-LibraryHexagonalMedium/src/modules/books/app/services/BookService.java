@@ -51,7 +51,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             throw new BooksNotFoundException("Book list is empty.");
         }
         if (oldBook.isEmpty()) {
-            throw new BooksNotFoundException("Book couldn't be found.");
+            throw new BooksNotFoundException("Book '"+isbn+"' ISBN couldn't be found.");
         }
         Book book=new Book(
             oldBook.get().getIsbn(),
@@ -75,7 +75,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             repository.delete(book.get().getId());
             return;
         }
-        throw new BooksNotFoundException("Book couldn't be found.");
+        throw new BooksNotFoundException("Book '"+id+"' ID couldn't be found.");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (book.isPresent()) {
             return book;
         }
-        throw new BooksNotFoundException("Book couldn't be found.");
+        throw new BooksNotFoundException("Book '"+id+"' ID couldn't be found.");
     }
 
     @Override
@@ -112,7 +112,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
             repository.delete(book.get().getId());
             return;
         }
-        throw new BooksNotFoundException("Book couldn't be found.");
+        throw new BooksNotFoundException("Book '"+isbn+"' couldn't be found.");
     }
 
     @Override
@@ -130,7 +130,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (!books.isEmpty()) {
             return books;
         }
-        throw new BooksNotFoundException("Book list with '"+value+"' as value couldn't be found.");
+        throw new BooksNotFoundException("Book '"+value+"' couldn't be found.");
     }
 
     @Override
@@ -144,7 +144,7 @@ public class BookService extends BookServiceValidator implements IBookServiceInp
         if (book.isPresent()) {
             return book;
         }
-        throw new BooksNotFoundException("Book couldn't be found.");
+        throw new BooksNotFoundException("Book '"+isbn+"' couldn't be found.");
     }
 
     @Override

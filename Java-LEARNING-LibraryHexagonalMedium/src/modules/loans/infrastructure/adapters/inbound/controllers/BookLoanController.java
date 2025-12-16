@@ -6,6 +6,7 @@ import modules.loans.domain.exceptions.models.BookLoanCouldntBeCreatedException;
 import modules.loans.domain.exceptions.models.BookLoanNotFoundException;
 import modules.loans.domain.exceptions.models.valueObjects.BookLoanDateInvalidException;
 import modules.loans.domain.ui.console.BookLoanConsole;
+import shared.exceptions.GenericNumberInvalidException;
 import shared.exceptions.GenericStringBoundaryException;
 
 import java.time.LocalDate;
@@ -51,9 +52,8 @@ public class BookLoanController extends BookLoanConsole {
                 case "1"->subShowOptions();
                 case "2"->searchLoans();
                 case "3"->createLoan();
-//                case "4"->modifyLoan();
-                case "4"->throw new UnsupportedOperationException("Delete loan not implemented yet.");
-//                case "4"->deleteLoan();
+                case "4"->modifyLoan();
+//                case "5"->deleteLoan();
                 case "5"->throw new UnsupportedOperationException("Remove loan not implemented yet.");
                 case "6"->{System.out.println("Going back to main Menu...");return;}
                 default->System.out.println("Invalid option. Please enter a valid option (1-6).");
@@ -87,7 +87,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }
     }
@@ -107,7 +107,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }catch (BookLoanDateInvalidException e) {
             System.out.println(
@@ -115,7 +115,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }catch (BookLoanNotFoundException e) {
             System.out.println(
@@ -123,7 +123,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }
     }
@@ -142,7 +142,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }catch (BookLoanNotFoundException e){
             System.out.println(
@@ -150,7 +150,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }
     }
@@ -161,18 +161,17 @@ public class BookLoanController extends BookLoanConsole {
             String ic=numberString("Enter IC: ");
             String isbn=numberString("Enter ISBN: ");
             System.out.println("Creating delivery date...");
-            System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()
-                    .format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))+"' (YES/NO)?");
+            System.out.println("\tWants to make a Loan today -> '"+LocalDate.now()+"' (YES/NO)?");
             String dateString=null;
             String dateOption=inCaseExit("Enter: ");
             if (dateOption.equalsIgnoreCase("YES")){
-                dateString=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                dateString=LocalDate.now().toString();
             } else if (dateOption.equalsIgnoreCase("NO")) {
                 System.out.println("\tSpecify the date:");
                 String yearDateString=numberString("Enter year: ");
                 String monthDateString=numberString("Enter month (1-12): ");
                 String dayDateString=numberString("Enter day (1-31): ");
-                dateString=yearDateString+"/"+monthDateString+"/"+dayDateString;
+                dateString=yearDateString+"-"+monthDateString+"-"+dayDateString;
             }else {
                 throw new BookLoanCouldntBeCreatedException("Invalid option for date creation. Try again.");
             }
@@ -186,7 +185,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }catch (BookLoanNotFoundException e){
             System.out.println(
@@ -194,7 +193,7 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
             );
         }catch (BookLoanCouldntBeCreatedException e){
             System.out.println(
@@ -202,7 +201,49 @@ public class BookLoanController extends BookLoanConsole {
                     "\nError: "+e.getMessage()+
                     "\nCause: "+e.getCause()+
                     "\nException: "+e.getClass().getSimpleName()+
-                    "\n"+".".repeat(15)
+                    "\n"+".".repeat(30)
+            );
+        }
+    }
+
+    private void modifyLoan(){
+        try{
+            String ic=numberString("Enter IC: ");
+            BookLoanDTO loan=service.getLoan(ic).get();
+            System.out.println(loan.toString());
+            System.out.println("Is this the loan you want to modify (YES/NO)?");
+            String option=inCaseExit("Enter: ");
+            if (option.equalsIgnoreCase("YES")) {
+                System.out.println("Modifying return date...");
+                System.out.println("\t¡Only days!");
+                String plusDaysString = numberString("Enter how many days to return the book: ");
+                service.modifyLoan(loan.userIc(), loan.bookIsbn(), loan.deliveryDate().toString(), plusDaysString);
+                return;
+            }
+            throw new GenericStringBoundaryException("Loan modification cancelled by user.");
+        }catch (GenericStringBoundaryException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
+            );
+        }catch (GenericNumberInvalidException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
+            );
+        }catch (BookLoanNotFoundException e){
+            System.out.println(
+                    "\n"+".".repeat(30)+
+                    "\nError: "+e.getMessage()+
+                    "\nCause: "+e.getCause()+
+                    "\nException: "+e.getClass().getSimpleName()+
+                    "\n"+".".repeat(30)
             );
         }
     }

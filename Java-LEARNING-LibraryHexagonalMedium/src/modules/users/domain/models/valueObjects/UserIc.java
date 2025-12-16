@@ -7,7 +7,7 @@ public class UserIc extends GenericStringValidator{
     private final String value;
 
     public UserIc(String value) {
-        if (!stringNotNull(value)) {
+        if (isNotStringNull(value)) {
             throw new GenericStringBoundaryException("User's IC cannot be empty or null.");
         }
         this.value=icBound(value);

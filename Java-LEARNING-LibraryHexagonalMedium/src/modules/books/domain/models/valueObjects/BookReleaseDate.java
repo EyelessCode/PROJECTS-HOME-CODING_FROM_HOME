@@ -11,7 +11,7 @@ public class BookReleaseDate {
         if (value==null) {
             throw new BookLocalDateInvalidException("Book's release date cannot be a null value.");
         }else if(!value.isBefore(LocalDate.now())){
-            throw new BookLocalDateInvalidException("Book's release date cannot be later than today.");
+            throw new BookLocalDateInvalidException("Book's release '"+value+"' date cannot be later than today.");
         }
         this.value=value;
     }

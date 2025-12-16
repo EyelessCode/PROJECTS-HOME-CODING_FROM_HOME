@@ -39,12 +39,12 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         Optional<Book>book=bookRepository.getAll().stream().
                 filter(b->bookIsbn.equals(b.getIsbn().getValue())).findFirst();
         if (book.isEmpty()){
-            throw new BookLoanNotFoundException("Book couldn't be found.");
+            throw new BookLoanNotFoundException("Book with '"+bookIsbn+"' ISBN couldn't be found.");
         }
         Optional<User> user=userRepository.getAll().stream().
                 filter(u->userIc.equals(u.getIc().getValue())).findFirst();
         if (user.isEmpty()){
-            throw new BookLoanNotFoundException("User couldn't be found.");
+            throw new BookLoanNotFoundException("User with '"+userIc+"' IC couldn't be found.");
         }
         book.get().lead();
         BookLoan bookLoan=new BookLoan(
@@ -68,19 +68,19 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
         Optional<Book> book=bookRepository.getAll().stream().
                 filter(b->bookIsbn.equals(b.getIsbn().getValue())).findFirst();
         if (book.isEmpty()){
-            throw new BookLoanNotFoundException("Book couldn't be found.");
+            throw new BookLoanNotFoundException("Book with '"+bookIsbn+"' ISBN couldn't be found.");
         }
         Optional<User> user=userRepository.getAll().stream().
                 filter(u->userIc.equals(u.getIc().getValue())).findFirst();
         if (user.isEmpty()){
-            throw new BookLoanNotFoundException("User couldn't be found.");
+            throw new BookLoanNotFoundException("User with '"+userIc+"' IC couldn't be found.");
         }
 //        book.get().lead();
         Optional<BookLoan>oldBookLoan=loanRepository.getAll().stream().
             filter(lb->lb.getBookId().getValue().equals(book.get().getId().getValue())&&
                     lb.getUserId().getValue().equals(user.get().getId().getValue())).findFirst();
         if (oldBookLoan.isEmpty()) {
-            throw new BookLoanNotFoundException("Loan couldn't be found.");
+            throw new BookLoanNotFoundException("Loan with '"+userIc+" IC and "+bookIsbn+" ISBN' couldn't be found.");
         }
         BookLoan modifiedBookLoan=new BookLoan(
             book.get().getId(),
@@ -97,11 +97,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(loan->{
                     Optional<User> user=userRepository.getById(loan.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+loan.getUserId()+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(loan.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+loan.getBookId()+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             loan.getId().getValue(),
@@ -135,11 +135,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(loan->{;
                     Optional<User> user=userRepository.getById(loan.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+loan.getUserId()+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(loan.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+loan.getBookId()+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             loan.getId().getValue(),
@@ -176,7 +176,7 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
             throw new BookLoanNotFoundException("Loan list is empty.");
         }
         if (bookLoan.isEmpty()){
-            throw new BookLoanNotFoundException("Loan couldn't be found.");
+            throw new BookLoanNotFoundException("Loan with '"+id+"' ID couldn't be found.");
         }
         loanRepository.delete(bookLoan.get().getId());
     }
@@ -188,11 +188,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(loan ->{
                     Optional<User> user=userRepository.getById(loan.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+value+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(loan.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+value+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             loan.getId().getValue(),
@@ -236,11 +236,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(loan->{
                     Optional<User> user=userRepository.getById(loan.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+loan.getUserId()+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(loan.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+loan.getBookId()+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             loan.getId().getValue(),
@@ -283,11 +283,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(lb->{
                     Optional<User> user=userRepository.getById(lb.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+value+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(lb.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+value+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             lb.getId().getValue(),
@@ -325,11 +325,11 @@ public class BookLoanService extends BookLoanServiceValidator implements IBookLo
                 map(lb->{
                     Optional<User> user=userRepository.getById(lb.getUserId());
                     if (user.isEmpty()){
-                        throw new BookLoanNotFoundException("User couldn't be found.");
+                        throw new BookLoanNotFoundException("User with '"+value+"' IC couldn't be found.");
                     }
                     Optional<Book> book=bookRepository.getById(lb.getBookId());
                     if (book.isEmpty()){
-                        throw new BookLoanNotFoundException("Book couldn't be found.");
+                        throw new BookLoanNotFoundException("Book with '"+value+"' ISBN couldn't be found.");
                     }
                     return new BookLoanDTO(
                             lb.getId().getValue(),

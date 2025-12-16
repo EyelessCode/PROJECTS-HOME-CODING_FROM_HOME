@@ -4,41 +4,42 @@ import shared.exceptions.GenericStringBoundaryException;
 
 public abstract class GenericStringValidator {
     private String stringCleaner(String value){
-        // value=stringNotNull(value);
+        // value=isNotStringNull(value);
         if (!value.matches("[\\p{L} ]*")) {
-            throw new GenericStringBoundaryException("String cannot have special characters or numbers.");
+            throw new GenericStringBoundaryException("String cannot have special characters or numbers. '"+
+                    value+"' value is invalid.");
         }
         return value;
     }
     
-    protected boolean stringNotNull(String value){
-        if (value==null||value.isBlank()) {
-            // throw new GenericStringBoundaryException("String cannot be empty or null.");
-            return false;
-        }
-        return true;
+    protected boolean isNotStringNull(String value) throws GenericStringBoundaryException{
+        // throw new GenericStringBoundaryException("String cannot be empty or null.");
+        return value != null && !value.isEmpty();
     }
 
     protected String stringCleanedBound(String value){
         value=stringCleaner(value);
         if (value.length()>30) {
-            throw new GenericStringBoundaryException("String limit has been reached. Please enter a string of fewer than 30 characters.");
+            throw new GenericStringBoundaryException("String limit has been reached. "+
+                    "Please enter a string of fewer than 30 characters.");
         }
         return value;
     }
 
     protected String stringBound(String value){
-        // value=stringNotNull(value);
+        // value=isNotStringNull(value);
         if (value.length()>30) {
-            throw new GenericStringBoundaryException("String limit has been reached. Please enter a string of fewer than 30 characters.");
+            throw new GenericStringBoundaryException("String limit has been reached. "+
+                    "Please enter a string of fewer than 30 characters.");
         }
         return value;
     }
 
     protected String stringLargestBound(String value){
-        // value=stringNotNull(value);
+        // value=isNotStringNull(value);
         if (value.length()>60) {
-            throw new GenericStringBoundaryException("String limit has been reached. Please enter a string of fewer than 60 characters.");
+            throw new GenericStringBoundaryException("String limit has been reached."+
+                    "Please enter a string of fewer than 60 characters.");
         }
         return value;
     }
@@ -46,7 +47,8 @@ public abstract class GenericStringValidator {
     protected String stringCleanedLargestBound(String value){
         value=stringCleaner(value);
         if (value.length()>60) {
-            throw new GenericStringBoundaryException("String limit has been reached. Please enter a string of fewer than 60 characters.");
+            throw new GenericStringBoundaryException("String limit has been reached."+
+                    "Please enter a string of fewer than 60 characters.");
         }
         return value;
     }

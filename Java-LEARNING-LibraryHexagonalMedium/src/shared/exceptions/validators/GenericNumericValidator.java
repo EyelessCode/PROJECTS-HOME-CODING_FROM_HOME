@@ -1,6 +1,7 @@
 package shared.exceptions.validators;
 
 import shared.exceptions.GenericNumberInvalidException;
+import shared.exceptions.GenericStringBoundaryException;
 
 public abstract class GenericNumericValidator {
     private byte byteBound(Byte value){
@@ -24,25 +25,16 @@ public abstract class GenericNumericValidator {
         return value;
     }
 
-    protected boolean numberNotNull(Byte value){
-        if (value==null) {
-            return false;
-        }
-        return true;
+    protected boolean isNotNumberNull(Byte value)throws GenericStringBoundaryException {
+        return value != null;
     }
 
-    protected boolean numberNotNull(Short value){
-        if (value==null) {
-            return false;
-        }
-        return true;
+    protected boolean isNotNumberNull(Short value)throws GenericStringBoundaryException{
+        return value != null;
     }
 
-    protected boolean numberNotNull(Long value){
-        if (value==null) {
-            return false;
-        }
-        return true;
+    protected boolean isNotNumberNull(Long value)throws GenericStringBoundaryException{
+        return value != null;
     }
 
     protected void onlyPositiveNumber(Byte value){

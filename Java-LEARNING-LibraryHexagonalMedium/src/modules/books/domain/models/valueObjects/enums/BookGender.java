@@ -39,7 +39,7 @@ public enum BookGender {
 
     public static BookGender genderValidatorFromInput(String gender){
         if (gender==null||gender.isBlank()) {
-            throw new BookGenderInvalidException("Gender input cannot be a null value or blank.");
+            throw new BookGenderInvalidException("Gender input cannot be a '"+gender+"' value or blank.");
         }
         gender=gender.trim().toUpperCase();
         for (BookGender bookGender : values()) {

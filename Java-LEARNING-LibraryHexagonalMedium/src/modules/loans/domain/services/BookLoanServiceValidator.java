@@ -22,9 +22,9 @@ public abstract class BookLoanServiceValidator {
     }
 
     protected LocalDate dateValidator(String date) throws BookLoanDateInvalidException{
-        if (!date.matches("^\\d{4}/\\d{2}/\\d{2}$")) {
-            throw new BookLoanDateInvalidException("Date invalid. Please try again with YYYY/MM/DD.");
+        if (!date.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+           throw new BookLoanDateInvalidException("Date invalid '"+date+"'. Please try again with YYYY/MM/DD.");
         }
-        return LocalDate.parse(date,formatterDate);
+        return LocalDate.parse(date);
     }
 }

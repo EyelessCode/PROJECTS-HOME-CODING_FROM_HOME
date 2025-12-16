@@ -31,6 +31,6 @@ public class TestApp {
 //        b.bookRun();
 //        BookLoanController blc=new BookLoanController();
 //        blc.loanRun();
-        System.out.println(LocalDate.now().format(formatter));
+        System.out.println(LocalDate.parse(LocalDate.now().toString(),formatter));
     }
 }

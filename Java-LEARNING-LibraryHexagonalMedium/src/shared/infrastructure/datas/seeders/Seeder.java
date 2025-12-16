@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Seeder {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private final BookLoanService loanService;
     private final BookService bookService;
     private final UserService userService;
@@ -30,7 +30,7 @@ public class Seeder {
         loanService.saveLoan(
                 "0974852960",
                 "9788490627568",
-                LocalDate.now().format(formatter),
+                LocalDate.now().toString(),
                 String.valueOf(ChronoUnit.DAYS.between(
                         LocalDate.now(),
                         LocalDate.now().plusMonths(1))
@@ -39,7 +39,7 @@ public class Seeder {
         loanService.saveLoan(
                 "0985987874",
                 "9780060883287",
-                LocalDate.now().format(formatter),
+                LocalDate.now().toString(),
                 String.valueOf(ChronoUnit.DAYS.between(
                         LocalDate.now(),
                         LocalDate.now().plusDays(4))
@@ -48,7 +48,7 @@ public class Seeder {
         loanService.saveLoan(
                 "0969963695",
                 "9780143126393",
-                LocalDate.now().format(formatter),
+                LocalDate.now().toString(),
                 String.valueOf(ChronoUnit.DAYS.between(
                         LocalDate.now(),
                         LocalDate.now().plusWeeks(2))

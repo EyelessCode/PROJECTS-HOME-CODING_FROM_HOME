@@ -12,7 +12,7 @@ import modules.books.domain.models.valueObjects.BookIsbn;
 
 public abstract class BookServiceValidator {
     protected final Set<BookIsbn>isbnRegistry=new HashSet<>();
-    private final DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//    private final DateTimeFormatter formatterDate=DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     protected void isDuplicated(String isbn){
         BookIsbn bookIsbn=new BookIsbn(isbn);
@@ -24,17 +24,16 @@ public abstract class BookServiceValidator {
 
     protected void isNotNull(String isbn,String title,String author,String releaseDate,Short pages,String gender){
         if (
-            (isbn==null&&title==null&&author==null&&releaseDate==null&&pages==null&&gender==null)||
-            ((isbn==null||title==null)||(author==null||releaseDate==null)||(pages==null||gender==null))
+                ((isbn == null || title == null) && (author == null || releaseDate == null) && (pages == null || gender == null))
         ) {
             throw new BookCouldNotBeCreatedException("Book couldn't be created.");
         }
     }
 
     protected LocalDate dateValidator(String releaseDate) throws BookLocalDateInvalidException{
-        if (!releaseDate.matches("^\\d{4}/\\d{2}/\\d{2}$")) {
-            throw new BookLocalDateInvalidException("Date invalid. Please try again.");
+        if (!releaseDate.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
+            throw new BookLocalDateInvalidException("Date invalid '"+releaseDate+"'. Please try again with YYYY-MM-DD.");
         }
-        return LocalDate.parse(releaseDate,formatterDate);
+        return LocalDate.parse(releaseDate);
     }
 }

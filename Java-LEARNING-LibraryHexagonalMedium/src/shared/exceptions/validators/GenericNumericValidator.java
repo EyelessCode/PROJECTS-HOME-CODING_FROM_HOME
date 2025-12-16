@@ -25,16 +25,16 @@ public abstract class GenericNumericValidator {
         return value;
     }
 
-    protected boolean isNotNumberNull(Byte value)throws GenericStringBoundaryException {
-        return value != null;
+    protected boolean isNumberNull(Byte value)throws GenericStringBoundaryException {
+        return value == null;
     }
 
-    protected boolean isNotNumberNull(Short value)throws GenericStringBoundaryException{
-        return value != null;
+    protected boolean isNumberNull(Short value)throws GenericStringBoundaryException{
+        return value == null;
     }
 
-    protected boolean isNotNumberNull(Long value)throws GenericStringBoundaryException{
-        return value != null;
+    protected boolean isNumberNull(Long value)throws GenericStringBoundaryException{
+        return value == null;
     }
 
     protected void onlyPositiveNumber(Byte value){

@@ -8,7 +8,7 @@ public class BookId extends GenericNumericValidator{
     private final Byte value;
 
     public BookId(Byte value){
-        if (!isNotNumberNull(value)) {
+        if (isNumberNull(value)) {
             this.value=generatedId();
         }else{
             onlyPositiveNumber(value);

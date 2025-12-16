@@ -7,7 +7,7 @@ public class BookPages extends GenericNumericValidator{
     private final Short value;
 
     public BookPages(Short value){
-        if (!isNotNumberNull(value)) {
+        if (isNumberNull(value)) {
             throw new BookPagesInvalidException("Book's pages cannot be a null value or blank.");
         }
         if (value>10_000) {

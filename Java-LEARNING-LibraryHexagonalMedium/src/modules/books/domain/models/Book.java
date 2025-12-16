@@ -90,7 +90,7 @@ public class Book {
         return(
                 "\n"+"=".repeat(5)+" BOOK "+"=".repeat(5)+
                 "\nISBN: "+isbn.getValue()+"\tTITLE: "+title.getValue()+"\tGENDER: "+gender.getDescription()+
-                "\nAUTHOR: "+author.getValue()+"\tRELEASE DATE: "+releaseDate.getValue()+
+                "\nAUTHOR: "+author.getValue()+"\t\tRELEASE DATE: "+releaseDate.getValue()+
                 "\nPAGES: "+pages.getValue()+"\t\t== AVAILABILITY: "+availability.toString()+" =="+
                 "\n"+"=".repeat(12)
         );

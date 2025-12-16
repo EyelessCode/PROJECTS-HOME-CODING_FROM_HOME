@@ -4,7 +4,7 @@ import shared.exceptions.GenericStringBoundaryException;
 
 public abstract class GenericStringValidator {
     private String stringCleaner(String value){
-        // value=isNotStringNull(value);
+        // value=isStringNull(value);
         if (!value.matches("[\\p{L} ]*")) {
             throw new GenericStringBoundaryException("String cannot have special characters or numbers. '"+
                     value+"' value is invalid.");
@@ -12,9 +12,9 @@ public abstract class GenericStringValidator {
         return value;
     }
     
-    protected boolean isNotStringNull(String value) throws GenericStringBoundaryException{
+    protected boolean isStringNull(String value) throws GenericStringBoundaryException{
         // throw new GenericStringBoundaryException("String cannot be empty or null.");
-        return value != null && !value.isEmpty();
+        return value == null || value.isEmpty();
     }
 
     protected String stringCleanedBound(String value){
@@ -27,7 +27,7 @@ public abstract class GenericStringValidator {
     }
 
     protected String stringBound(String value){
-        // value=isNotStringNull(value);
+        // value=isStringNull(value);
         if (value.length()>30) {
             throw new GenericStringBoundaryException("String limit has been reached. "+
                     "Please enter a string of fewer than 30 characters.");
@@ -36,7 +36,7 @@ public abstract class GenericStringValidator {
     }
 
     protected String stringLargestBound(String value){
-        // value=isNotStringNull(value);
+        // value=isStringNull(value);
         if (value.length()>60) {
             throw new GenericStringBoundaryException("String limit has been reached."+
                     "Please enter a string of fewer than 60 characters.");

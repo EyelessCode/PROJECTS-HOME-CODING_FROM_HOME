@@ -10,7 +10,7 @@ public class BookLoanRemainingDays extends GenericNumericValidator{
 
     public BookLoanRemainingDays(BookLoanDates deliveryDate,BookLoanDates returnDate){
         long days=ChronoUnit.DAYS.between(deliveryDate.getValue(),returnDate.getValue());
-        if (!isNotNumberNull(days)) {
+        if (isNumberNull(days)) {
             throw new BookLoanRemainingDaysException("Loan Remaining days cannot be a null value.");
         }
 //        onlyPositiveNumber(days);

@@ -89,15 +89,15 @@ public class BookController extends BookConsole{
     private void createBook(){
         System.out.println("\n-- CREATING BOOK --");
         try {
-            String isbn=inCaseExit("Enter ISBN: ");
+            String isbn=numberString("Enter ISBN: ");
             String title=inCaseExit("Enter title: ");
             String author=inCaseExit("Enter author: ");
             String releaseDateYear= numberString("Enter year: ");
             String releaseDateMonth= numberString("Enter digit of month: ");
             String releaseDateDay= numberString("Enter day: ");
             String releaseDate=(releaseDateYear.isEmpty()||releaseDateMonth.isEmpty()||releaseDateDay.isEmpty())?
-                    (releaseDateYear+"/"+releaseDateMonth+"/"+releaseDateDay):null;
-            String pagesString=inCaseExit("Enter pages: ");
+                    (releaseDateYear+"-"+releaseDateMonth+"-"+releaseDateDay):null;
+            String pagesString=numberString("Enter pages: ");
             String gender=inCaseExit("Enter gender: ");
             Short pages= pagesString.isBlank()?0:Short.parseShort(pagesString);
             System.out.printf(
@@ -108,17 +108,15 @@ public class BookController extends BookConsole{
                 "%n"+"=".repeat(12),
                 isbn,title,gender,author,releaseDate,pages
             );
-            System.out.println("\nIs anything ok (YES or NO)?");
+            System.out.println("\nConfirm creating this book (YES/NO)?");
             String confirm=inCaseExit("Enter: ");
-            if (confirm.equalsIgnoreCase("YES")) {
-                service.saveBook(isbn, title, author, releaseDate, pages, gender);
-                System.out.println("-- Book created --");
-                return;
-            }else if(confirm.equalsIgnoreCase("NO")){
+            if (!confirm.equalsIgnoreCase("YES")) {
                 System.out.println("-- Book NOT created --");
                 return;
             }
-            throw new BookCouldNotBeCreatedException("Book couldn't be created.");
+                service.saveBook(isbn, title, author, releaseDate, pages, gender);
+                System.out.println("-- Book created --");
+//            throw new BookCouldNotBeCreatedException("Book couldn't be created.");
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -158,7 +156,7 @@ public class BookController extends BookConsole{
         System.out.println("\n-- MODIFYING BOOK --");
         String isbn;
         try {
-            isbn=inCaseExit("Enter an ISBN: ");
+            isbn=numberString("Enter an ISBN: ");
             Optional<Book> oldBook=service.getBook(isbn);
                 System.out.println("\tOld save: press 'ENTER' -> "+oldBook.get().getTitle().getValue()+"'");
             String title=inCaseExit("Enter new title: ");
@@ -176,14 +174,14 @@ public class BookController extends BookConsole{
             String releaseDateDay= numberString("Enter new day: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getPages().getValue()+"'");
-            String pagesString=inCaseExit("Enter new pages: ");
+            String pagesString=numberString("Enter new pages: ");
 
                 System.out.println("\tOld save: press 'ENTER' -> '"+oldBook.get().getGender().name()+"'");
             String gender=inCaseExit("Enter new gender: ");
 
             String releaseDate=(releaseDateYear.isBlank()?oldBook.get().getReleaseDate().getValue().getYear():releaseDateYear)+
-            "/"+(releaseDateMonth.isBlank()?oldBook.get().getReleaseDate().getValue().getMonthValue():releaseDateMonth)+
-            "/"+(releaseDateDay.isBlank()?oldBook.get().getReleaseDate().getValue().getDayOfMonth():releaseDateDay);
+            "-"+(releaseDateMonth.isBlank()?oldBook.get().getReleaseDate().getValue().getMonthValue():releaseDateMonth)+
+            "-"+(releaseDateDay.isBlank()?oldBook.get().getReleaseDate().getValue().getDayOfMonth():releaseDateDay);
 //            System.out.println(releaseDate);
             short pages=((pagesString.isBlank())?0:Short.parseShort(pagesString));
             System.out.printf(
@@ -199,17 +197,15 @@ public class BookController extends BookConsole{
                 releaseDate.isBlank() ?oldBook.get().getReleaseDate().getValue().toString():releaseDate,
                 pages<=0 ?oldBook.get().getPages().getValue():pages
             );
-            System.out.println("\nIs anything ok (YES or NO)?");
+            System.out.println("\nConfirm modifying this book (YES/NO)?");
             String confirm=inCaseExit("Enter your answer: ");
-            if (confirm.equalsIgnoreCase("YES")) {
-                service.modifyBook(isbn, title, author, releaseDate, pages, gender);
-                System.out.println("-- Book modified --");
-                return;
-            }else if(confirm.equalsIgnoreCase("NO")){
+            if (!confirm.equalsIgnoreCase("YES")) {
                 System.out.println("-- Book NOT modified --");
                 return;
             }
-            throw new GenericStringBoundaryException("Book couldn't be created.");
+                service.modifyBook(isbn, title, author, releaseDate, pages, gender);
+                System.out.println("-- Book modified --");
+//            throw new GenericStringBoundaryException("Book couldn't be created.");
         }catch(GenericStringBoundaryException ex){
             System.out.println(
                 "\n"+".".repeat(30)+
@@ -258,20 +254,18 @@ public class BookController extends BookConsole{
         System.out.println("\n-- MODIFYING BOOK --");
         String string;
         try{
-            string=inCaseExit("Enter an ISBN: ");
+            string=numberString("Enter an ISBN: ");
             Book book=service.getBook(string).get();
-            System.out.println(book.toString());
-            System.out.println("Is this the book (YES or NO)?");
+            System.out.println(book);
+            System.out.println("\nConfirm removing this book (YES/NO)?");
             String option=inCaseExit("Enter: ");
-            if (option.equalsIgnoreCase("YES")){
-                System.out.println("-- Book removed --");
-                service.removeBook(string);
-                return;
-            }else if(option.equalsIgnoreCase("NO")) {
+            if (!option.equalsIgnoreCase("YES")){
                 System.out.println("-- Book NOT removed --");
                 return;
             }
-            throw new GenericStringBoundaryException("Input unexcepted. Try again.");
+            System.out.println("-- Book removed --");
+            service.removeBook(string);
+//            throw new GenericStringBoundaryException("Input unexcepted. Try again.");
         }catch (GenericStringBoundaryException ex){
             System.out.println(
                     "\n"+".".repeat(30)+

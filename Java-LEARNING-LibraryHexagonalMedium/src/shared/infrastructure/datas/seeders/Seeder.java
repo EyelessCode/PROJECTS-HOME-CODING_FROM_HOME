@@ -99,7 +99,7 @@ public class Seeder {
                 "9788490627568",
                 "The Little Prince",
                 "Antoine de Saint Exupéry",
-                "1943/04/06",
+                "1943-04-06",
                 (short)96,
                 "NARRATIVE"
         );
@@ -107,7 +107,7 @@ public class Seeder {
                 "9780060883287",
                 "One Hundred Years of Solitude",
                 "Gabriel García Márquez",
-                "1967/05/30",
+                "1967-05-30",
                 (short)417,
                 "NARRATIVE"
         );
@@ -115,7 +115,7 @@ public class Seeder {
                 "9780143126393",
                 "The Shadow of the Wind",
                 "Carlos Ruiz Zafón",
-                "2001/04/12",
+                "2001-04-12",
                 (short)487,
                 "MYSTERY"
         );
@@ -123,7 +123,7 @@ public class Seeder {
                 "9780060934347",
                 "Don Quixote",
                 "Miguel de Cervantes",
-                "1605/01/16",
+                "1605-01-16",
                 (short)992,
                 "CLASSIC"
         );
@@ -131,7 +131,7 @@ public class Seeder {
                 "9780439023528",
                 "The Hunger Games",
                 "Suzanne Collins",
-                "2008/09/14",
+                "2008-09-14",
                 (short)374,
                 "SCIENCE_FICTION"
         );

@@ -8,7 +8,7 @@ public class BookIsbn extends GenericStringValidator{
     private final String value;
 
     public BookIsbn(String value){
-        if (isNotStringNull(value)) {
+        if (isStringNull(value)) {
             throw new GenericStringBoundaryException("Book's IBN cannot be a null value or blank.");
         }
         value=isbnBound(value);

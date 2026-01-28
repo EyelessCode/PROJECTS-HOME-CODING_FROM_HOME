@@ -7,7 +7,6 @@ export const registerUser=async(username,password)=>{
     if(exists)throw new Error("El nombre de usuario ya está en uso.")
 
     const hashedPassword=await bcrypt.hash(password,10)
-
     const newUser={
         id:users.length+1,
         username:username,
@@ -19,6 +18,7 @@ export const registerUser=async(username,password)=>{
 
     const token=generateToken({
         id:newUser.id,
+        username:newUser.username,
         role:newUser.role
     })
 
@@ -28,12 +28,13 @@ export const registerUser=async(username,password)=>{
 export const loginUser=async(username,password)=>{
     const user=users.find(u=>u.username===username)
     if(!user)throw new Error("No se encontró el usuario.")
-
+    
     const isValid=await bcrypt.compare(password,user.password)
     if(!isValid)throw new Error("Contraseña incorrecta.")
     
     const token=generateToken({
         id:user.id,
+        username:user.username,
         role:user.role
     })
 

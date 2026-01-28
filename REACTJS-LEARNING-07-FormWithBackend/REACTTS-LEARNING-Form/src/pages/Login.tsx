@@ -1,0 +1,41 @@
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
+
+const Login = () => {
+    const navigate=useNavigate()
+    const {login}=useAuth()
+    const [username,setUsername]=useState("")
+    const [password,setPassword]=useState("")
+    const [error,setError]=useState("")
+
+    const handleSubmit=async(e:React.SubmitEvent)=>{
+        e.preventDefault()
+        setError("")
+
+        try {
+            await login(username,password)
+            navigate("/user",{replace:true})
+        } catch (err:any) {
+            setError(err.message)
+        }
+    }
+
+    const handleChangeUsername=(e:React.ChangeEvent<HTMLInputElement>)=>setUsername(e.target.value)
+    const handleChangePassword=(e:React.ChangeEvent<HTMLInputElement>)=>setPassword(e.target.value)
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input value={username} onChange={handleChangeUsername}/>
+                <input value={password} onChange={handleChangePassword}/>
+                <button type="submit">Acceder</button>
+            </form>
+            {error&&<p>{error}</p>}
+            <div>
+                <p>¿No tienes cuenta? <Link to="/register">Regístrate</Link>!</p>
+            </div>
+        </div>
+    )
+}
+
+export default Login

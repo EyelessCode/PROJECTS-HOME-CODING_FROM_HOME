@@ -7,43 +7,52 @@ const AuthContext=createContext<AuthContextType|null>(null)
 export const AuthProvider = ({children}:{children:React.ReactNode}) => {
     const [user,setUser]=useState<UserPayload|null>(null)
     const [token,setToken]=useState<string|null>(null)
+    const [loading,setLoading]=useState(true)
 
     const login=async(username:string,password:string)=>{
         const {token,user}=await loginRequest(username,password)
 
+        
         setUser(user)
         setToken(token)
-
         localStorage.setItem("token",token)
         localStorage.setItem("user",JSON.stringify(user))
     }
 
     const logout=()=>{
+        localStorage.clear()
         setUser(null)
         setToken(null)
-        localStorage.clear()
     }
 
     const register=async(username:string,password:string)=>{
         const {token,user}=await registerRequest(username,password)
 
+        
         setUser(user)
         setToken(token)
-
         localStorage.setItem("token",token)
         localStorage.setItem("user",JSON.stringify(user))
     }
 
     useEffect(()=>{
-        const storedUser=localStorage.getItem("user")
         const storedToken=localStorage.getItem("token")
+        const storedUser=localStorage.getItem("user")
 
-        if(storedUser&&storedToken){
-            setUser(JSON.parse(storedUser))
-            setToken(storedToken)
+        try {
+            if(storedUser&&storedToken){
+                const parsedUser=JSON.parse(storedUser)
+                setUser(parsedUser)
+                setToken(storedToken)
+            }
+        } catch (err) {
+            console.error("Error leyendo Auth desde localStorage ",err);
+            localStorage.clear()
+        }finally{
+            setLoading(false)
         }
     },[])
-    return <AuthContext.Provider value={{user,token,login,logout,register}}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{user,token,login,logout,register,loading}}>{children}</AuthContext.Provider>
 }
 
 export const useAuth=()=>{

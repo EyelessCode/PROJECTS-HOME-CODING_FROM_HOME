@@ -15,9 +15,9 @@ const Register = () => {
 
         try {
             await register(username,password)
-            navigate("/user",{replace:true})
+            navigate("/user")
         } catch (err:any) {
-            setError(err.message)
+            setError(err.response?.data?.message || "Error inesperado")
         }
     }
 
@@ -26,8 +26,8 @@ const Register = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input value={username} onChange={handleChangeUsername}/>
-                <input value={password} onChange={handleChangePassword}/>
+                <input type="text" value={username} onChange={handleChangeUsername}/>
+                <input type="password" value={password} onChange={handleChangePassword}/>
                 <button type="submit">Registrarse</button>
             </form>
             {error&&<p>{error}</p>}

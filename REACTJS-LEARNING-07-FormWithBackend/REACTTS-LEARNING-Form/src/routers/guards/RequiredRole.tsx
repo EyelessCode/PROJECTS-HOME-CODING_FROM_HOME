@@ -8,10 +8,10 @@ interface RequiredRoleProps{
 }
 
 const RequiredRole = ({children,role}:RequiredRoleProps) => {
-    const {user}=useAuth()
-
+    const {user,loading}=useAuth()
+    if(loading)return null
     if(!user)return <Navigate to="/login" replace/>
-    if(user.role!==role)return <Navigate to="/" replace/>
+    if(user?.role!==role)return <Navigate to="/" replace/>
     return children
 }
 

@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
 const Login = () => {
-    const navigate=useNavigate()
     const {login}=useAuth()
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
@@ -15,7 +14,6 @@ const Login = () => {
 
         try {
             await login(username,password)
-            navigate("/user")
         } catch (err:any) {
             setError(err.response?.data?.message || "Error inesperado")
         }

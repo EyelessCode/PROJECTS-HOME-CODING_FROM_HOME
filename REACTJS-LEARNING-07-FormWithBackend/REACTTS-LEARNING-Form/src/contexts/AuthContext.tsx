@@ -1,22 +1,28 @@
 import React, { createContext, useContext, useEffect, useState } from "react"
 import type { AuthContextType, UserPayload } from "../@types/auth/auth.types"
 import { loginRequest, registerRequest } from "../services/auth/auth.service"
+import { useNavigate } from "react-router-dom"
+import { authRedirectByRole } from "../routers/auhtRedirect"
 
 const AuthContext=createContext<AuthContextType|null>(null)
 
 export const AuthProvider = ({children}:{children:React.ReactNode}) => {
+    const navigate=useNavigate()
     const [user,setUser]=useState<UserPayload|null>(null)
     const [token,setToken]=useState<string|null>(null)
     const [loading,setLoading]=useState(true)
 
     const login=async(username:string,password:string)=>{
         const {token,user}=await loginRequest(username,password)
+        // const {token}=await loginRequest(username,password)
 
         
         setUser(user)
         setToken(token)
         localStorage.setItem("token",token)
         localStorage.setItem("user",JSON.stringify(user))
+        navigate(authRedirectByRole(user.role))
+        
     }
 
     const logout=()=>{
@@ -27,12 +33,14 @@ export const AuthProvider = ({children}:{children:React.ReactNode}) => {
 
     const register=async(username:string,password:string)=>{
         const {token,user}=await registerRequest(username,password)
+        // const {token}=await registerRequest(username,password)
 
         
         setUser(user)
         setToken(token)
         localStorage.setItem("token",token)
         localStorage.setItem("user",JSON.stringify(user))
+        navigate(authRedirectByRole(user.role))
     }
 
     useEffect(()=>{
@@ -46,7 +54,6 @@ export const AuthProvider = ({children}:{children:React.ReactNode}) => {
                 setToken(storedToken)
             }
         } catch (err) {
-            console.error("Error leyendo Auth desde localStorage ",err);
             localStorage.clear()
         }finally{
             setLoading(false)

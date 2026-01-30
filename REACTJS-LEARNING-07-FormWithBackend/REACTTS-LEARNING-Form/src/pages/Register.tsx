@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { useState } from "react"
 
 const Register = () => {
-    const navigate=useNavigate()
     const {register}=useAuth()
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
@@ -15,7 +14,6 @@ const Register = () => {
 
         try {
             await register(username,password)
-            navigate("/user")
         } catch (err:any) {
             setError(err.response?.data?.message || "Error inesperado")
         }

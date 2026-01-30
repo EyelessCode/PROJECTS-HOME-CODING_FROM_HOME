@@ -22,7 +22,11 @@ export const registerUser=async(username,password)=>{
         role:newUser.role
     })
 
-    return token
+    return {token,user:{
+        id:newUser.id,
+        username:newUser.username,
+        role:newUser.role
+    }}
 }
 
 export const loginUser=async(username,password)=>{
@@ -38,5 +42,9 @@ export const loginUser=async(username,password)=>{
         role:user.role
     })
 
-    return token
+    return {token,user:{
+        id:user.id,
+        username:user.username,
+        role:user.role
+    }}
 }

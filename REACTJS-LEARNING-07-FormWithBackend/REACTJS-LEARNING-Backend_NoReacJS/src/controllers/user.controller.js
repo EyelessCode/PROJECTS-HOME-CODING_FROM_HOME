@@ -6,7 +6,8 @@ export const register=async(req,res)=>{
         // console.log("BODY:", req.body)
         const {username,password}=req.body
         const authData=await registerUser(username,password)
-        res.json({authData})
+        // res.json({authData})
+        res.json(authData)
     } catch (err) {
         res.status(400).json({message:err.message})
     }
@@ -18,7 +19,8 @@ export const login=async(req,res)=>{
         // console.log("BODY:", req.body)
         const {username,password}=req.body
         const authData=await loginUser(username,password)
-        res.json({authData})
+        // res.json({authData})
+        res.json(authData)
     } catch (err) {
         res.status(400).json({message:err.message})
     }

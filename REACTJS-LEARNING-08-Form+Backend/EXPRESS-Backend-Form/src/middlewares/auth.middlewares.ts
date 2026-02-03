@@ -1,6 +1,14 @@
 import type { NextFunction, Request, Response } from "express";
 import { verifyToken } from "../utils/jwt.token";
 
+declare global {
+    namespace Express {
+        interface Request {
+        user?: any;
+        }
+    }
+}
+
 export const requiredAuth=(req:Request,res:Response,next:NextFunction):void=>{
     const header=req.headers.authorization
 

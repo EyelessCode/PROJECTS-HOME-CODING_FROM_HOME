@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import Header from "../components/templates/Header";
 
 function HomeOut() {
     return (
         <>
-            <Header companyName="ResorcesEC"/>
+            <Header/>
             <main>HomeOut</main>
         </>
     )

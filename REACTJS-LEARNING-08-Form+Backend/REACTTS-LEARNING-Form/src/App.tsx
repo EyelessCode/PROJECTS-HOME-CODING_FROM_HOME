@@ -1,7 +1,7 @@
-import MyRouter from './routes/Router'
+import { Router } from "@/index"
 
 function App() {
-  return <MyRouter/>
+  return <Router/>
 }
 
 export default App

@@ -1,7 +1,5 @@
+import { AuthContext, loginRequest, registerRequest, type AuthContextProps, type UserPayload } from "@/index"
 import { useContext, useEffect, useState } from "react"
-import { AuthContext, type AuthContextProps } from "../../@types/auth/auth.context.type"
-import { loginRequest, registerRequest } from "../../services/auth/user.service"
-import type { UserPayload } from "../../@types/users/user.type"
 
 export const AuthProvider = ({children}:AuthContextProps) => {
     const [loading,setLoading]=useState<boolean>(true)

@@ -1,4 +1,4 @@
-import type { UserPayload } from "../users/user.type"
+import { type UserPayload } from "@/index"
 
 export interface AuthResponseType{
     token:string

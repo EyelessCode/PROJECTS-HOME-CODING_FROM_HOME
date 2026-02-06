@@ -1,5 +1,5 @@
-import type { AuthResponseType } from "../../@types/auth/auth.response.type"
-import { api } from "../../apis/axios"
+import { type AuthResponseType } from "@/index"
+import { api } from "@/apis/axios"
 
 export const loginRequest=async(username:string,password:string)=>{
     const {data}=await api.post<AuthResponseType>("/login",{username,password})

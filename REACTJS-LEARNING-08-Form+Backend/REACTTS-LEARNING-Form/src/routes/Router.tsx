@@ -1,16 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-// import NotFound from "../pages/NotFound"
-import Register from "../pages/Register"
-import Home from "../pages/HomeIn"
-import Login from "../pages/Login"
-import HomeOut from "../pages/HomeOut"
-import About from "../pages/About"
+import { About, HomeIn, HomeOut, Login, Register } from "@/index"
 
 
-const MyRouter = () => {
+const Router = () => {
     return (
         <Routes>
-            <Route element={<Home/>} path="/myTy/home" index/>
+            <Route element={<HomeIn/>} path="/myTy/home" index/>
             <Route element={<HomeOut/>} path="/myTy" index/>
             <Route element={<Login/>} path="/myTy/login"/>
             <Route element={<About/>} path="/myTy/about"/>
@@ -20,4 +15,4 @@ const MyRouter = () => {
     )
 }
 
-export default MyRouter
+export default Router

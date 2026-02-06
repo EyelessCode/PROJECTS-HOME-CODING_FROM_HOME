@@ -1,9 +1,8 @@
-import type React from "react";
-import { createContext } from "react";
-import type { UserPayload } from "../users/user.type";
+import { createContext, type ReactNode } from "react";
+import { type UserPayload } from "@/index"
 
 export interface AuthContextProps{
-    children:React.ReactNode
+    children:ReactNode
 }
 
 export interface AuthContextType{

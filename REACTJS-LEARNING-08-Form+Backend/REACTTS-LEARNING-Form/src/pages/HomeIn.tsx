@@ -1,7 +1,7 @@
-function Home() {
+function Homein() {
     return (
-        <div>Home</div>
+        <div>Homein</div>
     )
 }
 
-export default Home
+export default Homein

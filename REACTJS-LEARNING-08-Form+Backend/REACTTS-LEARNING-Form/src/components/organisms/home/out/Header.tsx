@@ -24,19 +24,19 @@ const Header = ({companyName,isActive,logout,username,role}:Props) => {
             <section>
                 <h1 className='text-5xl'>{companyName}</h1>
             </section>
-            <section>
-                <nav>
-                    <ul className='flex flex-row gap-3'>{navs.map((element:NavProps)=>
+            <section className='flex flex-row gap-2 items-center justify-between'>
+                <nav className='mr-8'>
+                    <ul className='flex flex-row'>{navs.map((element:NavProps)=>
                         <NavItems key={element.link} link={element.link} name={element.name}/>)}
                     </ul>
                 </nav>
-                <section>
+                <section className='flex flex-row gap-5 items-center text-center'>
                     {isActive?(
                         <PerfilUser role={role} username={username}>
-                            <Button variant='primary-filled' name='Cerrar sesión' onClick={logout} type='button'/>
+                            <Button variant='secondary-filled' name='Cerrar sesión' onClick={logout} type='button'/>
                         </PerfilUser>
                     ):(
-                        <p>
+                        <p className='text-2xl'>
                             <span className="hover:text-blue-600">
                                 <Link to="/myTy/login">Iniciar sesión</Link></span>/
                             <span className="hover:text-blue-600">

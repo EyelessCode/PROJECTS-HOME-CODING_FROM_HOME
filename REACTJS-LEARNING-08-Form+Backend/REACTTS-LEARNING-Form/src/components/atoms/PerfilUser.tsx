@@ -11,8 +11,8 @@ const PerfilUser = ({children,role,username}:Props) => {
     return (
         <>
             <article>
-                <p>{username}</p>
-                <p>[{role}]</p>
+                <p className="text-[14px]">{username}</p>
+                <p className="font-extrabold">[{role}]</p>
             </article>
             <div>{children}</div>
         </>

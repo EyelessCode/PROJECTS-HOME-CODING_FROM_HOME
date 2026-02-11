@@ -4,8 +4,6 @@ export * from './@types/users/user.type';
 export { default as App } from './App';
 export * from './apis/axios';
 export { default as Button } from './components/atoms/Button';
-export { default as Nav } from './components/atoms/Nav';
-export { default as NavSiteItem } from './components/atoms/NavSiteItem';
 export { default as PerfilUser } from './components/atoms/PerfilUser';
 export { default as NavItems } from './components/molecules/NavItems';
 export { default as Header } from './components/organisms/home/out/Header';

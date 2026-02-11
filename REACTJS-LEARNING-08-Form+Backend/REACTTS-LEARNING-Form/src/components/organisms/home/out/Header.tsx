@@ -1,4 +1,4 @@
-import {Button, Nav, NavItems, NavSiteItem, PerfilUser} from '@/index';
+import {Button, NavItems, PerfilUser} from '@/index';
 import { Link } from 'react-router-dom';
 
 interface Props{
@@ -21,19 +21,19 @@ const Header = ({companyName,isActive,logout,username,role}:Props) => {
     ]
     return (
         <>
-            <NavSiteItem>
+            <section>
                 <h1 className='text-5xl'>{companyName}</h1>
-            </NavSiteItem>
-            <NavSiteItem>
-                <Nav>
+            </section>
+            <section>
+                <nav>
                     <ul className='flex flex-row gap-3'>{navs.map((element:NavProps)=>
                         <NavItems key={element.link} link={element.link} name={element.name}/>)}
                     </ul>
-                </Nav>
-                <NavSiteItem>
+                </nav>
+                <section>
                     {isActive?(
                         <PerfilUser role={role} username={username}>
-                            <Button variant='solid' color='secondary' name='Cerrar sesión' onClick={logout} type='button'/>
+                            <Button variant='primary-filled' name='Cerrar sesión' onClick={logout} type='button'/>
                         </PerfilUser>
                     ):(
                         <p>
@@ -43,8 +43,8 @@ const Header = ({companyName,isActive,logout,username,role}:Props) => {
                                 <Link to="/myTy/register">Registrarse</Link></span>.
                         </p>
                     )}
-                </NavSiteItem>
-            </NavSiteItem>
+                </section>
+            </section>
         </>
     )
 }

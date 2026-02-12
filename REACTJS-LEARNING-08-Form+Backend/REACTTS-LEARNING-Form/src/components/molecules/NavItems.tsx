@@ -7,7 +7,7 @@ interface Props{
 
 const NavItems = ({link,name}:Props) => {
     return (
-        <li className="hover:text-blue-600 text-2xl mx-4"><Link to={link}>{name}</Link></li>
+        <li className=" hover:bg-blue-400 p-2 rounded-full text-2xl mx-4"><Link to={link}>{name}</Link></li>
     )
 }
 

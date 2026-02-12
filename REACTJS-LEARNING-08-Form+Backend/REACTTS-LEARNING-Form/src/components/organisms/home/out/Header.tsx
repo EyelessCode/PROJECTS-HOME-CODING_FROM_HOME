@@ -37,9 +37,9 @@ const Header = ({companyName,isActive,logout,username,role}:Props) => {
                         </PerfilUser>
                     ):(
                         <p className='text-2xl'>
-                            <span className="hover:text-blue-600">
+                            <span className="hover:text-black">
                                 <Link to="/myTy/login">Iniciar sesión</Link></span>/
-                            <span className="hover:text-blue-600">
+                            <span className="hover:text-black">
                                 <Link to="/myTy/register">Registrarse</Link></span>.
                         </p>
                     )}
